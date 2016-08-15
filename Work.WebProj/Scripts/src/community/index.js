@@ -1,0 +1,14 @@
+"use strict";
+require('babel-polyfill');
+var React = require('react');
+var react_dom_1 = require('react-dom');
+var react_redux_1 = require('react-redux');
+var redux_1 = require('redux');
+var GridFormPart_1 = require('./components/GridFormPart');
+var reducers_1 = require('./reducers');
+var actions_1 = require('./actions');
+var redux_thunk_1 = require('redux-thunk');
+var store = redux_1.createStore(reducers_1.default, redux_1.applyMiddleware(redux_thunk_1.default));
+store.dispatch(actions_1.ajaxGridItem(null));
+var dom = document.getElementById('page_content');
+react_dom_1.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(GridFormPart_1.default, null)), dom);
