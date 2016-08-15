@@ -288,16 +288,7 @@
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\CommunityController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
-    <Compile Include="Controllers\PlanController.cs" />
-    <Compile Include="Controllers\SellController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
-    <Compile Include="Controllers\PartnerController.cs" />
-    <Compile Include="Controllers\RentController.cs" />
-    <Compile Include="Controllers\AboutUsController.cs" />
-    <Compile Include="Controllers\VendorController.cs" />
-    <Compile Include="Controllers\ShoppingController.cs" />
-    <Compile Include="Controllers\VIPController.cs" />
-    <Compile Include="Controllers\NeighborController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
