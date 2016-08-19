@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+// var - 自定屬性
+// -----------------------------------------------------------------
+$tabs-styles: ()!default;
+
+$tab-nav-transition: false !default;
+$tabs-nav-styles: (
+    link: (),
+    hover: (),
+    active: ()
+) !default;
+
+
+
+
+// main
+// -----------------------------------------------------------------
+.tabs {
+    // @extend %list-unstyled;
+    @extend %clearfix;
+
+    @each $attribute, $value in $tabs-styles {
+        #{$attribute}: #{$value};
+    }
+}
+
+.js-tab {
+    @if $tab-nav-transition {
+      @include transition($tab-nav-transition);
+    }
+
+    @if $tabs-nav-styles {
+
+        @each $attribute, $value in map-deep-get($tabs-nav-styles, link) {
+            #{$attribute}: #{$value};
+        }
+
+        &:hover, &:active {
+            @each $attribute, $value in map-deep-get($tabs-nav-styles, hover) {
+                #{$attribute}: #{$value};
+            }
+        }
+
+        &.active {
+            @each $attribute, $value in map-deep-get($tabs-nav-styles, active) {
+                #{$attribute}: #{$value};
+            }
+        }
+    }
+}

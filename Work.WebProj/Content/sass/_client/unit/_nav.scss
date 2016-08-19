@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+// 當前選單
+$current:             page('&:nth-child');
+
+// 行動選單(mobile-trigger)
+$mobile-menu-bk:      'desktop' !default;     // 從()螢幕寬度以下開始出現行動版選單
+$mobile-menu-bg:      #424242 !default;
+$mobile-menu-style:   'overlay' !default;
+$mobile-menu-width:   100% !default;
+
+
+// 主選單
+%nav-active-style {
+    background: $menu-nav-bg;
+    color: nth($menu-nav-color,2);
+    box-shadow: inset 1px 1px 1px rgba(#000,.15);
+}
+
+#menu {
+    z-index: z(menu);
+
+    @if $menu-height { height: $menu-height }
+
+    // 本次專案
+    margin-top: 66px;
+
+    li {
+        margin-right: -4px;
+        width: percentage(1/9);
+
+        // #{$current} {
+        .#{nth($menu-item,1)} &:nth-child(1),
+        .#{nth($menu-item,2)} &:nth-child(2),
+        .#{nth($menu-item,3)} &:nth-child(3),
+        .#{nth($menu-item,4)} &:nth-child(4),
+        .#{nth($menu-item,5)} &:nth-child(5),
+        .#{nth($menu-item,6)} &:nth-child(6),
+        .#{nth($menu-item,7)} &:nth-child(9) {
+            .root {
+                @extend %nav-active-style;
+            }
+        }
+    }
+
+    .root {
+        color: nth($menu-nav-color,1);
+        font-size: em($menu-font-size);
+
+        @if $menu-nav-height-full {
+            height: 100%;
+            @include text-middle($menu-height,'pd',$menu-font-size);
+        }
+
+        // 本次專案
+        letter-spacing: 1px;
+        display: block;
+        padding-top: 15px;
+        padding-bottom: 7px;
+
+        &:hover, &:active {
+            @extend %nav-active-style;
+        }
+    }
+
+    // 子選單顯示
+    .dropdown {
+        &:hover, &:active {
+            .sub-nav {
+                opacity: 1;
+                visibility: visible;
+                // display: block;
+                top: 100%;
+            }
+        }
+    }
+
+    @if $enable-RWD {
+        @include mq-max(break(#{$mobile-menu-bk},-1)) {
+            @include fixed(top 0);
+            overflow-y: auto;
+            z-index: z(overlay);
+
+            background: $mobile-menu-bg;
+            width: $mobile-menu-width;
+            height: 100%;
+
+            // 本次專案
+            margin-top: 0;
+
+            // 推拉樣式
+            @if $mobile-menu-style == 'push' {
+                left: -$mobile-menu-width;
+                text-align: left;
+
+                @include transition(left .35s);
+
+                .push & { left: 0; }
+
+                li {
+                    border-bottom: 1px solid lighten($mobile-menu-bg,5);
+                    width: 100%;
+                }
+                .root {
+                    color: #fff;
+                    font-size: em(18px);
+                    padding: $gutter/2 $gutter;
+                }
+            }
+
+            // 全版樣式
+            @else if $mobile-menu-style == 'overlay' {
+                overflow-x: hidden;
+                visibility: hidden;
+                top: -50%;
+                left: 0;
+                opacity: 0;
+                padding: 3% 0;
+
+                @include transition(top .5s, opacity 1s);
+
+                .overlay & {
+                    top: 0;
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+// 第二層選單
+.sub-nav {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    top: 80%;
+
+    @include transition(opacity 1s, top .3s);
+
+    a {
+        padding: 9px 0;
+        font-size: em(17);
+        color: #555;
+
+        &:hover, &:active {
+            background: lighten($light-yellow,8);
+        }
+    }
+
+    @if $enable-RWD {
+        @include mq-max(break(#{$mobile-menu-bk},-1)) {
+            display: none;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            position: static;
+            top: 100%;
+            max-width: 100%;
+
+            background: darken($mobile-menu-bg,10);
+            box-shadow: inset 3px 6px 15px rgba(#000,.5);
+            // padding-top: $gutter - 4;
+            // padding-bottom: $gutter - 4;
+
+            a {
+                padding: ($gutter - 4) $gutter+6;
+                color: $white;
+
+                &:hover, &:active {
+                    background: $brand-primary;
+                }
+            }
+        }
+    }
+}
+
+// 間隔寬的選單
+.nav-gap {
+    a {
+        margin: 0 $gutter/2;
+    }
+}

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+$goTop-pos:        bottom 2% right 2% !default;
+$goTop-effect:     'color 1s, opacity .5s' !default;
+$goTop-color:      $brand-primary !default;
+
+$goTop-styles: (
+    opacity: .65,
+    font-size: em(35),
+    color: $goTop-color
+) !default;
+
+$goTop-hover-styles: (
+    opacity: 1
+) !default;
+
+//
+// goTop
+// --------------------------------------------------
+
+.goTop {
+    display: none;
+    z-index: z(goTop);
+
+    @include fixed($goTop-pos);
+    @include transition($goTop-effect);
+
+    @each $attribute, $value in $goTop-styles {
+        #{$attribute}: #{$value};
+    }
+
+    &:hover, &:active {
+        @each $attribute, $value in $goTop-hover-styles {
+            #{$attribute}: #{$value};
+        }
+    }
+    // &.bottom { bottom: $footer-height + 20; }
+}
