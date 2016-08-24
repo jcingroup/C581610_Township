@@ -44,10 +44,10 @@ $pale-blue:               #E7FFFF !default;
 $brand-primary:           #76A22E !default;    // 主色
 $brand-secondary:         #29A09B !default;    // 輔色
 $brand-primary-light:     #CEECAB !default;    // 主色
-$muted:                   #B0B0B0 !default;    // 灰色 lighten($black, 46.7%)
+$muted:                   lighten($black, 69%) !default;    // 灰色
 $success:                 #92C734 !default;    // 綠
 $info:                    #29A9E0 !default;    // 藍
-$warning:                 #D6DD2B !default;    // 黃
+$warning:                 #D7DE21 !default;    // 黃
 $danger:                  #F35B74 !default;    // 紅
 
 
@@ -56,7 +56,6 @@ $state-type: (
     primary:              $brand-primary,
     secondary:            $brand-secondary,
     muted:                $muted,
-    white:                $white,
     success:              $success,
     info:                 $info,
     warning:              $warning,

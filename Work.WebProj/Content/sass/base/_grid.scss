@@ -14,77 +14,31 @@ $grid-breakpoints: (
     xl: wider
 ) !default;
 
-// 預設格數
-$columns:  $grid-columns;
-
-@mixin make-col($seclector) {
-
-    @for $i from 1 through $columns {
-        .col-#{$seclector}-#{$i} {
-            @include make-col-span($i, $columns);
-        }
-    }
-
-    @each $modifier in (pull, push, offset) {
-        @for $i from 0 through ($columns - 1) {
-            .#{$modifier}-#{$seclector}-#{$i} {
-                @include make-col-modifier($modifier, $i, $columns)
-            }
-        }
-    }
-}
-
 
 // output
 // ------------------------------------------------------------
-.row, .row-pad {
+.row {
     @extend %clearfix;
-
     & + & { margin-top: $spacer/2; }
 }
 
-// 置中等比例(1/5)
-@include make-col-ratio(3);
-@include make-col-ratio(5);
-
+%float-l { float: left; }
 
 // 12格 通用(全螢幕) - 靠左
-@for $i from 1 through $columns {
-
-    @each $breakpoint, $value in $grid-breakpoints {
-        $selector: '.col-#{$i}', '.col-#{$breakpoint}-#{$i}';
-
-        #{$selector} { @include cols-reset; }
+@for $i from 1 through $grid-columns {
+    .col-#{$i} {
+        @extend %float-l;
+        @include make-col($i, $grid-columns, $gutter);
     }
-    .col-#{$i} { @include make-col-span($i, $columns); }
 }
 
-// .row-pad [class*=col]:first-child,
+@include make-grid-columns();
+
 .col-first { padding-left: 0; }
+.col-last  { padding-right: 0; }
+.col-rest  { overflow: hidden; }
 
-// .row-pad [class*=col]:last-child,
-.col-last { padding-right: 0; }
-
-
-// RWD
-@each $breakpoint, $value in $grid-breakpoints {
-
-    @if $breakpoint == 'xs' or $breakpoint == 'sm' {
-
-        @include mq-max($value) {
-            @include make-col($breakpoint);
-        }
-
-    }
-    @else {
-
-        @include mq($value) {
-            @include make-col($breakpoint);
-        }
-
-    }
-}
-
-.col-rest {
-    overflow: hidden;
+.grid {
+    display: inline-block;
+    vertical-align: top;
 }

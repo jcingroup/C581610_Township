@@ -2,18 +2,21 @@
 
 // 本頁專用變數(覆蓋)
 // ------------------------------------------------------------
-$index:           true;
-$img-index:       '../images/index';
+$index:                 true;
+$img-index:             '../images/index';
 
-$wrapper-bg:      url(#{$img-index}/bg.jpg) no-repeat center 0;
+$headings-color:        #fff;
 
-$header-bg:       false;
-$header-height:   735px;
-$logo-pos:        left 0 top 255px;
+$wrapper-bg:            url(#{$img-index}/bg.jpg) no-repeat center 0;
 
-$headings-color:  #fff;
+$header-bg:             false;
+$header-height:         735px;
+$logo-pos:              left 0 top 255px;
 
-$input-bg:        #fff;
+
+$form-element-bg:       #fff;
+$form-element-radius:   false;
+$form-element-shadow:   false;
 
 
 // import
@@ -38,7 +41,6 @@ $input-bg:        #fff;
 // 本頁專用
 @import "_client/layout";
 @import "_client/unit/goTop";
-@import "_client/unit/list";
 @import "_client/unit/card";
 @import "_client/unit/btn";
 @import "_client/unit/input-group";

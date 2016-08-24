@@ -1,7 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Content";
+    ViewBag.Title = "社區訊息";
+    ViewBag.BodyClass = "News";
+    ViewBag.breadCrumb = "社區訊息";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Content</h2>
+@section breadCrumb {
 
+}
+
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">NEWS</small>
+</h1>

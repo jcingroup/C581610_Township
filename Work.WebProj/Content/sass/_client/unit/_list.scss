@@ -42,3 +42,62 @@ $list-dot-color: $brand-primary !default;
 //         }
 //     }
 // }
+
+@if $page {
+    .news-list {
+        li {
+            @extend .text-white;
+            border-radius: 10px 0 10px 0;
+            box-shadow: 0 0 10px lighten(black,75);
+            position: relative;
+            vertical-align: top;
+            width: 245px;
+            height: 273px;
+            margin: 0 22px $spacer*1.5 22px;
+        }
+        header, .block {
+            @extend .text-left, .padding;
+        }
+        header {
+            @extend .padding-12;
+            border-bottom: 1px solid rgba(#fff,.3);
+        }
+        .block {
+            @extend .text-white;
+            margin: $spacer*.8 0;
+            letter-spacing: 1px;
+
+            &:hover, &:active { color: lighten($warning,20); }
+        }
+        .label {
+            margin-right: -5px;
+            @extend .bg-white;
+        }
+        .btn {
+            @extend .text-white;
+            background: rgba(#fff, .2);
+            border: none;
+            padding: 8px 30px;
+            margin: auto;
+            @include pos-center(x);
+            bottom: 28px;
+
+            &:hover, &:active {
+                background: #fff;
+                color: $brand-secondary;
+            }
+        }
+        .activity {
+            @extend .bg-success;
+            .label { @extend .text-success; }
+        }
+        .public {
+            @extend .bg-danger;
+            .label { @extend .text-danger; }
+        }
+        .info {
+            @extend .bg-info;
+            .label { @extend .text-info; }
+        }
+    }
+}

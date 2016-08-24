@@ -34,12 +34,12 @@ $font-family-base:           \5FAE\8EDF\6B63\9ED1\9AD4,"微軟正黑體","Micros
 
 $font-size-base:             16px !default;     // 1rem
 $font-size-lg:               1.25rem !default;  // 20px
-$font-size-sm:               .875rem !default;  // 14px
+$font-size-sm:               .9375rem !default; // 15px
 $font-size-xs:               .8125rem !default; // 13px - 微軟正黑體下建議最小為 13
 
 $font-size-h1:               $font-size-base * 2.625 !default;   // 42px old-2.5
-$font-size-h2:               $font-size-base * 2.0625 !default;  // 33px old-2
-$font-size-h3:               $font-size-base * 1.75 !default;    // 28px old-1.75
+$font-size-h2:               $font-size-base * 2.1875 !default;  // 35px old-2
+$font-size-h3:               $font-size-base * 1.875 !default;   // 30px old-1.75
 $font-size-h4:               $font-size-base * 1.5625 !default;  // 25px old-1.5
 $font-size-h5:               $font-size-base * 1.3125 !default;  // 21px old-1.25
 $font-size-h6:               $font-size-base * 1.0625 !default;  // 17px old-1

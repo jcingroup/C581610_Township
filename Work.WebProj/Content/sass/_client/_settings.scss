@@ -45,7 +45,7 @@ $logo-pos:              false !default;
 
 // footer
 $footer-height:         263px !default;
-$footer-bg:             #26333C !default;
+$footer-bg:             #27343D !default;
 $footer-color:          #E3E3E3 !default; //#63889D;
 
 // z-index
@@ -81,23 +81,20 @@ $btn-hover-bg:                  $brand-secondary;
 $input-group-addon-color:       #B0B0B0;
 $input-group-addon-bg:          #ECECEC;
 
-// goTop
-$goTop-effect:     'color 1s, opacity .5s, background 1s';
-$goTop-styles: (
-    color: lighten($footer-bg,10),
-    background: darken($footer-bg,10),
-    opacity: .5,
-    font-size: em(28),
-    padding: 5px 10px,
-    border-radius: 3px
-);
-
 // card
 $card-bg:                         rgba(white,.45);
 $card-radius:                     1px;
 $card-border:                     1px solid #FEF8CC;
 $card-shadow:                     false;
 
+// figure
+$figure-effect:                   box-shadow .35s;
+
+// label
+$label-pd:                        2px 10px;
+
+// slide
+$swiper-button:                   true;
 
 // == base
 // ----------------------------------------------------------------------
@@ -127,10 +124,9 @@ $card-shadow:                     false;
 // form
 $input-border-color:            #DFDFDF;
 
-$form-element-bg:               false;
-$form-element-height:           38px;
-$form-element-radius:           false;
-$form-element-shadow:           false;
+$form-element-bg:               false !default;
+$form-element-height:           38px !default;
+$input-border-focus:            $brand-secondary;
 
 
 

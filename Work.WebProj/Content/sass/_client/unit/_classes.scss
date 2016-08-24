@@ -15,6 +15,7 @@
 .text-hide     { @extend %text-hide; }
 .sr-only       { @extend %sr-only; }
 
+.block         { display: block; }
 .img-center    { display: block; margin: auto; }
 
 .margin        { margin: $gutter; }
@@ -81,34 +82,11 @@
 //     font-size: 1em;
 // }
 
-.arrow {
-    @include icon-arrow(right, 5px, $brand-primary, left 18px top 50%) {
-        margin-top: -6px;
-        z-index: z(sidebar) + 3;
-    }
-}
-
-.line-dot {
-    margin: $spacer 0;
-    height: 1px;
-    background: url(#{$img-path}/dot.gif) 0 bottom repeat-x;
-}
-hr.line-dot { border-top: none; }
-
 
 // text
 // ------------------------------------------------------------
-.font-tiny  { font-size: $font-size-xs; }  // 13px
-.font-sm    { font-size: $font-size-sm; }  // 14px
-.font-md    { font-size: rem(15); }
-.font-lg    { font-size: $font-size-lg; }  // 20px
-.font-xl    { font-size: rem(27); }
-.font-xxl   { font-size: rem(40); }
-.font-xxxl  { font-size: rem(48); }
-.font-jumbo { font-size: rem(65); }
-
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
 .text-center { text-align: center; }
 
 .title-underline {
@@ -127,9 +105,10 @@ hr.line-dot { border-top: none; }
     small {
         @extend .font-sp, .font-md;
 
-        display: block;
+        margin-top: 13px;
+        color: $muted;
         letter-spacing: 8px;
-        margin-top: 10px;
+        text-transform: uppercase;
 
         @include el(all, inline-block, url('#{$img-path}/line.gif')) {
             position: relative;
@@ -141,6 +120,14 @@ hr.line-dot { border-top: none; }
     }
 }
 
+.font-tiny  { font-size: $font-size-xs; }  // 13px
+.font-sm    { font-size: $font-size-sm; }  // 15px
+.font-md    { font-size: rem(16); }
+.font-lg    { font-size: $font-size-lg; }  // 20px
+.font-xl    { font-size: rem(25); }
+.font-xxl   { font-size: rem(37); }
+.font-xxxl  { font-size: rem(48); }
+.font-jumbo { font-size: rem(65); }
 
 
 // 情境: var.scss> $states: true

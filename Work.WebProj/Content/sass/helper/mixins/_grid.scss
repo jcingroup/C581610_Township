@@ -1,103 +1,91 @@
 @charset "UTF-8";
 
+@mixin make-grid-columns($columns: $grid-columns, $gap: $gutter, $breakpoints: $grid-breakpoints) {
 
-// $one_col: 100% / $cols;
-// $one_col: (100% - (cp($gutter) * ($cols - 1))) / $cols;
-// width: ($one_col * $num) + (cp($gutter) * ($num - 1));
+    // Common properties for all breakpoints
+    %grid-column {
+        position: relative;
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-right: ($gutter / 2);
+        padding-left: ($gutter / 2);
 
-@mixin make-col-span($size, $columns: $grid-columns) {
+        @if $enable-flex {
+            width: 100%;
+        }
+    }
+
+    $breakpoint-counter: 0;
+    @each $breakpoint, $value in $breakpoints {
+        $breakpoint-counter: ($breakpoint-counter + 1);
+
+        $selector: ();
+        @for $i from 1 through $columns {
+            .col-#{$i}, .col-#{$breakpoint}-#{$i} {
+                @extend %grid-column;
+            }
+            @if not $enable-flex {
+                $selector: $selector, '.col-#{$breakpoint}-#{$i}';
+            }
+        }
+
+        @include mq($value) {
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+            @if $enable-flex {
+                .col-#{$breakpoint} {
+                    flex-basis: 0;
+                    flex-grow: 1;
+                    max-width: 100%;
+                }
+            } @else {
+                #{$selector} { float: left; }
+            }
+
+            @for $i from 1 through $columns {
+                .col-#{$breakpoint}-#{$i} {
+                    @include make-col($i, $columns, $gutter);
+                }
+            }
+
+            @each $modifier in (pull, push) {
+                @for $i from 0 through $columns {
+                    .#{$modifier}-#{$breakpoint}-#{$i} {
+                        @include make-col-modifier($modifier, $i, $columns)
+                    }
+                }
+            }
+
+            // `$columns - 1` because offsetting by the width of an entire row isn't possible
+            @for $i from 0 through ($columns - 1) {
+                @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .offset-xs-0
+                    .offset-#{$breakpoint}-#{$i} {
+                        @include make-col-modifier(offset, $i, $columns)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
     @if $enable-flex {
         flex: 0 0 percentage($size / $columns);
+        max-width: percentage($size / $columns);
     } @else {
         width: percentage($size / $columns);
     }
 }
 
-@mixin cols-reset($gap: $gutter, $theme: left, $first: false, $last: false, $extend: true) {
-
-    @if $theme == center {
-        @include mixin-dryer('col-center', $extend) {
-            display: inline-block;
-            vertical-align: top;
-
-            // inline-block模式時 刪除多出間距
-            margin-right: -4px;
-            margin-left: -4px;
-
-            @if $lte7 {
-                *display: inline;
-                zoom: 1
-            }
-        }
-    } @else {
-        @include mixin-dryer('col-float', $extend) {
-            @if not $enable-flex {
-                float: $theme;
-            }
-            min-height: 1px;
-            position: relative;
-        }
-    }
-
-    @include mixin-dryer('col-pad', $extend) {
-        .row-pad & {
-            padding-left: $gap/2;
-            padding-right: $gap/2;
-        }
-    }
-}
-
-@mixin make-col-offset($size, $columns: $grid-columns) {
-    margin-left: percentage($size / $columns);
-}
-
-@mixin make-col-push($size, $columns: $grid-columns) {
-    left: if($size > 0, percentage($size / $columns), auto);
-}
-
-@mixin make-col-pull($size, $columns: $grid-columns) {
-    right: if($size > 0, percentage($size / $columns), auto);
-}
-
 @mixin make-col-modifier($type, $size, $columns) {
     // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
     @if $type == push {
-        @include make-col-push($size, $columns);
+        right: if($size > 0, percentage($size / $columns), auto);
     }
     @else if $type == pull {
-        @include make-col-pull($size, $columns);
+        right: if($size > 0, percentage($size / $columns), auto);
     }
     @else if $type == offset {
-        @include make-col-offset($size, $columns);
-    }
-}
-
-// @mixin make-cols($class: md) {
-//     @for $i from 1 through $cols {
-//         $selector: if($class == 'md', '.col-#{$i}', '.col-#{$class}-#{$i}');
-
-//         #{$selector} {
-//             width: ($one_col * $i);
-//         }
-//     }
-// }
-
-// // 偏移
-// @mixin make-offset($class: md) {
-//     @for $i from 0 through ($cols - 1) {
-//         $selector: if($class == 'md', '.offset-#{$i}', '.offset-#{$class}-#{$i}');
-
-//         #{$selector} {
-//             margin-left: ($one_col * $i);
-//         }
-//     }
-// }
-
-@mixin make-col-ratio($columns: $grid-columns) {
-    @for $i from 1 through ($columns - 1) {
-        .col-#{$i}-#{$columns} {
-            @include cols-reset($theme: center);
-            @include make-col-span($i, $columns);
-        }
+        margin-left: percentage($size / $columns);
     }
 }

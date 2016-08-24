@@ -25,11 +25,6 @@ $mobile-menu-width:   100% !default;
 
 
 // 主選單
-%nav-active-style {
-    @if $nav-active-bg    { background: $nav-active-bg; }
-    @if $nav-active-color { color:$nav-active-color; }
-}
-
 .navbar {
     @if $navbar-height { height: $navbar-height }
     @if $navbar-bg     { background: $navbar-bg }
@@ -45,12 +40,6 @@ $mobile-menu-width:   100% !default;
     li {
         @extend .float-l;
         width: percentage(1/length($menu-item));
-
-        // #{$current} {
-        //     .root {
-        //         @extend %nav-active-style;
-        //     }
-        // }
 
         // 子選單顯示
         &:hover, &:active {
@@ -97,7 +86,8 @@ $mobile-menu-width:   100% !default;
         display: block;
 
         &:hover, &:active, &.current {
-            @extend %nav-active-style;
+            @if $nav-active-bg    { background: $nav-active-bg; }
+            @if $nav-active-color { color:$nav-active-color; }
         }
     }
 

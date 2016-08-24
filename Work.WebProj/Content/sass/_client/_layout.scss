@@ -40,18 +40,11 @@
     @extend %contain;
 }
 
-.container {
-    @extend %clearfix;
-    padding: $gutter;
-}
-
-#header, #footer, #main,  {
-    @extend %contain;
-}
-// #header, #footer, #main, .wrap {
 #header, #footer, #main {
+    @extend %contain;
     position: relative;
 }
+
 #wrapper {
     @if $lte7 { _height: 100%; }
     min-height: 100%;
@@ -119,14 +112,12 @@ $font-gray: #7F7F7F;
     text-shadow: 2px 2px 3px rgba($black,.25);
     letter-spacing: 4px;
 
-    @if $index {
-        #header & {
+    #header & {
+        @if $index {
             @include absolute($logo-pos);
             font-size: em(65);
         }
-    }
-    @if $page {
-        #header & {
+        @if $page {
             float: left;
             font-size: em(50);
             text-shadow: none;

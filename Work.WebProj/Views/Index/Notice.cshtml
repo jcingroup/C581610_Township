@@ -1,22 +1,28 @@
 ﻿
 @{
-    ViewBag.Title = "Notice";
+    ViewBag.Title = "WELCOME";
     ViewBag.BodyClass = "Notice";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-@* @section Scripts {
+@section css {
+    <link rel="stylesheet" href="~/Content/css/vendor/swiper.min.css">
+}
+@section Scripts {
+    <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-        var Today = new Date();
-        var Year = Today.getFullYear();
-        var Month = Today.getMonth()+1;
-        var Day = Today.getDate();
-
-        $('.time').text(function(){
-            return year + '/' + Month + '<em>' + Day + '</em>';
+        var mySwiper = new Swiper('.carousel', {
+            autoplay: 4000,
+            speed: 1000,
+            slidesPerView: 4,
+            // slidesPerColumnFill: 'row',
+            spaceBetween: 22,
+            autoplayDisableOnInteraction: false,
+            prevButton: '.prev',
+            nextButton: '.next',
         });
     </script>
-} *@
+}
 
 <section class="grid-intro">
     <figure>
@@ -26,7 +32,7 @@
                 document.write(Today.getFullYear() + "/" + (Today.getMonth()+1) + "<em>" + Today.getDate() + "</em>");
             </script>
         </span>
-        <figcaption class="text-center bg-white">
+        <figcaption>
             <h4 class="text-info font-xxl">1500</h4>
             <p class="font-lg">社區總人數</p>
         </figcaption>
@@ -34,7 +40,7 @@
 
     <figure>
         <a href="~/AboutUs"></a>
-        <figcaption class="text-center bg-white">
+        <figcaption>
             <h4 class="text-info font-xxl">社區介紹</h4>
             <p class="font-lg font-sp">INTRODUCTION</p>
         </figcaption>
@@ -42,7 +48,7 @@
 
     <figure>
         <a href="~/Assets"></a>
-        <figcaption class="text-center bg-white">
+        <figcaption>
             <h4 class="text-info font-xxl">社區資產</h4>
             <p class="font-lg font-sp">ASSETS</p>
         </figcaption>
@@ -50,44 +56,114 @@
 </section>
 
 <section class="grid-news bg-white">
-    <h2 class="title-underline-d font-xxl">
+    <h1 class="title-underline-d">
         社區最新消息
-        <small>LATEST NEWS</small>
-    </h2>
-    <ul class="news-list list-inline">
-        <li class="activity">
-            <header>
-                2016 / 6 / 18
-                <span class="label">活動</span>
-            </header>
-            @* 最多 42 個字，超過加... *@
-            <p>社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</p>
-
-            <a href="" class="btn btn-white font-sp">MORE</a>
-        </li>
-    </ul>
+        <small class="block">LATEST NEWS</small>
+    </h1>
+    <div class="carousel swiper-container">
+        <ul class="news-list list-inline swiper-wrapper">
+            <li class="activity swiper-slide">
+                <header>
+                    2016 / 6 / 18
+                    <span class="label float-r">活動</span>
+                </header>
+                @* 最多 42 個字，超過加... *@
+                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
+                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
+            </li>
+            <li class="public swiper-slide">
+                <header>
+                    2016 / 6 / 18
+                    <span class="label float-r">公告</span>
+                </header>
+                <a href="~/News/Content" class="block">社區重大公告訊息社區重大公告訊息社區重大公告訊息社區重大公告訊息...</a>
+                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
+            </li>
+            <li class="info swiper-slide">
+                <header>
+                    2016 / 6 / 18
+                    <span class="label float-r">資訊</span>
+                </header>
+                <a href="~/News/Content" class="block">系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息...</a>
+                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
+            </li>
+            <li class="activity swiper-slide">
+                <header>
+                    2016 / 6 / 18
+                    <span class="label float-r">活動</span>
+                </header>
+                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
+                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
+            </li>
+            <li class="activity swiper-slide">
+                <header>
+                    2016 / 6 / 18
+                    <span class="label float-r">活動</span>
+                </header>
+                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
+                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
+            </li>
+            <li class="activity swiper-slide">
+                <header>
+                    2016 / 6 / 18
+                    <span class="label float-r">活動</span>
+                </header>
+                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
+                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
+            </li>
+            <li class="activity swiper-slide">
+                <header>
+                    2016 / 6 / 18
+                    <span class="label float-r">活動</span>
+                </header>
+                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
+                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
+            </li>
+        </ul>
+    </div><!-- carousel //-->
+    <span class="prev icon-chevron-thin-left"></span>
+    <span class="next icon-chevron-thin-right"></span>
 </section>
 
 <section class="grid-doc">
-    <h3>近期更新文件</h3>
+    <h2 class="text-primary">近期更新文件</h2>
     <nav>
-        <a class="col-1-3">
-            <h3>效能管理<small>預期使用機能需求評估與規劃說明</small></h3>
+        @* 最多顯示 6 則 *@
+        <a href="" class="grid">
+            <h3 class="text-success">
+                效能管理
+                <small class="block font-md">預期使用機能需求評估與規劃說明</small>
+            </h3>
         </a>
-        <a class="col-1-3">
-            <h3>組織管理<small>人事管理制度</small></h3>
+        <a href="" class="grid">
+            <h3 class="text-success">
+                組織管理
+                <small class="block font-md">人事管理制度</small>
+            </h3>
         </a>
-        <a class="col-1-3">
-            <h3>維運管理<small>各項設施設備管理維護規範</small></h3>
+        <a href="" class="grid">
+            <h3 class="text-success">
+                維運管理
+                <small class="block font-md">各項設施設備管理維護規範</small>
+            </h3>
         </a>
-        <a class="col-1-3">
-            <h3>資產管理<small>設施使用動態管理說明</small></h3>
+        <a href="" class="grid">
+            <h3 class="text-success">
+                資產管理
+                <small class="block font-md">設施使用動態管理說明</small>
+            </h3>
         </a>
-        <a class="col-1-3">
-            <h3>維運管理<small>緊急應變計畫</small></h3>
+        <a href="" class="grid">
+            <h3 class="text-success">
+                維運管理
+                <small class="block font-md">緊急應變計畫</small>
+            </h3>
         </a>
-        <a class="col-1-3">
-            <h3>長期修繕<small>長期修繕財務措計畫</small></h3>
+        <a href="" class="grid">
+            <h3 class="text-success">
+                長期修繕
+                <small class="block font-md">長期修繕財務措計畫</small>
+            </h3>
         </a>
     </nav>
 </section>

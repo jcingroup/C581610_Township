@@ -1,12 +1,13 @@
 
+var $gotoTop = $('.goTop');
+
 $(window).scroll(function(){
     // 沒有卷軸時不出現 goTop 按鈕
-    var $gotoTop = $('.goTop');
-    if ( $(this).scrollTop() > 450 ) {
-        $gotoTop.fadeIn();
+    if ( $(this).scrollTop() != 0 ) {
+        $gotoTop.addClass('fadeIn').removeClass('fadeOut');
     }
     else {
-        $gotoTop.fadeOut();
+        $gotoTop.addClass('fadeOut').removeClass('fadeIn');
     }
 
     // 卷動到定位時該元素固定
@@ -26,8 +27,12 @@ $(window).scroll(function(){
 $('.scroll').click(function () {
     var scrollToAnchor = $(this).attr('href');
     $('html, body').stop(true).animate({
-        scrollTop: $(scrollToAnchor).offset().top + 40
+        scrollTop: $(scrollToAnchor).offset().top - 40
     }, 750);
+    return false;
+});
+$gotoTop.click(function() {
+    $('body, html').animate({scrollTop:0},800);
     return false;
 });
 

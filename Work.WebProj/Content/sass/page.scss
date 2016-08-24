@@ -33,14 +33,25 @@ $figure-inline:   true;
 @import "_client/unit/list";
 @import "_client/unit/card";
 @import "_client/unit/btn";
+@import "_client/unit/label";
 @import "_client/unit/figure";
 @import "_client/unit/input-expand";
-// @import "_client/unit/input-group";
+// @import "_client/unit/slider";
 @import "_client/unit/classes";
 
 
 // main
 // ------------------------------------------------------------
+
+#main {
+    @extend %center;
+
+    .Notice & {
+        @extend .margin-0;
+        max-width: 100%;
+    }
+}
+
 // 住戶資料
 .top-member {
     @extend .float-r, .text-left;
@@ -70,10 +81,7 @@ $figure-inline:   true;
     }
 
     // 住戶編號
-    span {
-        display: block;
-        margin-bottom: -3px;
-    }
+    span { margin-bottom: -3px; }
 
     // 住戶名稱
     strong {
@@ -93,13 +101,14 @@ $figure-inline:   true;
 .grid-intro {
     padding-top: 75px;
     padding-bottom: 75px;
+
     figure {
         position: relative;
         border-top: 3px solid darken($success,3);
         border-radius: 3px;
-        background: $success;
+        background: $success url(#{$img-path}/index/intro1_shadow.gif) 28px 38px no-repeat;
         width: 309px;
-        margin: 0 20px;
+        margin: 0 18px;
 
         &:first-child {
             cursor: default;
@@ -109,31 +118,52 @@ $figure-inline:   true;
                 letter-spacing: 5px;
                 margin-bottom: 5px;
             }
-            p {
-                font-size: em(21);
+            p { font-size: em(21); }
+        }
+        &:nth-child(2) {
+            background-image: url(#{$img-path}/index/intro2_bg.gif);
+            background-position: 29px 30px;
+        }
+        &:nth-child(3) {
+            background-image: url(#{$img-path}/index/intro3_bg.gif);
+            background-position: 20px 39px;
+        }
+        &:not(:first-child) {
+            &:hover, &:active {
+                box-shadow: 6px 12px 15px lighten(black,65);
+                h4 { color: $success; }
+                p { color: $muted; }
             }
         }
     }
     figcaption {
+        @extend .text-center, .bg-white;
         margin-left: 118px;
-        padding-top: $gutter*2.5;
-        padding-bottom: $gutter*2.5;
+        padding-top: $gutter*2.1;
+        padding-bottom: $gutter*2.1;
     }
-    h4 { margin-bottom: 8px; }
+    h4 {
+        margin-bottom: 8px;
+        @include transition(color,.5s);
+    }
     p { color: $success; }
 
     .time {
         @extend .text-center;
-        @include absolute(left 28px top 38px);
+        @include absolute(left 27px top 38px);
 
         color: #B3236D;
-        font-size: em(13);
+        font-size: em(12);
+        background: url(#{$img-path}/index/icon-date.gif) center center no-repeat;
+        width: 65px;
+        height: 68px;
 
         em {
             display: block;
-            font-size: em(45,13);
+            font-size: em(38,12);
             font-weight: bold;
             font-style: normal;
+            line-height: 1.05;
             color: #434659;
         }
     }
@@ -142,4 +172,66 @@ $figure-inline:   true;
 .grid-news,
 .grid-doc {
     @extend .padding-48;
+}
+
+// 最新消息
+.grid-news {
+    h1 { margin-bottom: $spacer*2.2; }
+}
+.carousel {
+    max-width: 1060px;
+    .swiper-wrapper {
+        margin-bottom: $spacer*2.2;
+    }
+    .swiper-slide { margin: 0; }
+}
+.prev, .next {
+    @include absolute(top 41% left 50%);
+    font-size: em(32);
+    color: #E4E4E4;
+    cursor: pointer;
+    z-index: 3;
+}
+.prev { margin-left: -582px; }
+.next { margin-left: 550px; }
+.swiper-button-disabled { display: none; }
+
+
+// 近期更新文件
+.grid-doc {
+    h2 { margin-bottom: $spacer*2; }
+    nav {
+        width: 1008px;
+        margin: auto;
+    }
+    .grid {
+        $mg:     3px;
+        $height: 197px;
+        $num:    3;
+
+        @extend .bg-white;
+        margin-top: $mg;
+        margin-bottom: $mg;
+        width: (1008px/$num) - ($mg * ($num - 1));
+        height: $height;
+
+        &::nth-child(2n+1) { margin: $mg ($mg * ($num - 1)); }
+
+        @include middle(h3, $height) {
+            letter-spacing: 3px;
+        }
+        @include transition(background .2s, box-shadow .3s);
+
+        &:hover, &:active {
+            background: lighten($warning,40);
+            box-shadow: 6px 12px 15px lighten(black,65);
+            position: relative;
+            z-index: 2;
+        }
+    }
+    small {
+        @extend .margin-top;
+        color: #404040;
+        letter-spacing: 1px;
+    }
 }

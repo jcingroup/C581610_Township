@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-$breadcrumb-color:          lighten(black,75);
-$breadcrumb-font-size:      20px;
+$breadcrumb-color:          #4d4d4d;
+$breadcrumb-font-size:      17px;
 
 $breadcrumb-link:           $brand-primary $brand-secondary; // normal hover
 $breadcrumb-link-font-size: 14px;
@@ -13,11 +13,14 @@ $breadcrumb-link-font-size: 14px;
 
 .breadcrumb {
     @extend %list-inline;
+    @extend .text-left;
 
-    font-size: $breadcrumb-font-size;
+    font-size: em($breadcrumb-font-size);
     color: $breadcrumb-color;
     line-height: 1.65;
-    margin-top: $spacer;
+    border-bottom: 1px solid #CACACA;
+    padding-bottom: $gutter*1.2;
+    margin-top: $spacer*1.8;
     margin-bottom: $spacer*3;
 
     // 住戶首頁隱藏
@@ -26,14 +29,16 @@ $breadcrumb-link-font-size: 14px;
     li {
         vertical-align: middle;
 
-        &:not(:first-child:last-child) {
-            margin: 0 3px;
+        &:not(:last-child) {
+            margin-right: 8px;
 
             @include el(after, false, '/') {
                 margin-left: 3px;
-                color: lighten(nth($breadcrumb-link,1),20);
+                color: lighten(nth($breadcrumb-link,1),10);
+                font-size: em(13);
             }
         }
+        &:first-child { font-size: em(20); }
     }
 
     a {

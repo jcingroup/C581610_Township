@@ -1,7 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Comments";
+    ViewBag.Title = "留言板";
+    ViewBag.BodyClass = "Comments";
+    ViewBag.breadCrumb = "留言板";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Comments</h2>
+@section breadCrumb {
 
+}
+
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">COMMENTS</small>
+</h1>

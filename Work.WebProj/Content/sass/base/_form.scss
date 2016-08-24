@@ -159,7 +159,8 @@ output {
 // == Styles
 //
 // input 預設
-input:not([type]), #{text-inputs(all)}, .form-element {
+// input:not([type]), #{text-inputs(all)}, .form-element {
+input, textarea, select, .form-element {
     background: $input-bg;
     line-height: $line-height;
 

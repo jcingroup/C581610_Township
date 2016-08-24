@@ -1,7 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Efficacy";
+    ViewBag.Title = "效能管理";
+    ViewBag.BodyClass = "Efficacy";
+    ViewBag.breadCrumb = "效能管理";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Efficacy</h2>
+@section breadCrumb {
 
+}
+
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">Performance Management</small>
+</h1>

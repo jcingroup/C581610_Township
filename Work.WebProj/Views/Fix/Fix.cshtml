@@ -1,7 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Fix";
+    ViewBag.Title = "長期修繕";
+    ViewBag.BodyClass = "Explain";
+    ViewBag.breadCrumb = "長期修繕";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Fix</h2>
+@section breadCrumb {
 
+}
+
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">Long-term repairs</small>
+</h1>

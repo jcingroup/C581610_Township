@@ -14,14 +14,10 @@ $swiper-slider:        false !default;
 // 套用 swiper特效(共用)
 
 // 最外層
-.swiper-wrapper {
-    @extend %list-unstyled;
-}
-
-.swiper-slide {
-    text-align: center;
-    overflow: hidden;
-}
+// .swiper-slide {
+//     text-align: center;
+//     overflow: hidden;
+// }
 // 滿版+置中
 // .swiper-slide img {
 //     height: 100%;

@@ -1,7 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Group";
+    ViewBag.Title = "組織管理";
+    ViewBag.BodyClass = "Group";
+    ViewBag.breadCrumb = "組織管理";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Group</h2>
+@section breadCrumb {
 
+}
+
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">Organization Management</small>
+</h1>

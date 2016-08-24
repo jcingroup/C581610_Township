@@ -1,7 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Service";
+    ViewBag.Title = "公設預約";
+    ViewBag.BodyClass = "Service";
+    ViewBag.breadCrumb = "公設預約";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Service</h2>
+@section breadCrumb {
 
+}
+
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">Public appointments</small>
+</h1>
