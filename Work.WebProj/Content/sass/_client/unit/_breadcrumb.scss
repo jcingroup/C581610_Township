@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-$breadcrumb-color:          #3A5D65;
+$breadcrumb-color:          lighten(black,75);
 $breadcrumb-font-size:      20px;
 
-$breadcrumb-link:           #A0BBC8 $brand-secondary;
+$breadcrumb-link:           $brand-primary $brand-secondary; // normal hover
 $breadcrumb-link-font-size: 14px;
 
 
@@ -20,30 +20,18 @@ $breadcrumb-link-font-size: 14px;
     margin-top: $spacer;
     margin-bottom: $spacer*3;
 
-    @include mq-max(tablet) {
-        margin-bottom: 20px;
-    }
+    // 住戶首頁隱藏
+    .Notice & { display: none; }
 
     li {
         vertical-align: middle;
-        margin-right: 6px;
 
-        @include el(after, false, '/') {
-            margin-left: 3px;
-            color: lighten(nth($breadcrumb-link,1),20);
-        }
+        &:not(:first-child:last-child) {
+            margin: 0 3px;
 
-        &:last-child {
-            margin-right: 0;
-
-            @include text-overflow(50%);
-
-            &::after { content: ''}
-
-            .News-content & {
-                @include mq-max(break(phone,-1)) {
-                    width: 100%;
-                }
+            @include el(after, false, '/') {
+                margin-left: 3px;
+                color: lighten(nth($breadcrumb-link,1),20);
             }
         }
     }

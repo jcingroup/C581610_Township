@@ -1,79 +1,128 @@
 @charset "UTF-8";
 
-$search-min-width:            50px !default;
-$search-max-width:            280px !default;
-$search-color:                $search-round-color !default;
+// var
+// -----------------------------------------------------------------
+$expand-min-width:            50px !default;
+$expand-max-width:            200px !default;
 
-[data-expand='box'] {
-    width: 0;
-    min-width: $search-min-width;
-    overflow: hidden;
-    position: relative;
+$expand-height:               50px !default;
+$expand-pos:                  top 124px right 0 !default;
+$expand-color:                $brand-secondary !default;
+$expand-bg:                   darken($brand-secondary,7) !default;
 
+$expand-icon-size:            28px !default;
+$expand-toggle-effect:        'color .5s' !default;
+
+$expand-input: (
+    padding:      0 $expand-min-width 0 15px,
+    font-size:    em(17),
+    background:   $expand-bg,
+    color:        lighten(black,85)
+) !default;
+
+$expand-btn: (
+    background:   $brand-primary,
+    color:        white
+) !default;
+
+$expand-toggle: (
+    background:   $expand-bg,
+    color:        $expand-color,
+) !default;
+
+$expand-hover-toggle: (
+    color:        lighten($brand-primary,10)
+) !default;
+
+
+// output
+// -----------------------------------------------------------------
+.search {
+    z-index: z(menu)+1;
     -webkit-backface-visibility: hidden;
-    z-index: z(logo)+1;
 
-    @include prefix(transition, width .3s);
+    width: 0;
+    min-width: $expand-min-width;
+    overflow: hidden;
+
+    @include transition(width .3s);
+
+    @if $expand-height { height: $expand-height; }
+    @if $expand-pos {
+        @include absolute($expand-pos);
+    }
+    @else {
+        position: relative;
+    }
 
     &-open {
-        width: $search-max-width;
-        input {
-            background: $white;
-            padding: 0 $search-min-width 0 20px;
-            font-size: 1em;
-            color: $search-color;
+        width: $expand-max-width;
+
+        .extend-input {
+            @each $attribute, $value in $expand-input {
+                #{$attribute}: #{$value};
+            }
         }
     }
 }
-[data-expand='input'] {
+.extend-input {
     border: none;
     border-radius: 0;
     outline: none;
     background: none;
-    box-shadow: none;
+    // box-shadow: none;
     font-size: 0;
     -webkit-appearance: none;
     z-index: 10;
+    @include size(100%);
 }
-[data-expand='btn'],
-[data-expand='icon'] {
-    width: $search-min-width;
+.extend-btn,
+.extend-toggle {
+    @include absolute(top 0 right 0);
+    width: $expand-min-width;
     height: 100%;
     display: block;
 
     line-height: 100%;
     text-align: center;
-    font-size: em(22px);
 
-    &::before {
-        @include absolute(top 50% left 50%);
-        @include prefix(transform, translate(-50%,-50%));
-    }
+    @if $expand-icon-size { font-size: em($expand-icon-size); }
+
+    &::before { @include pos-center; }
 }
-[data-expand='btn'] {
+.extend-btn {
+    border: none;
     opacity: 0;
     z-index: 11;
 
     &.enter {
         opacity: 1;
-        background: $search-color;
-        color: $white;
+
+        @each $attribute, $value in $expand-btn {
+            #{$attribute}: #{$value};
+        }
     }
 }
-[data-expand='icon'] {
-    @include absolute(top 0 right 0);
-    color: $muted;
+.extend-toggle {
     z-index: 90;
-    cursor: pointer;
     speak: none;
     text-transform: none;
     -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+
+    @if $expand-toggle-effect { @include transition($expand-toggle-effect); }
+
+    @each $attribute, $value in $expand-toggle {
+        #{$attribute}: #{$value};
+    }
 
     &:hover, &:active {
-        color: $search-color;
+
+        @each $attribute, $value in $expand-hover-toggle {
+            #{$attribute}: #{$value};
+        }
     }
 }
-
 
 // $search-round-width:          100% !default;
 // $search-round-height:         $input-height !default;

@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+// navbar style
+$navbar-height:       50px !default;
+$navbar-bg:           false !default; //#2AA19D
+
+// nav style
+$nav-height:          full !default;
+$nav-font-size:       17px !default;
+$nav-color:           white !default;
+
+// nav active
+$nav-active-bg:       $success !default; //darken($brand-secondary,5)
+$nav-active-color:    false !default;
+
+
 // 當前選單
 $current:             page('&:nth-child');
 
@@ -12,66 +26,78 @@ $mobile-menu-width:   100% !default;
 
 // 主選單
 %nav-active-style {
-    background: $menu-nav-bg;
-    color: nth($menu-nav-color,2);
-    box-shadow: inset 1px 1px 1px rgba(#000,.15);
+    @if $nav-active-bg    { background: $nav-active-bg; }
+    @if $nav-active-color { color:$nav-active-color; }
+}
+
+.navbar {
+    @if $navbar-height { height: $navbar-height }
+    @if $navbar-bg     { background: $navbar-bg }
 }
 
 #menu {
     z-index: z(menu);
 
-    @if $menu-height { height: $menu-height }
-
     // 本次專案
-    margin-top: 66px;
+    @extend %list-unstyled, .clear;
+    margin-right: 15%;
 
     li {
-        margin-right: -4px;
-        width: percentage(1/9);
+        @extend .float-l;
+        width: percentage(1/length($menu-item));
 
         // #{$current} {
-        .#{nth($menu-item,1)} &:nth-child(1),
-        .#{nth($menu-item,2)} &:nth-child(2),
-        .#{nth($menu-item,3)} &:nth-child(3),
-        .#{nth($menu-item,4)} &:nth-child(4),
-        .#{nth($menu-item,5)} &:nth-child(5),
-        .#{nth($menu-item,6)} &:nth-child(6),
-        .#{nth($menu-item,7)} &:nth-child(9) {
-            .root {
-                @extend %nav-active-style;
+        //     .root {
+        //         @extend %nav-active-style;
+        //     }
+        // }
+
+        // 子選單顯示
+        &:hover, &:active {
+
+            &::before {
+                opacity: 1;
+                bottom: 0;
+            }
+
+            .sub-nav {
+                opacity: 1;
+                visibility: visible;
+                height: 195px;
             }
         }
     }
 
-    .root {
-        color: nth($menu-nav-color,1);
-        font-size: em($menu-font-size);
+    .caret {
+        position: relative;
 
-        @if $menu-nav-height-full {
+        @include el(before) {
+            @include arrow(up, 10px, 7px, #fff);
+            @include pos-center(x);
+            @include transition(opacity .5s, bottom .3s);
+            opacity: 0;
+            bottom: -8px;
+        }
+    }
+
+    .root {
+        @if $nav-color     { color: $nav-color; }
+        @if $nav-font-size { font-size: em($nav-font-size); }
+
+        @if ($nav-height == full) {
             height: 100%;
-            @include text-middle($menu-height,'pd',$menu-font-size);
+            @include text-middle($navbar-height);
+        }
+        @else {
+            height: $nav-height;
         }
 
         // 本次專案
         letter-spacing: 1px;
         display: block;
-        padding-top: 15px;
-        padding-bottom: 7px;
 
-        &:hover, &:active {
+        &:hover, &:active, &.current {
             @extend %nav-active-style;
-        }
-    }
-
-    // 子選單顯示
-    .dropdown {
-        &:hover, &:active {
-            .sub-nav {
-                opacity: 1;
-                visibility: visible;
-                // display: block;
-                top: 100%;
-            }
         }
     }
 
@@ -134,19 +160,35 @@ $mobile-menu-width:   100% !default;
     display: block;
     opacity: 0;
     visibility: hidden;
-    top: 80%;
 
-    @include transition(opacity 1s, top .3s);
+    // 本次專案
+    background: #fff;
+    height: 0;
+
+    @extend .text-left;
+    @include fixed(top 174px left 0 right 0);
+    @include transition(opacity 1s, height .3s);
 
     a {
-        padding: 9px 0;
-        font-size: em(17);
-        color: #555;
+        display: inline-block;
+        width: 28%;
+        min-width: 290px;
+        margin: $spacer*.35 0;
+
+        color: #4d4d4d;
+        letter-spacing: 1px;
+
+        @include el(before, inline, '．');
 
         &:hover, &:active {
-            background: lighten($light-yellow,8);
+            color: $brand-primary;
         }
     }
+
+    dl {
+        padding: $gutter*1.75 $gutter*3.4;
+    }
+    dt { @extend .margin-right; }
 
     @if $enable-RWD {
         @include mq-max(break(#{$mobile-menu-bk},-1)) {

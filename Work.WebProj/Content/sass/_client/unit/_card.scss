@@ -1,0 +1,16 @@
+﻿@charset "UTF-8";
+
+$card-bg: white !default;
+$card-border: false !default;
+$card-radius: 3px !default;
+$card-shadow: 0 2px 2px #EDEDED !default;
+
+
+// card
+// ------------------------------------------------------------
+.card {
+    @if $card-bg     { background: $card-bg; }
+    @if $card-border { border: $card-border; }
+    @if $card-radius { border-radius: $card-radius; }
+    @if $card-shadow { box-shadow: $card-shadow; }
+}

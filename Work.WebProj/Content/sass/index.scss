@@ -6,6 +6,9 @@ $index:           true;
 $img-index:       '../images/index';
 
 $wrapper-bg:      url(#{$img-index}/bg.jpg) no-repeat center 0;
+
+$header-bg:       false;
+$header-height:   735px;
 $logo-pos:        left 0 top 255px;
 
 $headings-color:  #fff;
@@ -36,6 +39,7 @@ $input-bg:        #fff;
 @import "_client/layout";
 @import "_client/unit/goTop";
 @import "_client/unit/list";
+@import "_client/unit/card";
 @import "_client/unit/btn";
 @import "_client/unit/input-group";
 @import "_client/unit/classes";
@@ -133,10 +137,7 @@ $input-bg:        #fff;
 
 // 社區簡介
 .intro {
-    @extend %list-unstyled;
-    @extend .text-left;
-    @extend .text-white;
-
+    @extend %list-unstyled, .text-left, .text-white;
     @include absolute(left 0 top 378px);
     font-size: em(19);
     letter-spacing: 1px;
@@ -148,14 +149,71 @@ $input-bg:        #fff;
 // == content
 .info, .about {
     background-image: url(#{$img-index}/contentBg.png);
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: repeat;
 }
+
+// 社區功能
 .info {
-    @extend %list-inline;
+    @extend %list-inline, .margin-0;
+
     background-color: rgba(#1D2A2A,.75);
-    // background: rgba(#1D2A2A,.75) url(#{$img-index}/contentBg.png) 0 0 no-repeat;
+    padding-bottom: 60px;
+
+    li {
+        @include circle(237px);
+        margin: 0 $gutter*2.5;
+        margin-top: -60px;
+        padding-top: 130px;
+
+        font-size: em(36);
+        color: $brand-primary;
+        letter-spacing: 3px;
+        text-shadow: 1px 1px 1px #D9DFCC;
+
+        background: #FFFFEF url(#{$img-index}/info-img.gif) 50px 15px no-repeat;
+
+        &:nth-child(2) { background-position: -150px 16px;}
+        &:nth-child(3) { background-position: -345px 20px;}
+        &:nth-child(4) { background-position: -535px 15px;}
+    }
 }
+
+// 關於德鄉
 .about {
     background-color: $brand-primary;
+    background-position: center bottom;
+    padding: $gutter*3.75;
+
+    h2 {
+        @extend .text-white, .font-xxxl;
+        margin-top: 0;
+    }
+    h6 {
+        color: $brand-primary-light;
+        font-size: em(17);
+        letter-spacing: 1px;
+    }
+}
+.card {
+    @extend .text-left, .padding-lg, .padding-24;
+
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+    min-height: 207px;
+    margin: 0 1.2%;
+    margin-top: $spacer*2;
+
+    color: #442E1F;
+
+    h3 {
+        color: #19441C;
+        font-size: em(23);
+        text-shadow: 1px 1px 1px #E9F391;
+    }
+    p {
+        font-size: em(17);
+        line-height: 1.75;
+    }
 }

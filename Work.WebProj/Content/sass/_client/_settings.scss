@@ -11,8 +11,8 @@ $page:                  false !default;           // 內頁用
 
 // == helper/variables
 // ----------------------------------------------------------------------
-$body-bg:               #F4F1EA;
-$body-color:            #656F5E;
+$body-bg:               #F6F6EA;
+$body-color:            lighten(black,40);
 $font-family-sp:        'Quicksand', sans-serif;
 // $link-color:            darken($brand-primary,5);
 
@@ -25,17 +25,17 @@ $headings-color:        $brand-secondary;
 // ----------------------------------------------------------------------
 $min-width:             1008px;     // 網頁最小尺寸
 $max-width:             1400px;     // 網頁最寬尺寸: .wrap
-$menu-item:             'AboutUs' 'Info' 'Workflow' 'News' 'Form' 'Search' 'Application';
+$menu-item:             'News' 'AboutUs' 'Assets' 'Efficacy' 'Group' 'Management' 'Fix' 'Comments' 'Explain' 'Service';
 
-$wrapper-bg:            url(#{$img-index}/bg.jpg) no-repeat 86% 60px !default;
+$wrapper-bg:            #F2EEE3 !default;
 $content-spacing:       0 !default;
 
 // line
 $line:                  4px solid $brand-primary;
 
 // header
-$header-height:         752px !default;
-$header-bg:             false !default;
+$header-height:         174px !default;
+$header-bg:             url(#{$img-path}/headerBg.gif) 0 124px repeat-x !default;
 $banner-height:         $header-height !default;
 
 // logo
@@ -73,9 +73,9 @@ $z-index: (
 // $goTop-color:                  #3A5D65;
 
 // btn
-$btn-border-radius:            3px;
-$btn-pd:                       12px 40px;
-$btn-hover-bg:                 $brand-secondary;
+$btn-border-radius:             3px;
+$btn-pd:                        12px 40px;
+$btn-hover-bg:                  $brand-secondary;
 
 // input-group
 $input-group-addon-color:       #B0B0B0;
@@ -87,8 +87,16 @@ $goTop-styles: (
     color: lighten($footer-bg,10),
     background: darken($footer-bg,10),
     opacity: .5,
-    font-size: em(20)
+    font-size: em(28),
+    padding: 5px 10px,
+    border-radius: 3px
 );
+
+// card
+$card-bg:                         rgba(white,.45);
+$card-radius:                     1px;
+$card-border:                     1px solid #FEF8CC;
+$card-shadow:                     false;
 
 
 // == base

@@ -74,11 +74,9 @@
 .col-12 {
   width: 100%; }
 
-.row-pad [class*=col]:first-child,
 .col-first {
   padding-left: 0; }
 
-.row-pad [class*=col]:last-child,
 .col-last {
   padding-right: 0; }
 

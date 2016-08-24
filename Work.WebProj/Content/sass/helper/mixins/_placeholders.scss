@@ -3,16 +3,17 @@
 // 壓縮 mixin - 相同樣式合併(佔位符)
 // -----------------------------------------------------------------
 
-$Placeholders: () !default;
+$placeholders: () !default;
+
 
 @function placeholder-set($id) {
     $unique-id: unique-id();
-    $Placeholders: map-merge($Placeholders, ($id: $unique-id)) !global;
+    $placeholders: map-merge($placeholders, ($id: $unique-id)) !global;
     @return $unique-id;
 }
 
 @function placeholder-get($id) {
-    @return map-get($Placeholders, $id);
+    @return map-get($placeholders, $id);
 }
 
 @mixin dynamic-extend($id) {

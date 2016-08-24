@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+// 本頁專用變數(覆蓋)
+// ------------------------------------------------------------
+$page:            true;
+
+$figure-inline:   true;
+
+// import
+// ------------------------------------------------------------
+// 本次專案專用變數
+@import "_client/color";
+@import "_client/settings";
+
+// 共用
+@import "helper/function";
+@import "helper/variables";
+@import "helper/mixins";
+
+// 由此 output css
+@import "vendor/normalize"; // 重置復位
+@import "vendor/print";     // 列印樣式
+
+@import "base/basic";
+@import "base/form";
+@import "base/util";
+
+// 本頁專用
+@import "_client/layout";
+@import "_client/unit/nav";
+@import "_client/unit/goTop";
+@import "_client/unit/breadcrumb";
+@import "_client/unit/list";
+@import "_client/unit/card";
+@import "_client/unit/btn";
+@import "_client/unit/figure";
+@import "_client/unit/input-expand";
+// @import "_client/unit/input-group";
+@import "_client/unit/classes";
+
+
+// main
+// ------------------------------------------------------------
+// 住戶資料
+.top-member {
+    @extend .float-r, .text-left;
+
+    width: 250px;
+    margin-top: 34px;
+
+    // 頭像
+    .head {
+        @extend .float-l, .margin-right;
+        @include circle(60px, center, #fff);
+        border: 1px solid #E3E3E3;
+        overflow: hidden;
+    }
+
+    // 有頭像
+    img { @include pos-center; }
+
+    // 無頭像
+    .icon-photo_camera {
+        font-size: em(26);
+
+        &:hover, &:active {
+            color: #fff;
+            background: $brand-primary;
+        }
+    }
+
+    // 住戶編號
+    span {
+        display: block;
+        margin-bottom: -3px;
+    }
+
+    // 住戶名稱
+    strong {
+        font-weight: normal;
+        color: #666;
+
+        + a { margin: 0 7px; }
+    }
+
+    .icon-mode_edit,
+    .icon-log-out {
+        &::before { font-size: em(18); }
+    }
+}
+
+// == Notice - 住戶登入後首頁
+.grid-intro {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    figure {
+        position: relative;
+        border-top: 3px solid darken($success,3);
+        border-radius: 3px;
+        background: $success;
+        width: 309px;
+        margin: 0 20px;
+
+        &:first-child {
+            cursor: default;
+
+            h4 {
+                font-size: em(41);
+                letter-spacing: 5px;
+                margin-bottom: 5px;
+            }
+            p {
+                font-size: em(21);
+            }
+        }
+    }
+    figcaption {
+        margin-left: 118px;
+        padding-top: $gutter*2.5;
+        padding-bottom: $gutter*2.5;
+    }
+    h4 { margin-bottom: 8px; }
+    p { color: $success; }
+
+    .time {
+        @extend .text-center;
+        @include absolute(left 28px top 38px);
+
+        color: #B3236D;
+        font-size: em(13);
+
+        em {
+            display: block;
+            font-size: em(45,13);
+            font-weight: bold;
+            font-style: normal;
+            color: #434659;
+        }
+    }
+}
+
+.grid-news,
+.grid-doc {
+    @extend .padding-48;
+}

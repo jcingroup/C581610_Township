@@ -279,6 +279,7 @@
     <Content Include="ckfinder\core\connector\aspx\lang\vi.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-cn.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\Api\CommunityBannerController.cs" />
     <Compile Include="Controllers\Api\CommunityNewsController.cs" />
     <Compile Include="Controllers\Api\MatterController.cs" />
@@ -288,7 +289,16 @@
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\CommunityController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\ExplainController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\FixController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\EfficacyController.cs" />
+    <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -322,7 +332,13 @@
     <Content Include="Content\css\editor.css" />
     <Content Include="Content\css\grid.css" />
     <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\page.css" />
     <Content Include="Content\css\vendor\icomoon.css" />
+    <Content Include="Content\images\headerBg.gif" />
+    <Content Include="Content\images\Index\bg.jpg" />
+    <Content Include="Content\images\Index\contentBg.png" />
+    <Content Include="Content\images\Index\info-img.gif" />
+    <Content Include="Content\images\line.gif" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
     <Content Include="Content\js\common.js" />
@@ -406,6 +422,8 @@
     <Content Include="Content\sass\_client\_main.scss" />
     <Content Include="Content\sass\_client\_settings.scss" />
     <Content Include="Content\sass\_client\unit\_btn-group.scss" />
+    <Content Include="Content\sass\page.scss" />
+    <Content Include="Content\sass\_client\unit\_card.scss" />
     <None Include="index.html" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -432,11 +450,23 @@
     <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\googleReCAPTCHA.js" />
+    <Content Include="Views\AboutUs\AboutUs.cshtml" />
+    <Content Include="Views\Assets\Assets.cshtml" />
+    <Content Include="Views\Index\Notice.cshtml" />
+    <Content Include="Views\News\Content.cshtml" />
+    <Content Include="Views\Efficacy\Efficacy.cshtml" />
+    <Content Include="Views\Group\Group.cshtml" />
+    <Content Include="Views\Management\Management.cshtml" />
+    <Content Include="Views\Fix\Fix.cshtml" />
+    <Content Include="Views\Comments\Comments.cshtml" />
+    <Content Include="Views\Explain\Explain.cshtml" />
+    <Content Include="Views\Service\Service.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="webpack.config.js" />
     <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\News\list.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
@@ -586,7 +616,6 @@
     <Folder Include="app_modules\Pikaday\tests\" />
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
-    <Folder Include="Content\images\Index\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Scripts\src\community\containers\" />
     <Folder Include="_Code\CReport\" />

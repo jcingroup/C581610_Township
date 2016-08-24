@@ -6,6 +6,11 @@
 }
 
 @section includeHeader {
+    <h1 class="logo" onclick="location.href='@Url.Content("~/index")'" title="回首頁" tabindex="-1">
+        @Resources.Res.System_FrontName
+        <small>智慧住宅管理平台</small>
+    </h1>
+
     <h2 class="slogan font-sp">WELCOME</h2>
 
     <ul class="intro">
@@ -41,7 +46,7 @@
 
                 @* <button class="btn full bg-info" type="submit">登入</button> *@
                 @*  暫放，實際用上列button *@
-                <a href="~/Common/ReportList" class="btn full bg-info">登入</a>
+                <a href="~/Index/Notice" class="btn full bg-info">登入</a>
 
                 <p class="text-right">
                     <a href="" class="margin-right">註冊</a>
@@ -61,9 +66,10 @@
 
                 <div id="Validate" class="margin-bottom"></div>
 
+                @* 登入到管理者後台 *@
                 @* <button class="btn full bg-info" type="submit">登入</button> *@
-                @*  暫放，實際用上列button *@
-                <a href="~/Common/ReportList" class="btn full bg-info">登入</a>
+                @* 暫放，實際用上列button *@
+                <a href="" class="btn full bg-info">登入</a>
 
                 <p class="text-right">
                     <a href="">忘記密碼?</a>
@@ -81,16 +87,15 @@
 </ul>
 
 <section class="about">
+    <h2 class="font-sp">ABOUT US</h2>
+    <h6>揚庭保全成立於民國85年。洋庭物業管理成立於民國87年。</h6>
     <div class="wrap">
-        <h2 class="font-sp">ABOUT US</h2>
-        <h6>揚庭保全成立於民國85年。洋庭物業管理成立於民國87年。</h6>
-
-        <article class="col-5">
+        <article class="card">
             <h3>堅持的理念</h3>
             <p>本公司秉持著服務自家產業之專業素養與以人為本之最大精神來服務客戶。</p>
         </article>
 
-        <article class="col-5">
+        <article class="card">
             <h3>專業的團隊</h3>
             <p>企業化的社區經營管理、現代化的管家、科技化的維安、全方位的物管,持續性的理念堅持,我們深信在我們服務團隊有你的加入更增添公司的實力,更是揚庭的榮耀,我們將要共同塑造全新的保全及物業管理。</p>
         </article>

@@ -27,7 +27,7 @@ $('.scroll').click(function () {
     var scrollToAnchor = $(this).attr('href');
     $('html, body').stop(true).animate({
         scrollTop: $(scrollToAnchor).offset().top + 40
-    }, 750, 'easeOutQuad');
+    }, 750);
     return false;
 });
 
@@ -56,20 +56,20 @@ $dropbtn.blur(function(){
 // });
 
 // 行動裝置的主選單
-$menuLeft = $('#menu');
-$trigger = $('.mobile-trigger');
+// $menuLeft = $('#menu');
+// $trigger = $('.mobile-trigger');
 
-$trigger.click(function() {
-    $(this).toggleClass('active');
-    $('body').toggleClass('push');
-});
-$('.toggle').click(function() {
-    $('body').removeClass('push');
-});
+// $trigger.click(function() {
+//     $(this).toggleClass('active');
+//     $('body').toggleClass('push');
+// });
+// $('.toggle').click(function() {
+//     $('body').removeClass('push');
+// });
 
 // 搜尋框彈出
 var $submit = $("[data-expand='btn']"),
-    $submitIcon = $("[data-expand='icon']"),
+    $submitIcon = $("[data-expand='toggle']"),
     $inputBox = $("[data-expand='input']"),
     $searchBox = $("[data-expand='box']"),
     isOpen = false;

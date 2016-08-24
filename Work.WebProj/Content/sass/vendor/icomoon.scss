@@ -34,9 +34,9 @@ $icomoon-font-path: "../../font/icomoon";
         /* Better Font Rendering =========== */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-
-        &:not(:empty) { margin-right: .3em; }
     }
+
+    &:not(:empty)::before { margin-right: .2em; }
 }
 
 @each $attribute, $value in $icon {

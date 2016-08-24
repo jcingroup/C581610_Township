@@ -15,14 +15,16 @@ $grid-breakpoints: (
 ) !default;
 
 // 預設格數
-$columns: $grid-columns;
+$columns:  $grid-columns;
 
 @mixin make-col($seclector) {
+
     @for $i from 1 through $columns {
         .col-#{$seclector}-#{$i} {
             @include make-col-span($i, $columns);
         }
     }
+
     @each $modifier in (pull, push, offset) {
         @for $i from 0 through ($columns - 1) {
             .#{$modifier}-#{$seclector}-#{$i} {
@@ -57,10 +59,10 @@ $columns: $grid-columns;
     .col-#{$i} { @include make-col-span($i, $columns); }
 }
 
-.row-pad [class*=col]:first-child,
+// .row-pad [class*=col]:first-child,
 .col-first { padding-left: 0; }
 
-.row-pad [class*=col]:last-child,
+// .row-pad [class*=col]:last-child,
 .col-last { padding-right: 0; }
 
 
@@ -68,14 +70,18 @@ $columns: $grid-columns;
 @each $breakpoint, $value in $grid-breakpoints {
 
     @if $breakpoint == 'xs' or $breakpoint == 'sm' {
+
         @include mq-max($value) {
             @include make-col($breakpoint);
         }
+
     }
     @else {
+
         @include mq($value) {
             @include make-col($breakpoint);
         }
+
     }
 }
 

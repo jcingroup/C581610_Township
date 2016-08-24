@@ -66,8 +66,10 @@
     }
 
     // 本次專案
-    @include mq(wider) {
-        background-size: cover;
+    @if $index {
+        @include mq(1921px) {
+            background-size: cover;
+        }
     }
 }
 
@@ -80,68 +82,114 @@
     z-index: z(header);
 
     // 本次專案
-    @if $index {
-        width: 980px;
-        margin: auto;
+    .wrap {
+        position: relative;
+
+        @if $index {
+            width: 980px;
+            margin: auto;
+        }
     }
 }
+
+$line-color: lighten(black,40);
+$font-gray: #7F7F7F;
 
 .logo {
     cursor: pointer; cursor: hand; // for ie
     z-index: z(logo);
 
-    @if $logo-img {
-        @include text-pic($logo-img, nth($logo-size,1), nth($logo-size,2), $position:center);
-    }
+    // @if $logo-img {
+    //     @include text-pic($logo-img, nth($logo-size,1), nth($logo-size,2), $position:center);
+    // }
 
-    @if $logo-pos {
-        @if $logo-pos == center {
-            @include pos-center(x);
-        }
-        @else {
-            // @include absolute($logo-pos);
-            // 本次專案
-            #header & { @include absolute($logo-pos); }
-        }
-    } @else {
-        float: left;
-    }
+    // @if $logo-pos {
+    //     @if $logo-pos == center {
+    //         @include pos-center(x);
+    //     }
+    //     @else {
+    //         @include absolute($logo-pos);
+    //     }
+    // } @else {
+    //     float: left;
+    // }
 
     // 本次專案
+    color: $white;
+    text-shadow: 2px 2px 3px rgba($black,.25);
+    letter-spacing: 4px;
+
     @if $index {
-        #header & { font-size: em(65); }
-        color: $white;
-        text-shadow: 2px 2px 3px rgba($black,.25);
-        letter-spacing: 4px;
+        #header & {
+            @include absolute($logo-pos);
+            font-size: em(65);
+        }
+    }
+    @if $page {
+        #header & {
+            float: left;
+            font-size: em(50);
+            text-shadow: none;
+            color: darken($success,10);
+            margin-top: $gutter*1.5;
+            margin-bottom: $gutter*1.5;
+        }
+    }
+
+    #footer & {
+        font-size: em(35);
+        letter-spacing: 7px;
+        width: 253px;
     }
 
     small {
         display: block;
         position: relative;
-        color: $pale-green;
         letter-spacing: 10px;
 
         @if $index {
+            color: $pale-green;
             font-size: em(19,65);
             margin-top: $spacer*1.5;
+        }
+        @if $page {
+            font-size: em(15,50);
+            color: lighten(black,75);
+            margin-top: $spacer*.3;
         }
 
         @include el(all) {
             @include absolute(top 50%);
             height: 1px;
-            width: 18%;
-            background: $white;
+
+            @if $index {
+                width: 18%;
+                background: $white;
+            }
+            @if $page {
+                width: 15%;
+                background: lighten(black,81);
+            }
         }
-        &::after { right: 0; }
+        &::after { right: 5px; }
+
+        #footer & {
+            font-size: em(15,35);
+            color: $warning;
+            letter-spacing: 7px;
+            margin-top: $spacer*.8;
+
+            &::after, &::before {
+                background: $line-color;
+                width: 11%;
+            }
+        }
     }
 }
 
 
 // footer 頁腳
 // ----------------------------------------------------------------------
-$line-color: #656565;
-$font-gray: #7F7F7F;
-
 #footer {
     @if $footer-bg { background: $footer-bg; }
     min-height: $footer-height;
@@ -161,23 +209,6 @@ $font-gray: #7F7F7F;
         margin-bottom: $spacer*1.35;
 
         &::after { background: $warning; }
-    }
-    .logo {
-        font-size: em(35);
-        letter-spacing: 7px;
-        width: 253px;
-
-        small {
-            font-size: em(15,35);
-            color: $warning;
-            letter-spacing: 7px;
-            margin-top: $spacer*.8;
-
-            &::after, &::before {
-                background: $line-color;
-                width: 10%;
-            }
-        }
     }
     section {
         &:not(:first-child) {

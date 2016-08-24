@@ -27,8 +27,8 @@
 .padding-sm    { padding: $gutter/4 $gutter/2; }     // 4px 8px
 .padding,
 .padding-md    { padding: $gutter/2 $gutter; }       // 8px 16px
-.padding-lg    { padding: $gutter*.75 $gutter*1.5; } // 16px 32px
-.padding-xl    { padding: $gutter $gutter*2; }       // 24px 48px
+.padding-lg    { padding: $gutter*.75 $gutter*1.5; } // 12px 24px
+.padding-xl    { padding: $gutter $gutter*2; }       // 16px 32px
 .padding-jumbo { padding: $gutter*2 $gutter*4; }     // 32px 64px
 
 .padding-2 {
@@ -58,6 +58,10 @@
 .padding-32 {
     padding-top: $gutter*2;
     padding-bottom: $gutter*2;
+}
+.padding-48 {
+    padding-top: $gutter*3;
+    padding-bottom: $gutter*3;
 }
 .padding-64 {
     padding-top: $gutter*4;
@@ -94,6 +98,15 @@ hr.line-dot { border-top: none; }
 
 // text
 // ------------------------------------------------------------
+.font-tiny  { font-size: $font-size-xs; }  // 13px
+.font-sm    { font-size: $font-size-sm; }  // 14px
+.font-md    { font-size: rem(15); }
+.font-lg    { font-size: $font-size-lg; }  // 20px
+.font-xl    { font-size: rem(27); }
+.font-xxl   { font-size: rem(40); }
+.font-xxxl  { font-size: rem(48); }
+.font-jumbo { font-size: rem(65); }
+
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 .text-center { text-align: center; }
@@ -110,15 +123,24 @@ hr.line-dot { border-top: none; }
         @include absolute(left 0 bottom -1px);
     }
 }
+.title-underline-d {
+    small {
+        @extend .font-sp, .font-md;
 
-.font-tiny  { font-size: $font-size-xs; }  // 13px
-.font-sm    { font-size: $font-size-sm; }  // 14px
-.font-md    { font-size: .9375rem; }       // 15px
-.font-lg    { font-size: $font-size-lg; }  // 20px
-.font-xl    { font-size: 1.5625rem; }      // 25px
-.font-xxl   { font-size: 2.3125rem; }      // 37px
-.font-xxxl  { font-size: 3rem; }           // 48px
-.font-jumbo { font-size: 4.0625; }         // 65px
+        display: block;
+        letter-spacing: 8px;
+        margin-top: 10px;
+
+        @include el(all, inline-block, url('#{$img-path}/line.gif')) {
+            position: relative;
+            top: -4px;
+        }
+
+        &::before { margin-right: 10px; }
+        &::after { margin-left: 10px; }
+    }
+}
+
 
 
 // 情境: var.scss> $states: true

@@ -19,6 +19,10 @@ namespace DotWeb.Controllers
 
             return View("Index");
         }
+        public ActionResult Notice()
+        {
+            return View();
+        }
         public RedirectResult Login()
         {
             return Redirect("~/Base/Login");

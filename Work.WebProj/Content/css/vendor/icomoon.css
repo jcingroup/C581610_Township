@@ -16,8 +16,8 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
-  [class*="icon"]::before:not(:empty) {
-    margin-right: .3em; }
+[class*="icon"]:not(:empty)::before {
+  margin-right: .2em; }
 
 .icon-arrow_drop_down2::before {
   content: "\e5c6"; }

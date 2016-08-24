@@ -15,6 +15,16 @@ $font-size-root:  16px !default;
     @return $px / $context * 1em;
 }
 
+// 去單位
+@function strip-unit($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+// px to rem
+@function rem($px) {
+    @return (strip-unit($px) / strip-unit($font-size-root)) + rem;
+}
+
 // 算寬度百分比
 @function cp($target, $container: $max-width) {
     @return ceil(($target / $container) * 100%);
@@ -33,7 +43,6 @@ $font-size-root:  16px !default;
 
 // 編碼fix
 @function unicode($str){
-    // @return unquote("\"") + $str + unquote("\"");
     @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"");
 }
 
@@ -47,9 +56,9 @@ $font-size-root:  16px !default;
 }
 
 // color
-@function color($key) {
-    @return map-get($color, $key);
-}
+// @function color($key) {
+//     @return map-get($color, $key);
+// }
 
 // 取多層值
 // 範例 background: m-get($color-theme, 'default', 'background');
@@ -82,48 +91,6 @@ $font-size-root:  16px !default;
 
     @return $result;
 }
-// old
-// @function map-deep-set($map, $keys, $value) {
-//     $maps: ($map,);
-//     $result: null;
-
-//     // If the last key is a map already
-//     // Warn the user we will be overriding it with $value
-//     @if type-of(nth($keys, -1)) == "map" {
-//         @warn "The last key you specified is a map; it will be overrided with `#{$value}`.";
-//     }
-
-//     // If $keys is a single key
-//     // Just merge and return
-//     @if length($keys) == 1 {
-//         @return map-merge($map, ($keys: $value));
-//     }
-
-//     // Loop from the first to the second to last key from $keys
-//     // Store the associated map to this key in the $maps list
-//     // If the key doesn't exist, throw an error
-//     @for $i from 1 through length($keys) - 1 {
-//         $current-key: nth($keys, $i);
-//         $current-map: nth($maps, -1);
-//         $current-get: map-get($current-map, $current-key);
-//         @if $current-get == null {
-//             @error "Key `#{$key}` doesn't exist at current level in map.";
-//         }
-//         $maps: append($maps, $current-get);
-//     }
-
-//     // Loop from the last map to the first one
-//     // Merge it with the previous one
-//     @for $i from length($maps) through 1 {
-//         $current-map: nth($maps, $i);
-//         $current-key: nth($keys, $i);
-//         $current-val: if($i == length($maps), $value, $result);
-//         $result: map-merge($current-map, ($current-key: $current-val));
-//     }
-
-//     // Return result
-//     @return $result;
-// }
 
 // 進階合併 map function
 // About map-merge(): sass內建的合併map功能，但只能2組
