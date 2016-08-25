@@ -37,7 +37,8 @@ figure {
     cursor: pointer;
 
     @if $figure-inline {
-        display: inline-block;
+        @extend %inline-block;
+        // display: inline-block;
         vertical-align: top;
 
         @if $figure-inline-hack {
@@ -45,7 +46,8 @@ figure {
             &:first-child { margin-left: -4px; }
         }
     } @else {
-        float: left;
+        @extend %float-l;
+        // float: left;
     }
 
     @if $figure-effect { @include transition($figure-effect) }
@@ -71,8 +73,9 @@ figure {
     // RWD
     @if $enable-RWD {
         @include mq-max(break(desktop, -1)) {
+            @extend %inline-block;
             float: none;
-            display: inline-block;
+            // display: inline-block;
         }
         @include mq-max(tablet) {
             width: 48%;

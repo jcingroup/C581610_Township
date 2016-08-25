@@ -99,7 +99,8 @@ $checkbox-icon-size:        $checkbox-size*.7 !default;
 // -----------------------------------------------------------------
 // == Normalize
 label {
-    display: inline-block;
+    @extend %inline-block;
+    // display: inline-block;
     margin-bottom: $spacer/2;
 
     // max-width: 100%; // 強制 IE8 能容納長元素
@@ -132,9 +133,10 @@ fieldset {
 }
 
 legend {
-    display: block;
+    @extend %block, .margin-bottom;
+    // display: block;
     width: 100%;
-    margin-bottom: $spacer;
+    // margin-bottom: $spacer;
     font-size: em($font-size-base * 1.5);
     line-height: inherit;
 }
@@ -148,7 +150,8 @@ body:not(:-moz-handler-blocked) fieldset {
 }
 
 output {
-    display: inline-block;
+    @extend %inline-block;
+    // display: inline-block;
 }
 
 [hidden] {
@@ -193,7 +196,8 @@ input, textarea, select, .form-element {
 }
 
 .form-element {
-    display: block;
+    @extend %block;
+    // display: block;
     width: 100%;
 
     @if $form-element-bg          { background: $form-element-bg; }
@@ -234,7 +238,8 @@ input, textarea, select, .form-element {
 
 // 單行
 .input-inline {
-    display: inline;
+    @extend %inline;
+    // display: inline;
     width: auto;
     margin: 0 $gutter/3;
     font-weight: normal;
@@ -283,13 +288,14 @@ input, textarea, select, .form-element {
 
         + label {
             // 共用設定
-            display: inline-block;
+            @extend %inline-block, .margin-0;
+            // display: inline-block;
             vertical-align: middle;
             position: relative;
             cursor: pointer; cursor:hand;
             outline: none;
             user-select: none;
-            margin: 0;
+            // margin: 0;
 
             // 設計樣式
             background: $input-bg;

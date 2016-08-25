@@ -194,9 +194,8 @@ $font-gray: #7F7F7F;
     padding-bottom: $gutter*2.5;
 
     .title-underline {
-        @extend .text-white;
+        @extend .text-white, .font-xl;
         border-color: $line-color;
-        font-size: em(29);
         margin-bottom: $spacer*1.35;
 
         &::after { background: $warning; }
@@ -214,7 +213,7 @@ $font-gray: #7F7F7F;
         }
     }
     a {
-        &:hover, &:active { color: $brand-primary; }
+        &:hover, &:active { @extend .text-primary; } // color: $brand-primary
     }
 }
 .copyright {
@@ -232,18 +231,19 @@ $font-gray: #7F7F7F;
 }
 
 .foot-contact {
-    .font-xl { letter-spacing: 3px }
-
-    p + p { margin-top: $spacer*.5; }
-
+    p {
+        margin: 0 0 $spacer*.5;
+        &:first-of-type { letter-spacing: 3px }
+    }
     a { color: $footer-color; }
 }
 
 .foot-partner {
     a {
-        display: block;
-        color: $warning;
-        margin-bottom: $spacer*.5;
+        @extend %block, .text-warning;
+        // display: block;
+        // color: $warning;
+        margin-bottom: $spacer*.75;
     }
 }
 

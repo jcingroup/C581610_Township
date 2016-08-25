@@ -4,7 +4,7 @@
 /*      basic elements - reboot
 -----------------------------------------------------------------------*/
 h1,h2,h3,h4,h5,h6,figure,blockquote,pre { margin-top: 0; }
-p,ul,ol,li,dl,dt,dd{ margin:0; padding:0; }
+// ul,ol,li,dl,dt,dd{ margin:0; padding:0; }
 
 html, body {
     text-align: center;
@@ -136,7 +136,7 @@ hr {
 }
 
 p {
-    margin-bottom: 0;
+    // margin-bottom: 0;
 
     & + & {
         margin-top: $p-spacer;
@@ -150,23 +150,6 @@ abbr[data-original-title] {
     border-bottom: 1px dotted $abbr-border-color;
 }
 
-ol, ul, dl {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-ol, ul {
-    ol, ul { margin-bottom: 0; }
-}
-
-dt {
-    font-weight: $dt-font-weight;
-}
-
-dd {
-    margin-bottom: $spacer/2;
-    margin-left: 0; // Undo browser default
-}
 
 blockquote {
     margin: 0 0 $spacer;
@@ -174,7 +157,7 @@ blockquote {
 
 pre {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: $spacer;
 }
 
 button,

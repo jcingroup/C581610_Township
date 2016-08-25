@@ -52,11 +52,12 @@ $mobile-menu-width:   100% !default;
             .sub-nav {
                 opacity: 1;
                 visibility: visible;
-                height: 195px;
+                min-height: 150px;
             }
         }
     }
 
+    // 有下拉選單的加箭頭
     .caret {
         position: relative;
 
@@ -82,8 +83,8 @@ $mobile-menu-width:   100% !default;
         }
 
         // 本次專案
+        @extend %block;
         letter-spacing: 1px;
-        display: block;
 
         &:hover, &:active, &.current {
             @if $nav-active-bg    { background: $nav-active-bg; }
@@ -106,8 +107,9 @@ $mobile-menu-width:   100% !default;
 
             // 推拉樣式
             @if $mobile-menu-style == 'push' {
+                @extend .text-left;
                 left: -$mobile-menu-width;
-                text-align: left;
+                // text-align: left;
 
                 @include transition(left .35s);
 
@@ -147,7 +149,7 @@ $mobile-menu-width:   100% !default;
 
 // 第二層選單
 .sub-nav {
-    display: block;
+    @extend %block, .text-left;
     opacity: 0;
     visibility: hidden;
 
@@ -155,12 +157,12 @@ $mobile-menu-width:   100% !default;
     background: #fff;
     height: 0;
 
-    @extend .text-left;
     @include fixed(top 174px left 0 right 0);
-    @include transition(opacity 1s, height .3s);
+    @include transition(opacity .4s, height .3s);
 
     a {
-        display: inline-block;
+        @extend %inline-block;
+
         width: 28%;
         min-width: 290px;
         margin: $spacer*.35 0;
@@ -171,13 +173,11 @@ $mobile-menu-width:   100% !default;
         @include el(before, inline, '．');
 
         &:hover, &:active {
-            color: $brand-primary;
+            @extend .text-primary;
         }
     }
 
-    dl {
-        padding: $gutter*1.75 $gutter*3.4;
-    }
+    dl { padding: $gutter*1.75 $gutter*3.4; }
     dt { @extend .margin-right; }
 
     @if $enable-RWD {
@@ -196,20 +196,16 @@ $mobile-menu-width:   100% !default;
             // padding-bottom: $gutter - 4;
 
             a {
+                @extend .text-white;
+
                 padding: ($gutter - 4) $gutter+6;
                 color: $white;
 
                 &:hover, &:active {
-                    background: $brand-primary;
+                    @extend .bg-primary;
+                    // background: $brand-primary;
                 }
             }
         }
-    }
-}
-
-// 間隔寬的選單
-.nav-gap {
-    a {
-        margin: 0 $gutter/2;
     }
 }

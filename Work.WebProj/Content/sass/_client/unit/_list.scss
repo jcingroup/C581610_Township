@@ -5,6 +5,20 @@ $list-dot-color: $brand-primary !default;
 
 // list - extend的內容 寫在 base/util
 // ------------------------------------------------------------
+// reset
+ol, ul, dl { margin: 0 0 $spacer; }
+
+ol, ul {
+    padding-left: 22px;
+    ol, ul { margin-bottom: $spacer/2;  } //margin-left: $gutter;
+}
+
+dt { font-weight: $dt-font-weight; }
+dd {
+    margin-bottom: $spacer/2;
+    margin-left: 0; // Undo browser default
+}
+
 .list-unstyled { @extend %list-unstyled; }
 .list-inline   { @extend %list-inline; }
 
@@ -20,26 +34,6 @@ $list-dot-color: $brand-primary !default;
 //         font-size: em(15);
 
 //         @include icon-dot(left, 5px, $list-dot-color, left 0 top 10px);
-//     }
-// }
-
-// 列表內列表縮排
-// .list-indent {
-//     @extend %list-unstyled;
-//     margin-top: $spacer/2;
-
-//     > li {
-//         text-indent: -(em(32));
-//         margin-left: em(32);
-//         margin-bottom: $spacer/2;
-//     }
-
-//     ol, ul {
-//         li {
-//             text-indent: -(em(48));
-//             margin-left: em(40);
-//             margin-bottom: $gutter - 5;
-//         }
 //     }
 // }
 
@@ -78,13 +72,14 @@ $list-dot-color: $brand-primary !default;
             background: rgba(#fff, .2);
             border: none;
             padding: 8px 30px;
-            margin: auto;
+            // margin: auto;
             @include pos-center(x);
             bottom: 28px;
 
             &:hover, &:active {
-                background: #fff;
-                color: $brand-secondary;
+                @extend .bg-white, .text-secondary;
+                // background: #fff;
+                // color: $brand-secondary;
             }
         }
         .activity {
@@ -98,6 +93,48 @@ $list-dot-color: $brand-primary !default;
         .info {
             @extend .bg-info;
             .label { @extend .text-info; }
+        }
+    }
+
+    .list-underline {
+        > li {
+            @extend .padding-12;
+            font-size: em(17);
+
+            &:not(:last-child) {
+                border-bottom: 1px dashed lighten($brand-primary,10);
+            }
+        }
+        ol, ul {
+            @extend .font-sm;
+            margin-top: $spacer*.35;
+        }
+    }
+
+    .list-indent {
+        $ind: 51px;
+
+        padding-left: 0;
+        margin-bottom: $spacer*2;
+
+        > li {
+            text-indent: -(em($ind));
+            padding-left: em($ind);
+            line-height: 1.7;
+        }
+
+        ol, ul {
+            text-indent: -(em(32));
+            margin-left: 32px;
+        }
+    }
+
+    .list-num {
+        @extend %list-unstyled;
+        counter-reset: section;
+        li::before {
+            counter-increment: section;
+            content: counters(section,".") " ";
         }
     }
 }

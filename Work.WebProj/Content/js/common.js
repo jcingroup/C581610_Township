@@ -5,22 +5,20 @@ $(window).scroll(function(){
     // 沒有卷軸時不出現 goTop 按鈕
     if ( $(this).scrollTop() != 0 ) {
         $gotoTop.addClass('fadeIn').removeClass('fadeOut');
-    }
-    else {
+    } else {
         $gotoTop.addClass('fadeOut').removeClass('fadeIn');
     }
 
     // 卷動到定位時該元素固定
-    var $sticky = $('#menu');
-    if ($sticky.length) {
-        var stickyOffset = $sticky.offset().top;
-    }
-    if ($(this).scrollTop() > stickyOffset) {
-        $sticky.addClass('fixed');
-    }
-    else {
-        $sticky.removeClass('fixed');
-    }
+    // var $sticky = $('.scroll-nav');
+    // var stickyOffset = $sticky.offset().top + $sticky.length;
+    // // if ($sticky.length) {
+    // // }
+    // if (stickyOffset < $(window).scrollTop()) {
+    //     $sticky.addClass('fixed');
+    // } else {
+    //     $sticky.removeClass('fixed');
+    // }
 });
 
 // 點選後跳到 href 指向的位置
@@ -32,7 +30,7 @@ $('.scroll').click(function () {
     return false;
 });
 $gotoTop.click(function() {
-    $('body, html').animate({scrollTop:0},800);
+    $('body, html').stop(true).animate({scrollTop:0},800);
     return false;
 });
 

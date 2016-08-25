@@ -44,9 +44,9 @@ $inputfile-icon-size:          18px !default;
         outline: -webkit-focus-ring-color auto 5px;
     }
     + label {
-        @extend .margin-0;
+        @extend %inline-block, %margin-0;
         @include text-overflow(false);
-        display: inline-block;
+        // display: inline-block;
         vertical-align: middle;
         max-width: 100%;
         cursor: pointer;
@@ -63,18 +63,20 @@ $inputfile-icon-size:          18px !default;
             padding: $inputfile-pd; // 10px 20px
         }
         span {
+            @extend %inline-block;
             @include text-overflow(nth($inputfile-size,1));
             min-height: nth($inputfile-size,2);
-            display: inline-block;
+            // display: inline-block;
             vertical-align: top;
         }
         strong {
+            @extend %inline-block;
             height: 100%;
             color: $inputfile-select-color;
             font-size: 1em;
             font-weight: normal;
             background-color: $inputfile-select-bg;
-            display: inline-block;
+            // display: inline-block;
 
             // icon
             &::before {
@@ -86,7 +88,7 @@ $inputfile-icon-size:          18px !default;
         @if $enable-RWD {
             @include mq-max(tablet) {
                 min-width: 100%;
-                strong { display: block; }
+                strong { @extend %block; } //display: block;
             }
         }
     }

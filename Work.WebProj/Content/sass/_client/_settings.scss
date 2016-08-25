@@ -12,13 +12,14 @@ $page:                  false !default;           // 內頁用
 // == helper/variables
 // ----------------------------------------------------------------------
 $body-bg:               #F6F6EA;
-$body-color:            lighten(black,40);
+$body-color:            lighten(black,35);
+
 $font-family-sp:        'Quicksand', sans-serif;
-// $link-color:            darken($brand-primary,5);
+// $link-transition:       all .35s;
 
 $font-size-h1:          42px;
 $font-size-h4:          25px;
-$headings-color:        $brand-secondary;
+$headings-color:        #2DADA8;
 
 
 // == layout
@@ -28,14 +29,14 @@ $max-width:             1400px;     // 網頁最寬尺寸: .wrap
 $menu-item:             'News' 'AboutUs' 'Assets' 'Efficacy' 'Group' 'Management' 'Fix' 'Comments' 'Explain' 'Service';
 
 $wrapper-bg:            #F2EEE3 !default;
-$content-spacing:       0 !default;
+$content-spacing:       50px !default;
 
 // line
 $line:                  4px solid $brand-primary;
 
 // header
 $header-height:         174px !default;
-$header-bg:             url(#{$img-path}/headerBg.gif) 0 124px repeat-x !default;
+$header-bg:             #F7F7EB url(#{$img-path}/headerBg.gif) 0 124px repeat-x !default;
 $banner-height:         $header-height !default;
 
 // logo
@@ -70,7 +71,17 @@ $z-index: (
 // == unit
 // ----------------------------------------------------------------------
 // goTop
-// $goTop-color:                  #3A5D65;
+$goTop-color:                  #fff;
+$goTop-styles: (
+    opacity: 0,
+    background: rgba(lighten($footer-bg, 15),.65),
+    font-size: 23px,
+    padding: 5px 10px,
+    border-radius: 3px
+);
+$goTop-hover-styles: (
+    background: $brand-primary
+);
 
 // btn
 $btn-border-radius:             3px;
@@ -101,15 +112,18 @@ $swiper-button:                   true;
 // table
 // $table-border-color:           #B1CFDD;
 // $table-align:                  false;
-// $table-pd:                     8px;
+$table-pd:                     8px;
 // $table-bg-accent:              lighten(#CAE4EF,5); // darken($muted,3)
-// $table-bg-hover:               $pale-yellow;
-// $table-bordered:               1px solid $muted;
-// $th-styled: (
-//    color: $white, // darken($brand-primary,10)
-//    min-width: 55px,
-//    background: desaturate($brand-primary,35)
-// );
+$table-bg-hover:               #fff;
+$table-bordered:               1px solid lighten($light-green,5);
+$table-styled: (
+    min-width: 60%,
+    margin: auto
+);
+$th-styled: (
+   color: $white, // darken($brand-primary,10)
+   background: desaturate($brand-secondary,10)
+);
 // $td-styled: (
 //     background: lighten(#EBEBEB,5)
 // );
@@ -127,14 +141,3 @@ $input-border-color:            #DFDFDF;
 $form-element-bg:               false !default;
 $form-element-height:           38px !default;
 $input-border-focus:            $brand-secondary;
-
-
-
-// == 自定Reset
-// ----------------------------------------------------------------------
-// h1,h2,h3,h4,h5,h6,p,figure,blockquote { margin-top: 0; }
-// ul,ol,li,dl,dt,dd{margin:0;padding:0;}
-// button{outline:none;border:none;}
-// ul, ol {
-//     list-style-position: inside
-// }

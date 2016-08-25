@@ -19,7 +19,7 @@ $goTop-hover-styles: (
 // --------------------------------------------------
 
 %shared {
-    color: #fff !important;
+    color: $goTop-color !important;
 }
 .goTop {
     z-index: z(goTop);
@@ -27,26 +27,19 @@ $goTop-hover-styles: (
     @include fixed($goTop-pos);
     @include transition($goTop-effect);
 
-    // @each $attribute, $value in $goTop-styles {
-    //     #{$attribute}: #{$value};
-    // }
+    @each $attribute, $value in $goTop-styles {
+        #{$attribute}: #{$value};
+    }
     // 本次專案
     @extend %shared;
-    opacity: 0;
-    // color: #fff;
-    background: rgba($brand-primary,.65);
-    font-size: em(23);
-    padding: 5px 10px;
-    border-radius: 3px;
 
     &:hover, &:active {
-        // @each $attribute, $value in $goTop-hover-styles {
-        //     #{$attribute}: #{$value};
-        // }
+        @each $attribute, $value in $goTop-hover-styles {
+            #{$attribute}: #{$value};
+        }
 
         // 本次專案
         @extend %shared;
-        background: $brand-primary;
     }
     // &.bottom { bottom: $footer-height + 20; }
 }

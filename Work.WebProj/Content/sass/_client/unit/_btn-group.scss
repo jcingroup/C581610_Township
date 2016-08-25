@@ -1,7 +1,8 @@
 // Make the div behave like a button
 .btn-group {
     > .btn {
-        float: left;
+        @extend %float-l;
+        // float: left;
 
         &:not(:first-child) { border-left: 1px solid darken($btn-bg,7); }
 
@@ -47,9 +48,10 @@
 
 .btn-group-vertical {
     > .btn {
-        display: block;
-        width: 100%;
-        max-width: 100%;
+        @extend %block, %full;
+        // display: block;
+        // width: 100%;
+        // max-width: 100%;
 
         &:not(:first-child) { border-top: 1px solid darken($btn-bg,7); }
 

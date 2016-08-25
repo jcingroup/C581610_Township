@@ -66,20 +66,18 @@ button { border: none; }
     }
 }
 
-@if $states {
+.btn-white {
+    background: $white;
+    color: $brand-secondary;
+    border: 1px solid $brand-secondary;
 
-    .btn-white {
-        background: $white;
-        color: $brand-secondary;
-        border: 1px solid $brand-secondary;
-
-        &:hover, &:active {
-            background: lighten($brand-secondary,10);
-            border-color: lighten($brand-secondary,15);
-            color: $white;
-        }
+    &:hover, &:active {
+        background: lighten($brand-secondary,10);
+        border-color: lighten($brand-secondary,15);
+        color: $white;
     }
-
+}
+// @if $states {
 //     %btn-states {
 //         color: $white;
 //     }
@@ -101,4 +99,4 @@ button { border: none; }
 //     #{$selector} {
 //         @extend %btn-states;
 //     }
-}
+// }

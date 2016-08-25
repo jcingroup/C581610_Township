@@ -22,6 +22,7 @@ $figure-inline:   true;
 @import "vendor/print";     // 列印樣式
 
 @import "base/basic";
+@import "base/table";
 @import "base/form";
 @import "base/util";
 
@@ -36,13 +37,12 @@ $figure-inline:   true;
 @import "_client/unit/label";
 @import "_client/unit/figure";
 @import "_client/unit/input-expand";
-// @import "_client/unit/slider";
+@import "_client/unit/tooltip";
 @import "_client/unit/classes";
 
 
 // main
 // ------------------------------------------------------------
-
 #main {
     @extend %center;
 
@@ -50,18 +50,21 @@ $figure-inline:   true;
         @extend .margin-0;
         max-width: 100%;
     }
+    .title-underline-d {
+        margin-bottom: $spacer*2.2;
+    }
 }
 
 // 住戶資料
 .top-member {
-    @extend .float-r, .text-left;
+    @extend %float-r, .text-left;
 
     width: 250px;
     margin-top: 34px;
 
     // 頭像
     .head {
-        @extend .float-l, .margin-right;
+        @extend %float-l, .margin-right;
         @include circle(60px, center, #fff);
         border: 1px solid #E3E3E3;
         overflow: hidden;
@@ -75,8 +78,9 @@ $figure-inline:   true;
         font-size: em(26);
 
         &:hover, &:active {
-            color: #fff;
-            background: $brand-primary;
+            @extend .text-white, .bg-primary;
+            // color: #fff;
+            // background: $brand-primary;
         }
     }
 
@@ -94,6 +98,53 @@ $figure-inline:   true;
     .icon-mode_edit,
     .icon-log-out {
         &::before { font-size: em(18); }
+    }
+}
+
+// 內頁跳轉選單(資產管理等)
+.scroll-nav {
+    margin: $spacer*2 0;
+    a {
+        @extend %inline-block, .bg-white, .padding;
+        font-size: em(17);
+        margin: 1px;
+
+        &:hover, &:active, &.active { @extend .bg-primary, .text-white; }
+    }
+
+    // 卷動到頂端時固定位置
+    &.fixed {
+        @extend .bg-white;
+        @include fixed(left 0 top 0 right 0);
+        margin: 0;
+        box-shadow: 0 3px 10px rgba(black,.15);
+
+        a {
+            @extend .padding-12, .font-sm;
+            margin: 0;
+            margin-right: -4px;
+
+            &:not(:last-child) {
+                border-right: 1px solid #eee;
+            }
+        }
+    }
+}
+// 內頁跳轉內容
+.scroll-content {
+    @extend .text-left, .padding-32;
+    counter-increment: num;
+
+    .title {
+        @extend .font-xl, .text-primary;
+        &::before {
+            content: counter(num, cjk-ideographic) "、";
+        }
+    }
+    .sub-title {
+        @extend .text-primary;
+        margin-top: $spacer*2.2;
+        margin-bottom: $spacer*1.5;
     }
 }
 
@@ -131,8 +182,8 @@ $figure-inline:   true;
         &:not(:first-child) {
             &:hover, &:active {
                 box-shadow: 6px 12px 15px lighten(black,65);
-                h4 { color: $success; }
-                p { color: $muted; }
+                h4 { @extend .text-success; } //color: $success;
+                p { @extend .text-muted; } // color: $muted;
             }
         }
     }
@@ -146,7 +197,7 @@ $figure-inline:   true;
         margin-bottom: 8px;
         @include transition(color,.5s);
     }
-    p { color: $success; }
+    p { @extend .text-success, .margin-0; }
 
     .time {
         @extend .text-center;
@@ -159,7 +210,8 @@ $figure-inline:   true;
         height: 68px;
 
         em {
-            display: block;
+            @extend %block;
+            // display: block;
             font-size: em(38,12);
             font-weight: bold;
             font-style: normal;
@@ -235,3 +287,4 @@ $figure-inline:   true;
         letter-spacing: 1px;
     }
 }
+

@@ -9,8 +9,7 @@
   position: relative;
   cursor: pointer;
 
-    &::before,
-    &::after {
+    &::before, &::after {
         position: absolute;
         visibility: hidden;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -26,19 +25,22 @@
                 #{$prefix}transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
         }
 
-        @include prefix(transform, translate3d(0, 0, 0), webkit moz);
+        // @include prefix(transform, translate3d(0, 0, 0), webkit moz);
+        @include transform(translate3d(0, 0, 0), webkit moz);
+        @include absolute(bottom 100% left 50%);
 
         pointer-events: none;
     }
 
-    &:hover::before,
-    &:hover::after,
-    &:focus::before,
-    &:focus::after {
-        visibility: visible;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-        opacity: 1;
+    &:hover, &:focus {
+        &::before, &::after {
+            visibility: visible;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+            opacity: 1;
+
+            @include transform(translateY(-12px), webkit moz);
+        }
     }
 
     &::before {
@@ -56,16 +58,16 @@
         background-color: hsla(0, 0%, 20%, 0.9);
         color: $white;
         content: attr(data-tooltip);
-        font-size: em(15px);
+        font-size: rem(15);
         line-height: 1.2;
         text-align: center;
     }
 
-    &::before,
-    &::after {
-        bottom: 100%;
-        left: 50%;
-    }
+    // &::before,
+    // &::after {
+    //     bottom: 100%;
+    //     left: 50%;
+    // }
 
     &::before {
         margin-left: -6px;
@@ -79,14 +81,15 @@
         left: 0;
     }
 
-    &:hover::before,
-    &:hover::after,
-    &:focus::before,
-    &:focus::after {
-        @include prefix(transform, translateY(-12px), webkit moz);
-    }
+    // &:hover::before,
+    // &:hover::after,
+    // &:focus::before,
+    // &:focus::after {
+    //     @include prefix(transform, translateY(-12px), webkit moz);
+    // }
 }
 
 a.tooltip {
-    display: inline-block;
+    @extend %inline-block;
+    // display: inline-block;
 }

@@ -12,14 +12,13 @@ $breadcrumb-link-font-size: 14px;
 // --------------------------------------------------
 
 .breadcrumb {
-    @extend %list-inline;
-    @extend .text-left;
+    @extend %list-inline, .text-left;
 
     font-size: em($breadcrumb-font-size);
     color: $breadcrumb-color;
     line-height: 1.65;
     border-bottom: 1px solid #CACACA;
-    padding-bottom: $gutter*1.2;
+    padding-bottom: $gutter;
     margin-top: $spacer*1.8;
     margin-bottom: $spacer*3;
 
@@ -38,7 +37,7 @@ $breadcrumb-link-font-size: 14px;
                 font-size: em(13);
             }
         }
-        &:first-child { font-size: em(20); }
+        &:first-child { font-size: em(19); }
     }
 
     a {

@@ -78,13 +78,15 @@ $expand-hover-toggle: (
 }
 .extend-btn,
 .extend-toggle {
+    @extend %block, .text-center;
+
     @include absolute(top 0 right 0);
     width: $expand-min-width;
     height: 100%;
-    display: block;
 
     line-height: 100%;
-    text-align: center;
+    // display: block;
+    // text-align: center;
 
     @if $expand-icon-size { font-size: em($expand-icon-size); }
 
