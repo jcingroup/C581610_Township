@@ -159,69 +159,69 @@ namespace DotWeb.Api
         }
 
         #endregion
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IHttpActionResult> SearchMatter([FromUri]queryParam q)
-        {
-            db0 = getDB0();
-            var predicate = PredicateBuilder.True<Matter>();
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public async Task<IHttpActionResult> SearchMatter([FromUri]queryParam q)
+        //{
+        //    db0 = getDB0();
+        //    var predicate = PredicateBuilder.True<Matter>();
 
-            if (q.info_type != null)
-                predicate = predicate.And(x => x.info_type == q.info_type);
+        //    if (q.info_type != null)
+        //        predicate = predicate.And(x => x.info_type == q.info_type);
 
-            if (q.city != null)
-                predicate = predicate.And(x => x.city == q.city);
+        //    if (q.city != null)
+        //        predicate = predicate.And(x => x.city == q.city);
 
-            if (q.price_bottom != null)
-                predicate = predicate.And(x => x.price >= q.price_bottom);
+        //    if (q.price_bottom != null)
+        //        predicate = predicate.And(x => x.price >= q.price_bottom);
 
-            if (q.price_top != null)
-                predicate = predicate.And(x => x.price <= q.price_top);
+        //    if (q.price_top != null)
+        //        predicate = predicate.And(x => x.price <= q.price_top);
 
-            if (q.community_id != null)
-                predicate = predicate.And(x => x.community_id == q.community_id);
+        //    if (q.community_id != null)
+        //        predicate = predicate.And(x => x.community_id == q.community_id);
 
-            predicate = predicate.And(x => x.state == "A");
+        //    predicate = predicate.And(x => x.state == "A");
 
-            var result = await db0.Matter.AsExpandable()
-                .Where(predicate)
-                .Select(x => new SearchMatterObj()
-                {
-                    matter_id = x.matter_id,
-                    matter_name = x.matter_name,
-                    title = x.title,
-                    price = x.price,
-                    age = x.age,
-                    city = x.city,
-                    country = x.country,
-                    address = x.address,
-                    balcony_area = x.balcony_area,
-                    bathrooms = x.bathrooms,
-                    bedrooms = x.bedrooms,
-                    parking = x.parking,
-                    rooms = x.rooms,
-                    livingrooms = x.livingrooms,
-                    build_area = x.build_area,
-                    house_area = x.house_area,
-                    rentOfMonh = x.rentOfMonh,
-                    site_floor = x.site_floor,
-                    total_floor = x.total_floor
-                })
-                .ToListAsync(); ;
+        //    var result = await db0.Matter.AsExpandable()
+        //        .Where(predicate)
+        //        .Select(x => new SearchMatterObj()
+        //        {
+        //            matter_id = x.matter_id,
+        //            matter_name = x.matter_name,
+        //            title = x.title,
+        //            price = x.price,
+        //            age = x.age,
+        //            city = x.city,
+        //            country = x.country,
+        //            address = x.address,
+        //            balcony_area = x.balcony_area,
+        //            bathrooms = x.bathrooms,
+        //            bedrooms = x.bedrooms,
+        //            parking = x.parking,
+        //            rooms = x.rooms,
+        //            livingrooms = x.livingrooms,
+        //            build_area = x.build_area,
+        //            house_area = x.house_area,
+        //            rentOfMonh = x.rentOfMonh,
+        //            site_floor = x.site_floor,
+        //            total_floor = x.total_floor
+        //        })
+        //        .ToListAsync(); ;
 
-            foreach (var item in result)
-            {
-                //var imgobj = getImgFirst("MatterList", item.matter_id.ToString(), "origin");
-                var imgobj = getImgFiles("MatterPhoto", item.matter_id.ToString(), "origin");
-                if (imgobj != null)
-                {
-                    item.list_src = imgobj == null ? null : imgobj.First().src_path;
-                }
-            }
+        //    foreach (var item in result)
+        //    {
+        //        //var imgobj = getImgFirst("MatterList", item.matter_id.ToString(), "origin");
+        //        var imgobj = getImgFiles("MatterPhoto", item.matter_id.ToString(), "origin");
+        //        if (imgobj != null)
+        //        {
+        //            item.list_src = imgobj == null ? null : imgobj.First().src_path;
+        //        }
+        //    }
 
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
         public class SearchMatterObj : Matter
         {
             public string list_src { get; set; }
@@ -236,49 +236,49 @@ namespace DotWeb.Api
             public int? community_id { get; set; }
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IHttpActionResult> GetMatter(int id)
-        {
-            db0 = getDB0();
-            var result = await db0.Matter.FindAsync(id);
-            result.community_name = result.Community.community_name;
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public async Task<IHttpActionResult> GetMatter(int id)
+        //{
+        //    db0 = getDB0();
+        //    var result = await db0.Matter.FindAsync(id);
+        //    result.community_name = result.Community.community_name;
 
-            var imgobj_MatterPhoto = getImgFiles("MatterPhoto", id.ToString(), "origin");
+        //    var imgobj_MatterPhoto = getImgFiles("MatterPhoto", id.ToString(), "origin");
 
-            if (imgobj_MatterPhoto != null)
-            {
-                result.imgurl_MatterPhoto = imgobj_MatterPhoto.Select(x => x.src_path).ToArray();
-            }
-            else
-            {
-                result.imgurl_MatterPhoto = new string[] { };
-            }
+        //    if (imgobj_MatterPhoto != null)
+        //    {
+        //        result.imgurl_MatterPhoto = imgobj_MatterPhoto.Select(x => x.src_path).ToArray();
+        //    }
+        //    else
+        //    {
+        //        result.imgurl_MatterPhoto = new string[] { };
+        //    }
 
-            if (imgobj_MatterPhoto != null && imgobj_MatterPhoto.Count() > 0)
-            {
-                result.imgurl_MatterPhoto_1 = imgobj_MatterPhoto.FirstOrDefault().src_path;
-            }
-            else
-            {
-                result.imgurl_MatterPhoto_1 = string.Empty;
-            }
+        //    if (imgobj_MatterPhoto != null && imgobj_MatterPhoto.Count() > 0)
+        //    {
+        //        result.imgurl_MatterPhoto_1 = imgobj_MatterPhoto.FirstOrDefault().src_path;
+        //    }
+        //    else
+        //    {
+        //        result.imgurl_MatterPhoto_1 = string.Empty;
+        //    }
 
-            var imgobj_MatterStyle = getImgFiles("MatterStyle", id.ToString(), "origin");
-            if (imgobj_MatterStyle != null && imgobj_MatterStyle.Count() > 0)
-            {
-                result.imgurl_MatterStyle = imgobj_MatterStyle.FirstOrDefault().src_path;
-            }
-            else
-            {
-                result.imgurl_MatterStyle = string.Empty;
-            }
+        //    var imgobj_MatterStyle = getImgFiles("MatterStyle", id.ToString(), "origin");
+        //    if (imgobj_MatterStyle != null && imgobj_MatterStyle.Count() > 0)
+        //    {
+        //        result.imgurl_MatterStyle = imgobj_MatterStyle.FirstOrDefault().src_path;
+        //    }
+        //    else
+        //    {
+        //        result.imgurl_MatterStyle = string.Empty;
+        //    }
 
-            var r = new ResultInfo<Matter>();
-            r.result = true;
-            r.data = result;
-            return Ok(r);
-        }
+        //    var r = new ResultInfo<Matter>();
+        //    r.result = true;
+        //    r.data = result;
+        //    return Ok(r);
+        //}
 
 
         [HttpGet]
@@ -367,61 +367,61 @@ namespace DotWeb.Api
         }
 
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IHttpActionResult> GetNewsList(int id)
-        {
-            db0 = getDB0();
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public async Task<IHttpActionResult> GetNewsList(int id)
+        //{
+        //    db0 = getDB0();
 
 
-            var predicate = PredicateBuilder.True<Community_News>();
-            predicate = predicate.And(x => x.start_date <= DateTime.Now);
-            predicate = predicate.And(x => x.end_date >= DateTime.Now);
-            predicate = predicate.And(x => x.state == "A");
-            predicate = predicate.And(x => x.community_id == id);
+        //    var predicate = PredicateBuilder.True<Community_News>();
+        //    predicate = predicate.And(x => x.start_date <= DateTime.Now);
+        //    predicate = predicate.And(x => x.end_date >= DateTime.Now);
+        //    predicate = predicate.And(x => x.state == "A");
+        //    predicate = predicate.And(x => x.community_id == id);
 
-            var result = await db0.Community_News.AsExpandable()
-                .OrderByDescending(x => x.community_id)
-                .Where(predicate)
-                .ToListAsync();
+        //    var result = await db0.Community_News.AsExpandable()
+        //        .OrderByDescending(x => x.community_id)
+        //        .Where(predicate)
+        //        .ToListAsync();
 
-            //var r = new ResultInfo<Matter>();
-            //r.result = true;
-            //r.data = result;
-            return Ok(result);
-        }
+        //    //var r = new ResultInfo<Matter>();
+        //    //r.result = true;
+        //    //r.data = result;
+        //    return Ok(result);
+        //}
 
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IHttpActionResult> GetCommunityBannerList(int id)
-        {
-            db0 = getDB0();
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public async Task<IHttpActionResult> GetCommunityBannerList(int id)
+        //{
+        //    db0 = getDB0();
 
-            var predicate = PredicateBuilder.True<Community_Banner>();
-            predicate = predicate.And(x => x.start_date <= DateTime.Now);
-            predicate = predicate.And(x => x.end_date >= DateTime.Now);
-            predicate = predicate.And(x => x.state == "A");
-            predicate = predicate.And(x => x.community_id == id);
+        //    var predicate = PredicateBuilder.True<Community_Banner>();
+        //    predicate = predicate.And(x => x.start_date <= DateTime.Now);
+        //    predicate = predicate.And(x => x.end_date >= DateTime.Now);
+        //    predicate = predicate.And(x => x.state == "A");
+        //    predicate = predicate.And(x => x.community_id == id);
 
-            var result = await db0.Community_Banner.AsExpandable()
-                .OrderByDescending(x => x.community_id)
-                .Where(predicate)
-                .Select(x => new _Community_Banner
-                {
-                    community_banner_id = x.community_banner_id,
-                    title = x.title
-                })
-                .ToListAsync();
+        //    var result = await db0.Community_Banner.AsExpandable()
+        //        .OrderByDescending(x => x.community_id)
+        //        .Where(predicate)
+        //        .Select(x => new _Community_Banner
+        //        {
+        //            community_banner_id = x.community_banner_id,
+        //            title = x.title
+        //        })
+        //        .ToListAsync();
 
-            foreach (var item in result)
-            {
-                var imgobj = getImgFirst("BannerList", item.community_banner_id.ToString(), "origin");
-                item.imgurl_CommunityBannerPhoto_1 = imgobj == null ? null : imgobj.src_path;
-            }
+        //    foreach (var item in result)
+        //    {
+        //        var imgobj = getImgFirst("BannerList", item.community_banner_id.ToString(), "origin");
+        //        item.imgurl_CommunityBannerPhoto_1 = imgobj == null ? null : imgobj.src_path;
+        //    }
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
 
         private class _Community_Banner
