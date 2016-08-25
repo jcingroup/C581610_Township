@@ -1,4 +1,4 @@
-﻿// 已啟用模型 'E:\VS.Git-AJoe\C521605_BuyNow\Work.Logic\DB0\C51A0_BuyNow.edmx' 的 T4 程式碼產生。
+﻿// 已啟用模型 'E:\VS.Git-AJoe\C581610_Yangting\Work.Logic\DB0\C58A0_Township.edmx' 的 T4 程式碼產生。
 // 若要啟用舊版程式碼產生，請將 [程式碼產生策略] 設計工具屬性的值
 //變更為 [舊版 ObjectContext]。當模型在設計工具中開啟時，這個屬性便可
 //以在 [屬性] 視窗中使用。

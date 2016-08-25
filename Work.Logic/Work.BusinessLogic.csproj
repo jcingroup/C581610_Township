@@ -70,65 +70,50 @@
   <ItemGroup>
     <Compile Include="Base.cs" />
     <Compile Include="DB0\AspNetRoles.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\AspNetUsers.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB0\C51A0_BuyNow.Context.cs">
+    <Compile Include="DB0\C58A0_Township.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>C51A0_BuyNow.Context.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB0\C51A0_BuyNow.cs">
+    <Compile Include="DB0\C58A0_Township.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB0\C51A0_BuyNow.Designer.cs">
+    <Compile Include="DB0\C58A0_Township.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>C51A0_BuyNow.edmx</DependentUpon>
+      <DependentUpon>C58A0_Township.edmx</DependentUpon>
     </Compile>
     <Compile Include="DB0\Community.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB0\Community_Banner.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB0\Community_News.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\DBPart.cs" />
     <Compile Include="DB0\Department.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB0\Edit.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\i_Currency.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\i_IDX.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\i_Lang.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\i_Parm.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\i_SN.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB0\Matter.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\Menu.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB0\News.cs">
-      <DependentUpon>C51A0_BuyNow.tt</DependentUpon>
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="LogicCenter.cs" />
     <Compile Include="Models\Community_Community.cs" />
@@ -142,12 +127,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="DB0\C51A0_BuyNow.edmx">
+    <EntityDeploy Include="DB0\C58A0_Township.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>C51A0_BuyNow.Designer.cs</LastGenOutput>
+      <LastGenOutput>C58A0_Township.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DB0\C51A0_BuyNow.edmx.diagram">
-      <DependentUpon>C51A0_BuyNow.edmx</DependentUpon>
+    <None Include="DB0\C58A0_Township.edmx.diagram">
+      <DependentUpon>C58A0_Township.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -155,27 +140,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB0\C51A0_BuyNow.Context.tt">
+    <Content Include="DB0\C58A0_Township.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>C51A0_BuyNow.edmx</DependentUpon>
-      <LastGenOutput>C51A0_BuyNow.Context.cs</LastGenOutput>
+      <DependentUpon>C58A0_Township.edmx</DependentUpon>
+      <LastGenOutput>C58A0_Township.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DB0\C51A0_BuyNow.tt">
+    <Content Include="DB0\C58A0_Township.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>C51A0_BuyNow.edmx</DependentUpon>
-      <LastGenOutput>C51A0_BuyNow.cs</LastGenOutput>
+      <DependentUpon>C58A0_Township.edmx</DependentUpon>
+      <LastGenOutput>C58A0_Township.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="DB0\Community.cs.d.ts">
-      <DependentUpon>Community.cs</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="DB0\Community_News.cs.d.ts">
-      <DependentUpon>Community_News.cs</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="DB0\Matter.cs.d.ts">
-      <DependentUpon>Matter.cs</DependentUpon>
-    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

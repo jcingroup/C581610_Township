@@ -14,14 +14,6 @@ namespace ProcCore.Business.DB0
     
     public partial class Community
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Community()
-        {
-            this.Community_News = new HashSet<Community_News>();
-            this.Community_Banner = new HashSet<Community_Banner>();
-            this.Matter = new HashSet<Matter>();
-        }
-    
         public int community_id { get; set; }
         public string community_name { get; set; }
         public string account { get; set; }
@@ -47,12 +39,5 @@ namespace ProcCore.Business.DB0
         public string map_iframe { get; set; }
         public string group_buying_url { get; set; }
         public string info_content { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Community_News> Community_News { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Community_Banner> Community_Banner { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matter> Matter { get; set; }
     }
 }

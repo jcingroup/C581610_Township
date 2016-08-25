@@ -13,10 +13,10 @@ namespace ProcCore.Business.DB0
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class C51A0_BuyNowEntities : DbContext
+    public partial class C58A0_TownshipEntities : DbContext
     {
-        public C51A0_BuyNowEntities()
-            : base("name=C51A0_BuyNowEntities")
+        public C58A0_TownshipEntities()
+            : base("name=C58A0_TownshipEntities")
         {
         }
     
@@ -27,6 +27,7 @@ namespace ProcCore.Business.DB0
     
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<Community> Community { get; set; }
         public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<i_Currency> i_Currency { get; set; }
         public virtual DbSet<i_IDX> i_IDX { get; set; }
@@ -34,11 +35,5 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<i_Parm> i_Parm { get; set; }
         public virtual DbSet<i_SN> i_SN { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
-        public virtual DbSet<News> News { get; set; }
-        public virtual DbSet<Edit> Edit { get; set; }
-        public virtual DbSet<Community_News> Community_News { get; set; }
-        public virtual DbSet<Community> Community { get; set; }
-        public virtual DbSet<Community_Banner> Community_Banner { get; set; }
-        public virtual DbSet<Matter> Matter { get; set; }
     }
 }

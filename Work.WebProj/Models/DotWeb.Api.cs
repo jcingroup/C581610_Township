@@ -33,7 +33,7 @@ namespace DotWeb.Api
         protected string UserId;
         protected string LoginUserFlag = string.Empty;
         protected IEnumerable<string> UserRoles;
-        protected C51A0_BuyNowEntities db0;
+        protected C58A0_TownshipEntities db0;
         protected override void Initialize(System.Web.Http.Controllers.HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
@@ -75,7 +75,7 @@ namespace DotWeb.Api
         {
             return System.Globalization.CultureInfo.CurrentCulture.Name;
         }
-        protected static C51A0_BuyNowEntities getDB0()
+        protected static C58A0_TownshipEntities getDB0()
         {
             LogicCenter.SetDB0EntityString(CommWebSetup.DB0_CodeString); //取得連線字串
             return LogicCenter.getDB0;
