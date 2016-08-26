@@ -1,4 +1,5 @@
-﻿import React = require('react');
+﻿
+import React = require('react');
 import ReactDOM = require('react-dom');
 import update = require('react-addons-update');
 import { connect } from 'react-redux';

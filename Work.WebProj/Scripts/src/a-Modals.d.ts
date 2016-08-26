@@ -85,6 +85,13 @@
         val?: number;
         Lname?: string;
     }
+    interface PageInfo {
+        total: number;
+        page: number;
+        records: number;
+        startcount: number;
+        endcount: number;
+    }
 
     interface Resident extends BaseEntityTable {
         resident_id?: number;

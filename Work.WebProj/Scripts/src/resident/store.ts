@@ -2,16 +2,53 @@
 import { combineReducers } from 'redux'
 import {ac_type_comm} from '../action_type';
 
+
+let searchData = {
+    keyword: '',
+};
+
+export const search = (state = searchData, action) => {
+
+    switch (action.type) {
+        case ac_type_comm.chg_sch_val:
+            let struct = {
+                [action.name]: { $set: action.value }
+            };
+            let n_state = update(state, struct);
+            return n_state;
+        default:
+            return state
+    }
+}
 const grid = (state: Array<server.Resident> = [], action): Array<server.Resident> => {
     switch (action.type) {
         case ac_type_comm.load:
-            return action.data;
+            return action.items;
+        default:
+            return state;
+    }
+}
+
+let page_operator_state: server.PageInfo = {
+    page: 0,
+    startcount: 0,
+    endcount: 0,
+    total: 0,
+    records: 0,
+    //field: null,
+    //sort: null
+}
+export const page_operator = (state = page_operator_state, action) => {
+  
+    switch (action.type) {
+        case ac_type_comm.load:
+            return action.pageinfo;
         default:
             return state
     }
 }
 
-const field = (state = {}, action) => {
+const field = (state: server.Resident = {}, action) => {
 
     switch (action.type) {
         case ac_type_comm.chg_fld_val:
@@ -49,34 +86,8 @@ const edit_type = (state = IEditType.none, action: Redux.Action): IEditType => {
 }
 
 
-
-interface Init_Params {
-    item: number,
-}
-
-let init_params: Init_Params = { item: null };
-const params = (state = init_params, action): any => {
-    switch (action.type) {
-        case ac_type_comm.load: {
-            return init_params;
-        }
-        case ac_type_comm.add:
-            let r_a: Init_Params = {
-                item: 0
-            };
-            return r_a;
-        case ac_type_comm.update:
-            let r_u: Init_Params = {
-                item: action.item
-            };
-            return r_u;
-        default:
-            return state
-    }
-}
-
 export const combine = combineReducers({
-    grid, field, edit_type, params
+    grid, field, edit_type, page_operator, search 
 })
 
 export default combine;

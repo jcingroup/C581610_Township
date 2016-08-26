@@ -336,3 +336,18 @@ export var Ajax = {
         self.send();
     },
 };
+
+export function makeInputValue(e: React.SyntheticEvent) {
+    let input: HTMLInputElement = e.target as HTMLInputElement;
+    let value;
+
+    if (input.value == 'true') {
+        value = true;
+    } else if (input.value == 'false') {
+        value = false;
+    } else {
+        value = input.value;
+    }
+
+    return value;
+}

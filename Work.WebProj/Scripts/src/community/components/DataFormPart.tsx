@@ -9,7 +9,7 @@ import {operatorGrid, setInputValue} from "../actions";
 import "react-datepicker/dist/react-datepicker.css";
 import SearchFormPart from "./SearchFormPart";
 
-import {dateFT} from '../../ts-comm/def-data';
+import {config} from '../../ts-comm/def-data';
 
 function makeInputValue(e: React.SyntheticEvent) {
     let input: HTMLInputElement = e.target as HTMLInputElement;
@@ -91,8 +91,8 @@ export class DataForm extends React.Component<any, any>{
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  日期</label>
                         <div className="col-xs-7">
-                            <DatePicker 
-                                dateFormat={dateFT}
+                        <DatePicker
+                            dateFormat={config.dateFT}
                                 isClearable={true}
                                 required={true}
                                 locale="zh-TW"

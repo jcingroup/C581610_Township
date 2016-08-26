@@ -546,6 +546,10 @@
     <TypeScriptCompile Include="Scripts\src\resident\containers.ts" />
     <TypeScriptCompile Include="Scripts\src\resident\store.ts" />
     <TypeScriptCompile Include="Scripts\src\resident\vwAStart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\resident\vwEdit.tsx" />
+    <TypeScriptCompile Include="Scripts\src\resident\vwGrid.tsx" />
+    <TypeScriptCompile Include="Scripts\src\resident\vwGridSearch.tsx" />
+    <TypeScriptCompile Include="Scripts\src\resident\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-cmpt.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\ajax.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-func.ts" />

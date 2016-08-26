@@ -475,4 +475,24 @@
             ]
         },
     ]
-export var dateFT: string = 'YYYY-MM-DD';
+export const config = {
+    CustIdCookieName: 'CustId',
+    dateFT: 'YYYY-MM-DD'
+}
+export const UIText = {
+    appliaction: '申報',
+    add: '新增',
+    done: '確定',
+    cancel: '取消',
+    date_null: '無日期',
+    modify: '修改',
+    delete: '刪除',
+    print: '列印',
+    return: '回上頁',
+    report: '報表',
+    mk_loading: '資料載入中...',
+    mk_reading: '資料讀取中...',
+    mk_updating: '資料更新中...',
+    mk_login: '登錄中...',
+    mk_searching: '查詢中...'
+}

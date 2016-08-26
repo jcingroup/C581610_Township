@@ -891,4 +891,150 @@ export class StateForGird extends React.Component<{ stateData: Array<server.Stat
         </span>;
         return outHtml;
     }
-} 
+}
+
+//PW_Button
+interface PWButtonProps {
+    onClick?: Function;
+    id?: string;
+    className?: string;
+    iconClassName?: string;
+    enable?: boolean;
+    type?: string
+}
+export class PWButton extends React.Component<PWButtonProps, any>{
+
+    constructor() {
+        super();
+    }
+    static defaultProps = {
+        disabled: false,
+        type: 'button'
+    }
+    render() {
+        let out_html = null;
+
+        out_html =
+            (
+                <button type={this.props.type}
+                    className={this.props.className}
+                    onClick={this.props.onClick}
+                    disabled={!this.props.enable}
+                    id={this.props.id}>
+                    <i  className={this.props.iconClassName}></i>
+                    {this.props.children}
+                </button>
+            );
+
+
+        return out_html;
+    }
+}
+interface NavPageProps {
+    page?: number,
+    startcount?: number,
+    endcount?: number,
+    total?: number,
+    records?: number,
+    showAdd?: boolean
+    showDelete?: boolean,
+    clickInsertState?: Function,
+    clickDelete?: Function,
+    mapPage: Function
+}
+export class NavPage extends React.Component<NavPageProps, any> {
+    constructor(props) {
+        super(props)
+        this.nextPage = this.nextPage.bind(this);
+        this.prvePage = this.prvePage.bind(this);
+        this.firstPage = this.firstPage.bind(this);
+        this.lastPage = this.lastPage.bind(this);
+    }
+    static defaultProps = {
+        showAdd: true,
+        showDelete: true
+    };
+    firstPage() {
+        this.props.mapPage(1);
+    }
+    lastPage() {
+        this.props.mapPage(this.props.total);
+    }
+    nextPage() {
+        if (this.props.page < this.props.total) {
+            this.props.mapPage(this.props.page + 1);
+        }
+    }
+    prvePage() {
+        if (this.props.page > 1) {
+            this.props.mapPage(this.props.page - 1);
+        }
+    }
+    jumpPage() {
+
+    }
+    render() {
+        var setAddButton = null, setDeleteButton = null;
+        if (this.props.showAdd) {
+            setAddButton = <button className="btn btn-sm btn-success"
+                type="button"
+                onClick={this.props.clickInsertState}>
+                <i className="fa-plus-circle"></i> 新增
+            </button>;
+        }
+
+        if (this.props.showDelete) {
+            setDeleteButton = <button className="btn btn-sm btn-danger" type="button"
+                onClick={this.props.clickDelete}>
+                <i className="fa-trash-o"></i> 刪除
+            </button>;
+
+        }
+        var oper = null;
+
+        oper = (
+            <div className="table-footer clearfix">
+                <div className="pull-xs-left">
+                    {setAddButton} { }
+                    {setDeleteButton}
+                </div>
+                <small className="pull-xs-right">第{this.props.startcount}-{this.props.endcount}筆，共{this.props.records}筆</small>
+
+                <ul className="pager pager-sm">
+                    <li>
+                        <a href="#" title="移至第一頁" tabIndex={-1} onClick={this.firstPage}>
+                            <i className="fa-angle-double-left"></i>
+                        </a>
+                    </li> { }
+                    <li>
+                        <a href="#" title="上一頁" tabIndex={-1} onClick={this.prvePage}>
+                            <i className="fa-angle-left"></i>
+                        </a>
+                    </li> { }
+                    <li className="form-inline">
+                        <div className="form-group">
+                            <label>第</label>
+                            {' '}
+                            <input style={{ "width": "100px" }} className="form-control form-control-sm text-xs-center" type="number" min="1" tabIndex={-1} value={this.props.page }
+                                onChange={this.jumpPage} />
+                            {' '}
+                            <label>頁，共{this.props.total}頁</label>
+                        </div>
+                    </li> { }
+                    <li>
+                        <a href="#" title="@Resources.Res.NextPage" tabIndex={-1} onClick={this.nextPage}>
+                            <i className="fa-angle-right"></i>
+                        </a>
+                    </li> { }
+                    <li>
+                        <a href="#" title="移至最後一頁" tabIndex={-1} onClick={this.lastPage}>
+                            <i className="fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        );
+
+        return oper;
+    }
+}
