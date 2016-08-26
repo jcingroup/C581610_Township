@@ -549,6 +549,11 @@
     <TypeScriptCompile Include="Scripts\src\community\reducers\field.ts" />
     <TypeScriptCompile Include="Scripts\src\community\reducers\index.ts" />
     <TypeScriptCompile Include="Scripts\src\community\reducers\comm.ts" />
+    <TypeScriptCompile Include="Scripts\src\resident\actions.ts" />
+    <TypeScriptCompile Include="Scripts\src\resident\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\resident\containers.ts" />
+    <TypeScriptCompile Include="Scripts\src\resident\store.ts" />
+    <TypeScriptCompile Include="Scripts\src\resident\vwAStart.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-cmpt.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\ajax.ts" />
     <TypeScriptCompile Include="Scripts\src\ts-comm\comm-func.ts" />
@@ -626,7 +631,6 @@
     <Folder Include="Areas\Base\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Scripts\src\community\containers\" />
-    <Folder Include="Scripts\src\resident\" />
     <Folder Include="_Code\CReport\" />
   </ItemGroup>
   <ItemGroup>

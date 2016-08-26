@@ -243,3 +243,5 @@ Work.WebProj/ckfinder/plugins
 Work.WebProj/ckfinder/skins
 Work.WebProj/ckfinder/_samples
 Work.WebProj/ckfinder/_source
+Work.WebProj/Scripts/src/*.js
+Work.WebProj/Scripts/src/**/*.js
