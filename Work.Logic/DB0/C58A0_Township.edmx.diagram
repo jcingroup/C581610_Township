@@ -17,6 +17,7 @@
         <EntityTypeShape EntityType="C58A0_TownshipModel.Menu" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <AssociationConnector Association="C58A0_TownshipModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="C58A0_TownshipModel.MenuRole" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.Resident" Width="1.5" PointX="8.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
