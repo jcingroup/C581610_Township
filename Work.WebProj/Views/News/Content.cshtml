@@ -2,15 +2,27 @@
 @{
     ViewBag.Title = "社區訊息";
     ViewBag.BodyClass = "News";
-    ViewBag.breadCrumb = "社區訊息";
+    ViewBag.breadCrumb = "社區活動訊息社區活動訊息社區活動訊息社區活動訊息";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section breadCrumb {
-
+    <li><a href="">社區訊息</a></li>
 }
 
 <h1 class="title-underline-d">
-    @ViewBag.breadCrumb
-    <small class="block">NEWS</small>
+    社區訊息
+    <small class="block">2016/8/16</small>@* 訊息更新時間 *@
 </h1>
+
+<section class="news-contend">
+    <span class="label label-success">活動</span>
+    <header class="font-xl">
+        @ViewBag.breadCrumb
+    </header>
+    <article>
+        社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息
+    </article>
+</section>
+
+<a href="javascript:history.back()" class="btn">回列表</a>

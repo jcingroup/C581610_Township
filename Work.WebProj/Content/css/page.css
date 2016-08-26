@@ -1199,7 +1199,7 @@ figure {
 .margin-0, .Notice #main, .grid-intro p, .comment-self dd {
   margin: 0; }
 
-.text-left, #footer, .sub-nav, .breadcrumb, .news-list header, .news-list .block, .top-member, .editor-content, .comment-ask, .comment-list, .comment-self {
+.text-left, #footer, .sub-nav, .breadcrumb, .news-list header, .news-list .block, .top-member, .editor-content, .comment-ask, .comment-list, .comment-self, .news-contend {
   text-align: left; }
 
 .text-right {
@@ -1531,3 +1531,9 @@ figure {
   .comment-self dt {
     line-height: 1.3;
     margin-bottom: 3px; }
+
+.news-contend {
+  margin-bottom: 2.2rem; }
+  .news-contend header {
+    margin-top: 0.2rem;
+    margin-bottom: 0.7rem; }
