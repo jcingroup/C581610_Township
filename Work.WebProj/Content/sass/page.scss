@@ -2,9 +2,14 @@
 
 // 本頁專用變數(覆蓋)
 // ------------------------------------------------------------
-$page:            true;
+$page:                          true;
 
-$figure-inline:   true;
+// form
+$enable-input-underline:        true;
+$input-underline-color:         #92C734 #D7DE21;
+
+// figure
+$figure-inline:                 true;
 
 // import
 // ------------------------------------------------------------
@@ -55,6 +60,12 @@ $figure-inline:   true;
     }
 }
 
+// top 搜尋欄
+.search {
+    @extend .float-r;
+    margin-top: -66px;
+}
+
 // 住戶資料
 .top-member {
     @extend %float-r, .text-left;
@@ -101,52 +112,7 @@ $figure-inline:   true;
     }
 }
 
-// 內頁跳轉選單(資產管理等)
-.scroll-nav {
-    margin: $spacer*2 0;
-    a {
-        @extend %inline-block, .bg-white, .padding;
-        font-size: em(17);
-        margin: 1px;
 
-        &:hover, &:active, &.active { @extend .bg-primary, .text-white; }
-    }
-
-    // 卷動到頂端時固定位置
-    &.fixed {
-        @extend .bg-white;
-        @include fixed(left 0 top 0 right 0);
-        margin: 0;
-        box-shadow: 0 3px 10px rgba(black,.15);
-
-        a {
-            @extend .padding-12, .font-sm;
-            margin: 0;
-            margin-right: -4px;
-
-            &:not(:last-child) {
-                border-right: 1px solid #eee;
-            }
-        }
-    }
-}
-// 內頁跳轉內容
-.scroll-content {
-    @extend .text-left, .padding-32;
-    counter-increment: num;
-
-    .title {
-        @extend .font-xl, .text-primary;
-        &::before {
-            content: counter(num, cjk-ideographic) "、";
-        }
-    }
-    .sub-title {
-        @extend .text-primary;
-        margin-top: $spacer*2.2;
-        margin-bottom: $spacer*1.5;
-    }
-}
 
 // == Notice - 住戶登入後首頁
 .grid-intro {
@@ -232,9 +198,7 @@ $figure-inline:   true;
 }
 .carousel {
     max-width: 1060px;
-    .swiper-wrapper {
-        margin-bottom: $spacer*2.2;
-    }
+    .swiper-wrapper { margin-bottom: $spacer*2.2; }
     .swiper-slide { margin: 0; }
 }
 .prev, .next {
@@ -288,3 +252,78 @@ $figure-inline:   true;
     }
 }
 
+// == menu item 內的樣式
+// 內頁子選單(資產管理等)
+.scroll-nav {
+    margin: $spacer*2 0;
+    a {
+        @extend %inline-block, .bg-white, .padding;
+        font-size: em(17);
+        margin: 1px;
+
+        &:hover, &:active, &.active { @extend .bg-primary, .text-white; }
+    }
+
+    // 卷動到頂端時固定位置
+    &.fixed {
+        @extend .bg-white;
+        @include fixed(left 0 top 0 right 0);
+        margin: 0;
+        box-shadow: 0 3px 10px rgba(black,.15);
+
+        a {
+            @extend .padding-12, .font-sm;
+            margin: 0;
+            margin-right: -4px;
+
+            &:not(:last-child) {
+                border-right: 1px solid #eee;
+            }
+        }
+    }
+}
+// 內頁跳轉內容
+.scroll-content {
+    @extend .padding-32;
+    counter-increment: num;
+
+    .title::before {
+        content: counter(num, cjk-ideographic) "、";
+    }
+}
+
+// 編輯器內容的共用樣式
+.editor-content {
+    @extend .text-left;
+
+    .title, .sub-title, h4 { @extend .text-primary; }
+    .title { @extend .font-xl; }
+    .sub-title, h4 { margin-bottom: $spacer*1.5; }
+    .sub-title { margin-top: $spacer*2.2; }
+    h5 { margin-top: $spacer; margin-bottom: $spacer/2; }
+    p {
+        margin-top: $spacer*1.2;
+        margin-bottom: $spacer*2.2;
+    }
+}
+
+// == 留言板
+.comment {
+    @extend .text-left;
+
+    label, input, select {
+        @extend %inline-block;
+        vertical-align: middle;
+    }
+    input, select { width: 71%; }
+    select, textarea { @extend .form-element; }
+    label {
+        @extend .form-element-label, .text-primary, .font-lg;
+        width: 20%;
+        margin-right: $gutter*.5;
+    }
+    input { @extend .input-underline, .font-lg; }
+    textarea { @extend .margin-bottom; }
+    .btn { margin-top: $spacer*1.5; }
+    .row { margin: $spacer*.6 0; }
+}

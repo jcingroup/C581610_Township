@@ -84,9 +84,10 @@ $goTop-hover-styles: (
 );
 
 // btn
-$btn-border-radius:             3px;
-$btn-pd:                        12px 40px;
-$btn-hover-bg:                  $brand-secondary;
+$btn-border-radius:             2px !default;
+$btn-pd:                        18px 50px !default;
+$btn-bg:                        $brand-secondary !default;
+$btn-hover-bg:                  $brand-primary !default;
 
 // input-group
 $input-group-addon-color:       #B0B0B0;
@@ -107,13 +108,11 @@ $label-pd:                        2px 10px;
 // slide
 $swiper-button:                   true;
 
+
 // == base
 // ----------------------------------------------------------------------
 // table
-// $table-border-color:           #B1CFDD;
-// $table-align:                  false;
 $table-pd:                     8px;
-// $table-bg-accent:              lighten(#CAE4EF,5); // darken($muted,3)
 $table-bg-hover:               #fff;
 $table-bordered:               1px solid lighten($light-green,5);
 $table-styled: (
@@ -124,20 +123,13 @@ $th-styled: (
    color: $white, // darken($brand-primary,10)
    background: desaturate($brand-secondary,10)
 );
-// $td-styled: (
-//     background: lighten(#EBEBEB,5)
-// );
-// $tfoot-styled:(
-//     background: $pale-yellow
-// );
-// $td-item-styled: (
-//     text-align: center,
-//     background: lighten(#B3E9F5,10)
-// );
+$td-item-styled: (
+    // text-align: center,
+    background: darken($body-bg,2)
+);
 
 // form
-$input-border-color:            #DFDFDF;
-
-$form-element-bg:               false !default;
-$form-element-height:           38px !default;
-$input-border-focus:            $brand-secondary;
+$input-border-color:            #DFDFDF !default;
+$input-border-focus:            $brand-secondary !default;
+$form-element-bg:               #fff !default;
+$form-element-height:           false !default;

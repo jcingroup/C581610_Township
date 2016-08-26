@@ -21,9 +21,12 @@ $form-element-transition:   border-color ease-in-out .15s, box-shadow ease-in-ou
 
 $form-group-margin-bottom:  $spacer/2 !default;
 
-// 追加樣式
+// 必填樣式
 $input-required-styles:     false !default;
+
+// 底線模式
 $enable-input-underline:    false !default;
+$input-underline-color:     if($enable-input-underline, $input-border-color $input-border-focus, false) !default;
 
 // input-size
 $enable-input-size:         true !default;
@@ -172,8 +175,6 @@ input, textarea, select, .form-element {
     @if $form-element-pd          { padding: $form-element-pd; }
     @if $form-element-transition  { transition: $form-element-transition; }
 
-    @include form-element-focus;
-
     // Unstyle the caret on `<select>`s in IE10+.
     &::-ms-expand {
         background-color: transparent;
@@ -197,8 +198,9 @@ input, textarea, select, .form-element {
 
 .form-element {
     @extend %block;
-    // display: block;
     width: 100%;
+
+    @include form-element-focus;
 
     @if $form-element-bg          { background: $form-element-bg; }
     @if $form-element-height      { height: $form-element-height; }
@@ -271,10 +273,11 @@ input, textarea, select, .form-element {
 @if $enable-input-underline {
     .input-underline {
         border: none;
-        border-bottom: 1px solid darken($input-border-color,20);
+        border-bottom: 1px solid nth($input-underline-color,1);
 
         &:focus {
-            border-color: $input-border-focus;
+            outline: 0;
+            border-color: nth($input-underline-color,2);
         }
     }
 }

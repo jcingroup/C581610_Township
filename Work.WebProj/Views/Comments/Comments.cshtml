@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "留言板";
     ViewBag.BodyClass = "Comments";
-    ViewBag.breadCrumb = "留言板";
+    ViewBag.breadCrumb = "住戶留言板";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -14,3 +14,44 @@
     @ViewBag.breadCrumb
     <small class="block">COMMENTS</small>
 </h1>
+
+<aside class="comment-self">
+    @* 用戶本人提出的問題 *@
+</aside>
+
+<section class="comment-list">
+    @* 所有用戶提出的問題 - 以時間排序 *@
+
+</section>
+
+<form class="comment text-left">
+    <h2>我要留言</h2>
+    <div class="col-5 col-first">
+        <p class="row">
+            <label for="">住戶 360</label>
+            <input type="text" class="col-rest" value="王小明 先生">
+        </p>
+        <p class="row">
+            <label for="">聯絡電話</label>
+            <input type="text" class="col-rest" value="0000-000-000">
+        </p>
+        <p class="row">
+            <label for="">E-mail</label>
+            <input type="email" class="col-rest" value="xx@gmail.com">
+        </p>
+        <p class="row">
+            <label for="">欲詢問之業務項目</label>
+            <select name="" id="" required>
+                <option value="-">請選擇詢問項目</option>
+                @* 下列內容不確定是否要在後台可編輯 *@
+                <option value="">公設預約問題</option>
+                <option value="">設備修繕問題</option>
+                <option value="">社區資產問題</option>
+            </select>
+        </p>
+    </div>
+    <div class="col-7 col-last">
+        <textarea name="" id="" cols="40" rows="8" placeholder="請在此輸入留言內容..."></textarea>
+        <button class="btn">送出留言</button>
+    </div>
+</form>

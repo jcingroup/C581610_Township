@@ -44,11 +44,6 @@ $mobile-menu-width:   100% !default;
         // 子選單顯示
         &:hover, &:active {
 
-            &::before {
-                opacity: 1;
-                bottom: 0;
-            }
-
             .sub-nav {
                 opacity: 1;
                 visibility: visible;
@@ -69,7 +64,6 @@ $mobile-menu-width:   100% !default;
             bottom: -8px;
         }
     }
-
     .root {
         @if $nav-color     { color: $nav-color; }
         @if $nav-font-size { font-size: em($nav-font-size); }
@@ -89,6 +83,12 @@ $mobile-menu-width:   100% !default;
         &:hover, &:active, &.current {
             @if $nav-active-bg    { background: $nav-active-bg; }
             @if $nav-active-color { color:$nav-active-color; }
+        }
+        &:hover, &:active {
+            &::before {
+                opacity: 1;
+                bottom: 0;
+            }
         }
     }
 
@@ -157,7 +157,8 @@ $mobile-menu-width:   100% !default;
     background: #fff;
     height: 0;
 
-    @include fixed(top 174px left 0 right 0);
+    // @include fixed(top 174px left 0 right 0);
+    @include absolute(top 174px left 0 right 0);
     @include transition(opacity .4s, height .3s);
 
     a {

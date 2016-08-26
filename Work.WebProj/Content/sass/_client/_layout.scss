@@ -76,9 +76,8 @@
 
     // 本次專案
     .wrap {
-        position: relative;
-
         @if $index {
+            position: relative;
             width: 980px;
             margin: auto;
         }

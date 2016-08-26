@@ -32,10 +32,10 @@ $spacer:                     1rem !default;  // 上下留白
 // ----------------------------------------------------------------------
 $font-family-base:           \5FAE\8EDF\6B63\9ED1\9AD4,"微軟正黑體","Microsoft JhengHei",'Helvetica Neue',Helvetica,Arial,sans-serif !default;
 
-$font-size-base:             16px !default;     // 1rem
-$font-size-lg:               1.25rem !default;  // 20px
-$font-size-sm:               .9375rem !default; // 15px
-$font-size-xs:               .8125rem !default; // 13px - 微軟正黑體下建議最小為 13
+$font-size-base:             16px !default;       // 1rem
+$font-size-lg:               1.1875rem !default;  // 19px
+$font-size-sm:               .9375rem !default;   // 15px
+$font-size-xs:               .8125rem !default;   // 13px - 微軟正黑體下建議最小為 13
 
 $font-size-h1:               $font-size-base * 2.625 !default;   // 42px old-2.5
 $font-size-h2:               $font-size-base * 2.1875 !default;  // 35px old-2

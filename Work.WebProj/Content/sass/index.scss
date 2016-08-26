@@ -2,22 +2,29 @@
 
 // 本頁專用變數(覆蓋)
 // ------------------------------------------------------------
-$index:                 true;
-$img-index:             '../images/index';
+$index:                        true;
+$img-index:                    '../images/index';
 
-$headings-color:        #fff;
+// base
+$headings-color:                #fff;
 
-$wrapper-bg:            url(#{$img-index}/bg.jpg) no-repeat center 0;
-$content-spacing:       0;
+// layout
+$wrapper-bg:                    url(#{$img-index}/bg.jpg) no-repeat center 0;
+$content-spacing:               0;
+$header-bg:                     false;
+$header-height:                 735px;
+$logo-pos:                      left 0 top 255px;
 
-$header-bg:             false;
-$header-height:         735px;
-$logo-pos:              left 0 top 255px;
+// form
+$form-element-height:           38px;
+$form-element-radius:           false;
+$form-element-shadow:           false;
 
-
-$form-element-bg:       #fff;
-$form-element-radius:   false;
-$form-element-shadow:   false;
+// btn
+$btn-border-radius:             3px;
+$btn-pd:                        12px 40px;
+$btn-bg:                        #76A22E;
+$btn-hover-bg:                  #2AA19C;
 
 
 // import

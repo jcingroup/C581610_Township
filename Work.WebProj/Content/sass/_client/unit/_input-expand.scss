@@ -6,7 +6,7 @@ $expand-min-width:            50px !default;
 $expand-max-width:            200px !default;
 
 $expand-height:               50px !default;
-$expand-pos:                  top 124px right 0 !default;
+$expand-pos:                  false !default;
 $expand-color:                $brand-secondary !default;
 $expand-bg:                   darken($brand-secondary,7) !default;
 
@@ -50,8 +50,7 @@ $expand-hover-toggle: (
     @if $expand-height { height: $expand-height; }
     @if $expand-pos {
         @include absolute($expand-pos);
-    }
-    @else {
+    } @else {
         position: relative;
     }
 

@@ -380,10 +380,6 @@ input, textarea, select, .form-element {
   border: 1px solid #DFDFDF;
   padding: 5.44px 6px;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
-  input:focus, textarea:focus, select:focus, .form-element:focus {
-    border-color: #2AA19C;
-    outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(42, 161, 156, 0.6); }
   input::-ms-expand, textarea::-ms-expand, select::-ms-expand, .form-element::-ms-expand {
     background-color: transparent;
     border: 0; }
@@ -400,6 +396,10 @@ input, textarea, select, .form-element {
   width: 100%;
   background: #fff;
   height: 38px; }
+  .form-element:focus {
+    border-color: #2AA19C;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(42, 161, 156, 0.6); }
 
 .form-element-label {
   padding: 5.44px 6px;
@@ -834,10 +834,10 @@ button {
   padding-bottom: 64px; }
 
 .padding-0 {
-  padding: 0 !important; }
+  padding: 0; }
 
 .margin-0, .info {
-  margin: 0 !important; }
+  margin: 0; }
 
 .text-left, #footer, .intro, .card {
   text-align: left; }
@@ -886,7 +886,7 @@ button {
   font-size: 1rem; }
 
 .font-lg {
-  font-size: 1.25rem; }
+  font-size: 1.1875rem; }
 
 .font-xl, #footer .title-underline {
   font-size: 1.5625rem; }
