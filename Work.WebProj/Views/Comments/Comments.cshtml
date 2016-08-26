@@ -12,7 +12,7 @@
 
 @section Scripts {
     <script src="~/Content/js/jquery-scrolltofixed.js"></script>
-    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script>
         // 卷軸卷動時固定位置
         $('.comment-self').scrollToFixed({
@@ -27,7 +27,7 @@
         var $this = $(this),
             index = $this.data('index');
         $('.popup').magnificPopup({
-            delegate: 'a',
+            // delegate: 'a',
             type: 'ajax', // ajax
             overflowY: 'auto',
             removalDelay: 300,
@@ -71,7 +71,7 @@
             公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆
         </main>
         @* 最多顯示150字，若超過才出現 more按鈕 *@
-        <a href="~/Comments/popup" class="btn popup">MORE</a>
+        <a href="~/Comments/Popup" class="btn popup">MORE</a>
     </article>
 
     <article>
