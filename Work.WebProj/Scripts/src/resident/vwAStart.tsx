@@ -1,3 +1,25 @@
-﻿// A '.tsx' file enables JSX support in the TypeScript compiler, 
-// for more information see the following page on the TypeScript wiki:
-// https://github.com/Microsoft/TypeScript/wiki/JSX
+﻿import React = require('react');
+import Moment = require('moment');
+
+//import {ReportEditView} from './containers';
+
+export class AStart extends React.Component<any, any>{
+
+    constructor() {
+        super();
+        this.state = {};
+    }
+
+    render() {
+        let out_html: JSX.Element = null;
+
+        out_html =
+            (
+            <div>
+                你好
+                </div>
+            );
+
+        return out_html;
+    }
+}

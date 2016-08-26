@@ -85,6 +85,17 @@
         val?: number;
         Lname?: string;
     }
+
+    interface Resident extends BaseEntityTable {
+        resident_id?: number;
+        resident_name?: string;
+        resident_no?: string;
+        account?: string;
+        passwd?: string;
+        email?: string;
+    }
+
+
     interface Community extends BaseEntityTable {
         community_id?: number;
         community_name?: string;

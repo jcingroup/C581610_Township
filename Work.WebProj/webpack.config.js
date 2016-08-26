@@ -11,18 +11,7 @@ module.exports = {
         m_change_password: path.resolve(__dirname, 'Scripts/src/tsx/m-change_password.js'),
         m_users: path.resolve(__dirname, 'Scripts/src/tsx/m-users.js'),
         //後台 管理者
-        //m_aboutus: path.resolve(__dirname, 'Scripts/src/tsx/m-aboutusy.js'),
-        m_community: path.resolve(__dirname, 'Scripts/src/tsx/m-community.js'),
-        m_community_news: path.resolve(__dirname, 'Scripts/src/tsx/m-community-news.js'),
-        m_matter: path.resolve(__dirname, 'Scripts/src/tsx/m-matter.js'),
-        m_edit: path.resolve(__dirname, 'Scripts/src/tsx/m-edit.js'),
-        m_edit_detail: path.resolve(__dirname, 'Scripts/src/tsx/m-edit_detail.js'),
-        w_sell_list: path.resolve(__dirname, 'Scripts/src/tsx/w-sell-list.js'),
-        w_sell_content: path.resolve(__dirname, 'Scripts/src/tsx/w-sell-content.js'),
-        w_neighbor_list: path.resolve(__dirname, 'Scripts/src/tsx/w-neighbor-list.js'),
-        w_neighbor_content: path.resolve(__dirname, 'Scripts/src/tsx/w-neighbor-content.js'),
-        m_community_banner: path.resolve(__dirname, 'Scripts/src/tsx/m-community-banner.js'),
-
+        m_resident: path.resolve(__dirname, 'Scripts/src/resident/app.js'),
         community: path.resolve(__dirname, 'Scripts/src/community/index.js'),
 
         vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'redux', 'react-redux', 'redux-thunk', 'moment'],

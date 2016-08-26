@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
+    <Compile Include="Areas\Active\Controllers\ResidentController.cs" />
     <Compile Include="Areas\Active\Controllers\CommunityController.cs" />
     <Compile Include="Areas\Base\Controllers\DocController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
@@ -228,6 +229,7 @@
     <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
     <Content Include="app_modules\comm-matter\package.json" />
     <Content Include="Areas\Active\Views\Community\Redux.cshtml" />
+    <Content Include="Areas\Active\Views\Resident\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -437,22 +439,13 @@
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
-    <Content Include="Scripts\build\app\m_community.js" />
-    <Content Include="Scripts\build\app\m_community_banner.js" />
-    <Content Include="Scripts\build\app\m_community_news.js" />
-    <Content Include="Scripts\build\app\m_edit.js" />
-    <Content Include="Scripts\build\app\m_edit_detail.js" />
     <Content Include="Scripts\build\app\m_login.js" />
-    <Content Include="Scripts\build\app\m_matter.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
+    <Content Include="Scripts\build\app\m_resident.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
     <Content Include="Scripts\build\app\vendors.js" />
-    <Content Include="Scripts\build\app\w_neighbor_content.js" />
-    <Content Include="Scripts\build\app\w_neighbor_list.js" />
-    <Content Include="Scripts\build\app\w_sell_content.js" />
-    <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\googleReCAPTCHA.js" />
     <Content Include="Views\AboutUs\AboutUs.cshtml" />
@@ -660,6 +653,7 @@
     <Content Include="Areas\Active\Views\Community\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\ChangePassword.cshtml.resx" />
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\Resident\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="_Code\RPTFile\MemeberLabel.rdlc" />
   </ItemGroup>
   <PropertyGroup>
