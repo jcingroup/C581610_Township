@@ -296,7 +296,7 @@ small {
   font-weight: normal; }
 
 mark {
-  background-color: #eff2a6;
+  background-color: #efeab3;
   padding: .2em; }
 
 hr {
@@ -415,42 +415,42 @@ body:not(:-moz-handler-blocked) fieldset {
 [hidden] {
   display: none !important; }
 
-input, textarea, select, .form-element, .comment select, .comment textarea {
+input, textarea, select, .form-element, .comment-ask select, .comment-ask textarea {
   background: none;
   line-height: 1.5;
   color: #858585;
   border: 1px solid #DFDFDF;
   padding: 5.44px 6px;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
-  input::-ms-expand, textarea::-ms-expand, select::-ms-expand, .form-element::-ms-expand, .comment select::-ms-expand, .comment textarea::-ms-expand {
+  input::-ms-expand, textarea::-ms-expand, select::-ms-expand, .form-element::-ms-expand, .comment-ask select::-ms-expand, .comment-ask textarea::-ms-expand {
     background-color: transparent;
     border: 0; }
-  input::placeholder, textarea::placeholder, select::placeholder, .form-element::placeholder, .comment select::placeholder, .comment textarea::placeholder {
+  input::placeholder, textarea::placeholder, select::placeholder, .form-element::placeholder, .comment-ask select::placeholder, .comment-ask textarea::placeholder {
     color: #b8b8b8;
     opacity: 1; }
-  input:disabled, input[readonly], textarea:disabled, textarea[readonly], select:disabled, select[readonly], .form-element:disabled, .comment select:disabled, .comment textarea:disabled, .form-element[readonly], .comment select[readonly], .comment textarea[readonly] {
+  input:disabled, input[readonly], textarea:disabled, textarea[readonly], select:disabled, select[readonly], .form-element:disabled, .comment-ask select:disabled, .comment-ask textarea:disabled, .form-element[readonly], .comment-ask select[readonly], .comment-ask textarea[readonly] {
     background-color: #b0b0b0;
     opacity: 1; }
-  input:disabled, textarea:disabled, select:disabled, .form-element:disabled, .comment select:disabled, .comment textarea:disabled {
+  input:disabled, textarea:disabled, select:disabled, .form-element:disabled, .comment-ask select:disabled, .comment-ask textarea:disabled {
     cursor: not-allowed; }
 
-.form-element, .comment select, .comment textarea {
+.form-element, .comment-ask select, .comment-ask textarea {
   width: 100%;
   background: #fff;
   border-radius: 3px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
-  .form-element:focus, .comment select:focus, .comment textarea:focus {
+  .form-element:focus, .comment-ask select:focus, .comment-ask textarea:focus {
     border-color: #2AA19C;
     outline: 0;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(42, 161, 156, 0.6); }
 
-.form-element-label, .comment label {
+.form-element-label, .comment-ask label {
   padding: 5.44px 6px;
   line-height: 1.5;
   margin-bottom: 0; }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  [type="date"].form-element, .comment select[type="date"], .comment textarea[type="date"], [type="time"].form-element, .comment select[type="time"], .comment textarea[type="time"], [type="datetime-local"].form-element, .comment select[type="datetime-local"], .comment textarea[type="datetime-local"], [type="month"].form-element, .comment select[type="month"], .comment textarea[type="month"] {
+  [type="date"].form-element, .comment-ask select[type="date"], .comment-ask textarea[type="date"], [type="time"].form-element, .comment-ask select[type="time"], .comment-ask textarea[type="time"], [type="datetime-local"].form-element, .comment-ask select[type="datetime-local"], .comment-ask textarea[type="datetime-local"], [type="month"].form-element, .comment-ask select[type="month"], .comment-ask textarea[type="month"] {
     line-height: false; } }
 .form-element-static {
   padding-top: 5.44px;
@@ -486,18 +486,18 @@ input, textarea, select, .form-element, .comment select, .comment textarea {
 .input-size-xl {
   width: 480px; }
 
-.input-underline, .comment input {
+.input-underline, .comment-ask input {
   border: none;
   border-bottom: 1px solid #92C734; }
-  .input-underline:focus, .comment input:focus {
+  .input-underline:focus, .comment-ask input:focus {
     outline: 0;
     border-color: #D7DE21; }
 
-legend, .form-element, .comment select, .comment textarea, .foot-partner a, #menu .root, .sub-nav, .extend-btn,
+legend, .form-element, .comment-ask select, .comment-ask textarea, .foot-partner a, #menu .root, .sub-nav, .extend-btn,
 .extend-toggle, .block, .img-center, .grid-intro .time em {
   display: block; }
 
-label, output, .sub-nav a, .label, figure, a.tooltip, .inline-block, .scroll-nav a, .comment label, .comment input, .comment select {
+label, output, .sub-nav a, .label, figure, a.tooltip, .inline-block, .scroll-nav a, .comment-ask label, .comment-ask input, .comment-ask select {
   display: inline-block; }
 
 .input-inline, .inline {
@@ -506,7 +506,7 @@ label, output, .sub-nav a, .label, figure, a.tooltip, .inline-block, .scroll-nav
 .float-l, #menu li, .top-member .head {
   float: left; }
 
-.float-r, .search, .top-member {
+.float-r, .search, .top-member, .comment-self {
   float: right; }
 
 .wrap::after, #header::after, #footer::after, #main::after, .clearfix::after {
@@ -665,6 +665,7 @@ label, output, .sub-nav a, .label, figure, a.tooltip, .inline-block, .scroll-nav
   color: #E3E3E3; }
 
 .foot-partner a {
+  color: #D7DE21;
   margin-bottom: 0.75rem; }
 
 .navbar {
@@ -847,7 +848,7 @@ dd {
   margin: 0.8rem 0;
   letter-spacing: 1px; }
   .news-list .block:hover, .news-list .block:active {
-    color: #e7eb7a; }
+    color: #e6de89; }
 .news-list .label {
   margin-right: -5px; }
 .news-list .btn {
@@ -889,20 +890,20 @@ dd {
     list-style-type: initial; }
 
 .card {
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid #FEF8CC;
-  border-radius: 1px; }
+  background: #f9f9f1;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15); }
 
 button {
   border: none; }
 
 .btn {
   display: inline-block;
-  padding: 18px 50px;
+  padding: 12px 32px;
   border-radius: 2px;
   font-size: 18px;
   line-height: 1.01;
-  background: #2AA19C;
+  background: #76A22E;
   color: #fff;
   -webkit-transition: background .35s, color .5s;
   transition: background .35s, color .5s;
@@ -914,7 +915,7 @@ button {
   .btn:active, .btn.active {
     outline: 0; }
   .btn:hover, .btn:active, .btn.active, .btn:focus, .btn.focus {
-    background: #76A22E;
+    background: #1f7975;
     color: #fff; }
   .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
     cursor: not-allowed;
@@ -934,8 +935,8 @@ button {
   padding: 2px 10px;
   margin: 0 5px;
   border-radius: 3px;
-  background: #cce5a3;
-  color: #3c5317;
+  background: #afd136;
+  color: #fff;
   font-size: 0.875em; }
 
 em.label {
@@ -957,7 +958,7 @@ em.label {
   background: #29A9E0; }
 
 .label-warning {
-  background: #D7DE21; }
+  background: #D5C734; }
 
 .label-danger {
   background: #F35B74; }
@@ -1112,7 +1113,7 @@ figure {
   .tooltip::after {
     left: 0; }
 
-.clear, #menu {
+.clear, #menu, .comment-ask {
   clear: both; }
 
 .img-center {
@@ -1121,10 +1122,10 @@ figure {
 .margin {
   margin: 16px; }
 
-.margin-top, .grid-doc small {
+.margin-top, .grid-doc small, .comment-ask {
   margin-top: 16px; }
 
-.margin-bottom, legend, .comment textarea {
+.margin-bottom, legend, .comment-ask textarea {
   margin-bottom: 16px; }
 
 .margin-left {
@@ -1140,7 +1141,7 @@ figure {
 .padding-tiny {
   padding: 2px 4px; }
 
-.padding-sm {
+.padding-sm, .comment-self .card {
   padding: 4px 8px; }
 
 .padding, .news-list header, .news-list .block, .scroll-nav a,
@@ -1172,11 +1173,11 @@ figure {
   padding-top: 12px;
   padding-bottom: 12px; }
 
-.padding-16 {
+.padding-16, .comment-list main {
   padding-top: 16px;
   padding-bottom: 16px; }
 
-.padding-24 {
+.padding-24, .comment-list article {
   padding-top: 24px;
   padding-bottom: 24px; }
 
@@ -1184,8 +1185,7 @@ figure {
   padding-top: 32px;
   padding-bottom: 32px; }
 
-.padding-48, .grid-news,
-.grid-doc {
+.padding-48, .grid-news, .grid-doc {
   padding-top: 48px;
   padding-bottom: 48px; }
 
@@ -1196,10 +1196,10 @@ figure {
 .padding-0, ol, ul {
   padding: 0; }
 
-.margin-0, .Notice #main, .grid-intro p {
+.margin-0, .Notice #main, .grid-intro p, .comment-self dd {
   margin: 0; }
 
-.text-left, #footer, .sub-nav, .breadcrumb, .news-list header, .news-list .block, .top-member, .editor-content, .comment {
+.text-left, #footer, .sub-nav, .breadcrumb, .news-list header, .news-list .block, .top-member, .editor-content, .comment-ask, .comment-list, .comment-self {
   text-align: left; }
 
 .text-right {
@@ -1210,14 +1210,14 @@ figure {
   text-align: center; }
 
 .title-underline {
-  border-bottom: 1px solid #b0b0b0;
+  border-bottom: 1px solid #d4d4d4;
   padding-bottom: 0.66667rem;
   position: relative; }
   .title-underline::after {
     display: block;
     height: 2px;
     width: 20%;
-    background: #76A22E;
+    background: #92C734;
     position: absolute;
     bottom: -1px;
     left: 0; }
@@ -1240,13 +1240,13 @@ figure {
 .font-tiny {
   font-size: 0.8125rem; }
 
-.font-sm, .scroll-nav.fixed a {
+.font-sm, .scroll-nav.fixed a, .comment-self dd {
   font-size: 0.9375rem; }
 
-.font-md, .list-underline ol, .list-underline ul, .list-num ol, .list-num ul, .title-underline-d small {
+.font-md, .list-underline ol, .list-underline ul, .list-num ol, .list-num ul, .title-underline-d small, .comment-list .btn {
   font-size: 1rem; }
 
-.font-lg, .comment label, .comment input {
+.font-lg, .comment-ask label, .comment-ask input {
   font-size: 1.1875rem; }
 
 .font-xl, #footer .title-underline, .editor-content .title {
@@ -1267,7 +1267,7 @@ figure {
 .bg-white, .news-list .label, .news-list .btn:hover, .news-list .btn:active, .grid-intro figcaption, .grid-doc .grid, .scroll-nav a, .scroll-nav.fixed {
   background: #fff; }
 
-.text-primary, #footer a:hover, #footer a:active, .sub-nav a:hover, .sub-nav a:active, .editor-content .title, .editor-content .sub-title, .editor-content h4, .comment label {
+.text-primary, #footer a:hover, #footer a:active, .sub-nav a:hover, .sub-nav a:active, .editor-content .title, .editor-content .sub-title, .editor-content h4, .comment-ask label, .comment-list h3 {
   color: #688e28; }
 
 .bg-primary, .top-member .icon-photo_camera:hover, .top-member .icon-photo_camera:active, .scroll-nav a:hover, .scroll-nav a:active, .scroll-nav a.active {
@@ -1297,13 +1297,13 @@ figure {
 .bg-info, .news-list .info {
   background: #29A9E0; }
 
-.text-warning, .foot-partner a {
-  color: #c1c81e; }
+.text-warning {
+  color: #c6b929; }
 
 .bg-warning {
-  background: #D7DE21; }
+  background: #D5C734; }
 
-.text-danger, .news-list .public .label {
+.text-danger, .news-list .public .label, .comment-self dd {
   color: #f14360; }
 
 .bg-danger, .news-list .public {
@@ -1451,7 +1451,7 @@ figure {
       display: inline-block;
       vertical-align: middle; }
   .grid-doc .grid:hover, .grid-doc .grid:active {
-    background: #f7f8d3;
+    background: #f8f6dd;
     box-shadow: 6px 12px 15px #a6a6a6;
     position: relative;
     z-index: 2; }
@@ -1493,14 +1493,41 @@ figure {
   margin-top: 1.2rem;
   margin-bottom: 2.2rem; }
 
-.comment label, .comment input, .comment select {
+.comment-ask label, .comment-ask input, .comment-ask select {
   vertical-align: middle; }
-.comment input, .comment select {
+.comment-ask input, .comment-ask select {
   width: 71%; }
-.comment label {
+.comment-ask label {
   width: 20%;
   margin-right: 8px; }
-.comment .btn {
+.comment-ask .btn {
   margin-top: 1.5rem; }
-.comment .row {
+.comment-ask .row {
   margin: 0.6rem 0; }
+
+.comment-list, .comment-self {
+  margin-bottom: 2.2rem; }
+
+.comment-list {
+  width: 73%; }
+  .comment-list article {
+    border-bottom: 1px dashed #92c73c; }
+  .comment-list h3 {
+    font-size: 1.6875em;
+    line-height: 1.35;
+    margin-top: 0.6rem;
+    margin-bottom: 0.35rem; }
+  .comment-list time {
+    color: #bbb; }
+  .comment-list main {
+    margin-bottom: 0.5rem; }
+
+.comment-self {
+  width: 24%; }
+  .comment-self footer {
+    margin-top: 2rem; }
+  .comment-self .btn.active {
+    background: #b0b0b0; }
+  .comment-self dt {
+    line-height: 1.3;
+    margin-bottom: 3px; }

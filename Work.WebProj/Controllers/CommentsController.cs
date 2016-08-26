@@ -10,5 +10,10 @@ namespace DotWeb.WebApp.Controllers
         {
             return View("Comments");
         }
+
+        public ActionResult Popup()
+        {
+            return View();
+        }
     }
 }

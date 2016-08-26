@@ -1,25 +1,35 @@
 @charset "UTF-8";
 
-$collapse-title-size:          false !default;
 $collapse-title-color:         false !default;
 
-$collapse-content-color:       false !default;
-$collapse-content-hover-color: false !default;
+$collapse-title-styles:        false !default;
+$collapse-content-styles:      false !default;
+
+$collapse-icon-position:       'after' !default;
+$collapse-icon-close:          '\e90c' !default;
+$collapse-icon-open:           '\e90f' !default;
+$collapse-icon-color:          $collapse-title-color !default;
+$collapse-icon-color-hover:    $brand-secondary !default;
 
 
 .collapse-title {
     cursor: pointer; cursor: hand;
 
-    @if $collapse-title-size {
-        font-size: em($collapse-title-size);
-    }
-    @if $collapse-title-color {
-        color: $collapse-title-color;
+    @if $collapse-title-color { color: $collapse-title-color; }
+
+    @each $attribute, $value in $collapse-title-styles {
+        #{$attribute}: #{$value};
     }
 
-    @include el(after, inline-block, '\e900') {
-        color: $brand-primary;
-        margin-left: 8px;
+    @include el($collapse-icon-position, inline-block, $collapse-icon-close) {
+        @if $collapse-icon-color {
+            color: $brand-primary;
+        }
+        @if $collapse-icon-position == 'after' {
+            margin-left: 8px;
+        } @else if $collapse-icon-position == 'before' {
+            margin-right: 8px;
+        }
 
         font-family: 'icomoon' !important;
         speak: none;
@@ -31,23 +41,18 @@ $collapse-content-hover-color: false !default;
         -moz-osx-font-smoothing: grayscale;
     }
     &:hover, &:active, &.current {
-        &::after { color: $brand-secondary; }
+        &::#{$collapse-icon-position} {
+            @if $collapse-icon-color-hover { color: $collapse-icon-color-hover; }
+        }
     }
-    &.current {
-        &::after { content: '\e901'}
+    &.current::#{$collapse-icon-position} {
+        content: $collapse-icon-open;
     }
 }
 .collapse-content {
     display: none;
 
-    a {
-        @if $collapse-content-color {
-            color: $collapse-content-color;
-        }
-        &:hover, &:active, &.current {
-            @if $collapse-content-hover-color {
-                color: $collapse-content-hover-color;
-            }
-        }
+    @each $attribute, $value in $collapse-content-styles {
+        #{$attribute}: #{$value};
     }
 }

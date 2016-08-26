@@ -63,14 +63,14 @@
 .text-center { text-align: center; }
 
 .title-underline {
-    border-bottom: 1px solid $muted;
+    border-bottom: 1px solid lighten(black, 83);
     padding-bottom: $spacer/1.5;
     position: relative;
 
     @include el(after) {
         height: 2px;
         width: 20%;
-        background: $brand-primary;
+        background: $success;
         @include absolute(left 0 bottom -1px);
     }
 }

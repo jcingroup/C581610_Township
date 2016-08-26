@@ -6,8 +6,34 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-@section breadCrumb {
+@section css {
+    <link rel="stylesheet" href="~/Content/css/popup.css?v=@CommWebSetup.CacheVer">
+}
 
+@section Scripts {
+    <script src="~/Content/js/jquery-scrolltofixed.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script>
+        // 卷軸卷動時固定位置
+        $('.comment-self').scrollToFixed({
+            marginTop: 30,
+            limit: function() {
+                var limit = $('.comment-ask').offset().top - $('.comment-self').outerHeight(true) - 200;
+                return limit;
+            },
+            zIndex: 999,
+        });
+        // 彈出視窗
+        var $this = $(this),
+            index = $this.data('index');
+        $('.popup').magnificPopup({
+            delegate: 'a',
+            type: 'ajax', // ajax
+            overflowY: 'auto',
+            removalDelay: 300,
+            mainClass: 'my-mfp-slide-bottom'
+        });
+    </script>
 }
 
 <h1 class="title-underline-d">
@@ -16,15 +42,67 @@
 </h1>
 
 <aside class="comment-self">
-    @* 用戶本人提出的問題 *@
+    @* 用戶本人提出的問題 - 以時間排序 過期3個月以上的完成事項不顯示 *@
+    <h4 class="title-underline">您已提出的問題</h4>
+    <dl class="card">
+        <dt>日前已申請預約公設，不知是否收到通知？</dt>
+        <dd>管理員已收到用戶留言，將盡快為您回覆</dd>
+    </dl>
+    <dl class="card">
+        <dt>地下停車場有水漬，請處理</dt>
+        <dd>已處理完成</dd>
+    </dl>
+
+    @* 若用戶未提出任何問題，上列都不顯示，只顯示下面的我要留言 *@
+    <footer class="text-center">
+        <a href="#ask" class="btn bg-warning font-sm scroll">我要留言</a>
+    </footer>
 </aside>
 
-<section class="comment-list">
+<section class="comment-list col-rest">
     @* 所有用戶提出的問題 - 以時間排序 *@
+    <article>
+        <header>
+            <span class="label">公設預約問題</span>
+            <h3>公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？</h3>
+            <time>2016/8/26</time>
+        </header>
+        <main>
+            公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆
+        </main>
+        @* 最多顯示150字，若超過才出現 more按鈕 *@
+        <a href="~/Comments/popup" class="btn popup">MORE</a>
+    </article>
+
+    <article>
+        <header>
+            <span class="label">公設預約問題</span>
+            <h3>公設該如何預約呢？公設該如何預約呢？</h3>
+            <time>2016/8/26</time>
+        </header>
+        <main>
+            公設預設問題回覆公設預設問題
+        </main>
+        @* 最多顯示150字，若超過才出現 more按鈕 *@
+        <a href="" class="btn popup">MORE</a>
+    </article>
+
+    <article>
+        <header>
+            <span class="label">公設預約問題</span>
+            <h3>公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？</h3>
+            <time>2016/8/26</time>
+        </header>
+        <main>
+            公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆...
+        </main>
+        @* 最多顯示150字，若超過才出現 more按鈕 *@
+        <a href="" class="btn popup">MORE</a>
+    </article>
 
 </section>
 
-<form class="comment text-left">
+<form id="ask" class="comment-ask">
     <h2>我要留言</h2>
     <div class="col-5 col-first">
         <p class="row">
@@ -52,6 +130,6 @@
     </div>
     <div class="col-7 col-last">
         <textarea name="" id="" cols="40" rows="8" placeholder="請在此輸入留言內容..."></textarea>
-        <button class="btn">送出留言</button>
+        <button class="btn bg-secondary padding-xl">送出留言</button>
     </div>
 </form>

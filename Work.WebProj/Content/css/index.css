@@ -296,7 +296,7 @@ small {
   font-weight: normal; }
 
 mark {
-  background-color: #eff2a6;
+  background-color: #efeab3;
   padding: .2em; }
 
 hr {
@@ -619,6 +619,7 @@ label, output, .inline-block, .card {
   color: #E3E3E3; }
 
 .foot-partner a {
+  color: #D7DE21;
   margin-bottom: 0.75rem; }
 
 .goTop, .goTop:hover, .goTop:active {
@@ -707,7 +708,7 @@ button {
   .btn:active, .btn.active {
     outline: 0; }
   .btn:hover, .btn:active, .btn.active, .btn:focus, .btn.focus {
-    background: #2AA19C;
+    background: #1f7975;
     color: #fff; }
   .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
     cursor: not-allowed;
@@ -849,14 +850,14 @@ button {
   text-align: center; }
 
 .title-underline {
-  border-bottom: 1px solid #b0b0b0;
+  border-bottom: 1px solid #d4d4d4;
   padding-bottom: 0.66667rem;
   position: relative; }
   .title-underline::after {
     display: block;
     height: 2px;
     width: 20%;
-    background: #76A22E;
+    background: #92C734;
     position: absolute;
     bottom: -1px;
     left: 0; }
@@ -936,11 +937,11 @@ button {
 .bg-info {
   background: #29A9E0; }
 
-.text-warning, .foot-partner a {
-  color: #c1c81e; }
+.text-warning {
+  color: #c6b929; }
 
 .bg-warning {
-  background: #D7DE21; }
+  background: #D5C734; }
 
 .text-danger {
   color: #f14360; }
