@@ -436,7 +436,6 @@
     <Content Include="ckeditor\config.js" />
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
-    <Content Include="node_modules\bootstrap\dist\js\bootstrap.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_community.js" />
     <Content Include="Scripts\build\app\m_community_banner.js" />
