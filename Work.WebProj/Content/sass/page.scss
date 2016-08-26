@@ -112,8 +112,6 @@ $figure-inline:                 true;
     }
 }
 
-
-
 // == Notice - 住戶登入後首頁
 .grid-intro {
     padding-top: 75px;
@@ -187,10 +185,7 @@ $figure-inline:                 true;
     }
 }
 
-.grid-news,
-.grid-doc {
-    @extend .padding-48;
-}
+.grid-news, .grid-doc { @extend .padding-48; }
 
 // 最新消息
 .grid-news {
@@ -308,8 +303,8 @@ $figure-inline:                 true;
 }
 
 // == 留言板
-.comment {
-    @extend .text-left;
+.comment-ask {
+    @extend .text-left, .clear, .margin-top;
 
     label, input, select {
         @extend %inline-block;
@@ -326,4 +321,38 @@ $figure-inline:                 true;
     textarea { @extend .margin-bottom; }
     .btn { margin-top: $spacer*1.5; }
     .row { margin: $spacer*.6 0; }
+}
+
+.comment-list, .comment-self {
+    @extend .text-left;
+    margin-bottom: $spacer*2.2;
+}
+.comment-list {
+    width: 73%;
+    article {
+        @extend .padding-24;
+        border-bottom: 1px dashed lighten($brand-primary,10);
+    }
+    h3 {
+        @extend .text-primary;
+        font-size: em(27);
+        line-height: 1.35;
+        margin-top: $spacer*.6;
+        margin-bottom: $spacer*.35;
+    }
+    time { color: #bbb; }
+    main { @extend .padding-16; margin-bottom: $spacer*.5; }
+    .btn { @extend .font-md; }
+}
+.comment-self {
+    @extend %float-r;
+    width: 24%;
+
+    // &.fixed { @include fixed(top 20px right 20px bottom 650px); }
+
+    footer { margin-top: $spacer*2; }
+    .btn.active { background: $muted; }
+    .card { @extend .padding-sm; }
+    dt { line-height: 1.3; margin-bottom: 3px; }
+    dd { @extend .font-sm, .text-danger, .margin-0; }
 }

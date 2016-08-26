@@ -23,8 +23,12 @@ $form-element-shadow:           false;
 // btn
 $btn-border-radius:             3px;
 $btn-pd:                        12px 40px;
-$btn-bg:                        #76A22E;
-$btn-hover-bg:                  #2AA19C;
+
+// card
+$card-bg:                       rgba(white,.45);
+$card-radius:                   1px;
+$card-border:                   1px solid #FEF8CC;
+$card-shadow:                   false;
 
 
 // import

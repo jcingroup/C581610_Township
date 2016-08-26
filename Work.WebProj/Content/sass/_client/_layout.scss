@@ -165,7 +165,7 @@ $font-gray: #7F7F7F;
 
         #footer & {
             font-size: em(15,35);
-            color: $warning;
+            color: $footer-color-sp;
             letter-spacing: 7px;
             margin-top: $spacer*.8;
 
@@ -197,7 +197,7 @@ $font-gray: #7F7F7F;
         border-color: $line-color;
         margin-bottom: $spacer*1.35;
 
-        &::after { background: $warning; }
+        &::after { background: $footer-color-sp; }
     }
     section {
         &:not(:first-child) {
@@ -239,9 +239,9 @@ $font-gray: #7F7F7F;
 
 .foot-partner {
     a {
-        @extend %block, .text-warning;
+        @extend %block;
         // display: block;
-        // color: $warning;
+        color: $footer-color-sp;
         margin-bottom: $spacer*.75;
     }
 }

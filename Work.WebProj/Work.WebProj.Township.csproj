@@ -347,9 +347,9 @@
     <Content Include="Content\images\temp.jpg" />
     <Content Include="Content\images\temp2.gif" />
     <Content Include="Content\js\common.js" />
+    <Content Include="Content\js\jquery-scrolltofixed.js" />
     <Content Include="Content\js\jquery.lazyload.min.js" />
     <Content Include="Content\js\jquery.scroller.js" />
-    <Content Include="Content\js\magnific-popup\jquery.magnific-popup.js" />
     <Content Include="Content\js\magnific-popup\jquery.magnific-popup.min.js" />
     <Content Include="Content\font\icomoon\icomoon.eot" />
     <Content Include="Content\font\icomoon\icomoon.svg" />
@@ -462,6 +462,7 @@
     <Content Include="Views\Comments\Comments.cshtml" />
     <Content Include="Views\Explain\Explain.cshtml" />
     <Content Include="Views\Service\Service.cshtml" />
+    <Content Include="Views\Comments\Popup.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
