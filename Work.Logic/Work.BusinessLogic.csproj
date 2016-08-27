@@ -112,14 +112,15 @@
     <Compile Include="DB0\Menu.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\News.cs">
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\Resident.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="LogicCenter.cs" />
-    <Compile Include="Models\Community_Community.cs" />
-    <Compile Include="Models\Community_News.cs" />
-    <Compile Include="Models\Matter.cs" />
-    <Compile Include="Models\Community.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Resident.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

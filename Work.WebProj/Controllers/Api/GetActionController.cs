@@ -222,11 +222,11 @@ namespace DotWeb.Api
 
         //    return Ok(result);
         //}
-        public class SearchMatterObj : Matter
-        {
-            public string list_src { get; set; }
+        //public class SearchMatterObj : Matter
+        //{
+        //    public string list_src { get; set; }
 
-        }
+        //}
         public class queryParam
         {
             public string info_type { get; set; }
@@ -315,10 +315,10 @@ namespace DotWeb.Api
 
         //    return Ok(result);
         //}
-        public class SearchCommunityObj : Community
-        {
-            public string list_src { get; set; }
-        }
+        //public class SearchCommunityObj : Community
+        //{
+        //    public string list_src { get; set; }
+        //}
 
 
         //[HttpGet]

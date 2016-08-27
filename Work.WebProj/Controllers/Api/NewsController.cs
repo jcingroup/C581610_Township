@@ -1,81 +1,85 @@
-﻿using DotWeb.Helpers;
+﻿using LinqKit;
 using ProcCore.Business;
 using ProcCore.Business.DB0;
 using ProcCore.HandleResult;
 using ProcCore.WebCore;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Controllers;
+
 
 namespace DotWeb.Api
 {
-    public class NewsController : ajaxApi<News, q_News>
+    [RoutePrefix("api/News")]
+    public class NewsController : ajaxApi<News>
     {
-        public async Task<IHttpActionResult> Get(int id)
+        public async Task<IHttpActionResult> Get([FromUri] int id)
         {
             using (db0 = getDB0())
             {
-                item = await db0.News.FindAsync(id);
-                r = new ResultInfo<News>() { data = item };
+                News item = await db0.News.FindAsync(id);
+                var r = new ResultInfo<News>() { data = item };
+                return Ok(r);
             }
-
-            return Ok(r);
         }
-        public async Task<IHttpActionResult> Get([FromUri]q_News q)
+        public async Task<IHttpActionResult> Get([FromUri]queryParam q)
         {
-            #region working
+            #region 連接BusinessLogicLibary資料庫並取得資料
 
-            using (db0 = getDB0())
+            db0 = getDB0();
+            var predicate = PredicateBuilder.True<News>();
+
+            if (q.keyword != null)
+                predicate = predicate.And(x => x.news_title.Contains(q.keyword));
+
+            int page = (q.page == null ? 1 : (int)q.page);
+            var result = db0.News.AsExpandable().Where(predicate);
+            var resultCount = await result.CountAsync();
+
+            int startRecord = PageCount.PageInfo(page, defPageSize, resultCount);
+            var resultItems = await result
+                .OrderBy(x => x.news_id)
+                .Skip(startRecord)
+                .Take(defPageSize)
+                .ToListAsync();
+
+            db0.Dispose();
+
+            return Ok(new
             {
-                var items = db0.News
-                    .OrderByDescending(x => x.sort)
-                    .Select(x => new m_News()
-                    {
-                        news_id = x.news_id,
-                        news_date = x.news_date,
-                        news_title = x.news_title,
-                        sort=x.sort,
-                        i_Hide=x.i_Hide
-                    });
-                if (q.keyword != null)
-                {
-                    items = items.Where(x => x.news_title.Contains(q.keyword));
-                }
-                int page = (q.page == null ? 1 : (int)q.page);
-                int startRecord = PageCount.PageInfo(page, this.defPageSize, items.Count());
-                var resultItems = await items.Skip(startRecord).Take(this.defPageSize).ToListAsync();
+                rows = resultItems,
+                total = PageCount.TotalPage,
+                page = PageCount.Page,
+                records = PageCount.RecordCount,
+                startcount = PageCount.StartCount,
+                endcount = PageCount.EndCount
+            });
 
-                return Ok(new GridInfo<m_News>()
-                {
-                    rows = resultItems,
-                    total = PageCount.TotalPage,
-                    page = PageCount.Page,
-                    records = PageCount.RecordCount,
-                    startcount = PageCount.StartCount,
-                    endcount = PageCount.EndCount
-                });
-            }
             #endregion
         }
-        public async Task<IHttpActionResult> Put([FromBody]News md)
+        public async Task<IHttpActionResult> Put([FromBody]putBodyParam param)
         {
             ResultInfo rAjaxResult = new ResultInfo();
             try
             {
                 db0 = getDB0();
 
-                item = await db0.News.FindAsync(md.news_id);
-
+                item = await db0.News.FindAsync(param.id);
+                var md = param.md;
                 item.news_title = md.news_title;
-                //item.news_date = md.news_date;
+                item.news_type = md.news_type;
                 item.news_content = md.news_content;
-                item.sort = md.sort;
-                item.i_Hide = md.i_Hide;
-                //item.sort = md.sort;
+                item.day = md.day;
+
+                md.i_UpdateDateTime = DateTime.Now;
+                md.i_UpdateDeptID = departmentId;
+                md.i_UpdateUserID = UserId;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
@@ -96,8 +100,8 @@ namespace DotWeb.Api
             md.news_id = GetNewId(CodeTable.News);
 
             md.i_InsertDateTime = DateTime.Now;
-            md.i_InsertDeptID = this.departmentId;
-            md.i_InsertUserID = this.UserId;
+            md.i_InsertDeptID = departmentId;
+            md.i_InsertUserID = UserId;
             md.i_Lang = "zh-TW";
             r = new ResultInfo<News>();
             if (!ModelState.IsValid)
@@ -137,30 +141,35 @@ namespace DotWeb.Api
                 db0.Dispose();
             }
         }
-        public async Task<IHttpActionResult> Delete([FromUri]int[] ids)
+        public async Task<IHttpActionResult> Delete([FromBody]delParam param)
         {
             try
             {
                 db0 = getDB0();
                 r = new ResultInfo<News>();
-                foreach (var id in ids)
-                {
-                    item = new News() { news_id = id };
-                    db0.News.Attach(item);
-                    db0.News.Remove(item);
-                }
-                await db0.SaveChangesAsync();
 
-                r.result = true;
-                return Ok(r);
+                item = await db0.News.FindAsync(param.id);
+                if (item != null)
+                {
+                    db0.News.Remove(item);
+                    await db0.SaveChangesAsync();
+                    r.result = true;
+                    return Ok(r);
+                }
+                else
+                {
+                    r.result = false;
+                    r.message = Resources.Res.Log_Err_Delete_NotFind;
+                    return Ok(r);
+                }
+
             }
             catch (DbUpdateException ex)
             {
                 r.result = false;
                 if (ex.InnerException != null)
                 {
-                    r.message = Resources.Res.Log_Err_Delete_DetailExist
-                        + "\r\n" + getErrorMessage(ex);
+                    r.message = Resources.Res.Log_Err_Delete_DetailExist + "\r\n" + getErrorMessage(ex);
                 }
                 else
                 {
@@ -179,9 +188,21 @@ namespace DotWeb.Api
                 db0.Dispose();
             }
         }
+        public class queryParam : QueryBase
+        {
+            public string keyword { set; get; }
+
+        }
+        public class putBodyParam
+        {
+            public int id { get; set; }
+            public News md { get; set; }
+        }
+        public class delParam
+        {
+            public int id { get; set; }
+        }
     }
-    public class q_News : QueryBase
-    {
-        public string keyword { get; set; }
-    }
+
+
 }
