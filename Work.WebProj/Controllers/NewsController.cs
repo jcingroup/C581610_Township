@@ -3,6 +3,7 @@ using DotWeb.Controller;
 using ProcCore.Business.DB0;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace DotWeb.WebApp.Controllers
 {
@@ -11,12 +12,26 @@ namespace DotWeb.WebApp.Controllers
         // GET: News
         public ActionResult Index()
         {
-            return View("list");
+            return Redirect("~/News/list");
         }
 
         public ActionResult list()
         {
-            return View();
+            List<m_News> items = new List<m_News>();
+            using (var db0 = getDB0())
+            {
+                items = db0.News
+                    .Where(x => !x.i_Hide)
+                    .OrderByDescending(x => x.day)
+                    .Select(x => new m_News()
+                    {
+                        news_id = x.news_id,
+                        day = x.day,
+                        news_type = x.news_type,
+                        news_title = x.news_title
+                    }).ToList();
+            }
+            return View(items);
         }
 
         public ActionResult Content(int? id)
