@@ -32,33 +32,7 @@ namespace DotWeb.Areas.Base.Controllers
                     {
                         Name = f_name,
                         Sort = int.Parse(f_sort),
-                        Momo = f_memo,
-                        Link = Url.Content("~/_Code/SysDoc/" + f_name)
-                    };
-                    l.Add(d);
-                }
-            }
-            return View("ListData", l.ToArray().OrderBy(x => x.Sort));
-        }
-        public ActionResult ListGrid_User()
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.Load(Server.MapPath("~/_Code/SysDoc/Doc_1.xml"));
-            XmlNodeList xmlE = xml.GetElementsByTagName("file");
-            List<DocInfo> l = new List<DocInfo>();
-            foreach (XmlElement f in xmlE)
-            {
-                String f_name = f.GetElementsByTagName("name").Item(0).FirstChild.Value;
-                String f_sort = f.GetElementsByTagName("sort").Item(0).FirstChild.Value;
-                String f_memo = f.GetElementsByTagName("memo").Item(0).FirstChild.Value;
-
-                if (System.IO.File.Exists(Server.MapPath("~/_Code/SysDoc/" + f_name)))
-                {
-                    DocInfo d = new DocInfo()
-                    {
-                        Name = f_name,
-                        Sort = int.Parse(f_sort),
-                        Momo = f_memo,
+                        Memo = f_memo,
                         Link = Url.Content("~/_Code/SysDoc/" + f_name)
                     };
                     l.Add(d);
@@ -71,7 +45,7 @@ namespace DotWeb.Areas.Base.Controllers
     {
         public String Name { get; set; }
         public int Sort { get; set; }
-        public String Momo { get; set; }
+        public String Memo { get; set; }
         public String Link { get; set; }
     }
 }

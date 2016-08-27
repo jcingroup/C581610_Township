@@ -9,17 +9,12 @@ using System.Linq;
 
 namespace DotWeb.Areas.Active.Controllers
 {
-    public class CommunityController : AdminController
+    [Authorize(Roles = "Admins,Managers")]
+    public class ResidentInfoController : AdminController
     {
         #region Action and function section
-        public ActionResult Main()
-        {
-            ActionRun();
-            return View();
-        }
-
-        public ActionResult Redux()
-        {
+        public ActionResult News()
+        {//最新消息
             ActionRun();
             return View();
         }

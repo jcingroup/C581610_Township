@@ -27,7 +27,6 @@ namespace ProcCore.Business.DB0
     
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Community> Community { get; set; }
         public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<i_Currency> i_Currency { get; set; }
         public virtual DbSet<i_IDX> i_IDX { get; set; }

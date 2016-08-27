@@ -90,9 +90,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>C58A0_Township.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DB0\Community.cs">
-      <DependentUpon>C58A0_Township.tt</DependentUpon>
-    </Compile>
     <Compile Include="DB0\DBPart.cs" />
     <Compile Include="DB0\Department.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>

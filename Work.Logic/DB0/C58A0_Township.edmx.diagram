@@ -7,7 +7,6 @@
       <Diagram DiagramId="7a3086a7dde6442b8c1d77c74e11d632" Name="Diagram1">
         <EntityTypeShape EntityType="C58A0_TownshipModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.AspNetUsers" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="C58A0_TownshipModel.Community" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.Department" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.i_Currency" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.i_IDX" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
