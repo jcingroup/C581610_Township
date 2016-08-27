@@ -49,6 +49,42 @@
           <Property Name="department_name" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Editor">
+          <Key>
+            <PropertyRef Name="editor_id" />
+          </Key>
+          <Property Name="editor_id" Type="int" Nullable="false" />
+          <Property Name="body_class" Type="nvarchar" MaxLength="64" />
+          <Property Name="url" Type="nvarchar" MaxLength="64" />
+          <Property Name="name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EditorDetail">
+          <Key>
+            <PropertyRef Name="editor_detail_id" />
+          </Key>
+          <Property Name="editor_detail_id" Type="int" Nullable="false" />
+          <Property Name="editor_id" Type="int" Nullable="false" />
+          <Property Name="detail_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="detail_content" Type="ntext" />
+          <Property Name="sort" Type="int" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
         <EntityType Name="i_Currency">
           <Key>
             <PropertyRef Name="id" />
@@ -184,6 +220,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EditorDetail_Editor">
+          <End Role="Editor" Type="Self.Editor" Multiplicity="1" />
+          <End Role="EditorDetail" Type="Self.EditorDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editor">
+              <PropertyRef Name="editor_id" />
+            </Principal>
+            <Dependent Role="EditorDetail">
+              <PropertyRef Name="editor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MenuRole_AspNetRoles">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
           <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
@@ -213,6 +261,8 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Editor" EntityType="Self.Editor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EditorDetail" EntityType="Self.EditorDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_IDX" EntityType="Self.i_IDX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Lang" EntityType="Self.i_Lang" Schema="dbo" store:Type="Tables" />
@@ -229,6 +279,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EditorDetail_Editor" Association="Self.FK_EditorDetail_Editor">
+            <End Role="Editor" EntitySet="Editor" />
+            <End Role="EditorDetail" EntitySet="EditorDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuRole_AspNetRoles" Association="Self.FK_MenuRole_AspNetRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -381,6 +435,12 @@
           </AssociationSet>
           <EntitySet Name="Resident" EntityType="C58A0_TownshipModel.Resident" />
           <EntitySet Name="News" EntityType="C58A0_TownshipModel.News" />
+          <EntitySet Name="Editor" EntityType="C58A0_TownshipModel.Editor" />
+          <EntitySet Name="EditorDetail" EntityType="C58A0_TownshipModel.EditorDetail" />
+          <AssociationSet Name="FK_EditorDetail_Editor" Association="C58A0_TownshipModel.FK_EditorDetail_Editor">
+            <End Role="Editor" EntitySet="Editor" />
+            <End Role="EditorDetail" EntitySet="EditorDetail" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Resident">
           <Key>
@@ -411,6 +471,56 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
+        <EntityType Name="Editor">
+          <Key>
+            <PropertyRef Name="editor_id" />
+          </Key>
+          <Property Name="editor_id" Type="Int32" Nullable="false" />
+          <Property Name="body_class" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="EditorDetail" Relationship="C58A0_TownshipModel.FK_EditorDetail_Editor" FromRole="Editor" ToRole="EditorDetail" />
+        </EntityType>
+        <EntityType Name="EditorDetail">
+          <Key>
+            <PropertyRef Name="editor_detail_id" />
+          </Key>
+          <Property Name="editor_detail_id" Type="Int32" Nullable="false" />
+          <Property Name="editor_id" Type="Int32" Nullable="false" />
+          <Property Name="detail_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="detail_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Editor" Relationship="C58A0_TownshipModel.FK_EditorDetail_Editor" FromRole="EditorDetail" ToRole="Editor" />
+        </EntityType>
+        <Association Name="FK_EditorDetail_Editor">
+          <End Type="C58A0_TownshipModel.Editor" Role="Editor" Multiplicity="1" />
+          <End Type="C58A0_TownshipModel.EditorDetail" Role="EditorDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editor">
+              <PropertyRef Name="editor_id" />
+            </Principal>
+            <Dependent Role="EditorDetail">
+              <PropertyRef Name="editor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -576,6 +686,44 @@
                 <ScalarProperty Name="day" ColumnName="day" />
                 <ScalarProperty Name="news_title" ColumnName="news_title" />
                 <ScalarProperty Name="news_id" ColumnName="news_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editor">
+            <EntityTypeMapping TypeName="C58A0_TownshipModel.Editor">
+              <MappingFragment StoreEntitySet="Editor">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="body_class" ColumnName="body_class" />
+                <ScalarProperty Name="editor_id" ColumnName="editor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EditorDetail">
+            <EntityTypeMapping TypeName="C58A0_TownshipModel.EditorDetail">
+              <MappingFragment StoreEntitySet="EditorDetail">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="detail_content" ColumnName="detail_content" />
+                <ScalarProperty Name="detail_name" ColumnName="detail_name" />
+                <ScalarProperty Name="editor_id" ColumnName="editor_id" />
+                <ScalarProperty Name="editor_detail_id" ColumnName="editor_detail_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

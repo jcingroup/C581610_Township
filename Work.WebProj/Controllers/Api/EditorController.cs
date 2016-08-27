@@ -16,15 +16,15 @@ using System.Web.Http.Controllers;
 
 namespace DotWeb.Api
 {
-    [RoutePrefix("api/News")]
-    public class NewsController : ajaxApi<News>
+    [RoutePrefix("api/Editor")]
+    public class EditorController : ajaxApi<Editor>
     {
         public async Task<IHttpActionResult> Get([FromUri] int id)
         {
             using (db0 = getDB0())
             {
-                News item = await db0.News.FindAsync(id);
-                var r = new ResultInfo<News>() { data = item };
+                Editor item = await db0.Editor.FindAsync(id);
+                var r = new ResultInfo<Editor>() { data = item };
                 return Ok(r);
             }
         }
@@ -33,18 +33,18 @@ namespace DotWeb.Api
             #region 連接BusinessLogicLibary資料庫並取得資料
 
             db0 = getDB0();
-            var predicate = PredicateBuilder.True<News>();
+            var predicate = PredicateBuilder.True<Editor>();
 
             if (q.keyword != null)
-                predicate = predicate.And(x => x.news_title.Contains(q.keyword));
+                predicate = predicate.And(x => x.name.Contains(q.keyword));
 
             int page = (q.page == null ? 1 : (int)q.page);
-            var result = db0.News.AsExpandable().Where(predicate);
+            var result = db0.Editor.AsExpandable().Where(predicate);
             var resultCount = await result.CountAsync();
 
             int startRecord = PageCount.PageInfo(page, defPageSize, resultCount);
             var resultItems = await result
-                .OrderByDescending(x => x.day)
+                .OrderByDescending(x => x.sort)
                 .Skip(startRecord)
                 .Take(defPageSize)
                 .ToListAsync();
@@ -70,13 +70,12 @@ namespace DotWeb.Api
             {
                 db0 = getDB0();
 
-                item = await db0.News.FindAsync(param.id);
+                item = await db0.Editor.FindAsync(param.id);
                 var md = param.md;
-                item.news_title = md.news_title;
-                item.news_type = md.news_type;
-                item.news_content = md.news_content;
-                item.day = md.day;
-                item.i_Hide = md.i_Hide;
+                item.body_class = md.body_class;
+                item.url = md.url;
+                item.name = md.name;
+                item.sort = md.sort;
 
                 item.i_UpdateDateTime = DateTime.Now;
                 item.i_UpdateDeptID = departmentId;
@@ -96,9 +95,9 @@ namespace DotWeb.Api
             }
             return Ok(rAjaxResult);
         }
-        public async Task<IHttpActionResult> Post([FromBody]News md)
+        public async Task<IHttpActionResult> Post([FromBody]Editor md)
         {
-            md.news_id = GetNewId(CodeTable.News);
+            md.editor_id = GetNewId(CodeTable.Editor);
 
             md.i_InsertDateTime = DateTime.Now;
             md.i_InsertDeptID = departmentId;
@@ -107,7 +106,7 @@ namespace DotWeb.Api
             md.i_UpdateDeptID = departmentId;
             md.i_UpdateUserID = UserId;
             md.i_Lang = "zh-TW";
-            r = new ResultInfo<News>();
+            r = new ResultInfo<Editor>();
             if (!ModelState.IsValid)
             {
                 r.message = ModelStateErrorPack();
@@ -120,11 +119,11 @@ namespace DotWeb.Api
                 #region working
                 db0 = getDB0();
 
-                db0.News.Add(md);
+                db0.Editor.Add(md);
                 await db0.SaveChangesAsync();
 
                 r.result = true;
-                r.id = md.news_id;
+                r.id = md.editor_id;
                 return Ok(r);
                 #endregion
             }
@@ -150,12 +149,12 @@ namespace DotWeb.Api
             try
             {
                 db0 = getDB0();
-                r = new ResultInfo<News>();
+                r = new ResultInfo<Editor>();
 
-                item = await db0.News.FindAsync(param.id);
+                item = await db0.Editor.FindAsync(param.id);
                 if (item != null)
                 {
-                    db0.News.Remove(item);
+                    db0.Editor.Remove(item);
                     await db0.SaveChangesAsync();
                     r.result = true;
                     return Ok(r);
@@ -200,7 +199,7 @@ namespace DotWeb.Api
         public class putBodyParam
         {
             public int id { get; set; }
-            public News md { get; set; }
+            public Editor md { get; set; }
         }
         public class delParam
         {

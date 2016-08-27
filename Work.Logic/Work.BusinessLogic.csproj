@@ -94,6 +94,12 @@
     <Compile Include="DB0\Department.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Editor.cs">
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\EditorDetail.cs">
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\i_Currency.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
@@ -119,6 +125,7 @@
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="LogicCenter.cs" />
+    <Compile Include="Models\Editor.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Resident.cs" />
     <Compile Include="Models\Menu.cs" />

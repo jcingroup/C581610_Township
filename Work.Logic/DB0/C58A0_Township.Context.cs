@@ -36,5 +36,7 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<Resident> Resident { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Editor> Editor { get; set; }
+        public virtual DbSet<EditorDetail> EditorDetail { get; set; }
     }
 }
