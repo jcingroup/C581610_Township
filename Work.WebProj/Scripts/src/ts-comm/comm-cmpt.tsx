@@ -1050,7 +1050,7 @@ interface RadioBoxProps {
     labelClassName?: string;
     disabled?: boolean;
     onChange?: Function;
-    value?: string | number;
+    value?: any;
     required?: boolean;
 }
 export class RadioBox extends React.Component<RadioBoxProps, any>{

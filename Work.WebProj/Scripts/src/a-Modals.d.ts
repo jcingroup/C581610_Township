@@ -21,7 +21,7 @@
         sort: any;
     }
     interface SelectFormat {
-        id: number | string;
+        id: any;
         label: string;
     }
     interface StateTemplate extends SelectFormat {

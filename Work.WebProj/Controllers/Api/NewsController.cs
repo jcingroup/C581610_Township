@@ -102,6 +102,9 @@ namespace DotWeb.Api
             md.i_InsertDateTime = DateTime.Now;
             md.i_InsertDeptID = departmentId;
             md.i_InsertUserID = UserId;
+            md.i_UpdateDateTime = DateTime.Now;
+            md.i_UpdateDeptID = departmentId;
+            md.i_UpdateUserID = UserId;
             md.i_Lang = "zh-TW";
             r = new ResultInfo<News>();
             if (!ModelState.IsValid)

@@ -7,6 +7,8 @@ using System.Data.Entity.Validation;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
+
 namespace ProcCore.Business.DB0
 {
     public enum EditState
@@ -34,32 +36,64 @@ namespace ProcCore.Business.DB0
 
     public static class CodeSheet
     {
-        public static List<i_Code> sales_rank = new List<i_Code>()
+        public static List<i_Code> news_type = new List<i_Code>()
         {
-            new i_Code{ Code = 1, Value = "共享會員", LangCode = "wait" },
-            new i_Code{ Code = 2, Value = "經理人", LangCode = "progress" },
-            new i_Code{ Code = 3, Value = "營運中心", LangCode = "finish" },
-            new i_Code{ Code = 4, Value = "管理處", LangCode = "pause" }
+            new i_Code{ Code = 1, Value = "活動", ClassName = "activity",IconClass="label-success" },
+            new i_Code{ Code = 2, Value = "公告", ClassName = "public",IconClass="label-danger"  },
+            new i_Code{ Code = 3, Value = "資訊", ClassName = "info" ,IconClass="label-info" }
         };
 
-        public static string GetStateVal(int code, List<i_Code> data)
+        public static string GetStateVal(int code, i_CodeName propName, List<i_Code> data)
         {
             string Val = string.Empty;
+            string name = Enum.GetName(typeof(i_CodeName), propName);
             foreach (var item in data)
             {
                 if (item.Code == code)
-                    Val = item.Value;
+                    Val = GetPropValue(item,name).ToString();
             }
             return Val;
         }
+        public static Object GetPropValue(this Object obj, String name)
+        {
+            foreach (String part in name.Split('.'))
+            {
+                if (obj == null) { return null; }
+
+                Type type = obj.GetType();
+                PropertyInfo info = type.GetProperty(part);
+                if (info == null) { return null; }
+
+                obj = info.GetValue(obj, null);
+            }
+            return obj;
+        }
+    }
+
+    public enum i_CodeName
+    {
+        Code,
+        ClassName,
+        IconClass,
+        Value
     }
     public class i_Code
     {
         public int? Code { get; set; }
-        public string LangCode { get; set; }
+        public string ClassName { get; set; }
+        public string IconClass { get; set; }
         public string Value { get; set; }
     }
     #endregion
+    public class m_News
+    {
+        public int news_id { get; set; }
+        public string news_title { get; set; }
+        public System.DateTime day { get; set; }
+        public int news_type { get; set; }
+        public string news_content { get; set; }
+        public DateTime? i_UpdateDateTime { get; set; }
+    }
     public class option
     {
         public int val { get; set; }

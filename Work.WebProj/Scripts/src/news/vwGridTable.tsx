@@ -1,6 +1,6 @@
 ﻿import React = require('react');
 import Moment = require('moment');
-import {config, UIText, NewsTypeData} from '../ts-comm/def-data';
+import {config, UIText, NewsTypeData, IHideTypeData} from '../ts-comm/def-data';
 import {PWButton, RadioBox} from '../ts-comm/comm-cmpt';
 
 import {ac_type_comm} from '../action_type';
@@ -24,7 +24,14 @@ const Rows = ({ item, clickItemDel, clickItemEdit}: { item: server.News, clickIt
                     radioList={NewsTypeData} />
             </td>
             <td className="text-xs-center">{Moment(item.day).format(config.dateFT) }</td>
-            <td className="text-xs-center">{state[item.i_Hide === true ? 1 : 0]}</td>
+            <td className="text-xs-center">
+                <RadioBox
+                    inputViewMode={InputViewMode.view}
+                    value={item.i_Hide}
+                    id="RadioIHide"
+                    name="RadioIHide"
+                    radioList={IHideTypeData} />
+            </td>
         </tr>
     )
 }

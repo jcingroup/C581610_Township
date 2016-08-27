@@ -1,4 +1,5 @@
-﻿
+﻿@model DotWeb.Controllers.IndexInfo
+@using ProcCore.Business.DB0
 @{
     ViewBag.Title = "WELCOME";
     ViewBag.BodyClass = "Notice";
@@ -27,10 +28,11 @@
 <section class="grid-intro">
     <figure>
         <span class="time font-sp">
-            <script>
-                var Today=new Date();
-                document.write(Today.getFullYear() + "/" + (Today.getMonth()+1) + "<em>" + Today.getDate() + "</em>");
-            </script>
+            @DateTime.Now.ToString("yyyy/MM")<em>@DateTime.Now.ToString("dd")</em>
+            @*<script>
+                    var Today = new Date();
+                    document.write(Today.getFullYear() + "/" + (Today.getMonth() + 1) + "<em>" + Today.getDate() + "</em>");
+                </script>*@
         </span>
         <figcaption>
             <h4 class="text-info font-xxl">1500</h4>
@@ -62,63 +64,27 @@
     </h1>
     <div class="carousel swiper-container">
         <ul class="news-list list-inline swiper-wrapper">
-            <li class="activity swiper-slide">
-                <header>
-                    2016 / 6 / 18
-                    <span class="label float-r">活動</span>
-                </header>
-                @* 最多 42 個字，超過加... *@
-                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
-                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
-            </li>
-            <li class="public swiper-slide">
-                <header>
-                    2016 / 6 / 18
-                    <span class="label float-r">公告</span>
-                </header>
-                <a href="~/News/Content" class="block">社區重大公告訊息社區重大公告訊息社區重大公告訊息社區重大公告訊息...</a>
-                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
-            </li>
-            <li class="info swiper-slide">
-                <header>
-                    2016 / 6 / 18
-                    <span class="label float-r">資訊</span>
-                </header>
-                <a href="~/News/Content" class="block">系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息系統訊息...</a>
-                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
-            </li>
-            <li class="activity swiper-slide">
-                <header>
-                    2016 / 6 / 18
-                    <span class="label float-r">活動</span>
-                </header>
-                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
-                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
-            </li>
-            <li class="activity swiper-slide">
-                <header>
-                    2016 / 6 / 18
-                    <span class="label float-r">活動</span>
-                </header>
-                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
-                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
-            </li>
-            <li class="activity swiper-slide">
-                <header>
-                    2016 / 6 / 18
-                    <span class="label float-r">活動</span>
-                </header>
-                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
-                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
-            </li>
-            <li class="activity swiper-slide">
-                <header>
-                    2016 / 6 / 18
-                    <span class="label float-r">活動</span>
-                </header>
-                <a href="~/News/Content" class="block">社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息...</a>
-                <a href="~/News/Content" class="btn btn-white font-sp">MORE</a>
-            </li>
+            @foreach (var i in Model.news)
+            {
+                <li class="swiper-slide @CodeSheet.GetStateVal(i.news_type,i_CodeName.ClassName, CodeSheet.news_type)">
+                    <header>
+                        @i.day.ToString("yyyy/MM/dd")
+                        <span class="label float-r">@CodeSheet.GetStateVal(i.news_type, i_CodeName.Value, CodeSheet.news_type)</span>
+                    </header>
+                    @* 最多 42 個字，超過加... *@
+                    <a href="~/News/Content?id=@i.news_id" class="block">
+                        @if (i.news_title.Length >= 43)
+                        {
+                            @i.news_title.Substring(0, 43) <span>...</span>
+                        }
+                        else
+                        {
+                            @i.news_title
+                        }
+                    </a>
+                    <a href="~/News/Content?id=@i.news_id" class="btn btn-white font-sp">MORE</a>
+                </li>
+            }
         </ul>
     </div><!-- carousel //-->
     <span class="prev icon-chevron-thin-left"></span>

@@ -1,8 +1,9 @@
-﻿
+﻿@model ProcCore.Business.DB0.News
+@using ProcCore.Business.DB0
 @{
     ViewBag.Title = "社區訊息";
     ViewBag.BodyClass = "News";
-    ViewBag.breadCrumb = "社區活動訊息社區活動訊息社區活動訊息社區活動訊息";
+    ViewBag.breadCrumb = Model.news_title;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -12,16 +13,18 @@
 
 <h1 class="title-underline-d">
     社區訊息
-    <small class="block">2016/8/16</small>@* 訊息更新時間 *@
+    <small class="block">@Model.day.ToString("yyyy/MM/dd")</small>@* 訊息更新時間 *@
 </h1>
 
 <section class="news-contend">
-    <span class="label label-success">活動</span>
+    <span class="label @CodeSheet.GetStateVal(Model.news_type, i_CodeName.IconClass, CodeSheet.news_type)">
+        @CodeSheet.GetStateVal(Model.news_type, i_CodeName.Value, CodeSheet.news_type)
+    </span>
     <header class="font-xl">
         @ViewBag.breadCrumb
     </header>
     <article>
-        社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息社區活動訊息
+        @Html.Raw(Model.news_content)
     </article>
 </section>
 

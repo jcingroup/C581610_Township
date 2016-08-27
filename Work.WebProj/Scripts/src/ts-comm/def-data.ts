@@ -481,6 +481,10 @@ export const NewsTypeData: Array<server.StateTemplate> = [
     { id: 2, label: '公告', className: 'label label-danger' },
     { id: 3, label: '資訊', className: 'label label-info' }
 ];
+export const IHideTypeData: Array<server.StateTemplate> = [
+    { id: false, label: '顯示', className: 'label label-success' },
+    { id: true, label: '關閉', className: 'label label-danger' }
+];
 export const config = {
     CustIdCookieName: 'CustId',
     dateFT: 'YYYY-MM-DD'
