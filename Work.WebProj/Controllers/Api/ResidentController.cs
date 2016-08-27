@@ -76,6 +76,7 @@ namespace DotWeb.Api
                 item.resident_no = md.resident_no;
                 item.account = md.account;
                 item.passwd = md.passwd;
+                item.email = md.email;
               
 
                 await db0.SaveChangesAsync();
@@ -94,7 +95,7 @@ namespace DotWeb.Api
         }
         public async Task<IHttpActionResult> Post([FromBody]Resident md)
         {
-            md.resident_id = GetNewId(CodeTable.Base);
+            md.resident_id = GetNewId(CodeTable.Resident);
 
             //md.i_InsertDateTime = DateTime.Now;
             //md.i_InsertDeptID = departmentId;
@@ -112,6 +113,13 @@ namespace DotWeb.Api
             {
                 #region working
                 db0 = getDB0();
+
+                bool check_account = db0.Resident.Any(x=>x.account==md.account);
+                if (check_account) {
+                    r.message = Resources.Res.Log_Err_AccountExists;
+                    r.result = false;
+                    return Ok(r);
+                }
 
                 db0.Resident.Add(md);
                 await db0.SaveChangesAsync();

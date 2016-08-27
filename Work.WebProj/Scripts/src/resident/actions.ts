@@ -15,23 +15,56 @@ export const ajaxGridItem = (search: any) => {
 export const ajaxEditItem = (id: number | string) => {
 
     return dispatch => {
-        return callGet('/api/Resident', { id: id })
+        return callGet(gb_approot + 'api/Resident', { id: id })
             .done((data, textStatus, jqXHRdata) => {
-                dispatch(editState(ac_type_comm.update, data));
+                dispatch(editState(ac_type_comm.update, data.data));
             })
     }
 }
-export const ajaxDeleteItem = (id: number | string) => {
+export const ajaxDeleteItem = (id: number | string, params) => {
 
     return dispatch => {
-        return callDelete('/api/Resident', { id: id })
+        return callDelete(gb_approot + 'api/Resident', { id: id })
             .done((data, textStatus, jqXHRdata) => {
                 if (data.result) {
                     tosMessage(null, '刪除完成', 1);
+                    dispatch(ajaxGridItem(params));
                 } else {
                     alert(data.message);
                 }
             })
+    }
+}
+interface IDName {
+    id: number | string //數字型用id 字串型用no
+}
+interface CallResult extends IResultBase, IDName { }
+export const ajaxSubmit = (id, md: server.Resident, edit_type: IEditType) => {
+    return dispatch => {
+        let pm = { id: id, md: md };
+
+        if (edit_type == IEditType.insert) {
+            return callPost(gb_approot + 'api/Resident', md)
+                .done((data: CallResult, textStatus, jqXHRdata) => {
+                    if (data.result) {
+                        tosMessage(null, '新增完成', 1);
+                        dispatch(ajaxEditItem(data.id));//新增完成後狀態更新為修改
+                    } else {
+                        alert(data.message);
+                    }
+                })
+        }
+
+        if (edit_type == IEditType.update) {
+            return callPut(gb_approot + 'api/Resident', pm)
+                .done((data: CallResult, textStatus, jqXHRdata) => {
+                    if (data.result) {
+                        tosMessage(null, '修改完成', 1);
+                    } else {
+                        alert(data.message);
+                    }
+                })
+        }
     }
 }
 //ajax--

@@ -39,7 +39,7 @@ let page_operator_state: server.PageInfo = {
     //sort: null
 }
 export const page_operator = (state = page_operator_state, action) => {
-  
+
     switch (action.type) {
         case ac_type_comm.load:
             return action.pageinfo;
@@ -52,11 +52,11 @@ const field = (state: server.Resident = {}, action) => {
 
     switch (action.type) {
         case ac_type_comm.chg_fld_val:
-            let struct = {
+            let f_struct_1 = {
                 [action.name]: { $set: action.value }
             };
-            let n_state = update(state, struct);
-            return n_state;
+            let n_state_1 = update(state, f_struct_1);
+            return n_state_1;
         case ac_type_comm.add:
             return action.data;
         case ac_type_comm.update:
@@ -86,8 +86,9 @@ const edit_type = (state = IEditType.none, action: Redux.Action): IEditType => {
 }
 
 
+
 export const combine = combineReducers({
-    grid, field, edit_type, page_operator, search 
+    grid, field, edit_type, page_operator, search
 })
 
 export default combine;

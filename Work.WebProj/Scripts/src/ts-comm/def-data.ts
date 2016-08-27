@@ -482,6 +482,7 @@ export const config = {
 export const UIText = {
     appliaction: '申報',
     add: '新增',
+    save:'儲存',
     done: '確定',
     cancel: '取消',
     date_null: '無日期',

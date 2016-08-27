@@ -5,14 +5,15 @@ import {bindActionCreators} from 'redux';
 import {AStart} from './vwAStart';
 
 
-import { ajaxGridItem, setInputValue, editState, ajaxEditItem, ajaxDeleteItem} from './actions'
+import { ajaxGridItem, setInputValue, editState, ajaxEditItem, ajaxDeleteItem, ajaxSubmit} from './actions'
 
 const m1ToProps = (state, ownProps) => {
     return {
         edit_type: state.edit_type,
         page_operator: state.page_operator,
         search: state.search,
-        grid: state.grid
+        grid: state.grid,
+        field: state.field
     }
 }
 
@@ -22,7 +23,8 @@ const m1Dispatch = (dispatch, ownProps) => {
         setInputValue,
         editState,
         ajaxEditItem,
-        ajaxDeleteItem
+        ajaxDeleteItem,
+        ajaxSubmit
     }, dispatch);
 
     return s;

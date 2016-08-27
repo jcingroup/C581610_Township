@@ -12,7 +12,7 @@ export class Grid extends React.Component<any, any>{
 
     constructor() {
         super();
-        this.changeSearchVal = this.changeSearchVal.bind(this);
+        this.changeSDVal = this.changeSDVal.bind(this);
         this.submitQuery = this.submitQuery.bind(this);
         this.queryGridData = this.queryGridData.bind(this);
 
@@ -39,15 +39,18 @@ export class Grid extends React.Component<any, any>{
         this.props.ajaxGridItem(params);
         return;
     }
-    changeSearchVal(name: string, e: React.SyntheticEvent) {
+    changeSDVal(name: string, e: React.SyntheticEvent) {
         let value = makeInputValue(e);
         this.props.setInputValue(ac_type_comm.chg_sch_val, name, value);
     }
     addType() {
         let data: server.Resident = {
             resident_id: 0,
+            resident_no: '',
             resident_name: '',
-            account: ''
+            account: '',
+            passwd: '',
+            email: ''
         };
         this.props.editState(ac_type_comm.add, data);
     }
@@ -58,8 +61,9 @@ export class Grid extends React.Component<any, any>{
         if (!confirm('確定是否刪除?')) {
             return;
         }
-        this.props.ajaxDeleteItem(id);
-        this.queryGridData(null);
+        let params = this.props.search;
+        params['page'] = this.props.page_operator.page;
+        this.props.ajaxDeleteItem(id, params);
     }
     render() {
         let out_html: JSX.Element = null;
@@ -69,8 +73,8 @@ export class Grid extends React.Component<any, any>{
         out_html =
             (
                 <form onSubmit={this.submitQuery}>
-                <GridSearch search={pp.search} changeSearchVal={this.changeSearchVal} />
-                <GridTable grid={pp.grid} clickItemEdit={this.modifyType} clickItemDel={this.deleteItem}/>
+                    <GridSearch search={pp.search} changeSearchVal={this.changeSDVal} />
+                    <GridTable grid={pp.grid} clickItemEdit={this.modifyType} clickItemDel={this.deleteItem}/>
                     <NavPage
                         page={p_info.page}
                         startcount={p_info.startcount}

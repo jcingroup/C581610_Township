@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace DotWeb.Areas.Active.Controllers
 {
+    [Authorize(Roles = "Admins,Managers")]
     public class ResidentController : AdminController
     {
         #region Action and function section
