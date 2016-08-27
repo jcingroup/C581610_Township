@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using DotWeb.Controller;
-
+using DotWeb.CommSetup;
 
 namespace DotWeb.Controllers
 {
@@ -8,14 +8,15 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
-            //var conn = getDb0Connection();
-            //conn.Open();
+            ViewData["username"] = "";
+            ViewData["password"] = "";
+            ViewData["validate"] = "";
 
-            //var sql = "select * from Matter where sn=@p0";
-            //var items = conn.Query<Matter>(sql, new { p0 = "SN001" });
-            //conn.Close();
-
-            //var json = defJSON(items);
+#if DEBUG
+            ViewData["username"] = CommWebSetup.AutoLoginUser;
+            ViewData["password"] = CommWebSetup.AutoLoginPassword;
+            ViewData["validate"] = "1";
+#endif
 
             return View("Index");
         }

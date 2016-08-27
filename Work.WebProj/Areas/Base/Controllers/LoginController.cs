@@ -129,7 +129,7 @@ namespace DotWeb.Areas.Base.Controllers
             #region 帳密碼檢查
 
             var db = getDB0();
-            var get_secretary = db.Community.Where(x => x.account == model.account && x.passwd == model.password);
+            var get_secretary = db.Resident.Where(x => x.account == model.account && x.passwd == model.password);
             SignInStatus result;
             ApplicationUser item;
             IEnumerable<string> get_user_roles_id;
@@ -150,25 +150,28 @@ namespace DotWeb.Areas.Base.Controllers
             }
             else
             {
-                result = await SignInManager.PasswordSignInAsync("secretary", "4257386-", model.rememberme, shouldLockout: false);
+                result = await SignInManager.PasswordSignInAsync("resident", "4257386-", model.rememberme, shouldLockout: false);
                 getLoginResult.result = true;
-                item = await userManager.FindByNameAsync(("secretary"));
+                item = await userManager.FindByNameAsync(("resident"));
                 get_user_roles_id = item.Roles.Select(x => x.RoleId);
                 var first_item = get_secretary.First();
-                var cki_community_id = new HttpCookie("community_id", first_item.community_id.ToString());
-                Response.Cookies.Add(cki_community_id);
+                var cki_resident_id = new HttpCookie("resident_id", first_item.resident_id.ToString());
+                Response.Cookies.Add(cki_resident_id);
             }
 
             ApplicationDbContext context = ApplicationDbContext.Create();
             var roleManage = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var get_user_roles_name = roleManage.Roles.Where(x => get_user_roles_id.Contains(x.Id)).Select(x => x.Name);
 
-            if (get_user_roles_name.Contains("Secretary"))
+            string user_login = string.Empty;
+            if (get_user_roles_name.Contains("Resident"))
             {
-                getLoginResult.url = Url.Content("~/Active/CommunityNews");
+                user_login = "Y";//用戶端
+                getLoginResult.url = Url.Content("~/Index/Notice");
             }
             else
             {
+                user_login = "N";//管理端
                 getLoginResult.url = Url.Content(CommWebSetup.ManageDefCTR);
             }
 
@@ -188,7 +191,7 @@ namespace DotWeb.Areas.Base.Controllers
 
                 Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_DepartmentId, item.department_id.ToString()));
                 //Response.Cookies.Add(new HttpCookie(CommWebSetup.Cookie_DepartmentName, item_department.department_name));
-                Response.Cookies.Add(new HttpCookie("user_login", Server.UrlEncode(EncryptString.desEncryptBase64("N"))));
+                Response.Cookies.Add(new HttpCookie("user_login", Server.UrlEncode(EncryptString.desEncryptBase64(user_login))));
                 var item_lang = db.i_Lang
                     .Where(x => x.lang == WebLang.Value)
                     .Select(x => new { x.area })
@@ -233,7 +236,7 @@ namespace DotWeb.Areas.Base.Controllers
 
             removeCookie("user_id");
             removeCookie("user_name");
-            removeCookie("community_id");
+            removeCookie("resident_id");
             removeCookie("user_login");
 
 
@@ -242,10 +245,11 @@ namespace DotWeb.Areas.Base.Controllers
 
             //SiteMaps.ReleaseSiteMap();
 
-            if (getLoginFlag == "Y")
-                return Redirect("~");
-            else
-                return Redirect("~/_SysAdm?t=" + DateTime.Now.Ticks);
+            return Redirect("~");//登出-回首頁
+            //if (getLoginFlag == "Y")
+            //    return Redirect("~");
+            //else
+            //    return Redirect("~/_SysAdm?t=" + DateTime.Now.Ticks);
 
         }
 

@@ -77,7 +77,7 @@ namespace DotWeb.Api
                 item.account = md.account;
                 item.passwd = md.passwd;
                 item.email = md.email;
-              
+
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
@@ -114,8 +114,10 @@ namespace DotWeb.Api
                 #region working
                 db0 = getDB0();
 
-                bool check_account = db0.Resident.Any(x=>x.account==md.account);
-                if (check_account) {
+                bool check_account = db0.Resident.Any(x => x.account == md.account);
+                check_account = db0.AspNetUsers.Any(x => x.UserName == md.account);
+                if (check_account)
+                {
                     r.message = Resources.Res.Log_Err_AccountExists;
                     r.result = false;
                     return Ok(r);

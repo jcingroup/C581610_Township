@@ -4,7 +4,17 @@
     ViewBag.BodyClass = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-
+@section Scripts{
+    <script>
+        var debug_account = '@ViewData["username"]';
+        var debug_password = '@ViewData["password"]';
+        var debug_validate = '@ViewData["validate"]';
+    </script>
+    <script src="~/Scripts/googleReCAPTCHA.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=zh-TW'></script>
+    <script src="~/Scripts/src/tsx/w-member_login.js"></script>
+    <script src="~/Scripts/cdn/jquery.loadmask.min.js"></script>
+}
 @section includeHeader {
     <h1 class="logo" onclick="location.href='@Url.Content("~/index")'" title="回首頁" tabindex="-1">
         @Resources.Res.System_FrontName
@@ -32,10 +42,11 @@
         </nav>
 
         <main>
-            <form action="" id="tab-1" class="tab-content">
+            @* 改成一個tab login *@
+            <form class="tab-content" id="MLogin">
                 <div class="input-group">
                     <label class="input-group-addon icon-person" for="" data-title="帳號"></label>
-                    <input class="form-element" type="text"  id="m_act" required  placeholder="請輸入帳號">
+                    <input class="form-element" type="text" id="m_act" required placeholder="請輸入帳號">
                 </div>
                 <div class="input-group">
                     <label class="input-group-addon icon-lock2" for="" data-title="密碼"></label>
@@ -44,34 +55,10 @@
 
                 <div id="Validate" class="margin-bottom"></div>
 
-                @* <button class="btn full bg-info" type="submit">登入</button> *@
-                @*  暫放，實際用上列button *@
-                <a href="~/Index/Notice" class="btn full bg-info">登入</a>
+                <button class="btn full bg-info" type="submit">登入</button>
 
                 <p class="text-right margin-0">
                     <a href="" class="margin-right">註冊</a>
-                    <a href="">忘記密碼?</a>
-                </p>
-            </form>
-
-            <form action="" id="tab-2" class="tab-content">
-                <div class="input-group">
-                    <label class="input-group-addon icon-person" for="" data-title="帳號"></label>
-                    <input class="form-element" type="text"  id="m_act" required  placeholder="請輸入帳號">
-                </div>
-                <div class="input-group">
-                    <label class="input-group-addon icon-lock2" for="" data-title="密碼"></label>
-                    <input class="form-element" type="password" id="m_pwd" required placeholder="請輸入密碼">
-                </div>
-
-                <div id="Validate" class="margin-bottom"></div>
-
-                @* 登入到管理者後台 *@
-                @* <button class="btn full bg-info" type="submit">登入</button> *@
-                @* 暫放，實際用上列button *@
-                <a href="" class="btn full bg-info">登入</a>
-
-                <p class="text-right margin-0">
                     <a href="">忘記密碼?</a>
                 </p>
             </form>
