@@ -12,6 +12,7 @@ module.exports = {
         m_users: path.resolve(__dirname, 'Scripts/src/tsx/m-users.js'),
         //後台 管理者
         m_resident: path.resolve(__dirname, 'Scripts/src/resident/app.js'),
+        m_news: path.resolve(__dirname, 'Scripts/src/news/app.js'),
         community: path.resolve(__dirname, 'Scripts/src/community/index.js'),
 
         vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'redux', 'react-redux', 'redux-thunk', 'moment'],

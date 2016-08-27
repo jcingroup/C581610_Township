@@ -26,7 +26,7 @@
     }
     interface StateTemplate extends SelectFormat {
         className?: string;
-        classNameforG: string;
+        classNameforG?: string;
     }
     interface loginField {
         lang: string;
@@ -100,6 +100,22 @@
         account?: string;
         passwd?: string;
         email?: string;
+    }
+
+    interface News extends BaseEntityTable {
+        news_id?: number;
+        news_title?: string;
+        day?: string;
+        news_type?: number;
+        news_content?: string;
+        i_Hide?: boolean;
+        i_InsertUserID?: string;
+        i_InsertDeptID?: number;
+        i_InsertDateTime?: Date;
+        i_UpdateUserID?: string;
+        i_UpdateDeptID?: number;
+        i_UpdateDateTime?: Date;
+        i_Lang?: string;
     }
 
 

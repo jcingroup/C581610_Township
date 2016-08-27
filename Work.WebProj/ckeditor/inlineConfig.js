@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
@@ -11,7 +11,7 @@ CKEDITOR.editorConfig = function (config) {
     // config.uiColor = '#AADC6E';
     config.extraPlugins = 'youtube';
     //config.extraAllowedContent = 'ul(*);';
-    config.contentsCss = ['../../Content/css/editor.css'];
+    //config.contentsCss = ['../../Content/css/editor.css'];
     config.toolbar = [
         {
             name: "basicstyles",

@@ -1038,3 +1038,78 @@ export class NavPage extends React.Component<NavPageProps, any> {
         return oper;
     }
 }
+
+//RadioBox
+interface RadioBoxProps {
+    inputViewMode: InputViewMode;
+    radioList: Array<server.StateTemplate>;
+    name?: string;
+    id?: string;
+    wrapperClassName?: string;
+    inputClassName?: string;
+    labelClassName?: string;
+    disabled?: boolean;
+    onChange?: Function;
+    value?: string | number;
+    required?: boolean;
+}
+export class RadioBox extends React.Component<RadioBoxProps, any>{
+
+    constructor() {
+        super();
+    }
+    static defaultProps = {
+        disabled: false,
+    }
+    getLname(val): server.StateTemplate {
+        let result: server.StateTemplate = { id: null, label: '', className: '' };
+        this.props.radioList.forEach((item, i) => {
+            result = val == item.id ? item : result;
+        });
+        return result;
+    }
+    render() {
+        let out_html = null;
+        let value = this.props.value == undefined ? '' : this.props.value;
+
+        if (this.props.inputViewMode == InputViewMode.edit) {
+            out_html =
+                (
+                    <div className={this.props.wrapperClassName}>
+                        {
+                            this.props.radioList.map((item, i) => {
+                                return <span className="item" key={this.props.name + '-' + i}>
+                                    <input type="radio"
+                                        className={this.props.inputClassName}
+                                        name={this.props.name}
+                                        value={item.id}
+                                        id={this.props.id + '-' + i}
+                                        onChange={this.props.onChange}
+                                        disabled={this.props.disabled}
+                                        required={this.props.required}
+                                        checked={value == item.id}
+                                        />
+                                    <label htmlFor={this.props.id + '-' + i} className={this.props.labelClassName}></label> { }
+                                    <span className={item.classNameforG}>{item.label}</span> { }
+                                </span>;
+                            })
+                        }
+
+                    </div>
+                );
+        }
+
+        if (this.props.inputViewMode == InputViewMode.view) {
+            out_html =
+                (
+                    <span
+                    id={this.props.id}
+                    className={this.getLname(value).className}>
+                    {this.getLname(value).label }
+                    </span>
+                );
+        }
+        return out_html;
+    }
+}
+

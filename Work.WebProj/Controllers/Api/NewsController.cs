@@ -77,9 +77,9 @@ namespace DotWeb.Api
                 item.news_content = md.news_content;
                 item.day = md.day;
 
-                md.i_UpdateDateTime = DateTime.Now;
-                md.i_UpdateDeptID = departmentId;
-                md.i_UpdateUserID = UserId;
+                item.i_UpdateDateTime = DateTime.Now;
+                item.i_UpdateDeptID = departmentId;
+                item.i_UpdateUserID = UserId;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

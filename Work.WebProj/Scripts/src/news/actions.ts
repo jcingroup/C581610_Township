@@ -3,7 +3,7 @@ import {ac_type_comm} from '../action_type';
 import {tosMessage} from '../ts-comm/comm-func';
 
 //ajax--
-const apiPath: string = gb_approot + 'api/Resident';
+const apiPath: string = gb_approot + 'api/News';
 export const ajaxGridItem = (search: any) => {
     return dispatch => {
         return callGet(apiPath, search)
@@ -40,7 +40,7 @@ interface IDName {
     id: number | string //數字型用id 字串型用no
 }
 interface CallResult extends IResultBase, IDName { }
-export const ajaxSubmit = (id, md: server.Resident, edit_type: IEditType) => {
+export const ajaxSubmit = (id, md, edit_type: IEditType) => {
     return dispatch => {
         let pm = { id: id, md: md };
 

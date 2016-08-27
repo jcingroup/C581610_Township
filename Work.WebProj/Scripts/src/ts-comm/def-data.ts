@@ -475,6 +475,12 @@
             ]
         },
     ]
+
+export const NewsTypeData: Array<server.StateTemplate> = [
+    { id: 1, label: '活動', className: 'label label-success' },
+    { id: 2, label: '公告', className: 'label label-danger' },
+    { id: 3, label: '資訊', className: 'label label-info' }
+];
 export const config = {
     CustIdCookieName: 'CustId',
     dateFT: 'YYYY-MM-DD'
@@ -482,7 +488,7 @@ export const config = {
 export const UIText = {
     appliaction: '申報',
     add: '新增',
-    save:'儲存',
+    save: '儲存',
     done: '確定',
     cancel: '取消',
     date_null: '無日期',

@@ -3,6 +3,7 @@ import React = require('react');
 import Moment = require('moment');
 import {config, UIText} from '../ts-comm/def-data';
 import { makeInputValue, clone, MntV} from '../ts-comm/comm-func'
+
 //import {InputText, SelectText, PWButton, AreaText} from '../components';
 import {ac_type_comm} from '../action_type';
 
@@ -20,7 +21,7 @@ export class Edit extends React.Component<any, any>{
     }
     chgVal(name: string, e: React.SyntheticEvent) {
         let value = makeInputValue(e);
-       this.props.setInputValue(ac_type_comm.chg_fld_val, name, value);
+        this.props.setInputValue(ac_type_comm.chg_fld_val, name, value);
     }
     onDateChange(a, b, m: moment.Moment) {
 
@@ -34,8 +35,8 @@ export class Edit extends React.Component<any, any>{
     callSubmit(e: React.FormEvent) {
         e.preventDefault();
         let pp = this.props
-
-        this.props.ajaxSubmit(pp.field.resident_id, pp.field, pp.edit_type);
+        let ppp = pp.params;
+        this.props.ajaxSubmit(ppp.id, pp.field, pp.edit_type);
         return;
     }
     render() {

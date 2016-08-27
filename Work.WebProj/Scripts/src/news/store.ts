@@ -20,7 +20,7 @@ export const search = (state = searchData, action) => {
             return state
     }
 }
-const grid = (state: Array<server.Resident> = [], action): Array<server.Resident> => {
+const grid = (state: Array<server.News> = [], action): Array<server.News> => {
     switch (action.type) {
         case ac_type_comm.load:
             return action.items;
@@ -48,7 +48,7 @@ export const page_operator = (state = page_operator_state, action) => {
     }
 }
 
-const field = (state: server.Resident = {}, action) => {
+const field = (state: server.News = {}, action) => {
 
     switch (action.type) {
         case ac_type_comm.chg_fld_val:
@@ -84,7 +84,6 @@ const edit_type = (state = IEditType.none, action: Redux.Action): IEditType => {
             return state
     }
 }
-
 
 interface Init_Params {
     id: number,

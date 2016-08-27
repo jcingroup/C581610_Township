@@ -2,6 +2,7 @@
 import Moment = require('moment');
 
 import { clone, makeInputValue} from '../ts-comm/comm-func';
+import {config} from '../ts-comm/def-data';
 import {ac_type_comm} from '../action_type';
 //view
 import {GridTable} from './vwGridTable';
@@ -44,13 +45,14 @@ export class Grid extends React.Component<any, any>{
         this.props.setInputValue(ac_type_comm.chg_sch_val, name, value);
     }
     addType() {
-        let data: server.Resident = {
-            resident_id: 0,
-            resident_no: '',
-            resident_name: '',
-            account: '',
-            passwd: '',
-            email: ''
+        let data: server.News = {
+            news_id: 0,
+            news_title: '',
+            day: Moment().format(config.dateFT),
+            news_type: 1,
+            news_content: '',
+            i_Hide: false,
+            i_Lang: 'zh-TW'
         };
         this.props.editState(ac_type_comm.add, 0, data);
     }
