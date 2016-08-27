@@ -125,6 +125,7 @@
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
     <Compile Include="LogicCenter.cs" />
+    <Compile Include="Models\EditorDetail.cs" />
     <Compile Include="Models\Editor.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Resident.cs" />

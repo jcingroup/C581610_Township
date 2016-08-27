@@ -282,6 +282,7 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\Api\EditorController.cs" />
+    <Compile Include="Controllers\Api\EditorDetailController.cs" />
     <Compile Include="Controllers\Api\NewsController.cs" />
     <Compile Include="Controllers\Api\ResidentController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
