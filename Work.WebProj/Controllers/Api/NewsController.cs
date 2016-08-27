@@ -44,7 +44,7 @@ namespace DotWeb.Api
 
             int startRecord = PageCount.PageInfo(page, defPageSize, resultCount);
             var resultItems = await result
-                .OrderBy(x => x.news_id)
+                .OrderByDescending(x => x.day)
                 .Skip(startRecord)
                 .Take(defPageSize)
                 .ToListAsync();
