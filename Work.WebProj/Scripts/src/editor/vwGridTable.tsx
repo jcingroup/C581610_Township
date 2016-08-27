@@ -1,27 +1,21 @@
 ﻿import React = require('react');
 import Moment = require('moment');
-import {config, UIText, NewsTypeData, IHideTypeData} from '../ts-comm/def-data';
+import {config, UIText, IHideTypeData} from '../ts-comm/def-data';
 import {PWButton, RadioBox} from '../ts-comm/comm-cmpt';
 
 import {ac_type_comm} from '../action_type';
 
 
-const Rows = ({ item, clickItemDel, clickItemEdit}: { item: server.News, clickItemDel: Function, clickItemEdit: Function }) => {
+const Rows = ({ item, clickItemDel, clickItemEdit}: { item: server.Editor, clickItemDel: Function, clickItemEdit: Function }) => {
+
     return (
         <tr>
             <td className="text-xs-center"><PWButton iconClassName="fa-times" className="btn-link btn-lg text-danger" enable={true} onClick={clickItemDel} /></td>
             <td className="text-xs-center"><PWButton iconClassName="fa-pencil" className="btn-link btn-lg" enable={true} onClick={clickItemEdit} /></td>
-            <td>{item.news_title}</td>
-            <td className="text-xs-center">
-                <RadioBox
-                    inputViewMode={InputViewMode.view}
-                    value={item.news_type}
-                    id="RadioNewsT"
-                    name="RadioNewsT"
-                    radioList={NewsTypeData} />
-            </td>
-            <td className="text-xs-center">{Moment(item.day).format(config.dateFT) }</td>
-            <td className="text-xs-center">
+            <td>{item.name}</td>
+            <td>{item.body_class}</td>
+            <td>{item.sort}</td>
+            <td>
                 <RadioBox
                     inputViewMode={InputViewMode.view}
                     value={item.i_Hide}
@@ -33,7 +27,7 @@ const Rows = ({ item, clickItemDel, clickItemEdit}: { item: server.News, clickIt
     )
 }
 interface GridTableProps {
-    grid: Array<server.News>;
+    grid: Array<server.Editor>;
     clickItemDel?: Function;
     clickItemEdit: Function;
 }
@@ -56,20 +50,20 @@ export class GridTable extends React.Component<GridTableProps, any>{
                         <tr>
                             <th style={{ "width": "7%" }} className="text-xs-center">{UIText.delete}</th>
                             <th style={{ "width": "7%" }} className="text-xs-center">{UIText.modify}</th>
-                            <th style={{ "width": "40%" }}>標題</th>
-                            <th style={{ "width": "16%" }} className="text-xs-center">類型</th>
-                            <th style={{ "width": "15%" }} className="text-xs-center">日期</th>
-                            <th style={{ "width": "15%" }} className="text-xs-center">狀態</th>
+                            <th style={{ "width": "16%" }}>名稱</th>
+                            <th style={{ "width": "30%" }}>classname</th>
+                            <th style={{ "width": "20%" }}>排序</th>
+                            <th style={{ "width": "20%" }}>狀態</th>
                         </tr>
                     </thead>
                     <tbody>
                         {pp.grid.map(
                             (item, i) =>
                                 <Rows
-                                    key={item.news_id}
+                                    key={item.editor_id}
                                     item={item}
-                                    clickItemDel={this.props.clickItemDel.bind(this, item.news_id) }
-                                    clickItemEdit={this.props.clickItemEdit.bind(this, item.news_id) }
+                                    clickItemDel={this.props.clickItemDel.bind(this, item.editor_id) }
+                                    clickItemEdit={this.props.clickItemEdit.bind(this, item.editor_id) }
                                     />
                         ) }
                     </tbody>

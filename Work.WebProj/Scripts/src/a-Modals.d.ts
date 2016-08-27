@@ -117,7 +117,25 @@
         i_UpdateDateTime?: Date;
         i_Lang?: string;
     }
-
+    interface Editor extends BaseEntityTable {
+        editor_id?: number;
+        body_class?: string;
+        url?: string;
+        name?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        EditorDetail?: server.EditorDetail[];
+    }
+    interface EditorDetail extends BaseEntityTable {
+        editor_detail_id?: number;
+        editor_id?: number;
+        detail_name?: string;
+        detail_content?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        edit_state?: IEditType;
+        Editor?: server.Editor;
+    }
 
     interface Community extends BaseEntityTable {
         community_id?: number;

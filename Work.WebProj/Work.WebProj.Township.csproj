@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
+    <Compile Include="Areas\Active\Controllers\EditorsController.cs" />
     <Compile Include="Areas\Active\Controllers\ResidentInfoController.cs" />
     <Compile Include="Areas\Active\Controllers\ResidentController.cs" />
     <Compile Include="Areas\Base\Controllers\DocController.cs" />
@@ -229,6 +230,7 @@
     <Content Include="app_modules\comm-matter\package.json" />
     <Content Include="Areas\Active\Views\Resident\Main.cshtml" />
     <Content Include="Areas\Active\Views\ResidentInfo\News.cshtml" />
+    <Content Include="Areas\Active\Views\Editors\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -551,6 +553,15 @@
     <TypeScriptCompile Include="Scripts\src\news\vwGrid.tsx" />
     <TypeScriptCompile Include="Scripts\src\news\vwGridSearch.tsx" />
     <TypeScriptCompile Include="Scripts\src\news\vwGridTable.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editor\actions.ts" />
+    <TypeScriptCompile Include="Scripts\src\editor\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editor\containers.ts" />
+    <TypeScriptCompile Include="Scripts\src\editor\store.ts" />
+    <TypeScriptCompile Include="Scripts\src\editor\vwAStart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editor\vwEdit.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editor\vwGrid.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editor\vwGridSearch.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editor\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\resident\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\resident\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\resident\containers.ts" />
@@ -670,6 +681,7 @@
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Resident\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\ResidentInfo\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\Editors\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="_Code\RPTFile\MemeberLabel.rdlc" />
   </ItemGroup>
   <PropertyGroup>
@@ -717,11 +729,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3185</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3188/</IISUrl>
+          <IISUrl>http://localhost:3186/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

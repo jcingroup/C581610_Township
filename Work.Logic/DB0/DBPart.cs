@@ -13,8 +13,10 @@ namespace ProcCore.Business.DB0
 {
     public enum EditState
     {
-        Insert = 0,
-        Update = 1
+        None = 0,
+        Insert = 1,
+        Update = 2,
+        View = 3
     }
     public enum VisitDetailState
     {
