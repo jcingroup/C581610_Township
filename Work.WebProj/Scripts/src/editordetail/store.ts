@@ -88,7 +88,7 @@ const params = (state = init_params, action): any => {
 }
 
 export const combine = combineReducers({
-    grid, field, edit_type, page_operator, search, params
+    field, edit_type, params
 })
 
 export default combine;

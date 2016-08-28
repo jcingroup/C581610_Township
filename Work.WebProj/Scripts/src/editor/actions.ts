@@ -62,6 +62,7 @@ export const ajaxSubmit = (id, md: server.Resident, edit_type: IEditType) => {
                 .done((data: CallResult, textStatus, jqXHRdata) => {
                     if (data.result) {
                         tosMessage(null, '修改完成', 1);
+                        dispatch(ajaxGridDetailItem(id));
                     } else {
                         alert(data.message);
                     }

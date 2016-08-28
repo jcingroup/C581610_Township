@@ -201,8 +201,8 @@ namespace DotWeb.Api
             {
                 var items = db0.EditorDetail
                     .Where(x => x.editor_id == main_id)
-                    .OrderByDescending(x => new { main_sort = x.Editor.sort, x.sort, x.editor_detail_id })
-                    .Select(x => new 
+                    .OrderByDescending(x => new { main_sort = x.Editor.sort, x.sort })
+                    .Select(x => new
                     {
                         editor_id = x.editor_id,
                         editor_detail_id = x.editor_detail_id,

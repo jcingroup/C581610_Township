@@ -230,6 +230,11 @@
     <Content Include="Areas\Active\Views\ResidentInfo\News.cshtml" />
     <Content Include="Areas\Active\Views\Editors\Main.cshtml" />
     <Content Include="Areas\Active\Views\Editors\AboutUs.cshtml" />
+    <Content Include="Areas\Active\Views\Editors\Assets.cshtml" />
+    <Content Include="Areas\Active\Views\Editors\Efficacy.cshtml" />
+    <Content Include="Areas\Active\Views\Editors\Group.cshtml" />
+    <Content Include="Areas\Active\Views\Editors\Management.cshtml" />
+    <Content Include="Areas\Active\Views\Editors\Fix.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
