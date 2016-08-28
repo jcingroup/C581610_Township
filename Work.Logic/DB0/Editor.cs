@@ -23,6 +23,7 @@ namespace ProcCore.Business.DB0
         public int editor_id { get; set; }
         public string body_class { get; set; }
         public string url { get; set; }
+        public string img_url { get; set; }
         public string name { get; set; }
         public int sort { get; set; }
         public bool i_Hide { get; set; }

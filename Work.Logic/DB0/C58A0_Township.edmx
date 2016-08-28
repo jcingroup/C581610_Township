@@ -56,6 +56,7 @@
           <Property Name="editor_id" Type="int" Nullable="false" />
           <Property Name="body_class" Type="nvarchar" MaxLength="64" />
           <Property Name="url" Type="nvarchar" MaxLength="64" />
+          <Property Name="img_url" Type="nvarchar" MaxLength="128" />
           <Property Name="name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="sort" Type="int" Nullable="false" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
@@ -435,8 +436,8 @@
           </AssociationSet>
           <EntitySet Name="Resident" EntityType="C58A0_TownshipModel.Resident" />
           <EntitySet Name="News" EntityType="C58A0_TownshipModel.News" />
-          <EntitySet Name="Editor" EntityType="C58A0_TownshipModel.Editor" />
           <EntitySet Name="EditorDetail" EntityType="C58A0_TownshipModel.EditorDetail" />
+          <EntitySet Name="Editor" EntityType="C58A0_TownshipModel.Editor" />
           <AssociationSet Name="FK_EditorDetail_Editor" Association="C58A0_TownshipModel.FK_EditorDetail_Editor">
             <End Role="Editor" EntitySet="Editor" />
             <End Role="EditorDetail" EntitySet="EditorDetail" />
@@ -471,25 +472,6 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
-        <EntityType Name="Editor">
-          <Key>
-            <PropertyRef Name="editor_id" />
-          </Key>
-          <Property Name="editor_id" Type="Int32" Nullable="false" />
-          <Property Name="body_class" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="url" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="EditorDetail" Relationship="C58A0_TownshipModel.FK_EditorDetail_Editor" FromRole="Editor" ToRole="EditorDetail" />
-        </EntityType>
         <EntityType Name="EditorDetail">
           <Key>
             <PropertyRef Name="editor_detail_id" />
@@ -508,6 +490,26 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Editor" Relationship="C58A0_TownshipModel.FK_EditorDetail_Editor" FromRole="EditorDetail" ToRole="Editor" />
+        </EntityType>
+        <EntityType Name="Editor">
+          <Key>
+            <PropertyRef Name="editor_id" />
+          </Key>
+          <Property Name="editor_id" Type="Int32" Nullable="false" />
+          <Property Name="body_class" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="img_url" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="EditorDetail" Relationship="C58A0_TownshipModel.FK_EditorDetail_Editor" FromRole="Editor" ToRole="EditorDetail" />
         </EntityType>
         <Association Name="FK_EditorDetail_Editor">
           <End Type="C58A0_TownshipModel.Editor" Role="Editor" Multiplicity="1" />
@@ -689,25 +691,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Editor">
-            <EntityTypeMapping TypeName="C58A0_TownshipModel.Editor">
-              <MappingFragment StoreEntitySet="Editor">
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="url" ColumnName="url" />
-                <ScalarProperty Name="body_class" ColumnName="body_class" />
-                <ScalarProperty Name="editor_id" ColumnName="editor_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="EditorDetail">
             <EntityTypeMapping TypeName="C58A0_TownshipModel.EditorDetail">
               <MappingFragment StoreEntitySet="EditorDetail">
@@ -724,6 +707,26 @@
                 <ScalarProperty Name="detail_name" ColumnName="detail_name" />
                 <ScalarProperty Name="editor_id" ColumnName="editor_id" />
                 <ScalarProperty Name="editor_detail_id" ColumnName="editor_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editor">
+            <EntityTypeMapping TypeName="C58A0_TownshipModel.Editor">
+              <MappingFragment StoreEntitySet="Editor">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="img_url" ColumnName="img_url" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="body_class" ColumnName="body_class" />
+                <ScalarProperty Name="editor_id" ColumnName="editor_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
