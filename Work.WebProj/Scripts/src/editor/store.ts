@@ -57,6 +57,28 @@ const field = (state: server.Editor = {}, action) => {
             };
             let n_state_1 = update(state, f_struct_1);
             return n_state_1;
+        case ac_type_comm.chg_dil_fld_val:
+            let f_struct_2 = {
+                ["EditorDetail"]: {
+                    [action.i]: {
+                        [action.name]: { $set: action.value }
+                    }
+                }
+            };
+            let n_state_2 = update(state, f_struct_2);
+            return n_state_2;
+        case ac_type_comm.add_detail:
+            let f_struct_3 = {
+                ["EditorDetail"]: { $push: [action.data] }
+            };
+            let n_state_3 = update(state, f_struct_3);
+            return n_state_3;
+        case ac_type_comm.del_detail:
+            let f_struct_4 = {
+                ["EditorDetail"]: { $splice: [[action.i, 1]] }
+            };
+            let n_state_4 = update(state, f_struct_4);
+            return n_state_4;
         case ac_type_comm.add:
             return action.data;
         case ac_type_comm.update:

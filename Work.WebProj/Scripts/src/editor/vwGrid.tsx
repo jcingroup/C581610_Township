@@ -44,13 +44,14 @@ export class Grid extends React.Component<any, any>{
         this.props.setInputValue(ac_type_comm.chg_sch_val, name, value);
     }
     addType() {
-        let data: server.Resident = {
-            resident_id: 0,
-            resident_no: '',
-            resident_name: '',
-            account: '',
-            passwd: '',
-            email: ''
+        let data: server.Editor = {
+            editor_id: 0,
+            name: '',
+            body_class: '',
+            url: '',
+            sort: 0,
+            i_Hide: false,
+            EditorDetail:[]
         };
         this.props.editState(ac_type_comm.add, 0, data);
     }

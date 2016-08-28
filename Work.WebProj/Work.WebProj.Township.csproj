@@ -544,6 +544,7 @@
     <TypeScriptCompile Include="Scripts\src\community\reducers\field.ts" />
     <TypeScriptCompile Include="Scripts\src\community\reducers\index.ts" />
     <TypeScriptCompile Include="Scripts\src\community\reducers\comm.ts" />
+    <TypeScriptCompile Include="Scripts\src\editor\vwEditDetail.tsx" />
     <TypeScriptCompile Include="Scripts\src\news\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\news\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\news\containers.ts" />

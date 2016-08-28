@@ -115,28 +115,6 @@ export class Edit extends React.Component<any, any>{
                                 onChange={this.chgVal.bind(this, 'i_Hide') }
                                 radioList={IHideTypeData}
                                 required={true} />
-                            {/*<div className="radio-inline">
-                                <label>
-                                    <input type="radio"
-                                        name="i_Hide"
-                                        value={true}
-                                        checked={field.i_Hide === true}
-                                        onChange={this.chgVal.bind(this, 'i_Hide') }
-                                        />
-                                    <span>隱藏</span>
-                                </label>
-                            </div>
-                            <div className="radio-inline">
-                                <label>
-                                    <input type="radio"
-                                        name="i_Hide"
-                                        value={false}
-                                        checked={field.i_Hide === false}
-                                        onChange={this.chgVal.bind(this, 'i_Hide') }
-                                        />
-                                    <span>顯示</span>
-                                </label>
-                            </div>*/}
                         </div>
                     </div>
                     <div className="form-group row">

@@ -4,6 +4,7 @@ import {tosMessage} from '../ts-comm/comm-func';
 
 //ajax--
 const apiPath: string = gb_approot + 'api/Editor';
+const apiDetailPath: string = gb_approot + 'api/EditorDetail';
 export const ajaxGridItem = (search: any) => {
     return dispatch => {
         return callGet(apiPath, search)
@@ -68,6 +69,33 @@ export const ajaxSubmit = (id, md: server.Resident, edit_type: IEditType) => {
         }
     }
 }
+export const ajaxGridDetailItem = (main_id: number) => {
+    return dispatch => {
+        return callGet(apiDetailPath + '/GetDetailList', { main_id: main_id })
+            .done((data, textStatus, jqXHRdata) => {
+                dispatch(setInputValue(ac_type_comm.chg_fld_val, "EditorDetail", data));
+            })
+    }
+}
+export const ajaxDelDetail = (i, id, edit_state: IEditType) => {
+    return dispatch => {
+        if (edit_state == IEditType.insert) {
+            tosMessage(null, '刪除完成', 1);
+            dispatch(delDetailState(i));
+        }
+        if (edit_state == IEditType.update) {
+            return callDelete(apiDetailPath, { id: id })
+                .done((data: CallResult, textStatus, jqXHRdata) => {
+                    if (data.result) {
+                        tosMessage(null, '刪除完成', 1);
+                        dispatch(delDetailState(i));
+                    } else {
+                        alert(data.message);
+                    }
+                })
+        }
+    }
+}
 //ajax--
 const getGridItem = (data) => {
     return {
@@ -90,6 +118,14 @@ export const setInputValue = (type, name, value) => {
         value
     }
 }
+export const setDetailInputValue = (type, i, name, value) => {
+    return {
+        type: type,
+        i,
+        name,
+        value
+    }
+}
 
 export const setFieldValue = (type, item) => {
     return {
@@ -103,5 +139,18 @@ export const editState = (type, id, data) => {
         type: type,
         id,
         data
+    }
+}
+
+export const addDeatilState = (data) => {
+    return {
+        type: ac_type_comm.add_detail,
+        data
+    }
+}
+export const delDetailState = (i) => {
+    return {
+        type: ac_type_comm.del_detail,
+        i
     }
 }

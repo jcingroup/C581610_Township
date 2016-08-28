@@ -4,7 +4,9 @@
     add: 'add', //新增編輯狀態
     update: 'update', //修改狀態
     chg_fld_val: 'change_field_value',
-    chg_sch_val:'chg_sch_val',
+    chg_dil_fld_val: 'change_detail_field_value',
+    chg_sch_val: 'chg_sch_val',
     cancel: 'cancel', //取消
-
+    add_detail: 'add_detail',
+    del_detail: 'del_detail'
 }
