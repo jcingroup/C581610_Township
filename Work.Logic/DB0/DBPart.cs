@@ -28,11 +28,12 @@ namespace ProcCore.Business.DB0
     }
     public enum EditorState
     {
-        Aboutus = 1,
-        Program = 2,
-        Recruit = 3,
-        VIP = 4,
-        Vendor = 5
+        AboutUs = 1,//社區介紹
+        Assets = 2,//資產管理
+        Efficacy = 3,//效能管理
+        Group = 4,//組織管理
+        Management = 5,//維運管理
+        Fix = 6//長期修繕
     }
     #region set CodeSheet
 
@@ -52,7 +53,7 @@ namespace ProcCore.Business.DB0
             foreach (var item in data)
             {
                 if (item.Code == code)
-                    Val = GetPropValue(item,name).ToString();
+                    Val = GetPropValue(item, name).ToString();
             }
             return Val;
         }

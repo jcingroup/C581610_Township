@@ -15,3 +15,5 @@ declare var gb_no: string;
 //google reCAPTCHA
 declare var grecaptcha: any;
 declare var widgetId: any;
+
+declare var gb_id: any;

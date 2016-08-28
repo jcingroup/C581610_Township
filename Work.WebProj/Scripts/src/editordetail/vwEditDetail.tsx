@@ -141,7 +141,7 @@ export class EditDetail extends React.Component<any, any>{
             out_html =
                 (
                     <div>
-                        <h4 className="h4">明細檔</h4>
+                        <h4 className="h4">編輯管理</h4>
                         <p>
                         <button className="btn-success" type="button" onClick={this.addDetail.bind(this) }>
                             <i className="fa-plus-circle"></i> {UIText.add}

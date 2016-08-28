@@ -229,6 +229,7 @@
     <Content Include="Areas\Active\Views\Resident\Main.cshtml" />
     <Content Include="Areas\Active\Views\ResidentInfo\News.cshtml" />
     <Content Include="Areas\Active\Views\Editors\Main.cshtml" />
+    <Content Include="Areas\Active\Views\Editors\AboutUs.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -530,6 +531,13 @@
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\a-Modals.d.ts" />
     <TypeScriptCompile Include="Scripts\src\action_type.ts" />
+    <TypeScriptCompile Include="Scripts\src\editordetail\actions.ts" />
+    <TypeScriptCompile Include="Scripts\src\editordetail\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editordetail\containers.ts" />
+    <TypeScriptCompile Include="Scripts\src\editordetail\store.ts" />
+    <TypeScriptCompile Include="Scripts\src\editordetail\vwAStart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editordetail\vwEdit.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editordetail\vwEditDetail.tsx" />
     <TypeScriptCompile Include="Scripts\src\editor\vwEditDetail.tsx" />
     <TypeScriptCompile Include="Scripts\src\news\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\news\app.tsx" />
