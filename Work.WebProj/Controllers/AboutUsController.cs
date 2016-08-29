@@ -7,6 +7,7 @@ using System;
 
 namespace DotWeb.WebApp.Controllers
 {
+    [Authorize]
     public class AboutUsController : WebUserController
     {
         // GET: AboutUs

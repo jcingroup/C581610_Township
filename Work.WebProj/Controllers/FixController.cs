@@ -5,6 +5,7 @@ using ProcCore.Business.DB0;
 
 namespace DotWeb.WebApp.Controllers
 {
+    [Authorize]
     public class FixController : WebUserController
     {
         // GET: Fix

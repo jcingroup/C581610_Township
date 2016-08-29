@@ -3,6 +3,7 @@ using DotWeb.Controller;
 
 namespace DotWeb.WebApp.Controllers
 {
+    [Authorize]
     public class CommentsController : WebUserController
     {
         // GET: Comments

@@ -95,41 +95,14 @@
     <h2 class="text-primary">近期更新文件</h2>
     <nav>
         @* 最多顯示 6 則 *@
-        <a href="" class="grid">
-            <h3 class="text-success">
-                效能管理
-                <small class="block font-md">預期使用機能需求評估與規劃說明</small>
-            </h3>
-        </a>
-        <a href="" class="grid">
-            <h3 class="text-success">
-                組織管理
-                <small class="block font-md">人事管理制度</small>
-            </h3>
-        </a>
-        <a href="" class="grid">
-            <h3 class="text-success">
-                維運管理
-                <small class="block font-md">各項設施設備管理維護規範</small>
-            </h3>
-        </a>
-        <a href="" class="grid">
-            <h3 class="text-success">
-                資產管理
-                <small class="block font-md">設施使用動態管理說明</small>
-            </h3>
-        </a>
-        <a href="" class="grid">
-            <h3 class="text-success">
-                維運管理
-                <small class="block font-md">緊急應變計畫</small>
-            </h3>
-        </a>
-        <a href="" class="grid">
-            <h3 class="text-success">
-                長期修繕
-                <small class="block font-md">長期修繕財務措計畫</small>
-            </h3>
-        </a>
+        @foreach (var i in Model.editors)
+        {
+            <a href="@Url.Content(i.url+"?l2_id="+i.l2_id)" class="grid">
+                <h3 class="text-success">
+                    @i.l1_name
+                    <small class="block font-md">@i.l2_name</small>
+                </h3>
+            </a>
+        }
     </nav>
 </section>
