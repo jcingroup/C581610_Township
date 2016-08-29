@@ -992,7 +992,7 @@ namespace DotWeb.Controller
                     img_url=x.img_url,
                     categoryL2Data = x.EditorDetail.OrderByDescending(y => y.sort).Select(y => new CategoryL2Data()
                     {
-                        id = y.editor_id,
+                        id = y.editor_detail_id,
                         name = y.detail_name
                     }),
                     count = x.EditorDetail.Count()

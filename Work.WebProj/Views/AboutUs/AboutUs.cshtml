@@ -1,11 +1,19 @@
-﻿
+﻿@model DotWeb.WebApp.Controllers.m_Editor
 @{
-    ViewBag.Title = "社區介紹";
+    ViewBag.Title = Model.name;
     ViewBag.BodyClass = "AboutUs";
     ViewBag.breadCrumb = "社區介紹";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+@section Scripts {
+    <script src="~/Content/js/jquery.scroller.js"></script>
+    <script>
+        $('.scroll-nav').scroller({
+            bodyName: '#main'
+        });
+    </script>
+}
 @section breadCrumb {
 
 }
@@ -15,6 +23,31 @@
     <small class="block">ABOUT US</small>
 </h1>
 
-<article class="editor-content">
-    @* 編輯器內容放此 *@
-</article>
+@if (Model.detail != null & Model.detail.Count() > 1)
+{
+    <nav class="scroll-nav">
+        @foreach (var i in Model.detail)
+        {
+            <a href=@("#p-"+i.id)>@i.name</a>
+        }
+    </nav>
+
+    foreach (var i in Model.detail)
+    {
+        <article id=@("p-"+i.id) class="editor-content scroll-content">
+            <h2 class="title">@i.name</h2>
+            @Html.Raw(i.content)
+        </article>
+    }
+}
+else if (Model.detail != null & Model.detail.Count() == 1)
+{
+    <article class="editor-content">
+        @Html.Raw(Model.detail.First().content)
+    </article>
+}
+
+
+
+
+

@@ -81,7 +81,7 @@
                                             <dd class="col-rest">
                                                 @foreach (var j in i.categoryL2Data)
                                                 {
-                                                    <a href=@Url.Content(i.url)>@j.name</a>
+                                                    <a href=@Url.Content(i.url+ "#p-"+j.id)>@j.name</a>
                                                 }
                                             </dd>
                                         </dl>

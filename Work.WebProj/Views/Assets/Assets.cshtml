@@ -1,6 +1,6 @@
-﻿
+﻿@model DotWeb.WebApp.Controllers.m_Editor
 @{
-    ViewBag.Title = "資產管理";
+    ViewBag.Title = Model.name;
     ViewBag.BodyClass = "Assets";
     ViewBag.breadCrumb = "資產管理制度說明";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -15,50 +15,34 @@
     </script>
 }
 @section breadCrumb {
-    <li><a href="~/Assets">資產管理</a></li>
+    <li><a href="~/Assets">@Model.name</a></li>
 }
 
 <h1 class="title-underline-d">
     @ViewBag.breadCrumb
-    <small class="block">2016/8/25</small>@* 最後更新日期 *@
+    <small class="block">@(((DateTime)Model.UpdateDatetime).ToString("yyyy/MM/dd"))</small>@* 最後更新日期 *@
 </h1>
 
-<nav class="scroll-nav">
-    <a href="#p1">訂定資產管理制度</a>
-    <a href="#p2">交誼廳使用管理辦法</a>
-    <a href="#p3">遊樂室使用規定</a>
-    <a href="#p4">健身房使用管理辦法</a>
-    <a href="#p5">各項設施設備管理規範</a>
-</nav>
+@if (Model.detail != null & Model.detail.Count() > 1)
+{
+    <nav class="scroll-nav">
+        @foreach (var i in Model.detail)
+        {
+            <a href=@("#p-"+i.id)>@i.name</a>
+        }
+    </nav>
 
-<article id="p1" class="editor-content scroll-content">
-    <h2 class="title">訂定資產管理制度</h2>
-    <p>德鄉建設為本案大園區西園段集合住宅新建工程的開發商，於大樓成立管委會並招開住戶(區分所有權人)大會前對本大樓具有其管理權，因此需對本大樓的各式資產訂定相關管理制度，對於各式資產都有分類並進行管理。如: 交誼廳使用管理辦法、遊戲室使用規定、社區資產管理辦法，遊戲室、健身房等各空間內各項設備亦有其相對應的管理辦法。上述各項資產管理制度於管理平台的管理辦法ICON即可下載取得。</p>
-    <img src="~/Content/images/temp.gif" alt="管委會組織系統圖" class="img-center">
-</article>
-
-<article id="p2" class="editor-content scroll-content">
-    <h2 class="title">交誼廳使用管理辦法</h2>
-    <ol class="list-underline list-unstyled">
-        <li>一、目的: 為使本社區公共設施能充份而有效的運用，促進住戶彼此間交流，增進住戶之間的情誼制定本辦法。</li>
-        <li>二、使用資格: 本社區全體區分所有權人及住戶。</li>
-        <li>三、使用人之權利與義務：
-            <ol class="list-unstyled">
-                <li>1、如住戶之親友、同事及客戶使用公共設施時，須由住戶陪同。</li>
-                <li>2、各使用人應依照公共設施使用細則之規定使用本公共設施。</li>
-                <li>3、住戶有依規定繳交規定之各項費用義務。</li>
-                <li>4、住戶不得藉管理委員會名義或利用本公共設施，從事不正當或經管理委員會認定不妥之活動。</li>
-                <li>5、住戶因不當使用或蓄意破壞者，須恢復原狀或依設施價格等價賠償之。</li>
-            </ol>
-        </li>
-        <li>四、  權利終止：住戶若有下列之情事，管理委員會得逕行取消其使用資格：
-            <ol class="list-unstyled">
-                <li>1、  違反管理委員會宗旨及有損社區聲譽者。</li>
-                <li>2、  不遵守住戶規約或各項使用細則，情節重大者或經勸止、建議仍不遵守者。</li>
-                <li>3、  延遲繳納各項費用經催告仍未履行者。</li>
-                <li>4、  喪失本社區之區分所有權及非實際所有、租用或收益本社區者。</li>
-            </ol>
-        </li>
-        <li>五、附則: 本管理辦法經管理委員會決議後生效，修正時亦同，並於公布日施行</li>
-    </ol>
-</article>
+    foreach (var i in Model.detail)
+    {
+        <article id=@("p-"+i.id) class="editor-content scroll-content">
+            <h2 class="title">@i.name</h2>
+            @Html.Raw(i.content)
+        </article>
+    }
+}
+else if (Model.detail != null & Model.detail.Count() == 1)
+{
+    <article class="editor-content">
+        @Html.Raw(Model.detail.First().content)
+    </article>
+}
