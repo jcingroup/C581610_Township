@@ -987,10 +987,10 @@ namespace DotWeb.Controller
                 {
                     id = x.editor_id,
                     name = x.name,
-                    body_class=x.body_class,
-                    url=x.url,
-                    img_url=x.img_url,
-                    categoryL2Data = x.EditorDetail.OrderByDescending(y => y.sort).Select(y => new CategoryL2Data()
+                    body_class = x.body_class,
+                    url = x.url,
+                    img_url = x.img_url,
+                    categoryL2Data = x.EditorDetail.Where(y => !y.i_Hide).OrderByDescending(y => y.sort).Select(y => new CategoryL2Data()
                     {
                         id = y.editor_detail_id,
                         name = y.detail_name
@@ -999,6 +999,38 @@ namespace DotWeb.Controller
                 });
 
             return menus;
+        }
+        protected CategoryL1Data getEditorData(int id)
+        {
+            CategoryL1Data item = new CategoryL1Data();
+            using (var db0 = getDB0())
+            {
+                #region get content
+
+                item = db0.Editor
+                    .Where(x => !x.i_Hide & x.editor_id == id)
+                    .OrderByDescending(x => x.sort)
+                    .Select(x => new CategoryL1Data()
+                    {
+                        id = x.editor_id,
+                        name = x.name,
+                        body_class = x.body_class,
+                        UpdateDatetime = x.i_UpdateDateTime,
+                        categoryL2Data = x.EditorDetail
+                                .Where(y => !y.i_Hide)
+                                .OrderByDescending(y => y.sort)
+                                .Select(y => new CategoryL2Data()
+                                {
+                                    id = y.editor_detail_id,
+                                    name = y.detail_name,
+                                    sort = y.sort,
+                                    content = y.detail_content
+                                })
+                    }).FirstOrDefault();
+
+                #endregion
+            }
+            return item;
         }
         /// <summary>
         /// 取得萬客摩關於我們資料
@@ -1342,12 +1374,15 @@ namespace DotWeb.Controller
         public string url { get; set; }
         public string img_url { get; set; }
         public string body_class { get; set; }
+        public DateTime? UpdateDatetime { get; set; }
         public IEnumerable<CategoryL2Data> categoryL2Data { get; set; }
     }
     public class CategoryL2Data
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string content { get; set; }
+        public int? sort { get; set; }
     }
     #endregion
 

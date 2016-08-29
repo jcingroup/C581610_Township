@@ -1,7 +1,7 @@
-﻿@model DotWeb.WebApp.Controllers.m_Editor
+﻿@model DotWeb.Controller.CategoryL1Data
 @{
     ViewBag.Title = Model.name;
-    ViewBag.BodyClass = "AboutUs";
+    ViewBag.BodyClass = Model.body_class;
     ViewBag.breadCrumb = "社區介紹";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
@@ -23,16 +23,16 @@
     <small class="block">ABOUT US</small>
 </h1>
 
-@if (Model.detail != null & Model.detail.Count() > 1)
+@if (Model.categoryL2Data != null & Model.categoryL2Data.Count() > 1)
 {
     <nav class="scroll-nav">
-        @foreach (var i in Model.detail)
+        @foreach (var i in Model.categoryL2Data)
         {
             <a href=@("#p-"+i.id)>@i.name</a>
         }
     </nav>
 
-    foreach (var i in Model.detail)
+    foreach (var i in Model.categoryL2Data)
     {
         <article id=@("p-"+i.id) class="editor-content scroll-content">
             <h2 class="title">@i.name</h2>
@@ -40,12 +40,13 @@
         </article>
     }
 }
-else if (Model.detail != null & Model.detail.Count() == 1)
+else if (Model.categoryL2Data != null & Model.categoryL2Data.Count() == 1)
 {
     <article class="editor-content">
-        @Html.Raw(Model.detail.First().content)
+        @Html.Raw(Model.categoryL2Data.First().content)
     </article>
 }
+
 
 
 
