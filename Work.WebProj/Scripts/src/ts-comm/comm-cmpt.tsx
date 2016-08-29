@@ -1078,7 +1078,7 @@ export class RadioBox extends React.Component<RadioBoxProps, any>{
                     <div className={this.props.wrapperClassName}>
                         {
                             this.props.radioList.map((item, i) => {
-                                return <span className="item" key={this.props.name + '-' + i}>
+                            return <label className="c-input c-radio" key={this.props.name + '-' + i}>
                                     <input type="radio"
                                         className={this.props.inputClassName}
                                         name={this.props.name}
@@ -1089,9 +1089,9 @@ export class RadioBox extends React.Component<RadioBoxProps, any>{
                                         required={this.props.required}
                                         checked={value == item.id}
                                         />
-                                    <label htmlFor={this.props.id + '-' + i} className={this.props.labelClassName}></label> { }
-                                    <span className={item.classNameforG}>{item.label}</span> { }
-                                </span>;
+                                    <span className="c-indicator"></span> { }
+                                    <span htmlFor={this.props.id + '-' + i} className={this.props.labelClassName}>{item.label}</span>
+                                </label>;
                             })
                         }
 
