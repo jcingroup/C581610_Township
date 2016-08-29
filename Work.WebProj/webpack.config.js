@@ -14,6 +14,7 @@ module.exports = {
         m_resident: path.resolve(__dirname, 'Scripts/src/resident/app.js'),
         m_news: path.resolve(__dirname, 'Scripts/src/news/app.js'),
         m_editor: path.resolve(__dirname, 'Scripts/src/editor/app.js'),
+        m_editorl2: path.resolve(__dirname, 'Scripts/src/editorl2/app.js'),
         m_editordetail: path.resolve(__dirname, 'Scripts/src/editordetail/app.js'),
         //community: path.resolve(__dirname, 'Scripts/src/community/index.js'),
 

@@ -980,22 +980,22 @@ namespace DotWeb.Controller
         {
             db0 = getDB0();
 
-            var menus = db0.Editor
+            var menus = db0.Editor_L1
                 .Where(x => !x.i_Hide)
                 .OrderByDescending(x => x.sort)
                 .Select(x => new CategoryL1Data()
                 {
-                    id = x.editor_id,
+                    id = x.editor_l1_id,
                     name = x.name,
                     body_class = x.body_class,
                     url = x.url,
                     img_url = x.img_url,
-                    categoryL2Data = x.EditorDetail.Where(y => !y.i_Hide).OrderByDescending(y => y.sort).Select(y => new CategoryL2Data()
+                    categoryL2Data = x.Editor_L2.Where(y => !y.i_Hide).OrderByDescending(y => y.sort).Select(y => new CategoryL2Data()
                     {
-                        id = y.editor_detail_id,
-                        name = y.detail_name
+                        id = y.editor_l1_id,
+                        name = y.l2_name
                     }),
-                    count = x.EditorDetail.Count()
+                    count = x.Editor_L2.Count()
                 });
 
             return menus;
@@ -1007,26 +1007,26 @@ namespace DotWeb.Controller
             {
                 #region get content
 
-                item = db0.Editor
-                    .Where(x => !x.i_Hide & x.editor_id == id)
-                    .OrderByDescending(x => x.sort)
-                    .Select(x => new CategoryL1Data()
-                    {
-                        id = x.editor_id,
-                        name = x.name,
-                        body_class = x.body_class,
-                        UpdateDatetime = x.i_UpdateDateTime,
-                        categoryL2Data = x.EditorDetail
-                                .Where(y => !y.i_Hide)
-                                .OrderByDescending(y => y.sort)
-                                .Select(y => new CategoryL2Data()
-                                {
-                                    id = y.editor_detail_id,
-                                    name = y.detail_name,
-                                    sort = y.sort,
-                                    content = y.detail_content
-                                })
-                    }).FirstOrDefault();
+                //item = db0.Editor
+                //    .Where(x => !x.i_Hide & x.editor_id == id)
+                //    .OrderByDescending(x => x.sort)
+                //    .Select(x => new CategoryL1Data()
+                //    {
+                //        id = x.editor_id,
+                //        name = x.name,
+                //        body_class = x.body_class,
+                //        UpdateDatetime = x.i_UpdateDateTime,
+                //        categoryL2Data = x.EditorDetail
+                //                .Where(y => !y.i_Hide)
+                //                .OrderByDescending(y => y.sort)
+                //                .Select(y => new CategoryL2Data()
+                //                {
+                //                    id = y.editor_detail_id,
+                //                    name = y.detail_name,
+                //                    sort = y.sort,
+                //                    content = y.detail_content
+                //                })
+                //    }).FirstOrDefault();
 
                 #endregion
             }

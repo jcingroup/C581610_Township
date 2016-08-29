@@ -12,13 +12,21 @@ namespace ProcCore.Business.DB0
     using System;
     using System.Collections.Generic;
     
-    public partial class EditorDetail
+    public partial class Editor_L1
     {
-        public int editor_detail_id { get; set; }
-        public int editor_id { get; set; }
-        public string detail_name { get; set; }
-        public string detail_content { get; set; }
-        public Nullable<int> sort { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Editor_L1()
+        {
+            this.Editor_L2 = new HashSet<Editor_L2>();
+            this.Editor_L3 = new HashSet<Editor_L3>();
+        }
+    
+        public int editor_l1_id { get; set; }
+        public string body_class { get; set; }
+        public string url { get; set; }
+        public string img_url { get; set; }
+        public string name { get; set; }
+        public int sort { get; set; }
         public bool i_Hide { get; set; }
         public string i_InsertUserID { get; set; }
         public Nullable<int> i_InsertDeptID { get; set; }
@@ -28,6 +36,9 @@ namespace ProcCore.Business.DB0
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
     
-        public virtual Editor Editor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Editor_L2> Editor_L2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Editor_L3> Editor_L3 { get; set; }
     }
 }

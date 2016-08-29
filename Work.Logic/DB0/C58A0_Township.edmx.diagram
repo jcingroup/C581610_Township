@@ -18,10 +18,13 @@
         <AssociationConnector Association="C58A0_TownshipModel.MenuRole" ManuallyRouted="false" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.Resident" Width="1.5" PointX="8.375" PointY="9.75" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.News" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="C58A0_TownshipModel.EditorDetail" Width="1.5" PointX="12.625" PointY="8" />
-        <EntityTypeShape EntityType="C58A0_TownshipModel.Editor" Width="1.5" PointX="10.375" PointY="12.875" />
-        <AssociationConnector Association="C58A0_TownshipModel.FK_EditorDetail_Editor" />
-      </Diagram>
+        <EntityTypeShape EntityType="C58A0_TownshipModel.Editor_L1" Width="1.5" PointX="10.375" PointY="8" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.Editor_L2" Width="1.5" PointX="12.625" PointY="8.125" />
+        <AssociationConnector Association="C58A0_TownshipModel.FK_Editor_L2_Editor_L1" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.Editor_L3" Width="1.5" PointX="14.875" PointY="8" />
+        <AssociationConnector Association="C58A0_TownshipModel.FK_Editor_L3_Editor_L1" />
+        <AssociationConnector Association="C58A0_TownshipModel.FK_Editor_L3_Editor_L2" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

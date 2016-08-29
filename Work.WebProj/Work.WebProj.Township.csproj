@@ -289,8 +289,9 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-cn.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
-    <Compile Include="Controllers\Api\EditorController.cs" />
-    <Compile Include="Controllers\Api\EditorDetailController.cs" />
+    <Compile Include="Controllers\Api\Editor_L1Controller.cs" />
+    <Compile Include="Controllers\Api\Editor_L3Controller.cs" />
+    <Compile Include="Controllers\Api\Editor_L2Controller.cs" />
     <Compile Include="Controllers\Api\NewsController.cs" />
     <Compile Include="Controllers\Api\ResidentController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
@@ -450,6 +451,7 @@
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_editor.js" />
     <Content Include="Scripts\build\app\m_editordetail.js" />
+    <Content Include="Scripts\build\app\m_editorl2.js" />
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
@@ -542,6 +544,16 @@
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\a-Modals.d.ts" />
     <TypeScriptCompile Include="Scripts\src\action_type.ts" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\actions.ts" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\containers.ts" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\store.ts" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\vwAStart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\vwEdit.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\vwEditDetail.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\vwGrid.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\vwGridSearch.tsx" />
+    <TypeScriptCompile Include="Scripts\src\editorl2\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\editordetail\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\editordetail\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\editordetail\containers.ts" />

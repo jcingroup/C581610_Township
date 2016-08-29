@@ -137,4 +137,60 @@
         edit_state?: IEditType;
         Editor?: server.Editor;
     }
+
+    interface Editor_L1 extends BaseEntityTable {
+        editor_l1_id?: number;
+        body_class?: string;
+        url?: string;
+        img_url?: string;
+        name?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        i_InsertUserID?: string;
+        i_InsertDeptID?: number;
+        i_InsertDateTime?: Date;
+        i_UpdateUserID?: string;
+        i_UpdateDeptID?: number;
+        i_UpdateDateTime?: Date;
+        i_Lang?: string;
+        Editor_L2?: server.Editor_L2[];
+        Editor_L3?: server.Editor_L3[];
+    }
+    interface Editor_L2 extends BaseEntityTable {
+        editor_l2_id?: number;
+        editor_l1_id?: number;
+        l2_name?: string;
+        l2_content?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        i_InsertUserID?: string;
+        i_InsertDeptID?: number;
+        i_InsertDateTime?: Date;
+        i_UpdateUserID?: string;
+        i_UpdateDeptID?: number;
+        i_UpdateDateTime?: Date;
+        i_Lang?: string;
+        Editor_L1?: server.Editor_L1;
+        Editor_L3?: server.Editor_L3[];
+        edit_state?: IEditType;
+    }
+    interface Editor_L3 extends BaseEntityTable{
+        editor_l3_id?: number;
+        editor_l2_id?: number;
+        editor_l1_id?: number;
+        l3_name?: string;
+        l3_content?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        i_InsertUserID?: string;
+        i_InsertDeptID?: number;
+        i_InsertDateTime?: Date;
+        i_UpdateUserID?: string;
+        i_UpdateDeptID?: number;
+        i_UpdateDateTime?: Date;
+        i_Lang?: string;
+        Editor_L1?: server.Editor_L1;
+        Editor_L2?: server.Editor_L2;
+        edit_state?: IEditType;
+    }
 } 
