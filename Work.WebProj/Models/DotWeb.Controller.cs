@@ -746,10 +746,8 @@ namespace DotWeb.Controller
             //plamInfo.UnitId = 0;
 
             Log.SetupBasePath = System.Web.HttpContext.Current.Server.MapPath("~\\_Code\\Log\\");
-            Log.Enabled = true;
 
-            var getMemberIdCookie = Request.Cookies[CommWebSetup.WebCookiesId + ".member_id"];
-            var getMemberName = Request.Cookies[CommWebSetup.WebCookiesId + ".member_name"];
+            var getMemberIdCookie = Request.Cookies["resident_id"];
             MemberId = getMemberIdCookie == null ? null : EncryptString.desDecryptBase64(Server.UrlDecode(getMemberIdCookie.Value));
             try
             {
@@ -760,9 +758,14 @@ namespace DotWeb.Controller
                 ViewBag.VisitCount = visitCount;
                 ViewBag.IsFirstPage = false; //是否為首頁，請在首頁的Action此值設為True
                 ViewBag.CategoryStroe = WebCategory();
-                //ajax_GetAboutUsData();//layout下方aboutus
 
                 this.isTablet = (new WebInfo()).isTablet();
+                if (MemberId != null)
+                {
+                    var member = db.Resident.Find(int.Parse(MemberId));
+                    ViewBag.r_no = member.resident_no;
+                    ViewBag.r_name = member.resident_name;
+                }
             }
             catch (Exception ex)
             {

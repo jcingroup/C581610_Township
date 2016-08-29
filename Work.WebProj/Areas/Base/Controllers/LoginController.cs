@@ -98,7 +98,7 @@ namespace DotWeb.Areas.Base.Controllers
             var userManager = UserManager;
 
             LoginResult getLoginResult = new LoginResult();
-            
+
 
             #region 驗證碼檢查程序
 
@@ -155,7 +155,7 @@ namespace DotWeb.Areas.Base.Controllers
                 item = await userManager.FindByNameAsync(("resident"));
                 get_user_roles_id = item.Roles.Select(x => x.RoleId);
                 var first_item = get_secretary.First();
-                var cki_resident_id = new HttpCookie("resident_id", first_item.resident_id.ToString());
+                var cki_resident_id = new HttpCookie("resident_id", Server.UrlEncode(EncryptString.desEncryptBase64(first_item.resident_id.ToString())));
                 Response.Cookies.Add(cki_resident_id);
             }
 
