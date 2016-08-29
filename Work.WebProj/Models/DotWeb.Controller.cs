@@ -992,7 +992,7 @@ namespace DotWeb.Controller
                     img_url = x.img_url,
                     categoryL2Data = x.Editor_L2.Where(y => !y.i_Hide).OrderByDescending(y => y.sort).Select(y => new CategoryL2Data()
                     {
-                        id = y.editor_l1_id,
+                        id = y.editor_l2_id,
                         name = y.l2_name
                     }),
                     count = x.Editor_L2.Count()
@@ -1000,33 +1000,35 @@ namespace DotWeb.Controller
 
             return menus;
         }
-        protected CategoryL1Data getEditorData(int id)
+        protected CategoryL2Data getEditorData(int id, int l2_id)
         {
-            CategoryL1Data item = new CategoryL1Data();
+            CategoryL2Data item = new CategoryL2Data();
             using (var db0 = getDB0())
             {
                 #region get content
 
-                //item = db0.Editor
-                //    .Where(x => !x.i_Hide & x.editor_id == id)
-                //    .OrderByDescending(x => x.sort)
-                //    .Select(x => new CategoryL1Data()
-                //    {
-                //        id = x.editor_id,
-                //        name = x.name,
-                //        body_class = x.body_class,
-                //        UpdateDatetime = x.i_UpdateDateTime,
-                //        categoryL2Data = x.EditorDetail
-                //                .Where(y => !y.i_Hide)
-                //                .OrderByDescending(y => y.sort)
-                //                .Select(y => new CategoryL2Data()
-                //                {
-                //                    id = y.editor_detail_id,
-                //                    name = y.detail_name,
-                //                    sort = y.sort,
-                //                    content = y.detail_content
-                //                })
-                //    }).FirstOrDefault();
+                item = db0.Editor_L2
+                    .Where(x => !x.i_Hide & x.editor_l1_id == id & x.editor_l2_id == l2_id)
+                    .OrderByDescending(x => x.sort)
+                    .Select(x => new CategoryL2Data()
+                    {
+                        id = x.editor_l1_id,
+                        l1_name = x.Editor_L1.name,
+                        name = x.l2_name,
+                        body_class = x.Editor_L1.body_class,
+                        UpdateDatetime = x.i_UpdateDateTime,
+                        categoryL3Data = x.Editor_L3
+                                .Where(y => !y.i_Hide)
+                                .OrderByDescending(y => y.sort)
+                                .Select(y => new CategoryL3Data()
+                                {
+                                    id = y.editor_l3_id,
+                                    name = y.l3_name,
+                                    content = y.l3_content,
+                                    sort = y.sort,
+                                    UpdateDatetime = y.i_UpdateDateTime
+                                })
+                    }).FirstOrDefault();
 
                 #endregion
             }
@@ -1380,8 +1382,19 @@ namespace DotWeb.Controller
     public class CategoryL2Data
     {
         public int id { get; set; }
+        public string l1_name { get; set; }
+        public string name { get; set; }
+        public string body_class { get; set; }
+        public DateTime? UpdateDatetime { get; set; }
+        public int? sort { get; set; }
+        public IEnumerable<CategoryL3Data> categoryL3Data { get; set; }
+    }
+    public class CategoryL3Data
+    {
+        public int id { get; set; }
         public string name { get; set; }
         public string content { get; set; }
+        public DateTime? UpdateDatetime { get; set; }
         public int? sort { get; set; }
     }
     #endregion

@@ -1,14 +1,13 @@
-﻿@model DotWeb.Controller.CategoryL1Data
+﻿@model DotWeb.Controller.CategoryL2Data
 @{
-    ViewBag.Title = Model.name;
+    ViewBag.Title = Model.l1_name;
     ViewBag.BodyClass = Model.body_class;
-    ViewBag.breadCrumb = Model.categoryL2Data.Count() > 0 ? Model.categoryL2Data.First().name : Model.name;
+    ViewBag.breadCrumb = Model.name;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section Scripts {
     <script src="~/Content/js/jquery.scroller.js"></script>
-    <script src="~/Scripts/eitorChgName.js"></script>
     <script>
         $('.scroll-nav').scroller({
             bodyName: '#main'
@@ -16,35 +15,41 @@
     </script>
 }
 @section breadCrumb {
-    <li><a href="~/AboutUs">@Model.name</a></li>
+    <li><a href="~/AboutUs">@Model.l1_name</a></li>
 }
 
 <h1 class="title-underline-d">
-    <span id="e-title">@ViewBag.breadCrumb</span>
+    @ViewBag.breadCrumb
     <small class="block">ABOUT US</small>
 </h1>
 
-@if (Model.categoryL2Data != null & Model.categoryL2Data.Count() > 1)
+@if (Model.categoryL3Data != null & Model.categoryL3Data.Count() > 1)
 {
     <nav class="scroll-nav">
-        @foreach (var i in Model.categoryL2Data)
+        @foreach (var i in Model.categoryL3Data)
         {
             <a href=@("#p-"+i.id)>@i.name</a>
         }
     </nav>
 
-    foreach (var i in Model.categoryL2Data)
+    foreach (var i in Model.categoryL3Data)
     {
         <article id=@("p-"+i.id) class="editor-content scroll-content">
             <h2 class="title">@i.name</h2>
-            @Html.Raw(i.content)
+            @if (i.content != null)
+            {
+                @Html.Raw(i.content)
+            }
         </article>
     }
 }
-else if (Model.categoryL2Data != null & Model.categoryL2Data.Count() == 1)
+else if (Model.categoryL3Data != null & Model.categoryL3Data.Count() == 1)
 {
     <article class="editor-content">
-        @Html.Raw(Model.categoryL2Data.First().content)
+        @if (Model.categoryL3Data.First().content != null)
+        {
+            @Html.Raw(Model.categoryL3Data.First().content)
+        }
     </article>
 }
 
