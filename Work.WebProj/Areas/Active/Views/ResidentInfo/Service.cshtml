@@ -161,11 +161,21 @@
 	<div class="form-group row">
 		<label class="col-xs-1 form-control-label text-xs-right"><small class="text-danger">*</small> 預約結果</label>
 		<div class="col-xs-7">
-			<select class="form-control">
-				<option value="">待審核</option>
-				<option value="">完成預約</option>
-				<option value="" selected>預約已取消</option>
-			</select>
+			<label class="c-input c-radio">
+				<input type="radio" name="result">
+				<span class="c-indicator"></span>
+				<span class="text-sm">待審核</span>
+			</label>
+			<label class="c-input c-radio">
+				<input type="radio" name="result">
+				<span class="c-indicator"></span>
+				<span class="text-sm">完成預約</span>
+			</label>
+			<label class="c-input c-radio">
+				<input type="radio" name="result" checked>
+				<span class="c-indicator"></span>
+				<span class="text-sm">預約已取消</span>
+			</label>
 		</div>
 	</div>
 	<div class="form-group row">
