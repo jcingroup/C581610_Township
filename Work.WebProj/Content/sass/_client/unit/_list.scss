@@ -5,23 +5,6 @@ $list-dot-color: $brand-primary !default;
 
 // list - extend的內容 寫在 base/util
 // ------------------------------------------------------------
-// reset
-ol, ul, dl { margin: 0 0 $spacer; }
-
-ol, ul {
-    @extend .padding-0;
-    ol, ul {
-        margin-left: $spacer;
-        margin-bottom: $spacer/2;
-    }
-}
-
-dt { font-weight: $dt-font-weight; }
-dd {
-    margin-bottom: $spacer/2;
-    margin-left: 0; // Undo browser default
-}
-
 .list-unstyled { @extend %list-unstyled; }
 .list-inline   { @extend %list-inline; }
 

@@ -176,3 +176,18 @@ summary,
 textarea {
     touch-action: manipulation;
 }
+
+ol, ul, dl { padding: 0; margin: 0 0 $spacer; }
+
+ol, ul {
+    ol, ul {
+        margin-left: $spacer;
+        margin-bottom: $spacer/2;
+    }
+}
+
+dt { font-weight: $dt-font-weight; }
+dd {
+    margin-bottom: $spacer/2;
+    margin-left: 0; // Undo browser default
+}

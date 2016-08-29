@@ -334,6 +334,21 @@ summary,
 textarea {
   touch-action: manipulation; }
 
+ol, ul, dl {
+  padding: 0;
+  margin: 0 0 1rem; }
+
+ol ol, ol ul, ul ol, ul ul {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem; }
+
+dt {
+  font-weight: bold; }
+
+dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0; }
+
 /*      table
 -----------------------------------------------------------------------*/
 table {
@@ -820,20 +835,6 @@ label, output, .sub-nav a, .label, figure, a.tooltip, .inline-block, .scroll-nav
     .breadcrumb a:hover, .breadcrumb a:active {
       color: #2AA19C; }
 
-ol, ul, dl {
-  margin: 0 0 1rem; }
-
-ol ol, ol ul, ul ol, ul ul {
-  margin-left: 1rem;
-  margin-bottom: 0.5rem; }
-
-dt {
-  font-weight: bold; }
-
-dd {
-  margin-bottom: 0.5rem;
-  margin-left: 0; }
-
 .news-list li {
   border-radius: 10px 0 10px 0;
   box-shadow: 0 0 10px #bfbfbf;
@@ -1193,7 +1194,7 @@ figure {
   padding-top: 64px;
   padding-bottom: 64px; }
 
-.padding-0, ol, ul {
+.padding-0 {
   padding: 0; }
 
 .margin-0, .Notice #main, .grid-intro p, .comment-self dd {

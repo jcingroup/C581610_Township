@@ -36,8 +36,7 @@
 }
 
 .wrap {
-    @extend %center;
-    @extend %contain;
+    @extend %center, %contain;
 }
 
 #header, #footer, #main {
