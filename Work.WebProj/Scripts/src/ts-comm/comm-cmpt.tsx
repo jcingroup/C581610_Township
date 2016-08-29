@@ -1090,7 +1090,7 @@ export class RadioBox extends React.Component<RadioBoxProps, any>{
                                         checked={value == item.id}
                                         />
                                     <span className="c-indicator"></span> { }
-                                    <span htmlFor={this.props.id + '-' + i} className={this.props.labelClassName}>{item.label}</span>
+                                    <span className={this.props.labelClassName}>{item.label}</span>
                                 </label>;
                             })
                         }
