@@ -22,8 +22,6 @@ $grid-breakpoints: (
     & + & { margin-top: $spacer/2; }
 }
 
-%float-l { float: left; }
-
 // 12格 通用(全螢幕) - 靠左
 @for $i from 1 through $grid-columns {
     .col-#{$i} {
