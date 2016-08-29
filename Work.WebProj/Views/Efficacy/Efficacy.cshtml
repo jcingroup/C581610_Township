@@ -1,97 +1,40 @@
-﻿
+﻿@model DotWeb.WebApp.Controllers.m_Editor
 @{
-    ViewBag.Title = "效能管理";
+    ViewBag.Title = Model.name;
     ViewBag.BodyClass = "Efficacy";
     ViewBag.breadCrumb = "預期使用機能需求評估與計畫";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section breadCrumb {
-    <li><a href="~/Efficacy">效能管理</a></li>
+    <li><a href="~/Efficacy">@Model.name</a></li>
 }
 
 <h1 class="title-underline-d">
     @ViewBag.breadCrumb
-    <small class="block">2016/8/25</small>@* 最後更新日期 *@
+    <small class="block">@(((DateTime)Model.UpdateDatetime).ToString("yyyy/MM/dd"))</small>@* 最後更新日期 *@
 </h1>
 
-<p class="text-left">近年來桃園市人口的增長在台灣各縣市的評比中一直名列前茅，而應孕而生的住宅建案也不斷的推陳出新，大園區鄰近航空城，因此本案的位置成為了建商首選之地，經過建商、建築師及各技師不斷的針對建築量體、規劃方案進行討論後終於決定了本案的興建。</p>
+@if (Model.detail != null & Model.detail.Count() > 1)
+{
+    <nav class="scroll-nav">
+        @foreach (var i in Model.detail)
+        {
+            <a href=@("#p-"+i.id)>@i.name</a>
+        }
+    </nav>
 
-<table class="table-bordered table-hover">
-    <caption class="font-xl text-primary padding-12">
-        德鄉建設 大園區西園段集合住宅新建工程 <span class="tooltip" data-tooltip="點選該樓層顯示機能說明表">各樓層配置表</span>
-    </caption>
-    <tr><th>樓層</th><th>用途</th></tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">地下二層 <i class="icon-open"></i></a></td>
-        <td class="text-left">防空避難室兼停車場、機房</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">地下一層 <i class="icon-open"></i></a></td>
-        <td class="text-left">停車場、機房</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">一層 <i class="icon-open"></i></a></td>
-        <td class="text-left">公共服務空間、店鋪</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">二層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">三層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">四層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">五層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">六層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">七層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">八層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">九層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">十層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">十一層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">十二層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">十三層 <i class="icon-open"></i></a></td>
-        <td class="text-left">集合住宅</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">屋突一層 <i class="icon-open"></i></a></td>
-        <td class="text-left">樓梯間</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">屋突二層 <i class="icon-open"></i></a></td>
-        <td class="text-left">機械室、水箱</td>
-    </tr>
-    <tr>
-        <td class="item"><a href="~/Content/images/temp.jpg" target="new">屋頂層 <i class="icon-open"></i></a></td>
-        <td class="text-left">屋頂</td>
-    </tr>
-</table>
+    foreach (var i in Model.detail)
+    {
+        <article id=@("p-"+i.id) class="editor-content scroll-content">
+            <h2 class="title">@i.name</h2>
+            @Html.Raw(i.content)
+        </article>
+    }
+}
+else if (Model.detail != null & Model.detail.Count() == 1)
+{
+    <article class="editor-content">
+        @Html.Raw(Model.detail.First().content)
+    </article>
+}

@@ -1,69 +1,40 @@
-﻿
+﻿@model DotWeb.WebApp.Controllers.m_Editor
 @{
-    ViewBag.Title = "維運管理";
+    ViewBag.Title = Model.name;
     ViewBag.BodyClass = "Management";
     ViewBag.breadCrumb = "年度設備管理維護計畫";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section breadCrumb {
-    <li><a href="~/Management">維運管理</a></li>
+    <li><a href="~/Management">@Model.name</a></li>
 }
 
 <h1 class="title-underline-d">
     @ViewBag.breadCrumb
-    <small class="block">2016/8/25</small>@* 最後更新日期 *@
+    <small class="block">@(((DateTime)Model.UpdateDatetime).ToString("yyyy/MM/dd"))</small>@* 最後更新日期 *@
 </h1>
 
-<article class="editor-content">
-    <h4 class="text-center">社區設備(施)維護保養查核暨設施巡查作業規範</h4>
-    <h5>目的：為落實設備(施)維護保養，查核廠商維護保養成效、社區公共設施巡查及清查訂定本作業規範，以資遵循。</h5>
-    <h5>範圍：本組辦理之年度設備(施)維護保養設備項目均屬之，設施指社區道路、水溝、公用管線等公用設施。</h5>
-    <h5>定義：略。</h5>
-    <h5>作業內容：</h5>
-    <ol class="list-num list-underline">
-        <li>各項設備維護保養應於每年12月底前辦理招標次年度之設備維護保養契約。若有不必依前述期間辦理者視個案期程辦理。</li>
-        <li>各設備維護保養廠商，於得標後依契約規定期間或至遲一個月內，擬定工作計畫，人員編組、聯絡人及電話、維護保養預定排程送本會，由社區權責委員審查簽核後執行，契約得規定廠商若未依期限內提相關文件時，依契約履約延遲規定計罰違約金。</li>
-        <li>各設備維護保養如需區域停水、停電作業時，應依「停水作業規範」及「施工停電作業規範」辦理。</li>
-        <li>設備維護保養廠商應於每月維護保養完成，於次月十日前或契約規定期間內檢具維護運轉紀錄，送交社區權責委員簽核，紀錄應有檢查日期、檢查地點、檢查事項、檢查結果事實…等記載，如有待改善事項應加附缺點改善通知書，由承辦人簽請改善。</li>
-        <li>查核作業：
-            <ol>
-                <li>設備維護保養巡查處理原則，若經二次通知未在期限內改善時，以校函通知限期改善，若仍未改善時依契約規定辦理懲處。
-                    <ol>
-                        <li>各設備分別由設備維護保養承辦人或技術工友等，不定時查核廠商維護保養情形。</li>
-                        <li>查核設備維護保養時，對於廠商保養有需待改善之情形時，應填具「本社區設備維護保養及設施巡查報告暨改善通知單」，由設備維護保養承辦人、簽請社區權責委員核示，通知設備維護保養廠商改善。</li>
-                        <li>巡查待改善事項為校內公共設施或各單位使用之設施時，由巡查或各單位人員於本組修繕系統報修或填具「社區公共設施巡查改善通知單」。公共設施巡查改善通知單之事項，仍依修繕系統填單報修。</li>
-                    </ol>
-                </li>
-            </ol>
-        </li>
-        <li>巡查、清查安全防護措施：
-            <ol>
-                <li>執行巡查、清查作業時，應隨時注意個人及週遭人員安全，並須依巡查、清查作業性質配戴適當的個人防護設備，以策安全。</li>
-                <li>巡查、清查電源線路作業：
-                    <ol>
-                        <li>確認電路供電區域、電壓。作業前須使用適當個人防護設備或儀器設備量測。</li>
-                        <li>需停電作業的工作，應關閉迴路隔離電源，確實進行放電，以維安全，並應執行下列任一項以上工作。
-                            <ol>
-                                <li>開關處應上鎖。</li>
-                                <li>開關處應標示「禁止送電」、「停電作業中」與「勿送電」等警語。</li>
-                                <li>派駐人員監視，防止他人誤送電。</li>
-                            </ol>
-                        </li>
-                        <li>作業完成，應事先確認從事作業等之其他人員無感電之虞，並拆除施工前設置放電或短路接地器具或標誌後，才能送電。</li>
-                        <li>低壓電路如須活線作業時，應使(戴)用絕緣防護器具，或使用活線作業用器具或其他之安全工具。</li>
-                    </ol>
-                </li>
-                <li>人(手)孔巡查、清查電路作業：
-                    <ol>
-                        <li>穿著絕緣防護設備(安全帽、鞋、手套等)。</li>
-                        <li>檢查設備、人孔或手孔有無漏電情形。</li>
-                        <li>依須要架設通風設備，工作人員繫帶絕緣安全繩。</li>
-                        <li>準備備用絕緣安全繩及急救設備。</li>
-                    </ol>
-                </li>
-                <li>本作業規範各承攬廠商，可依實際須要參考使用。</li>
-            </ol>
-        </li>
-    </ol>
-</article>
+@if (Model.detail != null & Model.detail.Count() > 1)
+{
+    <nav class="scroll-nav">
+        @foreach (var i in Model.detail)
+        {
+            <a href=@("#p-"+i.id)>@i.name</a>
+        }
+    </nav>
+
+    foreach (var i in Model.detail)
+    {
+        <article id=@("p-"+i.id) class="editor-content scroll-content">
+            <h2 class="title">@i.name</h2>
+            @Html.Raw(i.content)
+        </article>
+    }
+}
+else if (Model.detail != null & Model.detail.Count() == 1)
+{
+    <article class="editor-content">
+        @Html.Raw(Model.detail.First().content)
+    </article>
+}
