@@ -759,7 +759,7 @@ namespace DotWeb.Controller
 
                 ViewBag.VisitCount = visitCount;
                 ViewBag.IsFirstPage = false; //是否為首頁，請在首頁的Action此值設為True
-                //ajax_GetSidebarData();//取得左選單內容
+                ViewBag.CategoryStroe = WebCategory();
                 //ajax_GetAboutUsData();//layout下方aboutus
 
                 this.isTablet = (new WebInfo()).isTablet();
@@ -976,29 +976,29 @@ namespace DotWeb.Controller
         /// <summary>
         /// 取得前台每頁左選單內容
         /// </summary>
-        public void ajax_GetSidebarData()
+        protected IEnumerable<CategoryL1Data> WebCategory()
         {
-            //List<L1> l1 = new List<L1>();
-            //using (var db = getDB0())
-            //{
-            //    l1 = db.ProductCategory_l1.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
-            //                    .Select(x => new L1()
-            //                    {
-            //                        l1_id = x.product_category_l1_id,
-            //                        l1_name = x.category_l1_name
-            //                    }).ToList();
-            //    foreach (var item in l1)
-            //    {
-            //        item.l2_list = db.ProductCategory_l2.Where(x => !x.i_Hide & x.product_category_l1_id == item.l1_id).OrderByDescending(x => x.sort)
-            //                            .Select(x => new L2()
-            //                            {
-            //                                l2_id = x.product_category_l2_id,
-            //                                l2_name = x.category_l2_name
-            //                            }).ToList();
-            //    }
+            db0 = getDB0();
 
-            //}
-            //ViewBag.Sidebar = l1;
+            var menus = db0.Editor
+                .Where(x => !x.i_Hide)
+                .OrderByDescending(x => x.sort)
+                .Select(x => new CategoryL1Data()
+                {
+                    id = x.editor_id,
+                    name = x.name,
+                    body_class=x.body_class,
+                    url=x.url,
+                    img_url=x.img_url,
+                    categoryL2Data = x.EditorDetail.OrderByDescending(y => y.sort).Select(y => new CategoryL2Data()
+                    {
+                        id = y.editor_id,
+                        name = y.detail_name
+                    }),
+                    count = x.EditorDetail.Count()
+                });
+
+            return menus;
         }
         /// <summary>
         /// 取得萬客摩關於我們資料
@@ -1333,6 +1333,21 @@ namespace DotWeb.Controller
             public string link_path { get; set; }
         }
 
+    }
+    public class CategoryL1Data
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public int count { get; set; }
+        public string url { get; set; }
+        public string img_url { get; set; }
+        public string body_class { get; set; }
+        public IEnumerable<CategoryL2Data> categoryL2Data { get; set; }
+    }
+    public class CategoryL2Data
+    {
+        public int id { get; set; }
+        public string name { get; set; }
     }
     #endregion
 
