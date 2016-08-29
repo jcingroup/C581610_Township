@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 namespace DotWeb.WebApp.Controllers
 {
+    [Authorize]
     public class NewsController : WebUserController
     {
         // GET: News

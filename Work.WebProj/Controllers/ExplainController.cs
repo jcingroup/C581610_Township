@@ -3,6 +3,7 @@ using DotWeb.Controller;
 
 namespace DotWeb.WebApp.Controllers
 {
+    [Authorize]
     public class ExplainController : WebUserController
     {
         // GET: Explain
