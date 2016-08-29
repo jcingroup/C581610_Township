@@ -74,6 +74,7 @@ export class Edit extends React.Component<any, any>{
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
                         <div className="col-xs-4">
                             <RadioBox
+                                labelClassName="text-sm"
                                 inputViewMode={InputViewMode.edit}
                                 value={field.i_Hide}
                                 id="RadioIHide"
