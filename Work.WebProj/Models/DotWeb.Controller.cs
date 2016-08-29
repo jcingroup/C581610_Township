@@ -1199,7 +1199,7 @@ namespace DotWeb.Controller
             var client = new WebClient();
             var reply =
                 client.DownloadString(
-                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", "6LeAwSETAAAAAGeW6ToGJ6GLPtHaibI1c1-jqYiW", response));
+                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", "6Lf0uygTAAAAAJZG43Y70c0sf8Si_wIo3mKbWmVB", response));
 
             var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
 
