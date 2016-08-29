@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using DotWeb.Controller;
+@{
+    IEnumerable<CategoryL1Data> category_stroe = null;
+    if (ViewBag.CategoryStroe != null)
+    {
+        category_stroe = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
+    }
+}
+<!DOCTYPE html>
 <html lang="zh-TW">
 <!-- saved from url=(0014)about:internet -->
 
@@ -44,9 +52,9 @@
 
                     <div class="top-member">
                         @* 有圖時顯示此
-                        <div class="float-l">
-                            <img src="~/Member/photo.jpg" alt="" class="head">
-                        </div> *@
+                            <div class="float-l">
+                                <img src="~/Member/photo.jpg" alt="" class="head">
+                            </div> *@
 
                         @* 無圖時顯示下列 *@
                         <a href="~/Member/Edit" class="head icon-photo_camera"></a>
@@ -61,82 +69,27 @@
 
                     <ul id="menu" class="navbar">
                         <li><a href="~/News" class="root @(ViewBag.BodyClass == "News" ? "current" : "")">社區訊息</a></li>
-                        <li><a href="~/AboutUs" class="root @(ViewBag.BodyClass == "AboutUs" ? "current" : "")">社區介紹</a></li>
+                        @foreach (var i in category_stroe)
+                        {
+                            <li>
+                                <a href=@Url.Content(i.url) class="root @(ViewBag.BodyClass == i.body_class ? "current" : "")">@i.name</a>
+                                @if (i.count > 1)
+                                {
+                                    <nav class="sub-nav">
+                                        <dl class="wrap">
+                                            <dt class="float-l"><img src=@Url.Content(i.img_url) alt="圖標"></dt>
+                                            <dd class="col-rest">
+                                                @foreach (var j in i.categoryL2Data)
+                                                {
+                                                    <a href="@Url.Content(i.url + "#p-" + j.id)">@j.name</a>
+                                                }
+                                            </dd>
+                                        </dl>
+                                    </nav>
 
-                        <li>
-                            <a href="~/Assets" class="root caret @(ViewBag.BodyClass == "Assets" ? "current" : "")">資產管理</a>
-                            <nav class="sub-nav">
-                                <dl class="wrap">
-                                    <dt class="float-l"><img src="~/Content/images/nav-icon-Assets.gif" alt="圖標"></dt>
-                                    <dd class="col-rest">
-                                        <a href="~/Assets">資產管理制度說明</a>
-                                        <a href="~/Assets">產權管理制度說明</a>
-                                        <a href="~/Assets">租賃管理制度說明</a>
-                                        <a href="~/Assets">設施使用動態管理說明</a>
-                                        <a href="~/Assets">各項設施設備使用規範說明</a>
-                                    </dd>
-                                </dl>
-                            </nav>
-                        </li>
-
-                        <li>
-                            <a href="~/Efficacy" class="root caret @(ViewBag.BodyClass == "Efficacy" ? "current" : "")">效能管理</a>
-                            <nav class="sub-nav">
-                                <dl class="wrap">
-                                    <dt class="float-l"><img src="~/Content/images/nav-icon-Efficacy.gif" alt="圖標"></dt>
-                                    <dd class="col-rest">
-                                        <a href="~/Efficacy">預期使用機能需求評估與規劃說明</a>
-                                        <a href="~/Efficacy">品質管理制度說明</a>
-                                        <a href="~/Efficacy">管理績效評估標準說明</a>
-                                        <a href="~/Efficacy">設施管理整合作業說明</a>
-                                        <a href="~/Efficacy">決策支援說明</a>
-                                    </dd>
-                                <dl>
-                            </nav>
-                        </li>
-
-                        <li>
-                            <a href="~/Group" class="root caret @(ViewBag.BodyClass == "Group" ? "current" : "")">組織管理</a>
-                            <nav class="sub-nav">
-                                <dl class="wrap">
-                                    <dt class="float-l"><img src="~/Content/images/nav-icon-Group.gif" alt="圖標"></dt>
-                                    <dd class="col-rest">
-                                        <a href="~/Group">管理組織型態與編制說明</a>
-                                        <a href="~/Group">人員證照說明</a>
-                                        <a href="~/Group">專業協約廠商管理說明</a>
-                                        <a href="~/Group">人事管理制度</a>
-                                    </dd>
-                                <dl>
-                            </nav>
-                        </li>
-
-                        <li>
-                            <a href="~/Management" class="root caret @(ViewBag.BodyClass == "Management" ? "current" : "")">維運管理</a>
-                            <nav class="sub-nav">
-                                <dl class="wrap">
-                                    <dt class="float-l"><img src="~/Content/images/nav-icon-Management.gif" alt="圖標"></dt>
-                                    <dd class="col-rest">
-                                        <a href="~/Management">年度設備管理維護計畫</a>
-                                        <a href="~/Management">各項設施設備管理維護規範</a>
-                                        <a href="~/Management">設施智慧化圖說</a>
-                                        <a href="~/Management">緊急應變計畫</a>
-                                    </dd>
-                                <dl>
-                            </nav>
-                        </li>
-
-                        <li>
-                            <a href="~/Fix" class="root caret @(ViewBag.BodyClass == "Fix" ? "current" : "")">長期修繕</a>
-                            <nav class="sub-nav">
-                                <dl class="wrap">
-                                    <dt class="float-l"><img src="~/Content/images/nav-icon-Fix.gif" alt="圖標"></dt>
-                                    <dd class="col-rest">
-                                        <a href="~/Fix">長期修繕計畫</a>
-                                        <a href="~/Fix">長期修繕財務籌措計畫</a>
-                                    </dd>
-                                <dl>
-                            </nav>
-                        </li>
+                                }
+                            </li>
+                        }
 
                         <li><a href="~/Comments" class="root @(ViewBag.BodyClass == "Comments" ? "current" : "")">留言板</a></li>
                         <li><a href="~/Explain" class="root @(ViewBag.BodyClass == "Explain" ? "current" : "")">操作說明</a></li>
@@ -163,7 +116,7 @@
                 <ul class="breadcrumb">
                     <li><a href="~/index" class="icon-home"></a></li>
                     @RenderSection("breadCrumb", required: false)
-                    <li>@ViewBag.breadCrumb</li> @* 當前頁名稱 *@
+                    <li id="b-name">@ViewBag.breadCrumb</li> @* 當前頁名稱 *@
                 </ul>
 
                 @RenderBody()
@@ -210,7 +163,6 @@
             </section>
         </div><!-- wrap -->
     </footer><!-- footer -->
-
     @* <script src="//code.jquery.com/jquery-latest.min.js"></script> *@
     <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="~/Content/js/common.js"></script>

@@ -1,20 +1,55 @@
-﻿
+﻿@model DotWeb.Controller.CategoryL1Data
 @{
-    ViewBag.Title = "社區介紹";
-    ViewBag.BodyClass = "AboutUs";
-    ViewBag.breadCrumb = "社區介紹";
+    ViewBag.Title = Model.name;
+    ViewBag.BodyClass = Model.body_class;
+    ViewBag.breadCrumb = Model.categoryL2Data.Count() > 0 ? Model.categoryL2Data.First().name : Model.name;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+@section Scripts {
+    <script src="~/Content/js/jquery.scroller.js"></script>
+    <script src="~/Scripts/eitorChgName.js"></script>
+    <script>
+        $('.scroll-nav').scroller({
+            bodyName: '#main'
+        });
+    </script>
+}
 @section breadCrumb {
-
+    <li><a href="~/AboutUs">@Model.name</a></li>
 }
 
 <h1 class="title-underline-d">
-    @ViewBag.breadCrumb
+    <span id="e-title">@ViewBag.breadCrumb</span>
     <small class="block">ABOUT US</small>
 </h1>
 
-<article class="editor-content">
-    @* 編輯器內容放此 *@
-</article>
+@if (Model.categoryL2Data != null & Model.categoryL2Data.Count() > 1)
+{
+    <nav class="scroll-nav">
+        @foreach (var i in Model.categoryL2Data)
+        {
+            <a href=@("#p-"+i.id)>@i.name</a>
+        }
+    </nav>
+
+    foreach (var i in Model.categoryL2Data)
+    {
+        <article id=@("p-"+i.id) class="editor-content scroll-content">
+            <h2 class="title">@i.name</h2>
+            @Html.Raw(i.content)
+        </article>
+    }
+}
+else if (Model.categoryL2Data != null & Model.categoryL2Data.Count() == 1)
+{
+    <article class="editor-content">
+        @Html.Raw(Model.categoryL2Data.First().content)
+    </article>
+}
+
+
+
+
+
+

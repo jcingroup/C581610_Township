@@ -49,19 +49,23 @@ export class Edit extends React.Component<any, any>{
                     <h4 className="h4">主檔</h4>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 名稱 </label>
-                        <div className="col-xs-7">
+                        <div className="col-xs-3">
                             <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'name') } value={field.name} maxLength={64}
                                 required />
                         </div>
-                    </div>
-                    <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"> BodyClass</label>
                         <div className="col-xs-3">
                             <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'body_class') } value={field.body_class} maxLength={64} />
                         </div>
-                        <label className="col-xs-1 form-control-label text-xs-right"> Url</label>
+                    </div>
+                    <div className="form-group row">
+                    <label className="col-xs-1 form-control-label text-xs-right"> Url</label>
+                    <div className="col-xs-3">
+                        <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'url') } value={field.url} maxLength={64}  />
+                    </div>
+                        <label className="col-xs-1 form-control-label text-xs-right">IMG Url</label>
                         <div className="col-xs-3">
-                            <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'url') } value={field.url} maxLength={64}  />
+                        <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'img_url') } value={field.img_url} maxLength={128}  />
                         </div>
                     </div>
                     <div className="form-group row">

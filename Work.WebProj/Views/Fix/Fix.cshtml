@@ -1,43 +1,50 @@
-﻿
+﻿@model DotWeb.Controller.CategoryL1Data
 @{
-    ViewBag.Title = "長期修繕";
-    ViewBag.BodyClass = "Fix";
-    ViewBag.breadCrumb = "長期修繕計畫";
+    ViewBag.Title = Model.name;
+    ViewBag.BodyClass = Model.body_class;
+    ViewBag.breadCrumb = Model.categoryL2Data.Count() > 0 ? Model.categoryL2Data.First().name : Model.name;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-@section breadCrumb {
-    <li><a href="~/Fix">長期修繕</a></li>
+@section Scripts {
+    <script src="~/Content/js/jquery.scroller.js"></script>
+    <script src="~/Scripts/eitorChgName.js"></script>
+    <script>
+        $('.scroll-nav').scroller({
+            bodyName: '#main'
+        });
+    </script>
 }
-
+@section breadCrumb {
+    <li><a href="~/Fix">@Model.name</a></li>
+}
 <h1 class="title-underline-d">
-    @ViewBag.breadCrumb
-    <small class="block">2016/8/25</small>@* 最後更新日期 *@
+    <span id="e-title">@ViewBag.breadCrumb</span>
+    <small class="block">@(((DateTime)Model.UpdateDatetime).ToString("yyyy/MM/dd"))</small>@* 最後更新日期 *@
 </h1>
 
-<article class="editor-content">
-    <h4 class="text-center">社區修繕工程採購作業管理辦法</h4>
-    <h5>目的：配合社區需要及執行採購修繕之公平性，特訂定此程序。</h5>
-    <h5>範圍：社區內各建物、設備及公共設施之修繕工程均適用之。</h5>
-    <h5>定義：略。</h5>
-    <h5>作業內容：</h5>
-    <ol class="list-num">
-        <li>修繕作業。
-            <ol>
-                <li>各單位提出修繕簽呈、營繕工程申請單，或網路報修。分案指派登錄修繕編號。</li>
-                <li>由社區內之協力廠商，修竣後請申請單位簽認，竣工電腦登錄銷案。由預約式契約廠商修理者，申報部份竣工驗收。</li>
-                <li>若需估價簽辦者，由廠商估價或委託技術服務製作預算圖說。簽案檢附估價單或工程預算表，簽請核准及會計室登記經費科目。</li>
-                <li>依本社區區分所有權人制定之社區規約相關內部程序規定辦理，修繕金額在十萬元以下，直接交由廠商修繕、施工結案；修繕金額逾公告金額十分之一者，以限制性招標、選擇性招標或公開招標辦理。</li>
-                <li>逾公告金額十分之一之工程招標作業部份，準備招標圖說資料，訂定開標日期，簽核定營繕工程底價單。採用限制性招標時通知廠商議價或比價；未採限制性招標時，上網公告，辦理招標、開標。</li>
-                <li>逾公告金額十分之一之工程開標，製作營繕工程開標/議價/決標/流標/廢標紀錄，決標後與得標廠商簽訂工程契約書或工程承攬書。無決標對象時，再上網公告招標。</li>
-                <li>逾公告金額十分之一之工程，依契約規定，廠商申報開工，提出營繕工程開工報告書，履約管理。</li>
-                <li>逾公告金額十分之一之工程竣工後，由承商填具營繕工程竣工報告書，送交本社區管委會決議簽報並會社區主任執行。</li>
-                <li>逾公告金額十分之一之工程依廠商營繕工程竣工報告書，排訂日期驗收，通知相關單位辦理驗收，製作營繕工程驗收記錄，驗收不合格，廠商缺點改善後再行複驗。</li>
-                <li>驗收合格，製作營繕工程驗收記錄及營繕工程結算驗收證明書，由廠商開立統一發票，由本組出具支出憑證粘存單辦理付款結案、電腦登錄銷案。</li>
-            </ol>
-        </li>
-        <li>修繕工程採購之廠商評鑑及督導作業，依據「社區修繕工程品質評鑑作業規範」及「社區工程督導查核作業規範」執行。</li>
-    </ol>
-</article>
+@if (Model.categoryL2Data != null & Model.categoryL2Data.Count() > 1)
+{
+    <nav class="scroll-nav">
+        @foreach (var i in Model.categoryL2Data)
+        {
+            <a href=@("#p-"+i.id)>@i.name</a>
+        }
+    </nav>
+
+    foreach (var i in Model.categoryL2Data)
+    {
+        <article id=@("p-"+i.id) class="editor-content scroll-content">
+            <h2 class="title">@i.name</h2>
+            @Html.Raw(i.content)
+        </article>
+    }
+}
+else if (Model.categoryL2Data != null & Model.categoryL2Data.Count() == 1)
+{
+    <article class="editor-content">
+        @Html.Raw(Model.categoryL2Data.First().content)
+    </article>
+}
 
 

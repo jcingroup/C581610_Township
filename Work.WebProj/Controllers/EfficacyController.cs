@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using DotWeb.Controller;
+using System.Linq;
+using ProcCore.Business.DB0;
 
 namespace DotWeb.WebApp.Controllers
 {
@@ -8,7 +10,8 @@ namespace DotWeb.WebApp.Controllers
         // GET: Efficacy
         public ActionResult Index()
         {
-            return View("Efficacy");
+            CategoryL1Data item = getEditorData((int)EditorState.Efficacy);
+            return View("Efficacy", item);
         }
     }
 }

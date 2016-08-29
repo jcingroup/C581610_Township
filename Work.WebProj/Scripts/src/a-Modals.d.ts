@@ -121,6 +121,7 @@
         editor_id?: number;
         body_class?: string;
         url?: string;
+        img_url?: string;
         name?: string;
         sort?: number;
         i_Hide?: boolean;

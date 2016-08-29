@@ -51,21 +51,16 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
         let pp = this.props;
         let field = pp.field;
         out_html = (
-            <div className="panel" data-id={pp.key}>
-                <div className="panel-heading">
-                    <h4 className="panel-title">
-                        <a className="draggable" href="#">
-                            <i className="fa-bars"></i>
-                            #{pp.iKey}
-                            <ul className="widget">
-                                <li><button onClick={() => this.setState({ open: !this.state.open }) } type="button" title="收合/展開" className="btn-link text-default"><i className="fa-chevron-down"></i></button></li>
-                                <li><button className="btn-link text-danger" type="button" title={UIText.delete} onClick={this.props.delItem} ><i className="fa-times"></i></button></li>
-                            </ul>
-                        </a>
-                    </h4>
+            <div className="card" data-id={pp.key}>
+                <div className="card-header">
+                    <ul className="list-inline clearfix m-b-0">
+                        <li className="pull-xs-left"><strong># {pp.iKey}</strong></li>
+                        <li className="pull-xs-right m-l-1"><button className="btn btn-link text-sm text-danger" type="button" title={UIText.delete} onClick={this.props.delItem} ><i className="fa-times"></i> 刪除</button></li>
+                        <li className="pull-xs-right"><button onClick={() => this.setState({ open: !this.state.open }) } type="button" className="btn btn-link text-sm text-muted"><i className="fa-chevron-down"></i> 收合/展開</button></li>
+                    </ul>
                 </div>
                 <Collapse in={this.state.open}>
-                    <div className="panel-body">
+                    <div className="card-block">
                         <div className="form-group row">
                             <label className="col-xs-1 form-control-label text-xs-right"> 名稱</label>
                             <div className="col-xs-3">
@@ -79,8 +74,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label className="col-xs-1 form-control-label text-xs-right">內容</label>
-                            <div className="col-xs-8">
+                            <div className="col-xs-12">
                                 <textarea type="date" rows={4} className="form-control" id={'content-' + this.props.iKey} name={'content-' + this.props.iKey}
                                     value={field.detail_content} onChange={this.chgDetailVal.bind(this, 'detail_content') }></textarea>
                             </div>
@@ -141,13 +135,12 @@ export class EditDetail extends React.Component<any, any>{
             out_html =
                 (
                     <div>
-                        <h4 className="h4">編輯管理</h4>
                         <p>
-                        <button className="btn-success" type="button" onClick={this.addDetail.bind(this) }>
-                            <i className="fa-plus-circle"></i> {UIText.add}
+                            <button className="btn btn-sm btn-success" type="button" onClick={this.addDetail.bind(this) }>
+                                <i className="fa-plus-circle"></i> {UIText.add}
                             </button>
                         </p>
-                        <div className="panel-group" ref="SortForm" id="SortForm">
+                        <div ref="SortForm" id="SortForm">
                             {
                                 detail.map((item, i) => {
                                     return <DetailField

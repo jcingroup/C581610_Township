@@ -1,5 +1,9 @@
 ﻿using System.Web.Mvc;
 using DotWeb.Controller;
+using ProcCore.Business.DB0;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace DotWeb.WebApp.Controllers
 {
@@ -8,7 +12,8 @@ namespace DotWeb.WebApp.Controllers
         // GET: AboutUs
         public ActionResult Index()
         {
-            return View("AboutUs");
+            CategoryL1Data item = getEditorData((int)EditorState.AboutUs);
+            return View("AboutUs", item);
         }
     }
 }
