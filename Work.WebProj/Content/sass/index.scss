@@ -65,61 +65,65 @@ $card-shadow:                   false;
 
 // login畫面
 .login {
+    background: rgba(white,.6);
     border-top: 3px solid $info;
     border-radius: nth($border-radius,1);
     box-shadow: 2px 2px 8px rgba($black,.2);
+
     position: relative;
-    top: 185px;
+    top: 150px;
     width: 54.5%;
 
-    main {
-        border-bottom-right-radius: nth($border-radius,1);
-        border-bottom-left-radius: nth($border-radius,1);
-        background: rgba($white,.6);
-        padding: 42px;
+    header {
+        background: rgba(#ececec, .33);
+        border-bottom: 1px solid rgba(black,.06);
+        font-size: em(23);
+        color: darken($info,10);
+        padding: 20px 0 10px;
     }
-    .input-group { margin-bottom: $spacer*1.36; }
+
+    form {
+        padding: 32px 42px;
+    }
+    .input-group { margin-bottom: $spacer*.8; }
     .input-group-addon { font-size: em(20); }
-    .btn { margin-bottom: $spacer*1.2; }
-    .text-right {
+    .btn { margin-bottom: $spacer*.8; }
+
+    footer {
         a {
             @extend .text-info;
-
-            &:hover, &:active {
-                @extend .text-primary;
-                // color: $brand-primary;
-            }
+            &:hover, &:active { @extend .text-primary; }
         }
     }
 }
 
 // 住戶登入 總幹事登入
-.tabs {
-    @extend %clearfix;
-    background: rgba(#ececec, .7);
-    border-bottom: 1px solid rgba(black,.06);
-}
-.js-tab {
-    @extend %block, %float-l;
-    // display: block;
-    // float: left;
-    padding: 20px 42px 13px;
-    font-size: em(20);
-    color: #656565;
+// .tabs {
+//     @extend %clearfix;
+//     background: rgba(#ececec, .7);
+//     border-bottom: 1px solid rgba(black,.06);
+// }
+// .js-tab {
+//     @extend %block, %float-l;
+//     // display: block;
+//     // float: left;
+//     padding: 20px 42px 13px;
+//     font-size: em(20);
+//     color: #656565;
 
-    &.active {
-        color: darken($info,10);
-        background: rgba(#fff, .25);
-        position: relative;
-        bottom: -1px;
-        border-bottom: 1px solid #E9E9E1;
-        border-right: 1px solid rgba(black,.06);
+//     &.active {
+//         color: darken($info,10);
+//         background: rgba(#fff, .25);
+//         position: relative;
+//         bottom: -1px;
+//         border-bottom: 1px solid #E9E9E1;
+//         border-right: 1px solid rgba(black,.06);
 
-        &:not(:first-child) {
-            border-left: 1px solid rgba(black,.06);
-        }
-    }
-}
+//         &:not(:first-child) {
+//             border-left: 1px solid rgba(black,.06);
+//         }
+//     }
+// }
 
 // HOME Email 按鈕
 .top-nav {
@@ -140,9 +144,9 @@ $card-shadow:                   false;
 
 // Welcome
 .slogan {
-    @extend .text-right;
+    @extend .text-right, .text-white;
     font-size: em(52);
-    color: $white;
+    // color: white;
     letter-spacing: 2px;
     @include absolute(left 125px top 198px);
 }
@@ -225,6 +229,7 @@ $card-shadow:                   false;
         text-shadow: 1px 1px 1px #E9F391;
     }
     p {
+        @extend .margin-0;
         font-size: em(17);
         line-height: 1.75;
     }

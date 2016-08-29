@@ -4,7 +4,10 @@
     ViewBag.BodyClass = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-@section Scripts{
+@section css {
+    <link rel="stylesheet" href="~/Content/css/vendor/jquery.loadmask.css">
+}
+@section Scripts {
     <script>
         var debug_account = '@ViewData["username"]';
         var debug_password = '@ViewData["password"]';
@@ -14,6 +17,11 @@
     <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=zh-TW'></script>
     <script src="~/Scripts/src/tsx/w-member_login.js"></script>
     <script src="~/Scripts/cdn/jquery.loadmask.min.js"></script>
+    @*<script>
+        $("[type='submit']").bind("click", function () {
+            $(".login").mask("請稍候系統正在登入...");
+        });
+    </script>*@
 }
 @section includeHeader {
     <h1 class="logo" onclick="location.href='@Url.Content("~/index")'" title="回首頁" tabindex="-1">
@@ -36,33 +44,32 @@
     </nav>
 
     <div class="login float-r">
-        <nav class="tabs">
+        <header>住戶 / 總幹事 登入</header>
+        @* <nav class="tabs">
             <a href="#tab-1" class="js-tab">住戶登入</a>
             <a href="#tab-2" class="js-tab">總幹事登入</a>
-        </nav>
+        </nav> *@
 
-        <main>
-            @* 改成一個tab login *@
-            <form class="tab-content" id="MLogin">
-                <div class="input-group">
-                    <label class="input-group-addon icon-person" for="" data-title="帳號"></label>
-                    <input class="form-element" type="text" id="m_act" required placeholder="請輸入帳號">
-                </div>
-                <div class="input-group">
-                    <label class="input-group-addon icon-lock2" for="" data-title="密碼"></label>
-                    <input class="form-element" type="password" id="m_pwd" required placeholder="請輸入密碼">
-                </div>
+        @* 改成一個tab login *@
+        <form id="MLogin">
+            <div class="input-group">
+                <label class="input-group-addon icon-person" for="" data-title="帳號"></label>
+                <input class="form-element" type="text" id="m_act" required placeholder="請輸入帳號">
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon icon-lock2" for="" data-title="密碼"></label>
+                <input class="form-element" type="password" id="m_pwd" required placeholder="請輸入密碼">
+            </div>
 
-                <div id="Validate" class="margin-bottom"></div>
+            <div id="Validate" class="margin-bottom"></div>
 
-                <button class="btn full bg-info" type="submit">登入</button>
+            <button class="btn full bg-info" type="submit">登入</button>
 
-                <p class="text-right margin-0">
-                    <a href="" class="margin-right">註冊</a>
-                    <a href="">忘記密碼?</a>
-                </p>
-            </form>
-        </main>
+            <footer class="text-right">
+                @* <a href="" class="margin-right">註冊</a> *@
+                <a href="">忘記密碼?</a>
+            </footer>
+        </form>
     </div><!-- login //-->
 }
 
