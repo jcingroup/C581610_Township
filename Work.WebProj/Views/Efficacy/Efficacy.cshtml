@@ -2,12 +2,13 @@
 @{
     ViewBag.Title = Model.name;
     ViewBag.BodyClass = Model.body_class;
-    ViewBag.breadCrumb = "預期使用機能需求評估與計畫";
+    ViewBag.breadCrumb = Model.categoryL2Data.Count() > 0 ? Model.categoryL2Data.First().name : Model.name;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section Scripts {
     <script src="~/Content/js/jquery.scroller.js"></script>
+    <script src="~/Scripts/eitorChgName.js"></script>
     <script>
         $('.scroll-nav').scroller({
             bodyName: '#main'
@@ -19,7 +20,7 @@
 }
 
 <h1 class="title-underline-d">
-    @ViewBag.breadCrumb
+    <span id="e-title">@ViewBag.breadCrumb</span>
     <small class="block">@(((DateTime)Model.UpdateDatetime).ToString("yyyy/MM/dd"))</small>@* 最後更新日期 *@
 </h1>
 

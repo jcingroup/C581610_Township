@@ -81,12 +81,12 @@
                                             <dd class="col-rest">
                                                 @foreach (var j in i.categoryL2Data)
                                                 {
-                                                    <a href=@Url.Content(i.url+ "#p-"+j.id)>@j.name</a>
+                                                    <a href="@Url.Content(i.url + "#p-" + j.id)">@j.name</a>
                                                 }
                                             </dd>
                                         </dl>
                                     </nav>
-                                   
+
                                 }
                             </li>
                         }
@@ -116,7 +116,7 @@
                 <ul class="breadcrumb">
                     <li><a href="~/index" class="icon-home"></a></li>
                     @RenderSection("breadCrumb", required: false)
-                    <li>@ViewBag.breadCrumb</li> @* 當前頁名稱 *@
+                    <li id="b-name">@ViewBag.breadCrumb</li> @* 當前頁名稱 *@
                 </ul>
 
                 @RenderBody()

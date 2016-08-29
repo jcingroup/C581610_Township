@@ -2,12 +2,13 @@
 @{
     ViewBag.Title = Model.name;
     ViewBag.BodyClass = Model.body_class;
-    ViewBag.breadCrumb = "年度設備管理維護計畫";
+    ViewBag.breadCrumb = Model.categoryL2Data.Count() > 0 ? Model.categoryL2Data.First().name : Model.name;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section Scripts {
     <script src="~/Content/js/jquery.scroller.js"></script>
+    <script src="~/Scripts/eitorChgName.js"></script>
     <script>
         $('.scroll-nav').scroller({
             bodyName: '#main'
@@ -19,7 +20,7 @@
 }
 
 <h1 class="title-underline-d">
-    @ViewBag.breadCrumb
+    <span id="e-title">@ViewBag.breadCrumb</span>
     <small class="block">@(((DateTime)Model.UpdateDatetime).ToString("yyyy/MM/dd"))</small>@* 最後更新日期 *@
 </h1>
 
@@ -28,13 +29,13 @@
     <nav class="scroll-nav">
         @foreach (var i in Model.categoryL2Data)
         {
-            <a href=@("#p-"+i.id)>@i.name</a>
+            <a href="@("#p-"+i.id)">@i.name</a>
         }
     </nav>
 
     foreach (var i in Model.categoryL2Data)
     {
-        <article id=@("p-"+i.id) class="editor-content scroll-content">
+        <article id="@("p-"+i.id)" class="editor-content scroll-content">
             <h2 class="title">@i.name</h2>
             @Html.Raw(i.content)
         </article>
