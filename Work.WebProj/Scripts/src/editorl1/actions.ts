@@ -3,8 +3,8 @@ import {ac_type_comm} from '../action_type';
 import {tosMessage} from '../ts-comm/comm-func';
 
 //ajax--
-const apiPath: string = gb_approot + 'api/Editor';
-const apiDetailPath: string = gb_approot + 'api/EditorDetail';
+const apiPath: string = gb_approot + 'api/Editor_L1';
+const apiDetailPath: string = gb_approot + 'api/Editor_L2';
 export const ajaxGridItem = (search: any) => {
     return dispatch => {
         return callGet(apiPath, search)
@@ -41,7 +41,7 @@ interface IDName {
     id: number | string //數字型用id 字串型用no
 }
 interface CallResult extends IResultBase, IDName { }
-export const ajaxSubmit = (id, md: server.Resident, edit_type: IEditType) => {
+export const ajaxSubmit = (id, md, edit_type: IEditType) => {
     return dispatch => {
         let pm = { id: id, md: md };
 
@@ -72,9 +72,9 @@ export const ajaxSubmit = (id, md: server.Resident, edit_type: IEditType) => {
 }
 export const ajaxGridDetailItem = (main_id: number) => {
     return dispatch => {
-        return callGet(apiDetailPath + '/GetDetailList', { main_id: main_id })
+        return callGet(apiDetailPath + '/GetL2List', { main_id: main_id })
             .done((data, textStatus, jqXHRdata) => {
-                dispatch(setInputValue(ac_type_comm.chg_fld_val, "EditorDetail", data));
+                dispatch(setInputValue(ac_type_comm.chg_fld_val, "Editor_L2", data));
             })
     }
 }

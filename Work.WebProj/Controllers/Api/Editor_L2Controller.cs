@@ -234,7 +234,7 @@ namespace DotWeb.Api
         }
 
         [Route("GetL2List")]
-        public async Task<IHttpActionResult> GetDetailList([FromUri]int main_id)
+        public async Task<IHttpActionResult> GetL2List([FromUri]int main_id)
         {
             #region 連接BusinessLogicLibary資料庫並取得資料
 

@@ -42,7 +42,7 @@ export class Edit extends React.Component<any, any>{
     render() {
         let out_html: JSX.Element = null;
         let pp = this.props;
-        let field: server.Editor = pp.field;
+        let field: server.Editor_L1 = pp.field;
         out_html =
             (
                 <form className="form form-sm" onSubmit={this.callSubmit}>

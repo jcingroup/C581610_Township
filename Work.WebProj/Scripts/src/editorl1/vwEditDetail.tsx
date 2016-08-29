@@ -11,7 +11,7 @@ import {ac_type_comm} from '../action_type';
 interface DetailFieldProps {
     key: any,
     iKey: number,
-    field: server.EditorDetail,
+    field: server.Editor_L2,
     chgDVal?: Function,
     delItem?: Function
 }
@@ -42,7 +42,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
 
         editorObj = CKEDITOR.replace(editorName, { customConfig: '../ckeditor/inlineConfig.js' });
         editorObj.on('change', function (evt) {
-            _this.props.chgDVal(ac_type_comm.chg_dil_fld_val, iKey, 'detail_content', editorObj.getData());
+            _this.props.chgDVal(ac_type_comm.chg_dil_fld_val, iKey, 'l2_content', editorObj.getData());
         }.bind(this));
     }
     render() {
@@ -64,7 +64,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
                         <div className="form-group row">
                             <label className="col-xs-1 form-control-label text-xs-right"> 名稱</label>
                             <div className="col-xs-3">
-                                <input type="text" className="form-control" onChange={this.chgDetailVal.bind(this, 'detail_name') } value={field.detail_name} maxLength={64} required/>
+                                <input type="text" className="form-control" onChange={this.chgDetailVal.bind(this, 'l2_name') } value={field.l2_name} maxLength={64} required/>
                                 <small className="text-muted">最多64字!</small>
                             </div>
                             <label className="col-xs-1 form-control-label text-xs-right"> 排序</label>
@@ -77,7 +77,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
                             <label className="col-xs-1 form-control-label text-xs-right">內容</label>
                             <div className="col-xs-8">
                                 <textarea type="date" rows={4} className="form-control" id={'content-' + this.props.iKey} name={'content-' + this.props.iKey}
-                                    value={field.detail_content} onChange={this.chgDetailVal.bind(this, 'detail_content') }></textarea>
+                                    value={field.l2_content} onChange={this.chgDetailVal.bind(this, 'l2_content') }></textarea>
                             </div>
                         </div>
                     </div>

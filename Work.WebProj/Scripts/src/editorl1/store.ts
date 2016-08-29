@@ -59,7 +59,7 @@ const field = (state: server.Editor = {}, action) => {
             return n_state_1;
         case ac_type_comm.chg_dil_fld_val:
             let f_struct_2 = {
-                ["EditorDetail"]: {
+                ["Editor_L2"]: {
                     [action.i]: {
                         [action.name]: { $set: action.value }
                     }
@@ -69,13 +69,13 @@ const field = (state: server.Editor = {}, action) => {
             return n_state_2;
         case ac_type_comm.add_detail:
             let f_struct_3 = {
-                ["EditorDetail"]: { $push: [action.data] }
+                ["Editor_L2"]: { $push: [action.data] }
             };
             let n_state_3 = update(state, f_struct_3);
             return n_state_3;
         case ac_type_comm.del_detail:
             let f_struct_4 = {
-                ["EditorDetail"]: { $splice: [[action.i, 1]] }
+                ["Editor_L2"]: { $splice: [[action.i, 1]] }
             };
             let n_state_4 = update(state, f_struct_4);
             return n_state_4;
