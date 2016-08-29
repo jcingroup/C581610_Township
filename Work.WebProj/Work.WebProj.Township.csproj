@@ -235,6 +235,8 @@
     <Content Include="Areas\Active\Views\Editors\Group.cshtml" />
     <Content Include="Areas\Active\Views\Editors\Management.cshtml" />
     <Content Include="Areas\Active\Views\Editors\Fix.cshtml" />
+    <Content Include="Areas\Active\Views\ResidentInfo\Comments.cshtml" />
+    <Content Include="Areas\Active\Views\ResidentInfo\Service.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -446,9 +448,12 @@
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
+    <Content Include="Scripts\build\app\m_editor.js" />
+    <Content Include="Scripts\build\app\m_editordetail.js" />
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
+    <Content Include="Scripts\build\app\m_news.js" />
     <Content Include="Scripts\build\app\m_resident.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />

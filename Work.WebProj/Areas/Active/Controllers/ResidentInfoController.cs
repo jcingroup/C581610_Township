@@ -18,6 +18,16 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Comments()
+        {//留言板
+            ActionRun();
+            return View();
+        }
+        public ActionResult Service()
+        {//預約公設
+            ActionRun();
+            return View();
+        }
         #endregion
     }
 }

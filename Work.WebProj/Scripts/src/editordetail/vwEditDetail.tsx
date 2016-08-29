@@ -74,8 +74,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label className="col-xs-1 form-control-label text-xs-right">內容</label>
-                            <div className="col-xs-8">
+                            <div className="col-xs-12">
                                 <textarea type="date" rows={4} className="form-control" id={'content-' + this.props.iKey} name={'content-' + this.props.iKey}
                                     value={field.detail_content} onChange={this.chgDetailVal.bind(this, 'detail_content') }></textarea>
                             </div>
