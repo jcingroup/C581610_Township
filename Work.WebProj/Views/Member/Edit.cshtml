@@ -1,7 +1,21 @@
 ﻿
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "住戶資料";
+    ViewBag.BodyClass = "Member";
+    ViewBag.breadCrumb = "住戶資料";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">Households</small>
+</h1>
 
+<article class="text-left">
+    <p>
+        <span class="text-primary">住戶 @ViewBag.r_no</span>
+        <strong class="font-xl">@ViewBag.r_name</strong>
+    </p>
+</article>
+
+<a href="~/Login/Logout" class="btn icon-log-out">登出</a>
