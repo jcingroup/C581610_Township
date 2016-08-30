@@ -568,7 +568,7 @@ label, output, .form-element, .comment-ask select, .comment-ask textarea, [type=
   .wrap::after, #header::after, #footer::after, #main::after, .clearfix::after, .order-info::after, .logo small::before, .logo small::after, #menu .caret::before, .title-underline::after, .grid-doc .grid::before {
     content: ''; }
 
-.circle, .top-member .head {
+.sub-nav img, .circle, .top-member .head {
   border-radius: 50%; }
 
 .full {
@@ -784,7 +784,15 @@ label, output, .form-element, .comment-ask select, .comment-ask textarea, [type=
       content: "．";
       display: inline; }
   .sub-nav dl {
-    padding: 28px 54.4px; }
+    padding: 19.2px 54.4px; }
+  .sub-nav dd {
+    margin-top: 0.5rem; }
+  .sub-nav img {
+    width: 110px;
+    height: 110px;
+    text-align: center;
+    line-height: 110px;
+    background-color: #fff; }
 
 .goTop, .goTop:hover, .goTop:active {
   color: #fff !important; }

@@ -365,6 +365,12 @@
     <Content Include="Content\images\Index\intro3_bg.gif" />
     <Content Include="Content\images\line.gif" />
     <Content Include="Content\images\m1.jpg" />
+    <Content Include="Content\images\nav-icon-assets.gif" />
+    <Content Include="Content\images\nav-icon-Efficacy.gif" />
+    <Content Include="Content\images\nav-icon-fix.gif" />
+    <Content Include="Content\images\nav-icon-Group.gif" />
+    <Content Include="Content\images\nav-icon-Management.gif" />
+    <Content Include="Content\images\nav-icon-Service.gif" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
     <Content Include="Content\images\temp.gif" />
