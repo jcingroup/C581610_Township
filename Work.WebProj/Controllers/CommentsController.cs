@@ -61,9 +61,14 @@ namespace DotWeb.WebApp.Controllers
             return View("Comments", info);
         }
 
-        public ActionResult Popup()
+        public ActionResult Popup(int id)
         {
-            return View();
+            MsgBoard item = new MsgBoard();
+            using (var db0 = getDB0())
+            {
+                item = db0.MsgBoard.Find(id);
+            }
+            return View(item);
         }
 
         [HttpPost]
