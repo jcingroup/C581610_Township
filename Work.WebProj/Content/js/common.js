@@ -8,17 +8,6 @@ $(window).scroll(function(){
     } else {
         $gotoTop.addClass('fadeOut').removeClass('fadeIn');
     }
-
-    // 卷動到定位時該元素固定
-    // var $sticky = $('.scroll-nav');
-    // var stickyOffset = $sticky.offset().top + $sticky.length;
-    // // if ($sticky.length) {
-    // // }
-    // if (stickyOffset < $(window).scrollTop()) {
-    //     $sticky.addClass('fixed');
-    // } else {
-    //     $sticky.removeClass('fixed');
-    // }
 });
 
 // 點選後跳到 href 指向的位置
@@ -34,41 +23,10 @@ $gotoTop.click(function() {
     return false;
 });
 
-// 下拉特效
-// var $dropbtn = $("[data-dropdown='toggle']"),
-//     dropcontent = "[data-dropdown='content']";
-// $dropbtn.click(function(){
-//     event.preventDefault();
-//     $(this).next(dropcontent).slideToggle("300");
-// });
-// $dropbtn.blur(function(){
-//     $(this).next(dropcontent).slideUp("300");
-// });
-
-// 同類物件時伸縮特效
-var $collapse = $("[data-toggle='collapse']");
-var fall = '.collapse-content';
-
-$collapse.click(function () {
-    $(this).next(fall).slideToggle();
-    $(this).parent().siblings().children().next().slideUp(150);
-    // $(this).siblings().next(fall).slideUp();
-    $(this).toggleClass("current"),
-            $collapse.not(this).removeClass("current");
-    return false;
+// 錨點選單特效 by jquery.scroller.js
+$('.scroll-nav').scroller({
+    bodyName: '#main'
 });
-
-// 行動裝置的主選單
-// $menuLeft = $('#menu');
-// $trigger = $('.mobile-trigger');
-
-// $trigger.click(function() {
-//     $(this).toggleClass('active');
-//     $('body').toggleClass('push');
-// });
-// $('.toggle').click(function() {
-//     $('body').removeClass('push');
-// });
 
 // 搜尋框彈出
 var $submit = $("[data-expand='btn']"),

@@ -9,7 +9,12 @@ namespace DotWeb.WebApp.Controllers
         // GET: Service
         public ActionResult Index()
         {
-            return View("Service");
+            return View("Self");
+        }
+
+        public ActionResult Reserve()
+        {
+            return View();
         }
     }
 }

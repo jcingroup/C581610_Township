@@ -453,6 +453,8 @@
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
+    <Content Include="Scripts\build\app\m_editor.js" />
+    <Content Include="Scripts\build\app\m_editordetail.js" />
     <Content Include="Scripts\build\app\m_editorl2.js" />
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
@@ -474,8 +476,9 @@
     <Content Include="Views\Fix\Fix.cshtml" />
     <Content Include="Views\Comments\Comments.cshtml" />
     <Content Include="Views\Explain\Explain.cshtml" />
-    <Content Include="Views\Service\Service.cshtml" />
+    <Content Include="Views\Service\Self.cshtml" />
     <Content Include="Views\Comments\Popup.cshtml" />
+    <Content Include="Views\Service\Reserve.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
