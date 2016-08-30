@@ -1,4 +1,5 @@
-﻿
+﻿@model DotWeb.WebApp.Controllers.CommentsInfo
+@using ProcCore.Business.DB0
 @{
     ViewBag.Title = "留言板";
     ViewBag.BodyClass = "Comments";
@@ -13,11 +14,13 @@
 @section Scripts {
     <script src="~/Content/js/jquery-scrolltofixed.js"></script>
     <script src="~/Content/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Scripts/src/tsx/w_send_msg.js"></script>
+    <script src="~/Scripts/cdn/jquery.loadmask.min.js"></script>
     <script>
         // 卷軸卷動時固定位置
         $('.comment-self').scrollToFixed({
             marginTop: 30,
-            limit: function() {
+            limit: function () {
                 var limit = $('.comment-ask').offset().top - $('.comment-self').outerHeight(true) - 200;
                 return limit;
             },
@@ -41,94 +44,87 @@
 </h1>
 
 <aside class="comment-self">
-    @* 用戶本人提出的問題 - 以時間排序 過期3個月以上的完成事項不顯示 *@
-    <h4 class="title-underline">您已提出的問題</h4>
-    <dl class="card">
-        <dt>日前已申請預約公設，不知是否收到通知？</dt>
-        <dd>管理員已收到用戶留言，將盡快為您回覆</dd>
-    </dl>
-    <dl class="card">
-        <dt>地下停車場有水漬，請處理</dt>
-        <dd>已處理完成</dd>
-    </dl>
 
-    @* 若用戶未提出任何問題，上列都不顯示，只顯示下面的我要留言 *@
-    <footer class="text-center">
-        <a href="#ask" class="btn bg-warning font-sm scroll">我要留言</a>
-    </footer>
+    @if (Model.my_msg.Count() > 0)
+    {
+        <h4 class="title-underline">您已提出的問題</h4>
+        foreach (var i in Model.my_msg)
+        {
+            <dl class="card">
+                <dt>@i.q_content</dt>
+                <dd>@CodeSheet.GetStateVal(i.state, i_CodeName.Value, CodeSheet.msg_state)</dd>
+            </dl>
+        }
+    }
+    else
+    { @* 若用戶未提出任何問題，上列都不顯示，只顯示下面的我要留言 *@
+        <footer class="text-center">
+            <a href="#ask" class="btn bg-warning font-sm scroll">我要留言</a>
+        </footer>
+    }
 </aside>
 
 <section class="comment-list col-rest">
     @* 所有用戶提出的問題 - 以時間排序 *@
-    <article>
-        <header>
-            <span class="label">公設預約問題</span>
-            <h3>公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？</h3>
-            <time>2016/8/26</time>
-        </header>
-        <main>
-            公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆
-        </main>
-        @* 最多顯示150字，若超過才出現 more按鈕 *@
-        <a href="~/Comments/Popup" class="btn popup">MORE</a>
-    </article>
+    @foreach (var i in Model.msg)
+    {
+        <article>
+            <header>
+                <span class="label">@i.type_name</span>
+                <h3>@i.q_content</h3>
+                <time>@(((DateTime)i.q_time).ToString("yyyy/MM/dd"))</time>
+            </header>
+            @if (i.a_content != null)
+            {
+                if (i.a_content.Length >= 150)
+                {
+                    <main>
+                        @Html.Raw(i.a_content.Substring(0, 150)) <span>...</span>
+                    </main>
+                    @* 最多顯示150字，若超過才出現 more按鈕 *@
+                    <a href="~/Comments/Popup?id=@i.id" class="btn popup">MORE</a>
+                }
+                else
+                {
+                    <main>
+                        @Html.Raw(i.a_content)
+                    </main>
+                }
+            }
 
-    <article>
-        <header>
-            <span class="label">公設預約問題</span>
-            <h3>公設該如何預約呢？公設該如何預約呢？</h3>
-            <time>2016/8/26</time>
-        </header>
-        <main>
-            公設預設問題回覆公設預設問題
-        </main>
-        @* 最多顯示150字，若超過才出現 more按鈕 *@
-        <a href="~/Comments/Popup" class="btn popup">MORE</a>
-    </article>
-
-    <article>
-        <header>
-            <span class="label">公設預約問題</span>
-            <h3>公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？公設該如何預約呢？</h3>
-            <time>2016/8/26</time>
-        </header>
-        <main>
-            公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆公設預設問題回覆...
-        </main>
-        @* 最多顯示150字，若超過才出現 more按鈕 *@
-        <a href="~/Comments/Popup" class="btn popup">MORE</a>
-    </article>
-
+        </article>
+    }
 </section>
 
 <form id="ask" class="comment-ask">
     <h2>我要留言</h2>
     <div class="col-5 col-first">
         <p class="row">
-            <label for="">住戶 360</label>
-            <input type="text" class="col-rest" value="王小明 先生">
+            <label for="">住戶 @ViewBag.r_no</label>
+            <input type="text" class="col-rest" value="@(ViewBag.r_name)" required id="m_q_name">
         </p>
         <p class="row">
             <label for="">聯絡電話</label>
-            <input type="text" class="col-rest" value="0000-000-000">
+            <input type="text" class="col-rest" value="" placeholder="0000-000-000" id="m_q_tel">
         </p>
         <p class="row">
             <label for="">E-mail</label>
-            <input type="email" class="col-rest" value="xx@gmail.com">
+            <input type="email" class="col-rest" placeholder="xx@gmail.com" required id="m_q_email">
         </p>
         <p class="row">
             <label for="">欲詢問之業務項目</label>
-            <select name="" id="" required>
-                <option value="-">請選擇詢問項目</option>
+            <select name="" id="m_type" required>
+                <option value="">請選擇詢問項目</option>
                 @* 下列內容不確定是否要在後台可編輯 *@
-                <option value="">公設預約問題</option>
-                <option value="">設備修繕問題</option>
-                <option value="">社區資產問題</option>
+                @foreach (var i in Model.option)
+                {
+                    <option value="@i.val">@i.Lname</option>
+                }
             </select>
         </p>
     </div>
     <div class="col-7 col-last">
-        <textarea name="" id="" cols="40" rows="8" placeholder="請在此輸入留言內容..."></textarea>
-        <button class="btn btn-lg bg-secondary">送出留言</button>
+        <textarea name="" id="m_q_content" cols="40" rows="8" placeholder="請在此輸入留言內容..." required></textarea>
+        <button class="btn bg-secondary padding-xl">送出留言</button>
     </div>
 </form>
