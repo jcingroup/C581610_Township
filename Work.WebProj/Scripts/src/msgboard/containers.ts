@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import {AStart} from './vwAStart';
 
 
-import { ajaxGridItem, setInputValue, editState, ajaxEditItem, ajaxDeleteItem, ajaxSubmit} from './actions'
+import { ajaxGridItem, setInputValue, editState, ajaxEditItem, ajaxDeleteItem, ajaxSubmit, ajaxMsgTypeItem} from './actions'
 
 const m1ToProps = (state, ownProps) => {
     return {
@@ -14,7 +14,8 @@ const m1ToProps = (state, ownProps) => {
         search: state.search,
         grid: state.grid,
         field: state.field,
-        params: state.params
+        params: state.params,
+        type_list: state.type_list
     }
 }
 

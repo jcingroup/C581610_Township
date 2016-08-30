@@ -5,6 +5,7 @@ import {ac_type_comm} from '../action_type';
 
 let searchData = {
     keyword: '',
+    msg_type_id: null,
 };
 
 export const search = (state = searchData, action) => {
@@ -43,6 +44,14 @@ export const page_operator = (state = page_operator_state, action) => {
     switch (action.type) {
         case ac_type_comm.load:
             return action.pageinfo;
+        default:
+            return state
+    }
+}
+export const type_list = (state = [], action) => {
+    switch (action.type) {
+        case ac_type_comm.load_list:
+            return action.data;
         default:
             return state
     }
@@ -110,7 +119,7 @@ const params = (state = init_params, action): any => {
 }
 
 export const combine = combineReducers({
-    grid, field, edit_type, page_operator, search, params
+    grid, field, edit_type, page_operator, search, params, type_list
 })
 
 export default combine;

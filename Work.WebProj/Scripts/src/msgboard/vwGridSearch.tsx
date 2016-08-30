@@ -7,7 +7,8 @@ import {ac_type_comm} from '../action_type';
 
 interface GridSearchProps {
     search: any,
-    changeSearchVal: Function
+    changeSearchVal: Function,
+    init_list: Array<server.StateTemplate>
 }
 
 export class GridSearch extends React.Component<GridSearchProps, any>{
@@ -21,7 +22,7 @@ export class GridSearch extends React.Component<GridSearchProps, any>{
         let out_html: JSX.Element = null;
         let pp = this.props;
         let search = pp.search;
-
+        let list = pp.init_list == undefined ? [] : pp.init_list;
         out_html =
             (
                 <div className="table-responsive">
@@ -31,14 +32,24 @@ export class GridSearch extends React.Component<GridSearchProps, any>{
                                 <div className="form-group">
                                     <label className="sr-only">搜尋標題名稱</label> { }
                                     <input type="text" className="form-control form-control-sm"
-                                    value={search.keyword}
-                                    onChange= {pp.changeSearchVal.bind(this, 'keyword') }
-                                    placeholder="標題名稱" /> { }
+                                        value={search.keyword}
+                                        onChange= {pp.changeSearchVal.bind(this, 'keyword') }
+                                        placeholder="標題名稱" /> { }
+                                    <label className="sr-only">搜尋類型</label> { }
+                                    <select className="form-control form-control-sm"
+                                        value={search.msg_type_id} onChange= {pp.changeSearchVal.bind(this, 'msg_type_id') }>
+                                        <option value="" defaultValue="">選取類型</option>
+                                        {
+                                            list.map((item, i) => {
+                                                return <option key={i} value={item.id}>{item.label}</option>;
+                                            })
+                                        }
+                                    </select> { }
                                     <PWButton
-                                    className="btn btn-sm btn-primary"
-                                    iconClassName="fa-search"
-                                    type="submit"
-                                    enable={true}>搜尋</PWButton> { }
+                                        className="btn btn-sm btn-primary"
+                                        iconClassName="fa-search"
+                                        type="submit"
+                                        enable={true}>搜尋</PWButton> { }
                                 </div>
                             </div>
                         </div>

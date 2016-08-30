@@ -1,7 +1,7 @@
 ﻿import $ = require('jquery');
 import React = require('react');
 import Moment = require('moment');
-import {config, UIText, NewsTypeData, IHideTypeData} from '../ts-comm/def-data';
+import {config, UIText, NewsTypeData, IHideTypeData_v2} from '../ts-comm/def-data';
 import { makeInputValue, clone, MntV} from '../ts-comm/comm-func'
 import { RadioBox} from '../ts-comm/comm-cmpt'
 import {ac_type_comm} from '../action_type';
@@ -25,7 +25,7 @@ export class Edit extends React.Component<any, any>{
         };
     }
     componentDidMount() {
-        CKEDITOR.replace('news_content', { customConfig: '../ckeditor/inlineConfig.js' });
+        CKEDITOR.replace('a_content', { customConfig: '../ckeditor/inlineConfig.js' });
     }
     componentDidUpdate(prevProps, prevState) {
     }
@@ -55,8 +55,8 @@ export class Edit extends React.Component<any, any>{
         e.preventDefault();
         let pp = this.props
         let ppp = pp.params;
-        let field: server.News = pp.field;
-        field.news_content = CKEDITOR.instances['news_content'].getData();
+        let field: server.MsgBoard = pp.field;
+        field.a_content = CKEDITOR.instances['a_content'].getData();
         this.props.ajaxSubmit(ppp.id, pp.field, pp.edit_type);
         return;
     }
@@ -64,48 +64,63 @@ export class Edit extends React.Component<any, any>{
     render() {
         let out_html: JSX.Element = null;
         let pp = this.props;
-        let field: server.News = pp.field;
-        let mnt_day = MntV(field.day);
+        let field: server.MsgBoard = pp.field;
+
         out_html =
             (
                 <form className="form form-sm" onSubmit={this.callSubmit}>
-                    <h4 className="h4">基本資料</h4>
+                    <h4 className="h4">住戶提問內容</h4>
                     <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  標題</label>
-                        <div className="col-xs-7">
-                            <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'news_title') } value={field.news_title} maxLength={128}
-                                required />
+                        <label className="col-xs-1 form-control-label text-xs-right">住戶編號</label>
+                        <div className="col-xs-3">
+                            {field.resident_no}
+                        </div>
+                        <label className="col-xs-1 form-control-label text-xs-right">住戶姓名</label>
+                        <div className="col-xs-3">
+                            {field.q_name}
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  類型</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">聯絡電話</label>
+                        <div className="col-xs-3">
+                            {field.q_tel}
+                        </div>
+                        <label className="col-xs-1 form-control-label text-xs-right">email</label>
+                        <div className="col-xs-3">
+                            {field.q_email}
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <label className="col-xs-1 form-control-label text-xs-right">提問標題</label>
                         <div className="col-xs-7">
+                            {field.q_title}
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                    <label className="col-xs-1 form-control-label text-xs-right">提問類型</label>
+                        <div className="col-xs-3">
                             <RadioBox
-                                inputViewMode={InputViewMode.edit}
-                                value={field.news_type}
-                                id="RadioNewsT"
-                                name="RadioNewsT"
-                                onChange={this.chgVal.bind(this, 'news_type') }
-                                radioList={NewsTypeData}
+                                inputViewMode={InputViewMode.view}
+                                value={field.msg_type_id}
+                                id="RadioMsg"
+                                name="RadioMsg"
+                                radioList={pp.type_list}
                                 required={true} />
                         </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 日期</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">提問日期</label>
                         <div className="col-xs-3">
-                            <DatePicker selected={mnt_day}
-                                dateFormat={config.dateFT}
-                                isClearable={true}
-                                required={true}
-                                locale="zh-TW"
-                                showYearDropdown
-                                minDate={Moment() }
-                                onChange={this.chgDate.bind(this, 'day') }
-                                className="form-control" />
+                            {Moment(field.i_InsertDateTime).format(config.dateFT) }
                         </div>
                     </div>
                     <div className="form-group row">
-                    <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">提問內容</label>
+                        <div className="col-xs-4">
+                            {field.q_content}
+                        </div>
+                    </div>
+                    <h4 className="h4">問題回復</h4>
+                    <div className="form-group row">
+                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
                         <div className="col-xs-4">
                             <RadioBox
                                 inputViewMode={InputViewMode.edit}
@@ -113,15 +128,15 @@ export class Edit extends React.Component<any, any>{
                                 id="RadioIHide"
                                 name="RadioIHide"
                                 onChange={this.chgVal.bind(this, 'i_Hide') }
-                                radioList={IHideTypeData}
+                                radioList={IHideTypeData_v2}
                                 required={true} />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">內容</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">回覆內容</label>
                         <div className="col-xs-8">
-                            <textarea type="date" className="form-control" id="news_content" name="news_content"
-                                value={field.news_content} onChange={this.chgVal.bind(this, 'news_content') }></textarea>
+                            <textarea type="date" className="form-control" id="a_content" name="news_content"
+                                value={field.a_content} onChange={this.chgVal.bind(this, 'a_content') }></textarea>
                         </div>
                     </div>
                     <div className="form-action">

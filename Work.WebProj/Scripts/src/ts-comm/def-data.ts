@@ -485,6 +485,10 @@ export const IHideTypeData: Array<server.StateTemplate> = [
     { id: false, label: '顯示', className: 'label label-success' },
     { id: true, label: '關閉', className: 'label label-danger' }
 ];
+export const IHideTypeData_v2: Array<server.StateTemplate> = [
+    { id: false, label: '顯示於前台', className: 'label label-success' },
+    { id: true, label: '不顯示', className: 'label label-danger' }
+];
 export const config = {
     CustIdCookieName: 'CustId',
     dateFT: 'YYYY-MM-DD'

@@ -12,6 +12,14 @@ export const ajaxGridItem = (search: any) => {
             })
     }
 }
+export const ajaxMsgTypeItem = () => {
+    return dispatch => {
+        return callGet(apiPath + '/GetTypeList', {})
+            .done((data, textStatus, jqXHRdata) => {
+                dispatch(getTypeListItem(data));
+            })
+    }
+}
 
 export const ajaxEditItem = (id: number | string) => {
 
@@ -80,6 +88,12 @@ const getGridItem = (data) => {
             startcount: data.startcount,
             endcount: data.endcount
         }
+    }
+}
+export const getTypeListItem = (data) => {
+    return {
+        type: ac_type_comm.load_list,
+        data
     }
 }
 

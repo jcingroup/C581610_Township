@@ -24,6 +24,7 @@ namespace DotWeb.Api
             using (db0 = getDB0())
             {
                 MsgBoard item = await db0.MsgBoard.FindAsync(id);
+                item.resident_no = item.Resident.resident_no;
                 var r = new ResultInfo<MsgBoard>() { data = item };
                 return Ok(r);
             }
@@ -37,6 +38,9 @@ namespace DotWeb.Api
 
             if (q.keyword != null)
                 predicate = predicate.And(x => x.q_title.Contains(q.keyword));
+
+            if (q.msg_type_id != null)
+                predicate = predicate.And(x => x.msg_type_id == q.msg_type_id);
 
             int page = (q.page == null ? 1 : (int)q.page);
             var result = db0.MsgBoard.AsExpandable().Where(predicate);
@@ -74,6 +78,7 @@ namespace DotWeb.Api
                 var md = param.md;
                 item.q_content = md.q_content;
                 item.state = md.state;
+                item.i_Hide = md.i_Hide;
 
                 item.i_UpdateDateTime = DateTime.Now;
                 item.i_UpdateDeptID = departmentId;
@@ -189,10 +194,30 @@ namespace DotWeb.Api
                 db0.Dispose();
             }
         }
+        [Route("GetTypeList")]
+        public async Task<IHttpActionResult> GetTypeList()
+        {
+            #region 連接BusinessLogicLibary資料庫並取得資料
+
+            using (db0 = getDB0())
+            {
+                var items = db0.MsgType
+                    .OrderBy(x => x.msg_type_id)
+                    .Select(x => new
+                    {
+                        id = x.msg_type_id,
+                        label = x.name
+                    });
+
+                return Ok(await items.ToListAsync());
+            }
+
+            #endregion
+        }
         public class queryParam : QueryBase
         {
             public string keyword { set; get; }
-
+            public int? msg_type_id { get; set; }
         }
         public class putBodyParam
         {

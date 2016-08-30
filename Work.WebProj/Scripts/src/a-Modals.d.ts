@@ -177,6 +177,7 @@
     interface MsgBoard extends BaseEntityTable {
         msg_board_id?: number;
         resident_id?: number;
+        resident_no?: string;
         msg_type_id?: number;
         q_name?: string;
         q_tel?: string;

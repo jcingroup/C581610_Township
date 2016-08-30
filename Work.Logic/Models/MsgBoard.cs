@@ -8,6 +8,7 @@ namespace ProcCore.Business.DB0
     [MetadataType(typeof(MsgBoardMetadata))]
     public partial class MsgBoard
     {
+        public string resident_no { get; set; }
         private class MsgBoardMetadata
         {
             [JsonIgnore()]

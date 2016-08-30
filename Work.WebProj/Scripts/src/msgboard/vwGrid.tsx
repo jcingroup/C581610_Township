@@ -80,8 +80,8 @@ export class Grid extends React.Component<any, any>{
         out_html =
             (
                 <form onSubmit={this.submitQuery}>
-                    <GridSearch search={pp.search} changeSearchVal={this.changeSDVal} />
-                    <GridTable grid={pp.grid} clickItemEdit={this.modifyType} clickItemDel={this.deleteItem}/>
+                <GridSearch search={pp.search} init_list={pp.type_list} changeSearchVal={this.changeSDVal} />
+                <GridTable grid={pp.grid} clickItemEdit={this.modifyType} clickItemDel={this.deleteItem} type_list={pp.type_list}/>
                     <NavPage
                         page={p_info.page}
                         startcount={p_info.startcount}
@@ -90,7 +90,8 @@ export class Grid extends React.Component<any, any>{
                         records={p_info.records}
                         mapPage={this.queryGridData}
                         clickInsertState={this.addType}
-                        showDelete={false}/>
+                        showDelete={false}
+                        showAdd={false}/>
                 </form>
             );
 
