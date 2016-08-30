@@ -301,6 +301,7 @@
     <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\ExplainController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
@@ -498,6 +499,7 @@
     <Content Include="Views\Comments\Popup.cshtml" />
     <Content Include="Views\Service\Reserve.cshtml" />
     <Content Include="Views\Service\Order.cshtml" />
+    <Content Include="Views\Member\Edit.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
