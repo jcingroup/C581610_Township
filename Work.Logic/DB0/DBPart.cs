@@ -35,6 +35,12 @@ namespace ProcCore.Business.DB0
         Management = 5,//維運管理
         Fix = 6//長期修繕
     }
+    public enum MsgState
+    {
+        no = 0,//未處理
+        SuccessAndShow=1,//處理完成並顯示於前台
+        SuccessAndHide=2 //處理完成但不顯示
+    }
     #region set CodeSheet
 
     public static class CodeSheet
@@ -44,6 +50,12 @@ namespace ProcCore.Business.DB0
             new i_Code{ Code = 1, Value = "活動", ClassName = "activity",IconClass="label-success" },
             new i_Code{ Code = 2, Value = "公告", ClassName = "public",IconClass="label-danger"  },
             new i_Code{ Code = 3, Value = "資訊", ClassName = "info" ,IconClass="label-info" }
+        };
+        public static List<i_Code> msg_state = new List<i_Code>()
+        {
+            new i_Code{ Code = 0, Value = "管理員已收到用戶留言，將盡快為您回覆", ClassName = "activity",IconClass="label-success" },
+            new i_Code{ Code = 1, Value = "已處理完成", ClassName = "public",IconClass="label-danger"  },
+            new i_Code{ Code = 2, Value = "已處理完成", ClassName = "info" ,IconClass="label-info" }
         };
 
         public static string GetStateVal(int code, i_CodeName propName, List<i_Code> data)

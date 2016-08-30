@@ -1,7 +1,7 @@
 ﻿import $ = require('jquery');
 import React = require('react');
 import Moment = require('moment');
-import {config, UIText, NewsTypeData, IHideTypeData_v2} from '../ts-comm/def-data';
+import {config, UIText, NewsTypeData, MsgTypeData} from '../ts-comm/def-data';
 import { makeInputValue, clone, MntV} from '../ts-comm/comm-func'
 import { RadioBox} from '../ts-comm/comm-cmpt'
 import {ac_type_comm} from '../action_type';
@@ -90,14 +90,14 @@ export class Edit extends React.Component<any, any>{
                             {field.q_email}
                         </div>
                     </div>
-                    <div className="form-group row">
+                    {/*<div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">提問標題</label>
                         <div className="col-xs-7">
                             {field.q_title}
                         </div>
-                    </div>
+                    </div>*/}
                     <div className="form-group row">
-                    <label className="col-xs-1 form-control-label text-xs-right">提問類型</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">提問類型</label>
                         <div className="col-xs-3">
                             <RadioBox
                                 inputViewMode={InputViewMode.view}
@@ -114,21 +114,21 @@ export class Edit extends React.Component<any, any>{
                     </div>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">提問內容</label>
-                        <div className="col-xs-4">
+                        <div className="col-xs-10">
                             {field.q_content}
                         </div>
                     </div>
                     <h4 className="h4">問題回復</h4>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
-                        <div className="col-xs-4">
+                        <div className="col-xs-5">
                             <RadioBox
                                 inputViewMode={InputViewMode.edit}
-                                value={field.i_Hide}
+                                value={field.state}
                                 id="RadioIHide"
                                 name="RadioIHide"
-                                onChange={this.chgVal.bind(this, 'i_Hide') }
-                                radioList={IHideTypeData_v2}
+                                onChange={this.chgVal.bind(this, 'state') }
+                                radioList={MsgTypeData}
                                 required={true} />
                         </div>
                     </div>

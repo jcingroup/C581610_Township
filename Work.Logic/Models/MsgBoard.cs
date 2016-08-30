@@ -9,6 +9,7 @@ namespace ProcCore.Business.DB0
     public partial class MsgBoard
     {
         public string resident_no { get; set; }
+        public string msg_type_name { get; set; }
         private class MsgBoardMetadata
         {
             [JsonIgnore()]

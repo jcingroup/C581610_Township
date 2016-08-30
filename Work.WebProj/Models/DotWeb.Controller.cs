@@ -1003,6 +1003,12 @@ namespace DotWeb.Controller
 
             return menus;
         }
+        /// <summary>
+        /// 前台編輯器抓取資料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="l2_id"></param>
+        /// <returns></returns>
         protected CategoryL2Data getEditorData(int id, int l2_id)
         {
             CategoryL2Data item = new CategoryL2Data();
@@ -1050,6 +1056,49 @@ namespace DotWeb.Controller
             }
             ViewBag.AboutUs = AboutUs;
         }
+        #region 企業申請
+        public ResultInfo addMsgBoard(MsgBoard md)
+        {
+            ResultInfo r = new ResultInfo();
+            try
+            {
+                using (var db0 = getDB0())
+                {
+                    int member_id = int.Parse(this.MemberId);
+                    var item = new MsgBoard()
+                    {
+                        msg_board_id = GetNewId(CodeTable.MsgBoard),
+                        state = (int)MsgState.no,
+                        resident_id = member_id,
+                        msg_type_id = md.msg_type_id,
+                        q_name = md.q_name,
+                        q_tel = md.q_tel,
+                        q_email = md.q_email,
+                        q_title = md.q_title,
+                        q_content = md.q_content,
+                        i_UpdateDateTime = DateTime.Now,
+                        i_InsertDateTime = DateTime.Now,
+                        i_Lang = System.Globalization.CultureInfo.CurrentCulture.Name
+                    };
+
+                    db0.MsgBoard.Add(item);
+                    db0.SaveChanges();
+
+                    r.result = true;
+                    r.message = Resources.Res.Log_Success_askMsg;
+                    return r;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                r.result = false;
+                r.message = ex.ToString();
+                return r;
+            }
+        }
+        #endregion
         #region 前台抓取圖片
         public string[] GetImgs(string id, string file_kind, string category1, string category2, string size)
         {
