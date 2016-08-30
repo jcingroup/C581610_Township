@@ -1,4 +1,4 @@
-﻿
+
 @{
     ViewBag.Title = "公設預約";
     ViewBag.BodyClass = "Service";
@@ -25,6 +25,7 @@
         <th>使用日期</th>
         <th>聯絡人姓名</th>
         <th>聯絡電話</th>
+        <th>預約狀態</th> 
     </tr>
     <tr>
         <td>健身房</td>
@@ -36,6 +37,9 @@
         </td>
         <td>王小明</td>
         <td>0000-000-000</td>
+        <td>
+            <span class="label label-success">預約成功</span>
+        </td>
     </tr>
     <tr>
         <td>遊樂室</td>
@@ -45,11 +49,16 @@
         </td>
         <td>王太太</td>
         <td>0000-000-000</td>
+        <td>
+            <span class="label label-danger">預約失敗</span>
+            @* 失敗理由讓管理者自行填寫 *@
+            <span class="text-danger">預約日期已滿</span>
+        </td>
     </tr>
 </table>
 
 <nav class="nav-reserve">
-    <a href="~/Service/Reserve" class="card">交誼廳預約</a>
+    <a href="~/Service/Reserve" class="card">交誼廳預約</a> 
     <a href="~/Service/Reserve" class="card">會議室預約</a>
     <a href="~/Service/Reserve" class="card">遊樂室預約</a>
     <a href="~/Service/Reserve" class="card">健身房預約</a>
