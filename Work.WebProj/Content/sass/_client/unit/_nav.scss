@@ -177,8 +177,10 @@ $mobile-menu-width:   100% !default;
         }
     }
 
-    dl { padding: $gutter*1.75 $gutter*3.4; }
+    dl { padding: $gutter*1.2 $gutter*3.4; }
     dt { @extend .margin-right; }
+    dd { margin-top: $spacer/2; }
+    img { @include circle(110px, center, #fff); }
 
     @if $enable-RWD {
         @include mq-max(break(#{$mobile-menu-bk},-1)) {

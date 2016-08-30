@@ -385,9 +385,6 @@ body:not(:-moz-handler-blocked) fieldset {
   box-sizing: inherit;
   -webkit-appearance: none; }
 
-[hidden] {
-  display: none !important; }
-
 input, textarea, select, .form-element {
   background: none;
   line-height: 1.5;
@@ -459,10 +456,10 @@ input, textarea, select, .form-element {
 .input-size-xl {
   width: 480px; }
 
-legend, .form-element, .foot-partner a, .block, .img-center {
+legend, .foot-partner a, .block, .img-center {
   display: block; }
 
-label, output, .inline-block, .card {
+label, output, .form-element, .inline-block, .card {
   display: inline-block; }
 
 .input-inline, .inline {
@@ -810,6 +807,9 @@ button {
 .padding-xl {
   padding: 16px 32px; }
 
+.padding-xxl, .btn-lg {
+  padding: 24px 48px; }
+
 .padding-jumbo {
   padding: 32px 64px; }
 
@@ -829,7 +829,7 @@ button {
   padding-top: 12px;
   padding-bottom: 12px; }
 
-.padding-16 {
+.padding-16, .btn-lg {
   padding-top: 16px;
   padding-bottom: 16px; }
 

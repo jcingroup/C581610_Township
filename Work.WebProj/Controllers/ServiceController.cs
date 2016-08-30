@@ -21,10 +21,5 @@ namespace DotWeb.WebApp.Controllers
         {
             return View();
         }
-
-        public ActionResult Popup()
-        {
-            return View();
-        }
     }
 }

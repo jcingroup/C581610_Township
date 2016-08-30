@@ -350,8 +350,10 @@
     <Content Include="Content\css\vendor\fontAwesome\font-awesome.css" />
     <Content Include="Content\css\vendor\icomoon.css" />
     <Content Include="Content\css\vendor\jquery.loadmask.css" />
+    <Content Include="Content\css\vendor\jquery.mCustomScrollbar.css" />
     <Content Include="Content\css\vendor\swiper.min.css" />
     <Content Include="Content\css\vendor\toastr.css" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.svg" />
     <Content Include="Content\images\headerBg.gif" />
     <Content Include="Content\images\Index\bg.jpg" />
     <Content Include="Content\images\Index\contentBg.png" />
@@ -362,6 +364,13 @@
     <Content Include="Content\images\Index\intro2_shadow.gif" />
     <Content Include="Content\images\Index\intro3_bg.gif" />
     <Content Include="Content\images\line.gif" />
+    <Content Include="Content\images\m1.jpg" />
+    <Content Include="Content\images\nav-icon-assets.gif" />
+    <Content Include="Content\images\nav-icon-Efficacy.gif" />
+    <Content Include="Content\images\nav-icon-fix.gif" />
+    <Content Include="Content\images\nav-icon-Group.gif" />
+    <Content Include="Content\images\nav-icon-Management.gif" />
+    <Content Include="Content\images\nav-icon-Service.gif" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
     <Content Include="Content\images\temp.gif" />
@@ -370,6 +379,7 @@
     <Content Include="Content\js\common.js" />
     <Content Include="Content\js\jquery-scrolltofixed.js" />
     <Content Include="Content\js\jquery.lazyload.min.js" />
+    <Content Include="Content\js\jquery.mCustomScrollbar.min.js" />
     <Content Include="Content\js\jquery.scroller.js" />
     <Content Include="Content\js\magnific-popup\jquery.magnific-popup.min.js" />
     <Content Include="Content\font\icomoon\icomoon.eot" />
@@ -387,6 +397,11 @@
     <Content Include="Content\images\noIE\noIE.css" />
     <Content Include="Content\images\noIE\noIE.html" />
     <Content Include="Content\js\swiper\swiper.min.js" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.woff2" />
+    <Content Include="Content\font\fontAwesome\FontAwesome.otf" />
     <None Include="Content\publih.wpp.targets" />
     <Content Include="Content\js\tab.js" />
     <Content Include="index.aspx" />
@@ -458,6 +473,7 @@
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_editor.js" />
     <Content Include="Scripts\build\app\m_editordetail.js" />
+    <Content Include="Scripts\build\app\m_editorl1.js" />
     <Content Include="Scripts\build\app\m_editorl2.js" />
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
@@ -469,6 +485,7 @@
     <Content Include="Scripts\build\app\vendors.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\googleReCAPTCHA.js" />
+    <Content Include="Scripts\src\action_type.js" />
     <Content Include="Views\AboutUs\AboutUs.cshtml" />
     <Content Include="Views\Assets\Assets.cshtml" />
     <Content Include="Views\Index\Notice.cshtml" />
@@ -483,7 +500,6 @@
     <Content Include="Views\Comments\Popup.cshtml" />
     <Content Include="Views\Service\Reserve.cshtml" />
     <Content Include="Views\Service\Order.cshtml" />
-    <Content Include="Views\Service\Popup.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

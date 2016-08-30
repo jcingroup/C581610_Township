@@ -1,7 +1,114 @@
 ﻿
 @{
-    ViewBag.Title = "Order";
+    ViewBag.Title = "公設預約";
+    ViewBag.BodyClass = "Service";
+    ViewBag.breadCrumb = "健身房預約";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Order</h2>
+@* 彈出視窗 *@
+@section css {
+    <link rel="stylesheet" href="~/Content/css/popup.css?v=@CommWebSetup.CacheVer">
+}
+@section Scripts {
+    <script src="~/Content/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script>
+        // 彈出視窗
+        var $this = $(this),
+            index = $this.data('index');
+        $('.popup').magnificPopup({
+            type: 'inline', // ajax
+            overflowY: 'auto',
+            removalDelay: 300,
+            mainClass: 'my-mfp-slide-bottom'
+        });
+    </script>
+}
 
+@section breadCrumb {
+    <li><a href="~/Servcie">公設預約</a></li>
+}
+
+<h1 class="title-underline-d">
+    @ViewBag.breadCrumb
+    <small class="block">@DateTime.Now.ToString("yyyy/MM/dd")</small>
+</h1>
+
+<form action="">
+    <aside class="order-data card">
+        <h4 class="title-underline">您的預約資料</h4>
+        <p>
+            <label class="form-element-label text-primary font-lg">住戶 360</label>
+            <input type="text" class="input-underline font-lg" value="王小明 先生">
+        </p>
+        <p>
+            <label class="form-element-label text-primary font-lg">聯絡電話</label>
+            <input type="tel" class="input-underline font-lg" value="0000-000-000">
+        </p>
+        <br>
+        <a href="#order-check" class="btn popup">確認預約</a>
+        <a href="" class="btn bg-danger">取消預約</a>
+    </aside>
+
+    <section class="order-info">
+        <h4 class="text-primary">一、確認要預約的設施</h4>
+        <img src="~/Content/images/m1.jpg" alt="健身房照片" class="float-l margin-right">
+        <div class="col-rest font-lg">
+            <i class="icon-check_box text-success font-xl"></i> 健身房
+            <br>
+            開放時間早上十點至晚上十點
+        </div>
+    </section>
+
+    <section class="order-info">
+        <h4 class="text-primary float-l margin-right">二、選取使用人數</h4>
+        <input type="number" class="form-element input-size-md">
+        <span class="margin-left">人</span>
+    </section>
+
+    @* 會議室不能多人同時申請 - 需 check 同時間人數 *@
+    <section class="order-info">
+        <h4 class="text-primary">三、選取使用時間</h4>
+        <div class="col-4 col-first">
+            <input type="date" class="form-element" placeholder="請輸入日期">
+            近二週內
+        </div>
+        <div class="col-4">
+            <input type="time" class="form-element" placeholder="請輸入開始時間">
+            開始 <small>(最小單位 1小時 ~ 3小時)</small>
+        </div>
+        <div class="col-4 col-last">
+            <input type="time" class="form-element" placeholder="請輸入結束時間">
+            結束 <small>(最小單位 1小時 ~ 3小時)</small>
+        </div>
+    </section>
+
+    <div id="order-check" class="dialog zoom-anim-dialog mfp-hide">
+        <h3 class="text-primary text-center">您已預約【健身房】</h3>
+        <p>
+            <label class="form-element-label">使用人數：</label>
+            <input type="number" class="input-underline text-center" value="5"> 人
+        </p>
+        <p>
+            <label class="form-element-label">使用日期：</label>
+            <input type="date" class="input-underline" value="2016/08/19">
+            <input type="time" class="input-underline" value="17:30">
+            ~
+            <input type="time" class="input-underline" value="19:00">
+        </p>
+        <p>
+            <label class="form-element-label">住戶 360：</label>
+            <input type="text" class="input-underline input-size-lg" value="王小明">
+        </p>
+        <p>
+            <label class="form-element-label">聯絡電話：</label>
+            <input type="tel" class="input-underline input-size-lg" value="000-000-0000">
+        </p>
+        <br>
+
+        <div class="text-center">
+            <button class="btn">送出預約單</button>
+            <button class="btn bg-danger">取消預約</button>
+        </div>
+    </div>
+</form>
