@@ -80,13 +80,19 @@ namespace DotWeb.Api
                 foreach (var detail in details)
                 {
                     var md_detail = md.Editor_L2.First(x => x.editor_l2_id == detail.editor_l2_id);
+                    if (detail.sort != md_detail.sort ||
+                        detail.l2_name != md_detail.l2_name ||
+                        detail.l2_content != md_detail.l2_content ||
+                        detail.i_Hide != md_detail.i_Hide)
+                    {
+                        detail.i_UpdateUserID = UserId;
+                        detail.i_UpdateDateTime = DateTime.Now;
+                        detail.i_UpdateDeptID = departmentId;
+                    }
                     detail.sort = md_detail.sort;
                     detail.l2_name = md_detail.l2_name;
                     detail.l2_content = RemoveScriptTag(md_detail.l2_content);
                     detail.i_Hide = md_detail.i_Hide;
-                    detail.i_UpdateUserID = UserId;
-                    detail.i_UpdateDateTime = DateTime.Now;
-                    detail.i_UpdateDeptID = departmentId;
                 }
 
                 var add_detail = md.Editor_L2.Where(x => x.edit_state == EditState.Insert);

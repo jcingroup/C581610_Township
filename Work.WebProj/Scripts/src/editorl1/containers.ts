@@ -7,7 +7,8 @@ import {EditDetail} from './vwEditDetail';
 
 
 import { ajaxGridItem, setInputValue, editState, ajaxEditItem, ajaxDeleteItem, ajaxSubmit,
-    ajaxGridDetailItem, setDetailInputValue, addDeatilState, ajaxDelDetail} from './actions'
+    ajaxGridDetailItem, setDetailInputValue, addDeatilState, ajaxDelDetail,
+    setD3InputValue, ajaxGridD3Item, addD3State, ajaxDelD3} from './actions'
 
 const m1ToProps = (state, ownProps) => {
     return {
@@ -47,7 +48,11 @@ const m2Dispatch = (dispatch, ownProps) => {
         ajaxGridDetailItem,
         setDetailInputValue,
         addDeatilState,
-        ajaxDelDetail
+        ajaxDelDetail,
+        setD3InputValue,
+        ajaxGridD3Item,
+        addD3State,
+        ajaxDelD3
     }, dispatch);
 
     return s;

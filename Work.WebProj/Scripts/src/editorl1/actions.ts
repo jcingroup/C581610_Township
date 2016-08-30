@@ -5,6 +5,7 @@ import {tosMessage} from '../ts-comm/comm-func';
 //ajax--
 const apiPath: string = gb_approot + 'api/Editor_L1';
 const apiDetailPath: string = gb_approot + 'api/Editor_L2';
+const apiD3Path: string = gb_approot + 'api/Editor_L3';
 export const ajaxGridItem = (search: any) => {
     return dispatch => {
         return callGet(apiPath, search)
@@ -97,6 +98,33 @@ export const ajaxDelDetail = (i, id, edit_state: IEditType) => {
         }
     }
 }
+export const ajaxGridD3Item = (i: number, main_id: number) => {
+    return dispatch => {
+        return callGet(apiD3Path + '/GetL3List', { main_id: main_id })
+            .done((data, textStatus, jqXHRdata) => {
+                dispatch(setDetailInputValue(ac_type_comm.chg_dil_fld_val, i, "Editor_L3", data));
+            })
+    }
+}
+export const ajaxDelD3 = (i, j, id, edit_state: IEditType) => {
+    return dispatch => {
+        if (edit_state == IEditType.insert) {
+            tosMessage(null, '刪除完成', 1);
+            dispatch(delD3State(i, j));
+        }
+        if (edit_state == IEditType.update) {
+            return callDelete(apiD3Path, { id: id })
+                .done((data: CallResult, textStatus, jqXHRdata) => {
+                    if (data.result) {
+                        tosMessage(null, '刪除完成', 1);
+                        dispatch(delD3State(i, j));
+                    } else {
+                        alert(data.message);
+                    }
+                })
+        }
+    }
+}
 //ajax--
 const getGridItem = (data) => {
     return {
@@ -127,6 +155,15 @@ export const setDetailInputValue = (type, i, name, value) => {
         value
     }
 }
+export const setD3InputValue = (type, i, j, name, value) => {
+    return {
+        type: type,
+        i,
+        j,
+        name,
+        value
+    }
+}
 
 export const setFieldValue = (type, item) => {
     return {
@@ -153,5 +190,21 @@ export const delDetailState = (i) => {
     return {
         type: ac_type_comm.del_detail,
         i
+    }
+}
+//d3
+export const addD3State = (i, data) => {
+    console.log(i, data);
+    return {
+        type: ac_type_comm.add_d3,
+        i,
+        data
+    }
+}
+export const delD3State = (i, j) => {
+    return {
+        type: ac_type_comm.del_d3,
+        i,
+        j
     }
 }

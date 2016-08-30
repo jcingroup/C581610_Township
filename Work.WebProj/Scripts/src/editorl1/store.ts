@@ -67,18 +67,52 @@ const field = (state: server.Editor = {}, action) => {
             };
             let n_state_2 = update(state, f_struct_2);
             return n_state_2;
-        case ac_type_comm.add_detail:
+        case ac_type_comm.chg_d3_fld_val:
             let f_struct_3 = {
-                ["Editor_L2"]: { $push: [action.data] }
+                ["Editor_L2"]: {
+                    [action.i]: {
+                        ["Editor_L3"]: {
+                            [action.j]: {
+                                [action.name]: { $set: action.value }
+                            }
+                        }
+                    }
+                }
             };
             let n_state_3 = update(state, f_struct_3);
             return n_state_3;
-        case ac_type_comm.del_detail:
+        case ac_type_comm.add_detail:
             let f_struct_4 = {
-                ["Editor_L2"]: { $splice: [[action.i, 1]] }
+                ["Editor_L2"]: { $push: [action.data] }
             };
             let n_state_4 = update(state, f_struct_4);
             return n_state_4;
+        case ac_type_comm.del_detail:
+            let f_struct_5 = {
+                ["Editor_L2"]: { $splice: [[action.i, 1]] }
+            };
+            let n_state_5 = update(state, f_struct_5);
+            return n_state_5;
+        case ac_type_comm.add_d3:
+            let f_struct_6 = {
+                ["Editor_L2"]: {
+                    [action.i]: {
+                        ["Editor_L3"]: { $push: [action.data]}
+                    }
+                }             
+            };
+            let n_state_6 = update(state, f_struct_6);
+            return n_state_6;
+        case ac_type_comm.del_d3:
+            let f_struct_7 = {
+                ["Editor_L2"]: {
+                    [action.i]: {
+                        ["Editor_L3"]: { $splice: [[action.j, 1]] }
+                    }
+                }
+            };
+            let n_state_7 = update(state, f_struct_7);
+            return n_state_7;
         case ac_type_comm.add:
             return action.data;
         case ac_type_comm.update:
