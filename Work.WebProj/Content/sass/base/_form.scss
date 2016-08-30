@@ -103,7 +103,6 @@ $checkbox-icon-size:        $checkbox-size*.7 !default;
 // == Normalize
 label {
     @extend %inline-block;
-    // display: inline-block;
     margin-bottom: $spacer/2;
 
     // max-width: 100%; // 強制 IE8 能容納長元素
@@ -137,9 +136,7 @@ fieldset {
 
 legend {
     @extend %block, .margin-bottom;
-    // display: block;
     width: 100%;
-    // margin-bottom: $spacer;
     font-size: em($font-size-base * 1.5);
     line-height: inherit;
 }
@@ -154,11 +151,6 @@ body:not(:-moz-handler-blocked) fieldset {
 
 output {
     @extend %inline-block;
-    // display: inline-block;
-}
-
-[hidden] {
-    display: none !important;
 }
 
 
@@ -197,7 +189,7 @@ input, textarea, select, .form-element {
 }
 
 .form-element {
-    @extend %block;
+    @extend %inline-block;
     width: 100%;
 
     @include form-element-focus;
@@ -284,15 +276,15 @@ input, textarea, select, .form-element {
 
 @if $enable-ckb-rdo {
     // == checkbox
-    #{text-inputs(checkbox radio)} {
+    #{text-inputs($enable-ckb-rdo)} {
         position: absolute;
         opacity: 0;
         visibility: hidden;
 
         + label {
             // 共用設定
-            @extend %inline-block, .margin-0;
-            // display: inline-block;
+            @extend %inline-block;
+            margin: 0;
             vertical-align: middle;
             position: relative;
             cursor: pointer; cursor:hand;
@@ -301,7 +293,7 @@ input, textarea, select, .form-element {
             // margin: 0;
 
             // 設計樣式
-            background: $input-bg;
+            background: #fff; //$input-bg
             border: 1px solid darken($input-border-color,6);
             margin-right: $gutter/3;
 
@@ -309,25 +301,33 @@ input, textarea, select, .form-element {
             @include el(before,inline-block,unicode(e116)) {
                 @include pos-center;
                 @include transition(color,.5s);
+                font-family: 'icomoon';
                 font-size: em($checkbox-icon-size);
-                color: $input-bg;
+                color: #fff; //$input-bg
             }
         }
         &:not(:checked):hover + label {
-            &::before { color: $brand-secondary; }
+            // &::before { color: $brand-secondary; }
+            &::before { color: $success; }
         }
         &:checked + label {
-            background: darken($input-border-focus,20);
+            // background: darken($input-border-focus,20);
+            background: $success;
+            border: none;
         }
     }
 
     // 各別設定(換圖及調大小)
-    #{text-inputs(checkbox)} + label {
-        border-radius: $form-element-radius;
-        margin-right: $gutter/3;
-        @include size($checkbox-size);
+    @if $enable-ckb-rdo == 'checkbox' {
+        #{text-inputs(checkbox)} + label {
+            border-radius: $form-element-radius;
+            margin-right: $gutter/2;
+            @include size($checkbox-size);
+        }
     }
-    #{text-inputs(radio)} + label {
-        @include circle($checkbox-size,center);
+    @if $enable-ckb-rdo == 'radio' {
+        #{text-inputs(radio)} + label {
+            @include circle($checkbox-size,center);
+        }
     }
 }

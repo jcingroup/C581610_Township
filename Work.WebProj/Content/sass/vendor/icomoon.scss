@@ -2,11 +2,7 @@
 
 $icomoon-font-path: "../../font/icomoon";
 
-@function unicode($str){
-    // @return unquote("\"") + $str + unquote("\"");
-    @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"");
-}
-
+@import "../helper/function";
 @import "icomoon/variables";
 
 @font-face {
