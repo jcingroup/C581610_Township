@@ -39,5 +39,7 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<Editor_L1> Editor_L1 { get; set; }
         public virtual DbSet<Editor_L2> Editor_L2 { get; set; }
         public virtual DbSet<Editor_L3> Editor_L3 { get; set; }
+        public virtual DbSet<MsgBoard> MsgBoard { get; set; }
+        public virtual DbSet<MsgType> MsgType { get; set; }
     }
 }

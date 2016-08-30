@@ -117,26 +117,6 @@
         i_UpdateDateTime?: Date;
         i_Lang?: string;
     }
-    interface Editor extends BaseEntityTable {
-        editor_id?: number;
-        body_class?: string;
-        url?: string;
-        img_url?: string;
-        name?: string;
-        sort?: number;
-        i_Hide?: boolean;
-        EditorDetail?: server.EditorDetail[];
-    }
-    interface EditorDetail extends BaseEntityTable {
-        editor_detail_id?: number;
-        editor_id?: number;
-        detail_name?: string;
-        detail_content?: string;
-        sort?: number;
-        i_Hide?: boolean;
-        edit_state?: IEditType;
-        Editor?: server.Editor;
-    }
 
     interface Editor_L1 extends BaseEntityTable {
         editor_l1_id?: number;
@@ -192,5 +172,35 @@
         Editor_L1?: server.Editor_L1;
         Editor_L2?: server.Editor_L2;
         edit_state?: IEditType;
+    }
+
+    interface MsgBoard extends BaseEntityTable {
+        msg_board_id?: number;
+        resident_id?: number;
+        resident_no?: string;
+        msg_type_id?: number;
+        q_name?: string;
+        q_tel?: string;
+        q_email?: string;
+        q_title?: string;
+        q_content?: string;
+        a_content?: string;
+        sort?: number;
+        state?: number;
+        i_Hide?: boolean;
+        i_InsertUserID?: string;
+        i_InsertDeptID?: number;
+        i_InsertDateTime?: Date;
+        i_UpdateUserID?: string;
+        i_UpdateDeptID?: number;
+        i_UpdateDateTime?: Date;
+        i_Lang?: string;
+        Resident?: server.Resident;
+        MsgType?: server.MsgType;
+    }
+    interface MsgType {
+        msg_type_id?: number;
+        name?: string;
+        MsgBoard?: server.MsgBoard[];
     }
 } 

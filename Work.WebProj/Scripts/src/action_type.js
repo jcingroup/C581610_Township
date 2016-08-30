@@ -1,6 +1,7 @@
 "use strict";
 exports.ac_type_comm = {
     load: 'load',
+    load_list: 'load_list',
     grid: 'grid',
     add: 'add',
     update: 'update',
