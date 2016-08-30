@@ -55,24 +55,16 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
                 <div className="card-header">
                     <ul className="list-inline clearfix m-b-0">
                         <li className="pull-xs-left"><strong># {pp.iKey}</strong></li>
+                        <li className="pull-xs-left form-control-label">名稱</li>
+                        <li className="pull-xs-left"><input type="text" className="form-control" onChange={this.chgDetailVal.bind(this, 'l3_name') } value={field.l3_name} maxLength={64} required placeholder="名稱"/></li>
+                        <li className="pull-xs-left form-control-label">排序</li>
+                        <li className="pull-xs-left"><input type="number" className="form-control" onChange={this.chgDetailVal.bind(this, 'sort') } value={field.sort} maxLength={64} required /></li>
                         <li className="pull-xs-right m-l-1"><button className="btn btn-link text-sm text-danger" type="button" title={UIText.delete} onClick={this.props.delItem} ><i className="fa-times"></i> 刪除</button></li>
                         <li className="pull-xs-right"><button onClick={() => this.setState({ open: !this.state.open }) } type="button" className="btn btn-link text-sm text-muted"><i className="fa-chevron-down"></i> 收合/展開</button></li>
                     </ul>
                 </div>
                 <Collapse in={this.state.open}>
                     <div className="card-block">
-                        <div className="form-group row">
-                            <label className="col-xs-1 form-control-label text-xs-right"> 名稱</label>
-                            <div className="col-xs-3">
-                                <input type="text" className="form-control" onChange={this.chgDetailVal.bind(this, 'l3_name') } value={field.l3_name} maxLength={64} required/>
-                                <small className="text-muted">最多64字!</small>
-                            </div>
-                            <label className="col-xs-1 form-control-label text-xs-right"> 排序</label>
-                            <div className="col-xs-3">
-                                <input type="number" className="form-control" onChange={this.chgDetailVal.bind(this, 'sort') } value={field.sort} maxLength={64} required />
-                                <small className="text-muted">數字越大越前面!</small>
-                            </div>
-                        </div>
                         <div className="form-group row">
                             <div className="col-xs-12">
                                 <textarea type="date" rows={4} className="form-control" id={'content-' + this.props.iKey} name={'content-' + this.props.iKey}
