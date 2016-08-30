@@ -346,7 +346,6 @@ dt {
   font-weight: bold; }
 
 dd {
-  margin-bottom: 0.5rem;
   margin-left: 0; }
 
 /*      table
@@ -556,7 +555,7 @@ label, output, .form-element, .comment-ask select, .comment-ask textarea, [type=
 .input-inline, .inline {
   display: inline; }
 
-.float-l, #menu li, .top-member .head, .order-info {
+.list-data, .list-data dt, .float-l, #menu li, .top-member .head, .order-info {
   float: left; }
 
 .float-r, .search, .top-member, .comment-self, .order-data {
@@ -936,6 +935,19 @@ label, output, .form-element, .comment-ask select, .comment-ask textarea, [type=
   .list-num ol ol ol {
     list-style-type: initial; }
 
+.list-data {
+  width: 32.5%; }
+  .list-data:not(:nth-child(3n)) {
+    margin-right: 1%; }
+  .list-data dt {
+    font-weight: normal;
+    width: 100px;
+    background: #ffffcd;
+    color: #6e6300;
+    border-right: 1px solid #f0f100; }
+  .list-data dd {
+    overflow: hidden; }
+
 .card {
   background: #f9f9f1;
   border-radius: 2px;
@@ -1188,7 +1200,7 @@ figure {
 .padding-tiny {
   padding: 2px 4px; }
 
-.padding-sm, .comment-self .card {
+.padding-sm, .list-data dt, .list-data dd, .comment-self .card {
   padding: 4px 8px; }
 
 .padding, .news-list header, .news-list .block, .scroll-nav a, .order-data,
@@ -1296,7 +1308,7 @@ figure {
 .font-md, .list-underline ol, .list-underline ul, .list-num ol, .list-num ul, .title-underline-d small, .comment-list .btn {
   font-size: 1rem; }
 
-.font-lg, .comment-ask label, .comment-ask input, .nav-reserve .card, #order-check {
+.font-lg, .list-data, .comment-ask label, .comment-ask input, .nav-reserve .card, #order-check {
   font-size: 1.1875rem; }
 
 .font-xl, #footer .title-underline, .editor-content .title {
@@ -1314,7 +1326,7 @@ figure {
 .text-white, #footer .title-underline, .news-list li, .news-list .block, .news-list .btn, .label-primary, .label-secondary, .label-muted, .label-success, .label-info, .label-warning, .label-danger, .top-member .icon-photo_camera:hover, .top-member .icon-photo_camera:active, .scroll-nav a:hover, .scroll-nav a:active, .scroll-nav a.active, .nav-reserve .card {
   color: #fff; }
 
-.bg-white, .news-list .label, .news-list .btn:hover, .news-list .btn:active, .grid-intro figcaption, .grid-doc .grid, .scroll-nav a, .scroll-nav.fixed, .rule {
+.bg-white, .news-list .label, .news-list .btn:hover, .news-list .btn:active, .list-data, .grid-intro figcaption, .grid-doc .grid, .scroll-nav a, .scroll-nav.fixed, .rule {
   background: #fff; }
 
 .text-primary, #footer a:hover, #footer a:active, .sub-nav a:hover, .sub-nav a:active, .editor-content .title, .editor-content .sub-title, .editor-content h4, .comment-ask label, .comment-list h3 {

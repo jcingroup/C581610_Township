@@ -403,6 +403,7 @@
     <Content Include="Content\font\fontAwesome\fontawesome-webfont.woff" />
     <Content Include="Content\font\fontAwesome\fontawesome-webfont.woff2" />
     <Content Include="Content\font\fontAwesome\FontAwesome.otf" />
+    <Content Include="Content\download\德鄉社區系統操作手冊-用戶端.doc" />
     <None Include="Content\publih.wpp.targets" />
     <Content Include="Content\js\tab.js" />
     <Content Include="index.aspx" />

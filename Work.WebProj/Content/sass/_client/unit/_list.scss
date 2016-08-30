@@ -131,4 +131,23 @@ $list-dot-color: $brand-primary !default;
         ol ol { list-style-type: lower-latin; }
         ol ol ol { list-style-type: initial; }
     }
+
+    .list-data {
+        @extend %float-l, .bg-white, .font-lg;
+
+        width: 32.5%;
+
+        &:not(:nth-child(3n)) { margin-right: 1%; }
+
+        dt, dd { @extend .padding-sm; }
+        dt {
+            @extend %float-l;
+            font-weight: normal;
+            width: 100px;
+            background: darken($pale-yellow,2);
+            color: darken($yellow,40);
+            border-right: 1px solid darken($pale-yellow,45);
+        }
+        dd { overflow: hidden; }
+    }
 }

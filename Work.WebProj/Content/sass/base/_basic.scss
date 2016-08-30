@@ -188,6 +188,6 @@ ol, ul {
 
 dt { font-weight: $dt-font-weight; }
 dd {
-    margin-bottom: $spacer/2;
+    // margin-bottom: $spacer/2;
     margin-left: 0; // Undo browser default
 }
