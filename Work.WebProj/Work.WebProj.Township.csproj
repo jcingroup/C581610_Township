@@ -479,6 +479,8 @@
     <Content Include="Views\Service\Self.cshtml" />
     <Content Include="Views\Comments\Popup.cshtml" />
     <Content Include="Views\Service\Reserve.cshtml" />
+    <Content Include="Views\Service\Order.cshtml" />
+    <Content Include="Views\Service\Popup.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

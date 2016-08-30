@@ -23,11 +23,6 @@ $gotoTop.click(function() {
     return false;
 });
 
-// 錨點選單特效 by jquery.scroller.js
-$('.scroll-nav').scroller({
-    bodyName: '#main'
-});
-
 // 搜尋框彈出
 var $submit = $("[data-expand='btn']"),
     $submitIcon = $("[data-expand='toggle']"),
@@ -73,3 +68,8 @@ function buttonUp(){
         $submit.removeClass('enter');
     }
 }
+
+// 錨點選單特效 by jquery.scroller.js
+$('.scroll-nav').scroller({
+    bodyName: '#main'
+});

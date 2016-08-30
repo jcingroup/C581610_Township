@@ -2,15 +2,55 @@
 @{
     ViewBag.Title = "公設預約";
     ViewBag.BodyClass = "Service";
-    ViewBag.breadCrumb = "公設預約";
+    ViewBag.breadCrumb = "我的預約清單";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section breadCrumb {
-
+    <li><a href="~/Servcie">公設預約</a></li>
 }
 
 <h1 class="title-underline-d">
     @ViewBag.breadCrumb
     <small class="block">Public appointments</small>
 </h1>
+
+@* 若無任何預約，顯示下列
+<h5 class="text-primary">目前無任何預約</h5> *@
+
+<table class="table-hover full">
+    <tr>
+        <th>您已預約公設項目</th>
+        <th>使用人數</th>
+        <th>使用日期</th>
+        <th>聯絡人姓名</th>
+        <th>聯絡電話</th>
+    </tr>
+    <tr>
+        <td>健身房</td>
+        <td>5人</td>
+        <td>
+            @* 日期寫法 dates=20160829T093000 - 2016/08/29 17點30分0秒
+               T(時間) 17 - 8 = 09 *@
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&trp=true&sf=true&output=xml&dates=20160829T093000Z/20160829T110000Z&text=德鄉社區健身房預約" class="tooltip" data-tooltip="加到 google 行事曆" target="new">2016/8/29 17:30~19:00</a>
+        </td>
+        <td>王小明</td>
+        <td>0000-000-000</td>
+    </tr>
+    <tr>
+        <td>遊樂室</td>
+        <td>3人</td>
+        <td>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&trp=true&sf=true&output=xml&dates=20160829T093000Z/20160829T110000Z&text=德鄉社區遊樂室預約" class="tooltip" data-tooltip="加到 google 行事曆" target="new">2016/8/29 17:30~19:00</a>
+        </td>
+        <td>王太太</td>
+        <td>0000-000-000</td>
+    </tr>
+</table>
+
+<nav class="nav-reserve">
+    <a href="~/Service/Reserve" class="card">交誼廳預約</a>
+    <a href="~/Service/Reserve" class="card">會議室預約</a>
+    <a href="~/Service/Reserve" class="card">遊樂室預約</a>
+    <a href="~/Service/Reserve" class="card">健身房預約</a>
+</nav>
