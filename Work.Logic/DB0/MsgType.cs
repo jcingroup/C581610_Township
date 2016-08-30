@@ -12,20 +12,16 @@ namespace ProcCore.Business.DB0
     using System;
     using System.Collections.Generic;
     
-    public partial class Resident
+    public partial class MsgType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Resident()
+        public MsgType()
         {
             this.MsgBoard = new HashSet<MsgBoard>();
         }
     
-        public int resident_id { get; set; }
-        public string resident_name { get; set; }
-        public string resident_no { get; set; }
-        public string account { get; set; }
-        public string passwd { get; set; }
-        public string email { get; set; }
+        public int msg_type_id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MsgBoard> MsgBoard { get; set; }

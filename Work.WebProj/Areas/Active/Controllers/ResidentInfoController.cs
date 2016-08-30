@@ -23,6 +23,11 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult MsgType()
+        {//留言板分類
+            ActionRun();
+            return View();
+        }
         public ActionResult Service()
         {//預約公設
             ActionRun();

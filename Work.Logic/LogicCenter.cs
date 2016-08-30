@@ -14,7 +14,9 @@ namespace ProcCore.Business
 {
     public enum CodeTable
     {
-        Base, Menu, Resident, News, Editor_L1, Editor_L2, Editor_L3
+        Base, Menu, Resident, News,
+        Editor_L1, Editor_L2, Editor_L3,
+        MsgBoard, MsgType
     }
     public enum SNType
     {

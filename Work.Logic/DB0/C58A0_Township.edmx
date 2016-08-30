@@ -183,6 +183,37 @@
           <Property Name="menu_id" Type="int" Nullable="false" />
           <Property Name="role_id" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
+        <EntityType Name="MsgBoard">
+          <Key>
+            <PropertyRef Name="msg_board_id" />
+          </Key>
+          <Property Name="msg_board_id" Type="int" Nullable="false" />
+          <Property Name="resident_id" Type="int" Nullable="false" />
+          <Property Name="msg_type_id" Type="int" Nullable="false" />
+          <Property Name="q_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="q_tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="q_email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="q_title" Type="nvarchar" MaxLength="128" />
+          <Property Name="q_content" Type="ntext" />
+          <Property Name="a_content" Type="ntext" />
+          <Property Name="sort" Type="int" />
+          <Property Name="state" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MsgType">
+          <Key>
+            <PropertyRef Name="msg_type_id" />
+          </Key>
+          <Property Name="msg_type_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="news_id" />
@@ -300,6 +331,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MsgBoard_MsgType">
+          <End Role="MsgType" Type="Self.MsgType" Multiplicity="1" />
+          <End Role="MsgBoard" Type="Self.MsgBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsgType">
+              <PropertyRef Name="msg_type_id" />
+            </Principal>
+            <Dependent Role="MsgBoard">
+              <PropertyRef Name="msg_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MsgBoard_Resident">
+          <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
+          <End Role="MsgBoard" Type="Self.MsgBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resident">
+              <PropertyRef Name="resident_id" />
+            </Principal>
+            <Dependent Role="MsgBoard">
+              <PropertyRef Name="resident_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="C58A0_TownshipModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
@@ -315,6 +370,8 @@
           <EntitySet Name="i_SN" EntityType="Self.i_SN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MsgBoard" EntityType="Self.MsgBoard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MsgType" EntityType="Self.MsgType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resident" EntityType="Self.Resident" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
@@ -344,6 +401,14 @@
           <AssociationSet Name="FK_MenuRole_Menu" Association="Self.FK_MenuRole_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="MenuRole" EntitySet="MenuRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MsgBoard_MsgType" Association="Self.FK_MsgBoard_MsgType">
+            <End Role="MsgType" EntitySet="MsgType" />
+            <End Role="MsgBoard" EntitySet="MsgBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MsgBoard_Resident" Association="Self.FK_MsgBoard_Resident">
+            <End Role="Resident" EntitySet="Resident" />
+            <End Role="MsgBoard" EntitySet="MsgBoard" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -503,6 +568,16 @@
             <End Role="Editor_L2" EntitySet="Editor_L2" />
             <End Role="Editor_L3" EntitySet="Editor_L3" />
           </AssociationSet>
+          <EntitySet Name="MsgBoard" EntityType="C58A0_TownshipModel.MsgBoard" />
+          <EntitySet Name="MsgType" EntityType="C58A0_TownshipModel.MsgType" />
+          <AssociationSet Name="FK_MsgBoard_MsgType" Association="C58A0_TownshipModel.FK_MsgBoard_MsgType">
+            <End Role="MsgType" EntitySet="MsgType" />
+            <End Role="MsgBoard" EntitySet="MsgBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MsgBoard_Resident" Association="C58A0_TownshipModel.FK_MsgBoard_Resident">
+            <End Role="Resident" EntitySet="Resident" />
+            <End Role="MsgBoard" EntitySet="MsgBoard" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Resident">
           <Key>
@@ -514,6 +589,7 @@
           <Property Name="account" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="passwd" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MsgBoard" Relationship="C58A0_TownshipModel.FK_MsgBoard_Resident" FromRole="Resident" ToRole="MsgBoard" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -628,6 +704,64 @@
             </Principal>
             <Dependent Role="Editor_L3">
               <PropertyRef Name="editor_l2_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MsgBoard">
+          <Key>
+            <PropertyRef Name="msg_board_id" />
+          </Key>
+          <Property Name="msg_board_id" Type="Int32" Nullable="false" />
+          <Property Name="resident_id" Type="Int32" Nullable="false" />
+          <Property Name="msg_type_id" Type="Int32" Nullable="false" />
+          <Property Name="q_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="q_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="q_email" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="q_title" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="q_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="a_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MsgType" Relationship="C58A0_TownshipModel.FK_MsgBoard_MsgType" FromRole="MsgBoard" ToRole="MsgType" />
+          <NavigationProperty Name="Resident" Relationship="C58A0_TownshipModel.FK_MsgBoard_Resident" FromRole="MsgBoard" ToRole="Resident" />
+        </EntityType>
+        <EntityType Name="MsgType">
+          <Key>
+            <PropertyRef Name="msg_type_id" />
+          </Key>
+          <Property Name="msg_type_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MsgBoard" Relationship="C58A0_TownshipModel.FK_MsgBoard_MsgType" FromRole="MsgType" ToRole="MsgBoard" />
+        </EntityType>
+        <Association Name="FK_MsgBoard_MsgType">
+          <End Type="C58A0_TownshipModel.MsgType" Role="MsgType" Multiplicity="1" />
+          <End Type="C58A0_TownshipModel.MsgBoard" Role="MsgBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsgType">
+              <PropertyRef Name="msg_type_id" />
+            </Principal>
+            <Dependent Role="MsgBoard">
+              <PropertyRef Name="msg_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MsgBoard_Resident">
+          <End Type="C58A0_TownshipModel.Resident" Role="Resident" Multiplicity="1" />
+          <End Type="C58A0_TownshipModel.MsgBoard" Role="MsgBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resident">
+              <PropertyRef Name="resident_id" />
+            </Principal>
+            <Dependent Role="MsgBoard">
+              <PropertyRef Name="resident_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -855,6 +989,39 @@
                 <ScalarProperty Name="editor_l1_id" ColumnName="editor_l1_id" />
                 <ScalarProperty Name="editor_l2_id" ColumnName="editor_l2_id" />
                 <ScalarProperty Name="editor_l3_id" ColumnName="editor_l3_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MsgBoard">
+            <EntityTypeMapping TypeName="C58A0_TownshipModel.MsgBoard">
+              <MappingFragment StoreEntitySet="MsgBoard">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="a_content" ColumnName="a_content" />
+                <ScalarProperty Name="q_content" ColumnName="q_content" />
+                <ScalarProperty Name="q_title" ColumnName="q_title" />
+                <ScalarProperty Name="q_email" ColumnName="q_email" />
+                <ScalarProperty Name="q_tel" ColumnName="q_tel" />
+                <ScalarProperty Name="q_name" ColumnName="q_name" />
+                <ScalarProperty Name="msg_type_id" ColumnName="msg_type_id" />
+                <ScalarProperty Name="resident_id" ColumnName="resident_id" />
+                <ScalarProperty Name="msg_board_id" ColumnName="msg_board_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MsgType">
+            <EntityTypeMapping TypeName="C58A0_TownshipModel.MsgType">
+              <MappingFragment StoreEntitySet="MsgType">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="msg_type_id" ColumnName="msg_type_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

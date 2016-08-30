@@ -24,6 +24,10 @@
         <EntityTypeShape EntityType="C58A0_TownshipModel.Editor_L3" Width="1.5" PointX="14.875" PointY="8" />
         <AssociationConnector Association="C58A0_TownshipModel.FK_Editor_L3_Editor_L1" />
         <AssociationConnector Association="C58A0_TownshipModel.FK_Editor_L3_Editor_L2" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.MsgBoard" Width="1.5" PointX="14.625" PointY="1.875" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.MsgType" Width="1.5" PointX="12.375" PointY="2.75" />
+        <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_MsgType" />
+        <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_Resident" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
