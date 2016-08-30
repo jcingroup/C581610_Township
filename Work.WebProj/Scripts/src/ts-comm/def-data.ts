@@ -481,6 +481,11 @@ export const NewsTypeData: Array<server.StateTemplate> = [
     { id: 2, label: '公告', className: 'label label-danger' },
     { id: 3, label: '資訊', className: 'label label-info' }
 ];
+export const MsgTypeData: Array<server.StateTemplate> = [
+    { id: 0, label: '未處理', className: 'label label-danger' },
+    { id: 1, label: '處理完成並顯示於前台', className: 'label label-success' },
+    { id: 2, label: '處理完成但不顯示', className: 'label label-default' }
+];
 export const IHideTypeData: Array<server.StateTemplate> = [
     { id: false, label: '顯示', className: 'label label-success' },
     { id: true, label: '關閉', className: 'label label-danger' }

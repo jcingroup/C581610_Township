@@ -76,7 +76,7 @@ namespace DotWeb.Api
 
                 item = await db0.MsgBoard.FindAsync(param.id);
                 var md = param.md;
-                item.q_content = md.q_content;
+                item.a_content = md.a_content;
                 item.state = md.state;
                 item.i_Hide = md.i_Hide;
 

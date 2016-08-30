@@ -385,4 +385,10 @@
   <data name="Log_Success_SendMail" xml:space="preserve">
     <value>Email已送出，我們會儘快與您聯絡!</value>
   </data>
+  <data name="Log_Success_askMsg" xml:space="preserve">
+    <value>留言已成功送出,管理員將盡快回復您的問題!</value>
+  </data>
+  <data name="Msg_Err_NotLoginResident" xml:space="preserve">
+    <value>請登入住戶帳號後再進行留言!</value>
+  </data>
 </root>

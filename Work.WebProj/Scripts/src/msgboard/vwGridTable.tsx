@@ -1,6 +1,6 @@
 ﻿import React = require('react');
 import Moment = require('moment');
-import {config, UIText, NewsTypeData, IHideTypeData_v2} from '../ts-comm/def-data';
+import {config, UIText, NewsTypeData, MsgTypeData} from '../ts-comm/def-data';
 import {PWButton, RadioBox} from '../ts-comm/comm-cmpt';
 
 import {ac_type_comm} from '../action_type';
@@ -11,7 +11,7 @@ const Rows = ({ item, clickItemDel, clickItemEdit, type_list}: { item: server.Ms
         <tr>
             <td className="text-xs-center"><PWButton iconClassName="fa-times" className="btn-link btn-lg text-danger" enable={true} onClick={clickItemDel} /></td>
             <td className="text-xs-center"><PWButton iconClassName="fa-pencil" className="btn-link btn-lg" enable={true} onClick={clickItemEdit} /></td>
-            <td>{item.q_title}</td>
+            <td>{item.q_content}</td>
             <td className="text-xs-center">
                 <RadioBox
                     inputViewMode={InputViewMode.view}
@@ -24,10 +24,10 @@ const Rows = ({ item, clickItemDel, clickItemEdit, type_list}: { item: server.Ms
             <td className="text-xs-center">
                 <RadioBox
                     inputViewMode={InputViewMode.view}
-                    value={item.i_Hide}
+                    value={item.state}
                     id="RadioIHide"
                     name="RadioIHide"
-                    radioList={IHideTypeData_v2} />
+                    radioList={MsgTypeData} />
             </td>
         </tr>
     )

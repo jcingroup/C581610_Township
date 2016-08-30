@@ -781,11 +781,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查詢類似 留言已成功送出,管理員將盡快回復您的問題! 的當地語系化字串。
+        /// </summary>
+        internal static string Log_Success_askMsg {
+            get {
+                return ResourceManager.GetString("Log_Success_askMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Email已送出，我們會儘快與您聯絡! 的當地語系化字串。
         /// </summary>
         internal static string Log_Success_SendMail {
             get {
                 return ResourceManager.GetString("Log_Success_SendMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 請登入住戶帳號後再進行留言! 的當地語系化字串。
+        /// </summary>
+        internal static string Msg_Err_NotLoginResident {
+            get {
+                return ResourceManager.GetString("Msg_Err_NotLoginResident", resourceCulture);
             }
         }
         
