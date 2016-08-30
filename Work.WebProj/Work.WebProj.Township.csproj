@@ -237,7 +237,6 @@
     <Content Include="Areas\Active\Views\Editors\Fix.cshtml" />
     <Content Include="Areas\Active\Views\ResidentInfo\Comments.cshtml" />
     <Content Include="Areas\Active\Views\ResidentInfo\Service.cshtml" />
-    <Content Include="Areas\Active\Views\ResidentInfo\MsgType.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -293,8 +292,6 @@
     <Compile Include="Controllers\Api\Editor_L1Controller.cs" />
     <Compile Include="Controllers\Api\Editor_L3Controller.cs" />
     <Compile Include="Controllers\Api\Editor_L2Controller.cs" />
-    <Compile Include="Controllers\Api\MsgTypeController.cs" />
-    <Compile Include="Controllers\Api\MsgBoardController.cs" />
     <Compile Include="Controllers\Api\NewsController.cs" />
     <Compile Include="Controllers\Api\ResidentController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
@@ -456,13 +453,12 @@
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
-    <Content Include="Scripts\build\app\m_editorl1.js" />
+    <Content Include="Scripts\build\app\m_editor.js" />
+    <Content Include="Scripts\build\app\m_editordetail.js" />
     <Content Include="Scripts\build\app\m_editorl2.js" />
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
-    <Content Include="Scripts\build\app\m_msgboard.js" />
-    <Content Include="Scripts\build\app\m_msgtype.js" />
     <Content Include="Scripts\build\app\m_news.js" />
     <Content Include="Scripts\build\app\m_resident.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
@@ -480,8 +476,11 @@
     <Content Include="Views\Fix\Fix.cshtml" />
     <Content Include="Views\Comments\Comments.cshtml" />
     <Content Include="Views\Explain\Explain.cshtml" />
-    <Content Include="Views\Service\Service.cshtml" />
+    <Content Include="Views\Service\Self.cshtml" />
     <Content Include="Views\Comments\Popup.cshtml" />
+    <Content Include="Views\Service\Reserve.cshtml" />
+    <Content Include="Views\Service\Order.cshtml" />
+    <Content Include="Views\Service\Popup.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -562,24 +561,6 @@
     <TypeScriptCompile Include="Scripts\src\editorl2\vwGridSearch.tsx" />
     <TypeScriptCompile Include="Scripts\src\editorl2\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\editorl1\vwEditDetail.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\actions.ts" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\app.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\containers.ts" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\store.ts" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\vwAStart.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\vwEdit.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\vwGrid.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\vwGridSearch.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgtype\vwGridTable.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\actions.ts" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\app.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\containers.ts" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\store.ts" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\vwAStart.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\vwEdit.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\vwGrid.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\vwGridSearch.tsx" />
-    <TypeScriptCompile Include="Scripts\src\msgboard\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\news\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\news\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\news\containers.ts" />

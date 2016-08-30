@@ -247,8 +247,8 @@ $figure-inline:                 true;
     }
 }
 
-// == menu item 內的樣式
-// 內頁子選單(資產管理等)
+// == 資產、效能、組織、維運、修繕等
+// 內頁錨點選單
 .scroll-nav {
     margin: $spacer*2 0;
     a {
@@ -364,5 +364,22 @@ $figure-inline:                 true;
     header {
         margin-top: $spacer*.2;
         margin-bottom: $spacer*.7;
+    }
+}
+
+// == 公設預約
+.nav-reserve {
+    @extend .text-left;
+    margin-top: $spacer*2;
+
+    .card {
+        @extend %inline-block, .padding-32, .bg-success, .text-white, .font-lg, .text-center;
+        letter-spacing: 3px;
+        width: 23%;
+        margin: .45% .85%;
+
+        &:hover, &:active {
+            @extend .bg-danger;
+        }
     }
 }

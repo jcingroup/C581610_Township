@@ -69,6 +69,7 @@
 
                     <ul id="menu" class="navbar">
                         <li><a href="~/News" class="root @(ViewBag.BodyClass == "News" ? "current" : "")">社區訊息</a></li>
+
                         @foreach (var i in category_stroe)
                         {
                             <li>
@@ -92,7 +93,21 @@
 
                         <li><a href="~/Comments" class="root @(ViewBag.BodyClass == "Comments" ? "current" : "")">留言板</a></li>
                         <li><a href="~/Explain" class="root @(ViewBag.BodyClass == "Explain" ? "current" : "")">操作說明</a></li>
-                        <li><a href="~/Service" class="root @(ViewBag.BodyClass == "Service" ? "current" : "")">公設預約</a></li>
+                        <li>
+                            <a href="~/Service" class="root @(ViewBag.BodyClass == "Service" ? "current" : "")">公設預約</a>
+                            <nav class="sub-nav">
+                                <dl class="wrap">
+                                    <dt class="float-l"><img src="~/Content/images/nav_icon_service.gif" alt="圖標"></dt>
+                                    <dd class="col-rest">
+                                        <a href="~/Service">我的預約清單</a>
+                                        <a href="~/Service/Reserve">交誼廳預約</a>
+                                        <a href="~/Service/Reserve">會議室預約</a>
+                                        <a href="~/Service/Reserve">遊樂室預約</a>
+                                        <a href="~/Service/Reserve">健身房預約</a>
+                                    </dd>
+                                </dl>
+                            </nav>
+                        </li>
                     </ul>
 
                     <form action="" class="search" data-expand="box">
@@ -164,15 +179,10 @@
     </footer><!-- footer -->
 
     <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="~/Content/js/common.js"></script>
     @if (!ViewBag.IsFirstPage) {
         <script src="~/Content/js/jquery.scroller.js"></script>
-        <script>
-            $('.scroll-nav').scroller({
-                bodyName: '#main'
-            });
-        </script>
     }
+    <script src="~/Content/js/common.js"></script>
     @RenderSection("Scripts", required: false)
 
 </body>

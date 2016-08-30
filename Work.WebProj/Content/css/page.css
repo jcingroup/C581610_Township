@@ -512,7 +512,7 @@ legend, .form-element, .comment-ask select, .comment-ask textarea, .foot-partner
 .extend-toggle, .block, .img-center, .grid-intro .time em {
   display: block; }
 
-label, output, .sub-nav a, .label, figure, a.tooltip, .inline-block, .scroll-nav a, .comment-ask label, .comment-ask input, .comment-ask select {
+label, output, .sub-nav a, .label, figure, a.tooltip, .inline-block, .scroll-nav a, .comment-ask label, .comment-ask input, .comment-ask select, .nav-reserve .card {
   display: inline-block; }
 
 .input-inline, .inline {
@@ -1182,7 +1182,7 @@ figure {
   padding-top: 24px;
   padding-bottom: 24px; }
 
-.padding-32, .scroll-content {
+.padding-32, .scroll-content, .nav-reserve .card {
   padding-top: 32px;
   padding-bottom: 32px; }
 
@@ -1200,14 +1200,14 @@ figure {
 .margin-0, .Notice #main, .grid-intro p, .comment-self dd {
   margin: 0; }
 
-.text-left, #footer, .sub-nav, .breadcrumb, .news-list header, .news-list .block, .top-member, .editor-content, .comment-ask, .comment-list, .comment-self, .news-contend {
+.text-left, #footer, .sub-nav, .breadcrumb, .news-list header, .news-list .block, .top-member, .editor-content, .comment-ask, .comment-list, .comment-self, .news-contend, .nav-reserve {
   text-align: left; }
 
 .text-right {
   text-align: right; }
 
 .text-center, .extend-btn,
-.extend-toggle, .grid-intro figcaption, .grid-intro .time {
+.extend-toggle, .grid-intro figcaption, .grid-intro .time, .nav-reserve .card {
   text-align: center; }
 
 .title-underline {
@@ -1247,7 +1247,7 @@ figure {
 .font-md, .list-underline ol, .list-underline ul, .list-num ol, .list-num ul, .title-underline-d small, .comment-list .btn {
   font-size: 1rem; }
 
-.font-lg, .comment-ask label, .comment-ask input {
+.font-lg, .comment-ask label, .comment-ask input, .nav-reserve .card {
   font-size: 1.1875rem; }
 
 .font-xl, #footer .title-underline, .editor-content .title {
@@ -1262,7 +1262,7 @@ figure {
 .font-jumbo {
   font-size: 4.0625rem; }
 
-.text-white, #footer .title-underline, .news-list li, .news-list .block, .news-list .btn, .label-primary, .label-secondary, .label-muted, .label-success, .label-info, .label-warning, .label-danger, .top-member .icon-photo_camera:hover, .top-member .icon-photo_camera:active, .scroll-nav a:hover, .scroll-nav a:active, .scroll-nav a.active {
+.text-white, #footer .title-underline, .news-list li, .news-list .block, .news-list .btn, .label-primary, .label-secondary, .label-muted, .label-success, .label-info, .label-warning, .label-danger, .top-member .icon-photo_camera:hover, .top-member .icon-photo_camera:active, .scroll-nav a:hover, .scroll-nav a:active, .scroll-nav a.active, .nav-reserve .card {
   color: #fff; }
 
 .bg-white, .news-list .label, .news-list .btn:hover, .news-list .btn:active, .grid-intro figcaption, .grid-doc .grid, .scroll-nav a, .scroll-nav.fixed {
@@ -1289,7 +1289,7 @@ figure {
 .text-success, .news-list .activity .label, .grid-intro figure:not(:first-child):hover h4, .grid-intro figure:not(:first-child):active h4, .grid-intro p {
   color: #83b32f; }
 
-.bg-success, .news-list .activity {
+.bg-success, .news-list .activity, .nav-reserve .card {
   background: #92C734; }
 
 .text-info, .news-list .info .label {
@@ -1307,7 +1307,7 @@ figure {
 .text-danger, .news-list .public .label, .comment-self dd {
   color: #f14360; }
 
-.bg-danger, .news-list .public {
+.bg-danger, .news-list .public, .nav-reserve .card:hover, .nav-reserve .card:active {
   background: #F35B74; }
 
 .Notice #main {
@@ -1538,3 +1538,10 @@ figure {
   .news-contend header {
     margin-top: 0.2rem;
     margin-bottom: 0.7rem; }
+
+.nav-reserve {
+  margin-top: 2rem; }
+  .nav-reserve .card {
+    letter-spacing: 3px;
+    width: 23%;
+    margin: .45% .85%; }
