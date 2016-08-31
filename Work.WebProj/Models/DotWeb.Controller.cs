@@ -80,7 +80,7 @@ namespace DotWeb.Controller
     {
         protected string UserId; //指的是Sales登錄帳號
         protected string LoginUserFlag = string.Empty;//N:管理端登錄 Y:用戶端登錄
-        protected int UserRank;//Sales位階
+        protected IEnumerable<string> UserRoles;
         protected string aspUserId;
         protected int departmentId;
         protected int defPageSize = 0;
@@ -140,10 +140,14 @@ namespace DotWeb.Controller
                 ViewBag.UserId = UserId;
                 ViewBag.UserName = getUserName == null ? "" : Server.UrlDecode(getUserName.Value);
 
-
-                string asp_net_roles = aspnet_user.Roles.Select(x => x.RoleId).FirstOrDefault();
-                var role = roleManager.FindById(asp_net_roles);
-                ViewBag.RoleName = role.Name;
+                #region get roles name
+                //string asp_net_roles = aspnet_user.Roles.Select(x => x.RoleId).FirstOrDefault();
+                //var role = roleManager.FindById(asp_net_roles);
+                //ViewBag.RoleName = role.Name;
+                var asp_net_roles = aspnet_user.Roles.Select(x => x.RoleId);
+                UserRoles = roleManager.Roles.Where(x => asp_net_roles.Contains(x.Id)).Select(x => x.Name);
+                ViewBag.RoleName = UserRoles.First();
+                #endregion
 
                 departmentId = aspnet_user.department_id;
 

@@ -506,6 +506,7 @@ export const UIText = {
     cancel: '取消',
     date_null: '無日期',
     modify: '修改',
+    check: '查看 & 審核',
     delete: '刪除',
     print: '列印',
     return: '回上頁',

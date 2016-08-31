@@ -17,3 +17,5 @@ declare var grecaptcha: any;
 declare var widgetId: any;
 
 declare var gb_id: any;
+
+declare var gb_roles: any;

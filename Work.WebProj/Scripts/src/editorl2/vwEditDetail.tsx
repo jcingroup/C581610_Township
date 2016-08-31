@@ -3,7 +3,7 @@ import React = require('react');
 import Moment = require('moment');
 import ReactBootstrap = require("react-bootstrap");
 import {config, UIText, IHideTypeData} from '../ts-comm/def-data';
-import { makeInputValue, clone, MntV} from '../ts-comm/comm-func'
+import { makeInputValue, clone, MntV, uniqid} from '../ts-comm/comm-func'
 import { RadioBox} from '../ts-comm/comm-cmpt';
 
 import {ac_type_comm} from '../action_type';
@@ -40,7 +40,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
     setEditor(editorName: string, iKey) {
         let editorObj = this.state.editorObj, _this = this;
 
-        editorObj = CKEDITOR.replace(editorName, { customConfig: '../ckeditor/inlineConfig.js?v' + CommFunc.uniqid()});
+        editorObj = CKEDITOR.replace(editorName, { customConfig: '../ckeditor/inlineConfig.js?v' + uniqid() });
         editorObj.on('change', function (evt) {
             _this.props.chgDVal(ac_type_comm.chg_dil_fld_val, iKey, 'l3_content', editorObj.getData());
         }.bind(this));
@@ -130,15 +130,15 @@ export class EditDetail extends React.Component<any, any>{
                     <div>
                         <h4 className="h4">明細檔</h4>
                         <p>
-                        <button className="btn btn-sm btn-success" type="button" onClick={this.addDetail.bind(this) }>
-                            <i className="fa-plus-circle"></i> {UIText.add}
+                            <button className="btn btn-sm btn-success" type="button" onClick={this.addDetail.bind(this) }>
+                                <i className="fa-plus-circle"></i> {UIText.add}
                             </button>
                         </p>
                         <div ref="SortForm" id="SortForm">
                             {
                                 detail.map((item, i) => {
-                                return <DetailField
-                                    key={i + '-' + item.editor_l3_id}
+                                    return <DetailField
+                                        key={i + '-' + item.editor_l3_id}
                                         iKey={i}
                                         field={item}
                                         chgDVal={this.props.setDetailInputValue}

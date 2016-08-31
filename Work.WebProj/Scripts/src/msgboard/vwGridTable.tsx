@@ -7,10 +7,14 @@ import {ac_type_comm} from '../action_type';
 
 
 const Rows = ({ item, clickItemDel, clickItemEdit, type_list}: { item: server.MsgBoard, clickItemDel: Function, clickItemEdit: Function, type_list: Array<server.StateTemplate> }) => {
+    let delete_html = null;
+    if (gb_roles == 'Admins') {
+        delete_html = <td className="text-xs-center"><PWButton iconClassName="fa-times" className="btn-link btn-lg text-danger" enable={true} onClick={clickItemDel} /></td>;
+    }
     return (
         <tr>
-            <td className="text-xs-center"><PWButton iconClassName="fa-times" className="btn-link btn-lg text-danger" enable={true} onClick={clickItemDel} /></td>
-            <td className="text-xs-center"><PWButton iconClassName="fa-pencil" className="btn-link btn-lg" enable={true} onClick={clickItemEdit} /></td>
+            {delete_html}
+            <td className="text-xs-center"><PWButton iconClassName="fa-search-plus" className="btn-link btn-lg" enable={true} onClick={clickItemEdit} /></td>
             <td>{item.q_content}</td>
             <td className="text-xs-center">
                 <RadioBox
@@ -50,14 +54,18 @@ export class GridTable extends React.Component<GridTableProps, any>{
         let out_html: JSX.Element = null;
         let pp = this.props;
         let type_list = pp.type_list == undefined ? [] : pp.type_list;
+        let delete_html = null;
+        if (gb_roles == 'Admins') {
+            delete_html = <th style={{ "width": "7%" }} className="text-xs-center">{UIText.delete}</th>;
+        }
         out_html =
             (
                 <table className="table table-sm table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th style={{ "width": "7%" }} className="text-xs-center">{UIText.delete}</th>
-                            <th style={{ "width": "7%" }} className="text-xs-center">{UIText.modify}</th>
-                            <th style={{ "width": "40%" }}>標題</th>
+                            {delete_html}
+                            <th style={{ "width": "10%" }} className="text-xs-center">{UIText.check}</th>
+                            <th style={{ "width": "35%" }}>標題</th>
                             <th style={{ "width": "16%" }} className="text-xs-center">類型</th>
                             <th style={{ "width": "15%" }} className="text-xs-center">日期</th>
                             <th style={{ "width": "15%" }} className="text-xs-center">狀態</th>
