@@ -1299,6 +1299,10 @@ figure {
   .title-underline-d small::after {
     margin-left: 10px; }
 
+.leading {
+  margin-top: 1.2rem;
+  margin-bottom: 2.2rem; }
+
 .font-tiny {
   font-size: 0.8125rem; }
 
@@ -1551,9 +1555,6 @@ figure {
 .editor-content h5 {
   margin-top: 1rem;
   margin-bottom: 0.5rem; }
-.editor-content p {
-  margin-top: 1.2rem;
-  margin-bottom: 2.2rem; }
 
 .comment-ask label, .comment-ask input, .comment-ask select {
   vertical-align: middle; }

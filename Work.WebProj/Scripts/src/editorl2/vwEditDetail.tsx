@@ -40,7 +40,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
     setEditor(editorName: string, iKey) {
         let editorObj = this.state.editorObj, _this = this;
 
-        editorObj = CKEDITOR.replace(editorName, { customConfig: '../ckeditor/inlineConfig.js?v' + uniqid() });
+        editorObj = CKEDITOR.replace(editorName, { customConfig: '../ckeditor/inlineConfig.js?v=' + uniqid() });
         editorObj.on('change', function (evt) {
             _this.props.chgDVal(ac_type_comm.chg_dil_fld_val, iKey, 'l3_content', editorObj.getData());
         }.bind(this));
@@ -55,26 +55,20 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
                 <div className="card-header">
                     <ul className="list-inline clearfix m-b-0">
                         <li className="pull-xs-left"><strong># {pp.iKey}</strong></li>
-                        <li className="pull-xs-left form-control-label">名稱</li>
-                        <li className="pull-xs-left"><input type="text" className="form-control" onChange={this.chgDetailVal.bind(this, 'l3_name') } value={field.l3_name} maxLength={64} required placeholder="名稱"/></li>
-                        <li className="pull-xs-left form-control-label">排序</li>
-                        <li className="pull-xs-left"><input type="number" className="form-control" onChange={this.chgDetailVal.bind(this, 'sort') } value={field.sort} maxLength={64} required /></li>
+                        <li className="pull-xs-left form-control-label">章節名稱</li>
+                        <li className="pull-xs-left"><input type="text" className="form-control" onChange={this.chgDetailVal.bind(this, 'l3_name') } value={field.l3_name} maxLength={64} required placeholder="請輸入章節名稱"/></li>
+                        <li className="pull-xs-left form-control-label">自定排序</li>
+                        <li className="pull-xs-left"><input type="number" className="form-control col-xs-2 m-r-1" onChange={this.chgDetailVal.bind(this, 'sort') } value={field.sort} maxLength={64} required /><small>*數字越大越前面</small></li>
                         <li className="pull-xs-right m-l-1"><button className="btn btn-link text-sm text-danger" type="button" title={UIText.delete} onClick={this.props.delItem} ><i className="fa-times"></i> 刪除</button></li>
                         <li className="pull-xs-right"><button onClick={() => this.setState({ open: !this.state.open }) } type="button" className="btn btn-link text-sm text-muted"><i className="fa-chevron-down"></i> 收合/展開</button></li>
                     </ul>
                 </div>
                 <Collapse in={this.state.open}>
                     <div className="card-block">
-                        <div className="form-group row">
-                            <div className="col-xs-12">
-                                <textarea type="date" rows={4} className="form-control" id={'content-' + this.props.iKey} name={'content-' + this.props.iKey}
-                                    value={field.l3_content} onChange={this.chgDetailVal.bind(this, 'l3_content') }></textarea>
-                            </div>
-                        </div>
+                        <textarea type="date" rows={4} className="form-control" id={'content-' + this.props.iKey} name={'content-' + this.props.iKey}
+                            value={field.l3_content} onChange={this.chgDetailVal.bind(this, 'l3_content') }></textarea>
                     </div>
                 </Collapse>
-
-
             </div>
         );
         return out_html;
@@ -128,7 +122,7 @@ export class EditDetail extends React.Component<any, any>{
             out_html =
                 (
                     <div>
-                        <h4 className="h4">明細檔</h4>
+                        <h4 className="h4">文章內容(可新增多筆章節)</h4>
                         <p>
                             <button className="btn btn-sm btn-success" type="button" onClick={this.addDetail.bind(this) }>
                                 <i className="fa-plus-circle"></i> {UIText.add}

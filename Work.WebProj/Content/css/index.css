@@ -891,6 +891,10 @@ button {
   .title-underline-d small::after {
     margin-left: 10px; }
 
+.leading {
+  margin-top: 1.2rem;
+  margin-bottom: 2.2rem; }
+
 .font-tiny {
   font-size: 0.8125rem; }
 

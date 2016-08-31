@@ -9,7 +9,7 @@ import {ac_type_comm} from '../action_type';
 import DatePicker = require('react-datepicker');
 import "react-datepicker/dist/react-datepicker.css";
 
-export class Edit extends React.Component<any, any>{
+export class Edit extends React.Component<any, any>{ 
 
     constructor() {
         super();
@@ -69,7 +69,7 @@ export class Edit extends React.Component<any, any>{
         out_html =
             (
                 <form className="form form-sm" onSubmit={this.callSubmit}>
-                    <h4 className="h4">基本資料</h4>
+                    <h4 className="h4">文章內容</h4>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  標題</label>
                         <div className="col-xs-7">

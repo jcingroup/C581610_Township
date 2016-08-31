@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+$page: true;
+
 
 // import
 // ------------------------------------------------------------
@@ -9,6 +11,8 @@
 @import "helper/function";
 @import "helper/variables";
 @import "helper/mixins";
+
+@import "vendor/normalize";
 
 @import "base/basic";
 @import "base/table";
@@ -21,18 +25,15 @@
 
 
 body {
-    padding: 10px 15px;
     @extend .text-left;
+    padding: 10px 15px;
+    background: #F2EEE3;
 }
 
-.title,
-.sub-title,
-h4 { @extend .text-primary; }
-
-.title { @extend .font-xl; }
-
-.sub-title,
-h4 { margin-bottom: $spacer*1.5; }
+.sub-title, h4 {
+    @extend .text-primary;
+    margin-bottom: $spacer*1.5;
+}
 
 .sub-title { margin-top: $spacer*2.2; }
 
@@ -40,7 +41,7 @@ h5 {
     margin-top: $spacer;
     margin-bottom: $spacer/2;
 }
-p {
-    margin-top: $spacer*1.2;
-    margin-bottom: $spacer*2.2;
-}
+
+ol, ul { margin-left: 10px; }
+
+table { width: 85%; }

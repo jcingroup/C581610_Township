@@ -94,6 +94,11 @@
     }
 }
 
+.leading {
+    margin-top: $spacer*1.2;
+    margin-bottom: $spacer*2.2;
+}
+
 .font-tiny  { font-size: $font-size-xs; }  // 13px
 .font-sm    { font-size: $font-size-sm; }  // 15px
 .font-md    { font-size: rem(16); }

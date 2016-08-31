@@ -7,7 +7,7 @@ import { RadioBox} from '../ts-comm/comm-cmpt';
 import {ac_type_comm} from '../action_type';
 import {EditDetailView} from './containers';
 
-export class Edit extends React.Component<any, any>{
+export class Edit extends React.Component<any, any>{ 
 
     constructor() {
         super();
@@ -46,7 +46,7 @@ export class Edit extends React.Component<any, any>{
         out_html =
             (
                 <form className="form form-sm" onSubmit={this.callSubmit}>
-                    <h4 className="h4">主檔</h4>
+                    <h4 className="h4">選單設定</h4>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 名稱 </label>
                         <div className="col-xs-7">
@@ -55,7 +55,7 @@ export class Edit extends React.Component<any, any>{
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  sort</label>
+                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  排序</label>
                         <div className="col-xs-3">
                             <input type="number" className="form-control" onChange={this.chgVal.bind(this, 'sort') } value={field.sort}
                                 required />
