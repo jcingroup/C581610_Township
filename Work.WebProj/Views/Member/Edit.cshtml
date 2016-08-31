@@ -1,4 +1,4 @@
-﻿
+﻿@model ProcCore.Business.DB0.Resident
 @{
     ViewBag.Title = "住戶資料";
     ViewBag.BodyClass = "Member";
@@ -15,40 +15,43 @@
 
     <dl class="list-data">
         <dt>住戶戶號</dt>
-        <dd>@ViewBag.r_no</dd>
+        <dd>@Model.resident_no</dd>
     </dl>
 
     <dl class="list-data">
         <dt>戶主姓名</dt>
-        <dd>@ViewBag.r_name</dd>
+        <dd>@Model.resident_name</dd>
     </dl>
 
     <dl class="list-data">
         <dt>戶主性別</dt>
-        <dd>男</dd>
+        <dd>@if (Model.gender)
+        { <span>男</span>}
+        else
+        {<span>女</span> }</dd>
     </dl>
 
     <dl class="list-data">
         <dt>聯絡電話</dt>
-        <dd>0000-000-000</dd>
+        <dd>@Model.tel</dd>
     </dl>
 
     <dl class="list-data">
         <dt>E-mail</dt>
-        <dd>未登記</dd>
+        <dd>@Model.email</dd>
     </dl>
 
     <br class="clear">
 
     <dl class="list-data">
         <dt>登入帳號</dt>
-        <dd>abc</dd>
+        <dd>@Model.account</dd>
     </dl>
 
-    <dl class="list-data">
-        <dt>登入密碼</dt>
-        <dd>123456</dd>
-    </dl>
+    @*<dl class="list-data">
+            <dt>登入密碼</dt>
+            <dd>123456</dd>
+        </dl>*@
 
 </article>
 

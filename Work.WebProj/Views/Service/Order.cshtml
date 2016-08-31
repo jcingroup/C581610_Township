@@ -1,8 +1,8 @@
-﻿
+﻿@model ProcCore.Business.DB0.Facility
 @{
     ViewBag.Title = "公設預約";
     ViewBag.BodyClass = "Service";
-    ViewBag.breadCrumb = "健身房預約";
+    ViewBag.breadCrumb = Model.name + "預約";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -38,12 +38,12 @@
     <aside class="order-data card">
         <h4 class="title-underline">您的預約資料</h4>
         <p>
-            <label class="form-element-label text-primary font-lg">住戶 360</label>
-            <input type="text" class="input-underline font-lg" value="王小明 先生">
+            <label class="form-element-label text-primary font-lg">住戶 @ViewBag.r_no</label>
+            <input type="text" class="input-underline font-lg" value="@(ViewBag.r_name+" "+ViewBag.r_gender)">
         </p>
         <p>
             <label class="form-element-label text-primary font-lg">聯絡電話</label>
-            <input type="tel" class="input-underline font-lg" value="0000-000-000">
+            <input type="tel" class="input-underline font-lg" value="@(ViewBag.r_tel)">
         </p>
         <br>
         <a href="#order-check" class="btn popup">確認預約</a>
@@ -52,11 +52,12 @@
 
     <section class="order-info">
         <h4 class="text-primary">一、確認要預約的設施</h4>
-        <img src="~/Content/images/m1.jpg" alt="健身房照片" class="float-l margin-right">
+        <img src="@Model.img_src" alt=@(Model.name+"照片") class="float-l margin-right">
         <div class="col-rest font-lg">
-            <i class="icon-check_box text-success font-xl"></i> 健身房
+            <i class="icon-check_box text-success font-xl"></i> @Model.name
             <br>
-            開放時間早上十點至晚上十點
+            @if (Model.info != null)
+            { @Html.Raw(Model.info)}
         </div>
     </section>
 

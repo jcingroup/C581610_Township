@@ -100,6 +100,8 @@
         account?: string;
         passwd?: string;
         email?: string;
+        tel?: string;
+        gender?: boolean;
     }
 
     interface News extends BaseEntityTable {

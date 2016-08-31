@@ -490,6 +490,10 @@ export const ISameTypeData: Array<server.StateTemplate> = [
     { id: false, label: '不可同時申請', className: 'label label-danger' },
     { id: true, label: '可同時申請', className: 'label label-success' }
 ];
+export const IGenderTypeData: Array<server.StateTemplate> = [
+    { id: true, label: '男', className: 'label label-primary' },
+    { id: false, label: '女', className: 'label label-danger' }
+];
 export const IHideTypeData: Array<server.StateTemplate> = [
     { id: false, label: '顯示', className: 'label label-success' },
     { id: true, label: '關閉', className: 'label label-danger' }

@@ -180,13 +180,13 @@ namespace DotWeb.CommSetup
             }
         }
 
-        public static ImageUpScope Member
+        public static ImageUpScope Facility
         {
             get
             {
                 ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 2 };
                 imUp.Parm = new ImageSizeParm[] {
-                    new ImageSizeParm(){ folderName="162", width=162}
+                    new ImageSizeParm(){ folderName="150", width=150}
                 };
                 return imUp;
             }

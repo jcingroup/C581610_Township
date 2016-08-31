@@ -762,6 +762,7 @@ namespace DotWeb.Controller
                 ViewBag.VisitCount = visitCount;
                 ViewBag.IsFirstPage = false; //是否為首頁，請在首頁的Action此值設為True
                 ViewBag.CategoryStroe = WebCategory();
+                ViewBag.F_Category = FacilityCategory();
 
                 this.isTablet = (new WebInfo()).isTablet();
                 if (MemberId != null)
@@ -769,6 +770,9 @@ namespace DotWeb.Controller
                     var member = db.Resident.Find(int.Parse(MemberId));
                     ViewBag.r_no = member.resident_no;
                     ViewBag.r_name = member.resident_name;
+                    ViewBag.r_tel = member.tel;
+                    ViewBag.r_email = member.email;
+                    ViewBag.r_gender = member.gender ? "先生" : "小姐";
                 }
             }
             catch (Exception ex)
@@ -1003,6 +1007,25 @@ namespace DotWeb.Controller
                         name = y.l2_name
                     }),
                     count = x.Editor_L2.Count()
+                });
+
+            return menus;
+        }
+        /// <summary>
+        /// 公共設施
+        /// </summary>
+        /// <returns></returns>
+        protected IEnumerable<CategoryL1Data> FacilityCategory()
+        {
+            db0 = getDB0();
+
+            var menus = db0.Facility
+                .Where(x => !x.i_Hide)
+                .OrderByDescending(x => x.sort)
+                .Select(x => new CategoryL1Data()
+                {
+                    id = x.facility_id,
+                    name = x.name
                 });
 
             return menus;

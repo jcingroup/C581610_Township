@@ -1,10 +1,16 @@
 ﻿@using DotWeb.Controller;
 @{
     IEnumerable<CategoryL1Data> category_stroe = null;
+    IEnumerable<CategoryL1Data> F_Category = null;
     if (ViewBag.CategoryStroe != null)
     {
         category_stroe = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
     }
+    if (ViewBag.F_Category != null)
+    {
+        F_Category = (IEnumerable<CategoryL1Data>)ViewBag.F_Category;
+    }
+
 }
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -100,10 +106,10 @@
                                     <dt class="float-l"><img src="~/Content/images/nav-icon-service.gif" alt="圖標"></dt>
                                     <dd class="col-rest">
                                         <a href="~/Service">我的預約清單</a>
-                                        <a href="~/Service/Reserve">交誼廳預約</a>
-                                        <a href="~/Service/Reserve">會議室預約</a>
-                                        <a href="~/Service/Reserve">遊樂室預約</a>
-                                        <a href="~/Service/Reserve">健身房預約</a>
+                                        @foreach (var i in F_Category)
+                                        {
+                                            <a href="~/Service/Reserve?id=@i.id">@i.name 預約</a>
+                                        }
                                     </dd>
                                 </dl>
                             </nav>

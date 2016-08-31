@@ -257,6 +257,8 @@
           <Property Name="account" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="passwd" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="tel" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
@@ -567,7 +569,6 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
-          <EntitySet Name="Resident" EntityType="C58A0_TownshipModel.Resident" />
           <EntitySet Name="News" EntityType="C58A0_TownshipModel.News" />
           <EntitySet Name="Editor_L1" EntityType="C58A0_TownshipModel.Editor_L1" />
           <EntitySet Name="Editor_L2" EntityType="C58A0_TownshipModel.Editor_L2" />
@@ -590,24 +591,13 @@
             <End Role="MsgType" EntitySet="MsgType" />
             <End Role="MsgBoard" EntitySet="MsgBoard" />
           </AssociationSet>
+          <EntitySet Name="Facility" EntityType="C58A0_TownshipModel.Facility" />
+          <EntitySet Name="Resident" EntityType="C58A0_TownshipModel.Resident" />
           <AssociationSet Name="FK_MsgBoard_Resident" Association="C58A0_TownshipModel.FK_MsgBoard_Resident">
             <End Role="Resident" EntitySet="Resident" />
             <End Role="MsgBoard" EntitySet="MsgBoard" />
           </AssociationSet>
-          <EntitySet Name="Facility" EntityType="C58A0_TownshipModel.Facility" />
           </EntityContainer>
-        <EntityType Name="Resident">
-          <Key>
-            <PropertyRef Name="resident_id" />
-          </Key>
-          <Property Name="resident_id" Type="Int32" Nullable="false" />
-          <Property Name="resident_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="resident_no" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="account" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="passwd" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MsgBoard" Relationship="C58A0_TownshipModel.FK_MsgBoard_Resident" FromRole="Resident" ToRole="MsgBoard" />
-        </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="news_id" />
@@ -770,18 +760,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MsgBoard_Resident">
-          <End Type="C58A0_TownshipModel.Resident" Role="Resident" Multiplicity="1" />
-          <End Type="C58A0_TownshipModel.MsgBoard" Role="MsgBoard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Resident">
-              <PropertyRef Name="resident_id" />
-            </Principal>
-            <Dependent Role="MsgBoard">
-              <PropertyRef Name="resident_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Facility">
           <Key>
             <PropertyRef Name="facility_id" />
@@ -797,6 +775,32 @@
           <Property Name="sort" Type="Int32" Nullable="false" />
           <Property Name="i_Hide" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="Resident">
+          <Key>
+            <PropertyRef Name="resident_id" />
+          </Key>
+          <Property Name="resident_id" Type="Int32" Nullable="false" />
+          <Property Name="resident_no" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="resident_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="passwd" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MsgBoard" Relationship="C58A0_TownshipModel.FK_MsgBoard_Resident" FromRole="Resident" ToRole="MsgBoard" />
+        </EntityType>
+        <Association Name="FK_MsgBoard_Resident">
+          <End Type="C58A0_TownshipModel.Resident" Role="Resident" Multiplicity="1" />
+          <End Type="C58A0_TownshipModel.MsgBoard" Role="MsgBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resident">
+              <PropertyRef Name="resident_id" />
+            </Principal>
+            <Dependent Role="MsgBoard">
+              <PropertyRef Name="resident_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -934,18 +938,6 @@
               <ScalarProperty Name="menu_id" ColumnName="menu_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Resident">
-            <EntityTypeMapping TypeName="C58A0_TownshipModel.Resident">
-              <MappingFragment StoreEntitySet="Resident">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="passwd" ColumnName="passwd" />
-                <ScalarProperty Name="account" ColumnName="account" />
-                <ScalarProperty Name="resident_no" ColumnName="resident_no" />
-                <ScalarProperty Name="resident_name" ColumnName="resident_name" />
-                <ScalarProperty Name="resident_id" ColumnName="resident_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="C58A0_TownshipModel.News">
               <MappingFragment StoreEntitySet="News">
@@ -1070,6 +1062,20 @@
                 <ScalarProperty Name="info" ColumnName="info" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resident">
+            <EntityTypeMapping TypeName="C58A0_TownshipModel.Resident">
+              <MappingFragment StoreEntitySet="Resident">
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="passwd" ColumnName="passwd" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="resident_name" ColumnName="resident_name" />
+                <ScalarProperty Name="resident_no" ColumnName="resident_no" />
+                <ScalarProperty Name="resident_id" ColumnName="resident_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

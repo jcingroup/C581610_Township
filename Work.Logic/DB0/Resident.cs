@@ -21,11 +21,13 @@ namespace ProcCore.Business.DB0
         }
     
         public int resident_id { get; set; }
-        public string resident_name { get; set; }
         public string resident_no { get; set; }
+        public string resident_name { get; set; }
         public string account { get; set; }
         public string passwd { get; set; }
         public string email { get; set; }
+        public string tel { get; set; }
+        public bool gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MsgBoard> MsgBoard { get; set; }

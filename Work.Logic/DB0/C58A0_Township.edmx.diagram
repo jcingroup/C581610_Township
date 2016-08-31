@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="C58A0_TownshipModel.Menu" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <AssociationConnector Association="C58A0_TownshipModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="C58A0_TownshipModel.MenuRole" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="C58A0_TownshipModel.Resident" Width="1.5" PointX="8.375" PointY="9.75" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.News" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.Editor_L1" Width="1.5" PointX="10.375" PointY="8" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.Editor_L2" Width="1.5" PointX="12.625" PointY="8.125" />
@@ -27,8 +26,9 @@
         <EntityTypeShape EntityType="C58A0_TownshipModel.MsgBoard" Width="1.5" PointX="14.625" PointY="1.875" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.MsgType" Width="1.5" PointX="12.375" PointY="2.75" />
         <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_MsgType" />
-        <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_Resident" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.Facility" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.Resident" Width="1.5" PointX="5.375" PointY="11" />
+        <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_Resident" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

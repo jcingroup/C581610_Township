@@ -1,7 +1,8 @@
 ﻿import $ = require('jquery');
 import React = require('react');
 import Moment = require('moment');
-import {config, UIText} from '../ts-comm/def-data';
+import {config, UIText, IGenderTypeData} from '../ts-comm/def-data';
+import { RadioBox} from '../ts-comm/comm-cmpt';
 import { makeInputValue, clone, MntV} from '../ts-comm/comm-func'
 
 //import {InputText, SelectText, PWButton, AreaText} from '../components';
@@ -84,6 +85,23 @@ export class Edit extends React.Component<any, any>{
                                 required />
                         </div>
                     </div>
+                    <div className="form-group row">
+                    <label className="col-xs-1 form-control-label text-xs-right"> tel</label>
+                    <div className="col-xs-3">
+                        <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'tel') } value={field.tel} maxLength={50} />
+                    </div>
+                    <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
+                    <div className="col-xs-3">
+                        <RadioBox
+                            inputViewMode={InputViewMode.edit}
+                            value={field.gender}
+                            id="RadioHide"
+                            name="RadioHide"
+                            onChange={this.chgVal.bind(this, 'gender') }
+                            radioList={IGenderTypeData}
+                            required={true} />
+                    </div>
+                </div>
                     <div className="form-action">
                         <div className="col-xs-offset-1">
                             <button type="submit" className="btn btn-sm btn-primary"><i className="fa-check"></i> {UIText.save}</button> { }

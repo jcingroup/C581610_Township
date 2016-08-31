@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DotWeb.Controller;
+using ProcCore.Business.DB0;
 
 namespace DotWeb.WebApp.Controllers
 {
@@ -12,7 +13,16 @@ namespace DotWeb.WebApp.Controllers
         // GET: Member
         public ActionResult Index()
         {
-            return View("Edit");
+            Resident item = new Resident();
+            using (var db0 = getDB0())
+            {
+                if (this.MemberId != null)
+                {
+                    int member_id = int.Parse(this.MemberId);
+                    item = db0.Resident.Find(member_id);
+                }
+            }
+            return View("Edit", item);
         }
     }
 }

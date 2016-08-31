@@ -140,6 +140,7 @@
     <Compile Include="Models\Editor_L3.cs" />
     <Compile Include="Models\Editor_L2.cs" />
     <Compile Include="Models\Editor_L1.cs" />
+    <Compile Include="Models\Facility.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\MsgBoard.cs" />
     <Compile Include="Models\MsgType.cs" />

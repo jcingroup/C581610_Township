@@ -2,8 +2,8 @@
 import React = require('react');
 import Moment = require('moment');
 import {config, UIText, ISameTypeData, IHideTypeData, ITime} from '../ts-comm/def-data';
-import { makeInputValue, clone, MntV} from '../ts-comm/comm-func'
-import { RadioBox} from '../ts-comm/comm-cmpt'
+import { makeInputValue, clone, MntV} from '../ts-comm/comm-func';
+import { RadioBox, MasterImageUpload} from '../ts-comm/comm-cmpt';
 import {ac_type_comm} from '../action_type';
 
 import DatePicker = require('react-datepicker');
@@ -67,10 +67,27 @@ export class Edit extends React.Component<any, any>{
         let out_html: JSX.Element = null;
         let pp = this.props;
         let field: server.Facility = pp.field;
+        let up_img = null;
+        if (pp.edit_type == IEditType.update) {
+            up_img = <div className="form-group row">
+                <label className="col-xs-1 form-control-label text-xs-right">代表圖</label>
+                <div className="col-xs-7">
+                    <MasterImageUpload FileKind="FacilityOrder"
+                        MainId={field.facility_id}
+                        ParentEditType={pp.edit_type}
+                        url_upload={gb_approot + 'Active/ResidentInfo/axFUpload'}
+                        url_list={gb_approot + 'Active/ResidentInfo/axFList'}
+                        url_delete={gb_approot + 'Active/ResidentInfo/axFDelete'}
+                        url_sort={gb_approot + 'Active/ResidentInfo/axFSort'} />
+                    <small className="text-muted">最多可上傳 1 張圖片</small>
+                </div>
+            </div>;
+        }
 
         out_html =
             (
                 <form className="form form-sm" onSubmit={this.callSubmit}>
+                    {up_img}
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>公設名稱</label>
                         <div className="col-xs-3">

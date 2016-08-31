@@ -77,6 +77,8 @@ namespace DotWeb.Api
                 item.account = md.account;
                 item.passwd = md.passwd;
                 item.email = md.email;
+                item.tel = md.tel;
+                item.gender = md.gender;
 
 
                 await db0.SaveChangesAsync();

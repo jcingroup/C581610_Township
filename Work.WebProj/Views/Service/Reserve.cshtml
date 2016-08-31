@@ -1,8 +1,8 @@
-﻿
+﻿@model ProcCore.Business.DB0.Facility
 @{
     ViewBag.Title = "公設預約";
     ViewBag.BodyClass = "Service";
-    ViewBag.breadCrumb = "健身房預約";
+    ViewBag.breadCrumb = Model.name + "預約";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -14,8 +14,11 @@
     <script src="~/Content/js/jquery.mCustomScrollbar.min.js"></script>
     <script>
         $(".rule").mCustomScrollbar({
-            theme:"minimal-dark",
+            theme: "minimal-dark",
             autoHideScrollbar: true
+        });
+        $("#ckb").change(function () {
+            $("#ckbt").prop("disabled", !$(this).prop("checked"));
         });
     </script>
 }
@@ -31,39 +34,22 @@
 
 <section class="read">
     <article class="rule">
-        <h5 class="text-success">健身房使用管理辦法</h5>
-        <ol class="list-num">
-            <li>目的: 為使本社區公共設施能充份而有效的運用，促進住戶彼此間交流，增進住戶之間的情誼制定本辦法。</li>
-            <li>使用資格: 本社區全體區分所有權人及住戶。</li>
-            <li>付費方式：使用公設使用券，俟繳納管理費後，每戶依坪數核發使用券，如欲另行購買每張60元。</li>
-            <li>使用人之權利與義務：
-                <ol>
-                    <li>如住戶之親友、同事及客戶使用公共設施時，須由住戶陪同。</li>
-                    <li>各使用人應依照公共設施使用細則之規定使用本公共設施。</li>
-                    <li>住戶有依規定繳交規定之各項費用義務。</li>
-                    <li>住戶不得藉管理委員會名義或利用本公共設施，從事不正當或經管理委員會認定不妥之活動。</li>
-                    <li>住戶因不當使用或蓄意破壞者，須恢復原狀或依設施價格等價賠償之。</li>
-                </ol>
-            </li>
-            <li>權利終止：住戶若有下列之情事，管理委員會得逕行取消其使用資格：
-                <ol>
-                    <li>違反管理委員會宗旨及有損社區聲譽者。</li>
-                    <li>不遵守住戶規約或各項使用細則，情節重大者或經勸止、建議仍不遵守者。</li>
-                    <li>延遲繳納各項費用經催告仍未履行者。</li>
-                    <li>喪失本社區之區分所有權及非實際所有、租用或收益本社區者。</li>
-                </ol>
-            </li>
-        </ol>
+        @if (Model.role_content != null)
+        {
+            @Html.Raw(Model.role_content)
+        }
     </article>
+    <form action="~/Service/Order">
+        <p class="font-lg text-primary">
+            <input type="hidden" name="id" value="@Model.facility_id">
+            <input type="checkbox" id="ckb" checked required>
+            <label for="ckb"></label>同意以上條款？
+        </p>
 
-    <p class="font-lg text-primary">
-        <input type="checkbox" id="ckb" checked>
-        <label for="ckb"></label>同意以上條款？
-    </p>
+        @* 預設為同意，若不同意則不能連結 如下
+            <a class="btn disabled">我要預約</a> *@
 
-    @* 預設為同意，若不同意則不能連結 如下
-    <a class="btn disabled">我要預約</a> *@
-
-    <a href="~/Service/Order" class="btn btn-lg">我要預約</a>
+        <button type="submit" class="btn btn-lg" id="ckbt">我要預約</button>
+    </form>
 </section>
 

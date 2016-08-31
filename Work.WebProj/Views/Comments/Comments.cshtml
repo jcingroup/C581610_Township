@@ -101,15 +101,15 @@
     <div class="col-5 col-first">
         <p class="row">
             <label for="">住戶 @ViewBag.r_no</label>
-            <input type="text" class="col-rest" value="@(ViewBag.r_name)" required id="m_q_name">
+            <input type="text" class="col-rest" value="@(ViewBag.r_name+" "+ViewBag.r_gender)" required id="m_q_name">
         </p>
         <p class="row">
             <label for="">聯絡電話</label>
-            <input type="text" class="col-rest" value="" placeholder="0000-000-000" id="m_q_tel">
+            <input type="text" class="col-rest" value="@(ViewBag.r_tel)" id="m_q_tel">
         </p>
         <p class="row">
             <label for="">E-mail</label>
-            <input type="email" class="col-rest" placeholder="xx@gmail.com" required id="m_q_email">
+            <input type="email" class="col-rest" value="@(ViewBag.r_email)" placeholder="xx@gmail.com" required id="m_q_email">
         </p>
         <p class="row">
             <label for="">欲詢問之業務項目</label>
