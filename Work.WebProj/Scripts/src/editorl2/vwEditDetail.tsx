@@ -40,7 +40,7 @@ export class DetailField extends React.Component<DetailFieldProps, any>{
     setEditor(editorName: string, iKey) {
         let editorObj = this.state.editorObj, _this = this;
 
-        editorObj = CKEDITOR.replace(editorName, { customConfig: '../ckeditor/inlineConfig.js' });
+        editorObj = CKEDITOR.replace(editorName, { customConfig: '../ckeditor/inlineConfig.js?v' + CommFunc.uniqid()});
         editorObj.on('change', function (evt) {
             _this.props.chgDVal(ac_type_comm.chg_dil_fld_val, iKey, 'l3_content', editorObj.getData());
         }.bind(this));
