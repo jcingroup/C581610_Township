@@ -12,6 +12,8 @@ namespace ProcCore.Business.DB0
         {
             [JsonIgnore()]
             public virtual ICollection<MsgBoard> MsgBoard { get; set; }
+            [JsonIgnore()]
+            public virtual ICollection<Reserve> Reserve { get; set; }
         }
     }
 }

@@ -2,6 +2,7 @@
 using DotWeb.Controller;
 using System.Linq;
 using ProcCore.Business.DB0;
+using System.Collections.Generic;
 
 namespace DotWeb.WebApp.Controllers
 {
@@ -11,6 +12,7 @@ namespace DotWeb.WebApp.Controllers
         // GET: Service
         public ActionResult Index()
         {
+            ServerInfo info = new ServerInfo();
             return View("Self");
         }
 
@@ -42,11 +44,21 @@ namespace DotWeb.WebApp.Controllers
                 item = db0.Facility.Find(id);
 
                 var img = getImgFirst("FacilityOrder", id.ToString(), "150");
-                if (img != null) {
+                if (img != null)
+                {
                     item.img_src = img.src_path;
                 }
             }
             return View(item);
         }
+    }
+    public class m_facility
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+    public class ServerInfo
+    {
+        public List<option> facility { get; set; }
     }
 }

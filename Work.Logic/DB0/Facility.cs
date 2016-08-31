@@ -14,15 +14,24 @@ namespace ProcCore.Business.DB0
     
     public partial class Facility
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Facility()
+        {
+            this.Reserve = new HashSet<Reserve>();
+        }
+    
         public int facility_id { get; set; }
         public string name { get; set; }
         public string info { get; set; }
         public string role_content { get; set; }
-        public System.TimeSpan s_date { get; set; }
-        public System.TimeSpan e_date { get; set; }
+        public System.DateTime s_date { get; set; }
+        public System.DateTime e_date { get; set; }
         public string weeks { get; set; }
         public bool same { get; set; }
         public int sort { get; set; }
         public bool i_Hide { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reserve> Reserve { get; set; }
     }
 }

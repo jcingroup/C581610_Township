@@ -18,6 +18,7 @@ namespace ProcCore.Business.DB0
         public Resident()
         {
             this.MsgBoard = new HashSet<MsgBoard>();
+            this.Reserve = new HashSet<Reserve>();
         }
     
         public int resident_id { get; set; }
@@ -31,5 +32,7 @@ namespace ProcCore.Business.DB0
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MsgBoard> MsgBoard { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reserve> Reserve { get; set; }
     }
 }

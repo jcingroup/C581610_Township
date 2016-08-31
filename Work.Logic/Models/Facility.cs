@@ -11,7 +11,8 @@ namespace ProcCore.Business.DB0
         public string img_src { get; set; }
         private class FacilityMetadata
         {
-
+            [JsonIgnore()]
+            public virtual ICollection<Reserve> Reserve { get; set; }
         }
     }
 }

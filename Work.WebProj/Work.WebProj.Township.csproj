@@ -477,6 +477,7 @@
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_editorl1.js" />
     <Content Include="Scripts\build\app\m_editorl2.js" />
+    <Content Include="Scripts\build\app\m_facility.js" />
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />

@@ -133,6 +133,9 @@
     <Compile Include="DB0\News.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Reserve.cs">
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\Resident.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
@@ -140,6 +143,7 @@
     <Compile Include="Models\Editor_L3.cs" />
     <Compile Include="Models\Editor_L2.cs" />
     <Compile Include="Models\Editor_L1.cs" />
+    <Compile Include="Models\Reserve.cs" />
     <Compile Include="Models\Facility.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\MsgBoard.cs" />

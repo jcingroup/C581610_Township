@@ -43,8 +43,14 @@ namespace ProcCore.Business.DB0
     public enum MsgState
     {
         no = 0,//未處理
-        SuccessAndShow=1,//處理完成並顯示於前台
-        SuccessAndHide=2 //處理完成但不顯示
+        SuccessAndShow = 1,//處理完成並顯示於前台
+        SuccessAndHide = 2 //處理完成但不顯示
+    }
+    public enum ReserveState
+    {
+        Fail = -1,//預約失敗
+        no = 0,//未處理
+        Success = 1,//預約成功
     }
     #region set CodeSheet
 
@@ -61,6 +67,12 @@ namespace ProcCore.Business.DB0
             new i_Code{ Code = 0, Value = "管理員已收到用戶留言，將盡快為您回覆", ClassName = "activity",IconClass="label-success" },
             new i_Code{ Code = 1, Value = "已處理完成", ClassName = "public",IconClass="label-danger"  },
             new i_Code{ Code = 2, Value = "已處理完成", ClassName = "info" ,IconClass="label-info" }
+        };
+        public static List<i_Code> reserve_state = new List<i_Code>()
+        {
+            new i_Code{ Code = -1, Value = "預約成功", ClassName = "activity",IconClass="label-danger" },
+            new i_Code{ Code = 0, Value = "待審核", ClassName = "public",IconClass="label-info"  },
+            new i_Code{ Code = 1, Value = "預約失敗", ClassName = "info" ,IconClass="label-success" }
         };
 
         public static string GetStateVal(int code, i_CodeName propName, List<i_Code> data)
