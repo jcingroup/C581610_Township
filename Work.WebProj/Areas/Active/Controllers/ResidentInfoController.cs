@@ -33,6 +33,11 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Facility()
+        {//公設管理
+            ActionRun();
+            return View();
+        }
         #endregion
     }
 }

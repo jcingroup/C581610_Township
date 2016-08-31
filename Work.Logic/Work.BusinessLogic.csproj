@@ -103,6 +103,9 @@
     <Compile Include="DB0\Editor_L3.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Facility.cs">
+      <DependentUpon>C58A0_Township.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\i_Currency.cs">
       <DependentUpon>C58A0_Township.tt</DependentUpon>
     </Compile>

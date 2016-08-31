@@ -13,5 +13,8 @@ exports.ac_type_comm = {
     add_detail: 'add_detail',
     add_d3: 'add_detail_detail',
     del_detail: 'del_detail',
-    del_d3: 'del_detail_detail'
+    del_d3: 'del_detail_detail',
+    chg_row_val: 'chg_row_val',
+    update_row: 'update_row',
+    add_row: 'add_row'
 };

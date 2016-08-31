@@ -238,6 +238,7 @@
     <Content Include="Areas\Active\Views\ResidentInfo\Comments.cshtml" />
     <Content Include="Areas\Active\Views\ResidentInfo\Service.cshtml" />
     <Content Include="Areas\Active\Views\ResidentInfo\MsgType.cshtml" />
+    <Content Include="Areas\Active\Views\ResidentInfo\Facility.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -295,6 +296,7 @@
     <Compile Include="Controllers\Api\Editor_L2Controller.cs" />
     <Compile Include="Controllers\Api\MsgBoardController.cs" />
     <Compile Include="Controllers\Api\MsgTypeController.cs" />
+    <Compile Include="Controllers\Api\FacilityController.cs" />
     <Compile Include="Controllers\Api\NewsController.cs" />
     <Compile Include="Controllers\Api\ResidentController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
@@ -487,7 +489,6 @@
     <Content Include="Scripts\build\app\vendors.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\googleReCAPTCHA.js" />
-    <Content Include="Scripts\src\action_type.js" />
     <Content Include="Views\AboutUs\AboutUs.cshtml" />
     <Content Include="Views\Assets\Assets.cshtml" />
     <Content Include="Views\Index\Notice.cshtml" />
@@ -583,6 +584,15 @@
     <TypeScriptCompile Include="Scripts\src\editorl2\vwGridSearch.tsx" />
     <TypeScriptCompile Include="Scripts\src\editorl2\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\editorl1\vwEditDetail.tsx" />
+    <TypeScriptCompile Include="Scripts\src\facility\actions.ts" />
+    <TypeScriptCompile Include="Scripts\src\facility\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\facility\containers.ts" />
+    <TypeScriptCompile Include="Scripts\src\facility\store.ts" />
+    <TypeScriptCompile Include="Scripts\src\facility\vwAStart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\facility\vwEdit.tsx" />
+    <TypeScriptCompile Include="Scripts\src\facility\vwGrid.tsx" />
+    <TypeScriptCompile Include="Scripts\src\facility\vwGridSearch.tsx" />
+    <TypeScriptCompile Include="Scripts\src\facility\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\msgboard\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\msgboard\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\msgboard\containers.ts" />

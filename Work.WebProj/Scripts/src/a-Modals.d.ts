@@ -154,7 +154,7 @@
         Editor_L3?: server.Editor_L3[];
         edit_state?: IEditType;
     }
-    interface Editor_L3 extends BaseEntityTable{
+    interface Editor_L3 extends BaseEntityTable {
         editor_l3_id?: number;
         editor_l2_id?: number;
         editor_l1_id?: number;
@@ -202,5 +202,18 @@
         msg_type_id?: number;
         name?: string;
         MsgBoard?: server.MsgBoard[];
+    }
+
+    interface Facility extends BaseEntityTable {
+        facility_id?: number;
+        name?: string;
+        info?: string;
+        role_content?: string;
+        s_date?: any;
+        e_date?: any;
+        weeks?: string;
+        same?: boolean;
+        sort?: number;
+        i_Hide?: boolean;
     }
 } 

@@ -1112,4 +1112,63 @@ export class RadioBox extends React.Component<RadioBoxProps, any>{
         return out_html;
     }
 }
+interface InputTextProps {
+    inputViewMode: InputViewMode
+    inputClassName?: string;
+    width?: string;
+    style?: React.CSSProperties;
+    viewClassName?: string;
+    disabled?: boolean;
+    onChange?: Function;
+    value?: string | number;
+    type: string;
+    id?: string;
+    required?: boolean;
+    maxLength?: number;
+}
+export class InputText extends React.Component<InputTextProps, any>{
+
+    constructor() {
+        super();
+    }
+    static defaultProps = {
+        type: 'text',
+        disabled: false,
+        inputViewMode: InputViewMode.edit
+    }
+    render() {
+        let out_html = null;
+        let value = this.props.value == undefined ? '' : this.props.value;
+
+        if (this.props.inputViewMode == InputViewMode.edit) {
+            out_html =
+                (
+                    <input
+                        id={this.props.id}
+                        type={this.props.type}
+                        className={this.props.inputClassName}
+                        width={this.props.width}
+                        style={this.props.style}
+                        value={value}
+                        onChange={this.props.onChange}
+                        disabled={this.props.disabled}
+                        required={this.props.required}
+                        maxLength={this.props.maxLength}
+                        />
+                );
+        }
+
+        if (this.props.inputViewMode == InputViewMode.view) {
+            out_html =
+                (
+                    <span
+                        id={this.props.id}
+                        className={this.props.viewClassName}>
+                        {value}
+                    </span>
+                );
+        }
+        return out_html;
+    }
+}
 

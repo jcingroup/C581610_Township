@@ -486,6 +486,10 @@ export const MsgTypeData: Array<server.StateTemplate> = [
     { id: 1, label: '處理完成並顯示於前台', className: 'label label-success' },
     { id: 2, label: '處理完成但不顯示', className: 'label label-default' }
 ];
+export const ISameTypeData: Array<server.StateTemplate> = [
+    { id: false, label: '不可同時申請', className: 'label label-danger' },
+    { id: true, label: '可同時申請', className: 'label label-success' }
+];
 export const IHideTypeData: Array<server.StateTemplate> = [
     { id: false, label: '顯示', className: 'label label-success' },
     { id: true, label: '關閉', className: 'label label-danger' }
@@ -494,9 +498,36 @@ export const IHideTypeData_v2: Array<server.StateTemplate> = [
     { id: false, label: '顯示於前台', className: 'label label-success' },
     { id: true, label: '不顯示', className: 'label label-danger' }
 ];
+export const ITime: Array<server.StateTemplate> = [
+    { id: '00:00:00', label: '凌晨12點' },
+    { id: '01:00:00', label: '上午1點' },
+    { id: '02:00:00', label: '上午2點' },
+    { id: '03:00:00', label: '上午3點' },
+    { id: '04:00:00', label: '上午4點' },
+    { id: '05:00:00', label: '上午5點' },
+    { id: '06:00:00', label: '上午6點' },
+    { id: '07:00:00', label: '上午7點' },
+    { id: '08:00:00', label: '上午8點' },
+    { id: '09:00:00', label: '上午9點' },
+    { id: '10:00:00', label: '上午10點' },
+    { id: '11:00:00', label: '上午11點' },
+    { id: '12:00:00', label: '中午12點' },
+    { id: '13:00:00', label: '下午1點' },
+    { id: '14:00:00', label: '下午2點' },
+    { id: '15:00:00', label: '下午3點' },
+    { id: '16:00:00', label: '下午4點' },
+    { id: '17:00:00', label: '下午5點' },
+    { id: '18:00:00', label: '下午6點' },
+    { id: '19:00:00', label: '下午7點' },
+    { id: '20:00:00', label: '下午8點' },
+    { id: '21:00:00', label: '下午9點' },
+    { id: '22:00:00', label: '下午10點' },
+    { id: '23:00:00', label: '下午11點' }
+];
 export const config = {
     CustIdCookieName: 'CustId',
-    dateFT: 'YYYY-MM-DD'
+    dateFT: 'YYYY-MM-DD',
+    dateTime: 'hh:mm:ss'
 }
 export const UIText = {
     appliaction: '申報',
