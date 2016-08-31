@@ -12,7 +12,7 @@ const Rows = ({ item, clickItemDel, clickItemEdit}: { item: server.Facility, cli
             <td className="text-xs-center"><PWButton iconClassName="fa-times" className="btn-link btn-lg text-danger" enable={true} onClick={clickItemDel} /></td>
             <td className="text-xs-center"><PWButton iconClassName="fa-pencil" className="btn-link btn-lg" enable={true} onClick={clickItemEdit} /></td>
             <td>{item.name}</td>
-            <td className="text-xs-center">{item.s_date + '-' + item.e_date}</td>
+            {/*<td className="text-xs-center">{item.s_date + '-' + item.e_date}</td>*/}
             <td className="text-xs-center">{item.sort}</td>
             <td className="text-xs-center">
                 <RadioBox
@@ -57,7 +57,7 @@ export class GridTable extends React.Component<GridTableProps, any>{
                             <th style={{ "width": "7%" }} className="text-xs-center">{UIText.delete}</th>
                             <th style={{ "width": "7%" }} className="text-xs-center">{UIText.modify}</th>
                             <th style={{ "width": "30%" }}>標題</th>
-                            <th style={{ "width": "16%" }} className="text-xs-center">可使用時間</th>
+                            {/*<th style={{ "width": "16%" }} className="text-xs-center">可使用時間</th>*/}
                             <th style={{ "width": "15%" }} className="text-xs-center">排序</th>
                             <th style={{ "width": "15%" }} className="text-xs-center">同時申請</th>
                             <th style={{ "width": "15%" }} className="text-xs-center">狀態</th>

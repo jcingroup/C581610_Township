@@ -1,7 +1,7 @@
 ﻿import $ = require('jquery');
 import React = require('react');
 import Moment = require('moment');
-import {config, UIText, NewsTypeData, MsgTypeData} from '../ts-comm/def-data';
+import {config, UIText, ISameTypeData, IHideTypeData, ITime} from '../ts-comm/def-data';
 import { makeInputValue, clone, MntV} from '../ts-comm/comm-func'
 import { RadioBox} from '../ts-comm/comm-cmpt'
 import {ac_type_comm} from '../action_type';
@@ -25,7 +25,8 @@ export class Edit extends React.Component<any, any>{
         };
     }
     componentDidMount() {
-        CKEDITOR.replace('a_content', { customConfig: '../ckeditor/inlineConfig.js' });
+        CKEDITOR.replace('info', { customConfig: '../ckeditor/inlineConfig.js' });
+        CKEDITOR.replace('role_content', { customConfig: '../ckeditor/inlineConfig.js' });
     }
     componentDidUpdate(prevProps, prevState) {
     }
@@ -65,64 +66,80 @@ export class Edit extends React.Component<any, any>{
     render() {
         let out_html: JSX.Element = null;
         let pp = this.props;
-        let field: server.MsgBoard = pp.field;
+        let field: server.Facility = pp.field;
 
         out_html =
             (
                 <form className="form form-sm" onSubmit={this.callSubmit}>
-                    <h4 className="h4">住戶提問內容</h4>
                     <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">住戶編號</label>
+                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>公設名稱</label>
                         <div className="col-xs-3">
-                            <span className="text-primary text-sm">{field.resident_no}</span>
+                            <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'name') } value={field.name} maxLength={64}
+                                required />
                         </div>
-                        <label className="col-xs-1 form-control-label text-xs-right">住戶姓名</label>
+                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>排序</label>
                         <div className="col-xs-3">
-                            <span className="text-primary text-sm">{field.q_name}</span>
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">聯絡電話</label>
-                        <div className="col-xs-3">
-                            <span className="text-primary text-sm">{field.q_tel}</span>
-                        </div>
-                        <label className="col-xs-1 form-control-label text-xs-right">email</label>
-                        <div className="col-xs-3">
-                            <span className="text-primary text-sm">{field.q_email}</span>
+                            <input type="number" className="form-control" onChange={this.chgVal.bind(this, 'sort') } value={field.sort}
+                                required />
                         </div>
                     </div>
                     {/*<div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">提問標題</label>
-                        <div className="col-xs-7">
-                            {field.q_title}
+                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 可使用時間</label>
+                        <div className="col-xs-3">
+                            <select className="form-control" value={field.s_date}
+                                onChange={this.chgVal.bind(this, 's_date') } required>
+                                {
+                                    ITime.map((item, i) => <option key={i} value={item.id}>{item.label}</option>)
+                                }
+                            </select>
+                        </div>
+                        <span className="col-xs-1 form-control-label text-xs-center">~</span>
+                        <div className="col-xs-3">
+                            <select className="form-control" value={field.e_date}
+                                onChange={this.chgVal.bind(this, 'e_date') } required>
+                                {
+                                    ITime.map((item, i) => <option key={i} value={item.id}>{item.label}</option>)
+                                }
+                            </select>
                         </div>
                     </div>*/}
                     <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">提問內容</label>
-                        <div className="col-xs-10">
-                            <span className="text-primary text-sm">{field.q_content}</span>
-                        </div>
-                    </div>
-                    <h4 className="h4">問題回復</h4>
-                    <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
-                        <div className="col-xs-6">
+                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>同時申請</label>
+                        <div className="col-xs-3">
                             <RadioBox
                                 inputViewMode={InputViewMode.edit}
-                                value={field.state}
-                                id="RadioIHide"
-                                name="RadioIHide"
-                                onChange={this.chgVal.bind(this, 'state') }
-                                radioList={MsgTypeData}
+                                value={field.same}
+                                id="RadioSame"
+                                name="RadioSame"
+                                onChange={this.chgVal.bind(this, 'same') }
+                                radioList={ISameTypeData}
                                 required={true} />
                         </div>
-                        <small className="col-xs-offset-1 col-xs-6 text-muted text-xs-right">未顯示於前台請私下聯絡(email、電話) 住戶處理狀況!</small>
+                        <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
+                        <div className="col-xs-3">
+                            <RadioBox
+                                inputViewMode={InputViewMode.edit}
+                                value={field.i_Hide}
+                                id="RadioHide"
+                                name="RadioHide"
+                                onChange={this.chgVal.bind(this, 'i_Hide') }
+                                radioList={IHideTypeData}
+                                required={true} />
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label className="col-xs-1 form-control-label text-xs-right">簡介</label>
+                        <div className="col-xs-8">
+                            <textarea type="date" className="form-control" id="info" name="info"
+                                value={field.info} onChange={this.chgVal.bind(this, 'info') }></textarea>
+                        </div>
                     </div>
                     <div className="form-group row">
-                        <label className="col-xs-1 form-control-label text-xs-right">回覆內容</label>
+                        <label className="col-xs-1 form-control-label text-xs-right">使用規則</label>
                         <div className="col-xs-8">
-                            <textarea type="date" className="form-control" id="a_content" name="news_content"
-                                value={field.a_content} onChange={this.chgVal.bind(this, 'a_content') }></textarea>
+                            <textarea type="date" className="form-control" id="role_content" name="role_content"
+                                value={field.role_content} onChange={this.chgVal.bind(this, 'role_content') }></textarea>
                         </div>
                     </div>
                     <div className="form-action">
