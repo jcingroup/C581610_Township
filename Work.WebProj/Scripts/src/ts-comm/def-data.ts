@@ -486,6 +486,10 @@ export const MsgTypeData: Array<server.StateTemplate> = [
     { id: 1, label: '處理完成並顯示於前台', className: 'label label-success' },
     { id: 2, label: '處理完成但不顯示', className: 'label label-default' }
 ];
+export const ISameTypeData: Array<server.StateTemplate> = [
+    { id: false, label: '不可同時申請', className: 'label label-danger' },
+    { id: true, label: '可同時申請', className: 'label label-success' }
+];
 export const IHideTypeData: Array<server.StateTemplate> = [
     { id: false, label: '顯示', className: 'label label-success' },
     { id: true, label: '關閉', className: 'label label-danger' }
@@ -496,7 +500,8 @@ export const IHideTypeData_v2: Array<server.StateTemplate> = [
 ];
 export const config = {
     CustIdCookieName: 'CustId',
-    dateFT: 'YYYY-MM-DD'
+    dateFT: 'YYYY-MM-DD',
+    dateTime: 'hh:mm:ss'
 }
 export const UIText = {
     appliaction: '申報',

@@ -28,6 +28,7 @@
         <EntityTypeShape EntityType="C58A0_TownshipModel.MsgType" Width="1.5" PointX="12.375" PointY="2.75" />
         <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_MsgType" />
         <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_Resident" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.Facility" Width="1.5" PointX="3.375" PointY="10.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
