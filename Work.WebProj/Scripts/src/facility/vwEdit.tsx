@@ -81,6 +81,7 @@ export class Edit extends React.Component<any, any>{
                         <div className="col-xs-3">
                             <input type="number" className="form-control" onChange={this.chgVal.bind(this, 'sort') } value={field.sort}
                                 required />
+                            <small className="text-muted">數字越大越前面!</small>
                         </div>
                     </div>
                     {/*<div className="form-group row">
