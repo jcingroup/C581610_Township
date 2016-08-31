@@ -73,21 +73,21 @@ export class Edit extends React.Component<any, any>{
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">住戶編號</label>
                         <div className="col-xs-3">
-                            {field.resident_no}
+                            <span className="text-primary text-sm">{field.resident_no}</span>
                         </div>
                         <label className="col-xs-1 form-control-label text-xs-right">住戶姓名</label>
                         <div className="col-xs-3">
-                            {field.q_name}
+                            <span className="text-primary text-sm">{field.q_name}</span>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">聯絡電話</label>
                         <div className="col-xs-3">
-                            {field.q_tel}
+                            <span className="text-primary text-sm">{field.q_tel}</span>
                         </div>
                         <label className="col-xs-1 form-control-label text-xs-right">email</label>
                         <div className="col-xs-3">
-                            {field.q_email}
+                            <span className="text-primary text-sm">{field.q_email}</span>
                         </div>
                     </div>
                     {/*<div className="form-group row">
@@ -99,29 +99,31 @@ export class Edit extends React.Component<any, any>{
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">提問類型</label>
                         <div className="col-xs-3">
-                            <RadioBox
-                                inputViewMode={InputViewMode.view}
-                                value={field.msg_type_id}
-                                id="RadioMsg"
-                                name="RadioMsg"
-                                radioList={pp.type_list}
-                                required={true} />
+                            <span className="text-primary text-sm">
+                                <RadioBox
+                                    inputViewMode={InputViewMode.view}
+                                    value={field.msg_type_id}
+                                    id="RadioMsg"
+                                    name="RadioMsg"
+                                    radioList={pp.type_list}
+                                    required={true} />
+                            </span>
                         </div>
                         <label className="col-xs-1 form-control-label text-xs-right">提問日期</label>
                         <div className="col-xs-3">
-                            {Moment(field.i_InsertDateTime).format(config.dateFT) }
+                            <span className="text-primary text-sm">{Moment(field.i_InsertDateTime).format(config.dateFT) }</span>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">提問內容</label>
                         <div className="col-xs-10">
-                            {field.q_content}
+                            <span className="text-primary text-sm">{field.q_content}</span>
                         </div>
                     </div>
                     <h4 className="h4">問題回復</h4>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>狀態</label>
-                        <div className="col-xs-5">
+                        <div className="col-xs-6">
                             <RadioBox
                                 inputViewMode={InputViewMode.edit}
                                 value={field.state}
@@ -131,6 +133,7 @@ export class Edit extends React.Component<any, any>{
                                 radioList={MsgTypeData}
                                 required={true} />
                         </div>
+                        <small className="col-xs-offset-1 col-xs-6 text-muted text-xs-right">未顯示於前台請私下聯絡(email、電話) 住戶處理狀況!</small>
                     </div>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">回覆內容</label>
