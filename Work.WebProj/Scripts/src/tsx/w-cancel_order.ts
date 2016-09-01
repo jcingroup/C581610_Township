@@ -7,6 +7,9 @@
     $(document).ready(function () {
         $("#r_cancel").click(function (event) {
             event.preventDefault();
+            if (!confirm('確定是否取消預約?')) {
+                return;
+            }
             let data = {
                 id: $(this).data("id")
             };

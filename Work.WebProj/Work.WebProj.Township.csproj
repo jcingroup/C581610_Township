@@ -485,6 +485,7 @@
     <Content Include="Scripts\build\app\m_msgboard.js" />
     <Content Include="Scripts\build\app\m_msgtype.js" />
     <Content Include="Scripts\build\app\m_news.js" />
+    <Content Include="Scripts\build\app\m_reserve.js" />
     <Content Include="Scripts\build\app\m_resident.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
