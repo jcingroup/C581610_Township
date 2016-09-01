@@ -18,7 +18,8 @@ module.exports = {
         m_news: path.resolve(__dirname, 'Scripts/src/news/app.js'),
         m_editorl1: path.resolve(__dirname, 'Scripts/src/editorl1/app.js'),
         m_editorl2: path.resolve(__dirname, 'Scripts/src/editorl2/app.js'),
-        //community: path.resolve(__dirname, 'Scripts/src/community/index.js'),
+        //前台
+        w_serverorder: path.resolve(__dirname, 'Scripts/src/w-serverorder/app.js'),
 
         vendors: ['jquery', 'react', 'react-dom', 'react-addons-update', 'react-bootstrap', 'redux', 'react-redux', 'redux-thunk', 'moment'],
         //wwwcomm: ['jquery', 'react']

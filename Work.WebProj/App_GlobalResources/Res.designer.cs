@@ -790,6 +790,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查詢類似 預約已成功送出,管理員將盡快審核您的預約! 的當地語系化字串。
+        /// </summary>
+        internal static string Log_Success_OrderServer {
+            get {
+                return ResourceManager.GetString("Log_Success_OrderServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Email已送出，我們會儘快與您聯絡! 的當地語系化字串。
         /// </summary>
         internal static string Log_Success_SendMail {
@@ -813,6 +822,15 @@ namespace Resources {
         internal static string NextPage {
             get {
                 return ResourceManager.GetString("NextPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 預約開始時間不可大於等於結束時間! 的當地語系化字串。
+        /// </summary>
+        internal static string Order_Err_TimeAbnormal {
+            get {
+                return ResourceManager.GetString("Order_Err_TimeAbnormal", resourceCulture);
             }
         }
         

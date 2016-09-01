@@ -17,7 +17,7 @@ namespace ProcCore.Business
         Base, Menu, Resident, News,
         Editor_L1, Editor_L2, Editor_L3,
         MsgBoard, MsgType,
-        Facility
+        Facility, Reserve
     }
     public enum SNType
     {

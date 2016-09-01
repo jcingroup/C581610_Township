@@ -23,11 +23,11 @@ namespace ProcCore.Business.DB0
         public int state { get; set; }
         public string fail_info { get; set; }
         public System.DateTime day { get; set; }
-        public System.DateTime s_time { get; set; }
-        public System.DateTime e_time { get; set; }
+        public System.TimeSpan s_time { get; set; }
+        public System.TimeSpan e_time { get; set; }
         public System.DateTime i_InsertDatetime { get; set; }
     
-        public virtual Resident Resident { get; set; }
         public virtual Facility Facility { get; set; }
+        public virtual Resident Resident { get; set; }
     }
 }

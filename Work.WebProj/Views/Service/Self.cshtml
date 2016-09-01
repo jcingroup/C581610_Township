@@ -1,4 +1,5 @@
-﻿
+﻿@model DotWeb.WebApp.Controllers.ServerInfo
+@using ProcCore.Business.DB0
 @{
     ViewBag.Title = "公設預約";
     ViewBag.BodyClass = "Service";
@@ -16,7 +17,7 @@
 </h1>
 
 @* 若無任何預約，顯示下列
-<h5 class="text-primary">目前無任何預約</h5> *@
+    <h5 class="text-primary">目前無任何預約</h5> *@
 
 <table class="table-hover full">
     <tr>
@@ -27,40 +28,44 @@
         <th>聯絡電話</th>
         <th>預約狀態</th>
     </tr>
-    <tr>
-        <td>健身房</td>
-        <td>5人</td>
-        <td>
-            @* 日期寫法 dates=20160829T093000 - 2016/08/29 17點30分0秒
-               T(時間) 17 - 8 = 09 *@
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&trp=true&sf=true&output=xml&dates=20160829T093000Z/20160829T110000Z&text=德鄉社區健身房預約" class="tooltip" data-tooltip="加到 google 行事曆" target="new">2016/8/29 17:30~19:00</a>
-        </td>
-        <td>王小明</td>
-        <td>0000-000-000</td>
-        <td>
-            <span class="label label-success">預約成功</span>
-        </td>
-    </tr>
-    <tr>
-        <td>遊樂室</td>
-        <td>3人</td>
-        <td>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&trp=true&sf=true&output=xml&dates=20160829T093000Z/20160829T110000Z&text=德鄉社區遊樂室預約" class="tooltip" data-tooltip="加到 google 行事曆" target="new">2016/8/29 17:30~19:00</a>
-        </td>
-        <td>王太太</td>
-        <td>0000-000-000</td>
-        <td>
-            <span class="label label-danger">預約失敗</span>
-            @* 失敗理由讓管理者自行填寫 *@
-            <br>
-            <span class="text-danger">該預約日期已滿額</span>
-        </td>
-    </tr>
+    @foreach (var i in Model.reserve)
+    {
+        <tr>
+            <td>@i.f_name</td>
+            <td>@i.person 人</td>
+            <td>
+                @* 日期寫法 dates=20160829T093000 - 2016/08/29 17點30分0秒
+                    T(時間) 17 - 8 = 09 *@
+                @{
+                    //減8小時變國際時間
+                    string day = i.day.ToString("yyyy/MM/dd");
+                    string s = string.Format("{0} {1}:{2}:{3}", day, i.s_time.Hours, i.s_time.ToString("mm"), i.s_time.ToString("ss"));
+                    string e = string.Format("{0} {1}:{2}:{3}", day, i.e_time.Hours, i.e_time.ToString("mm"), i.e_time.ToString("ss"));
+                    DateTime s_t = DateTime.Parse(s);
+                    DateTime e_t = DateTime.Parse(e);
+                    string calendar_string = string.Format("https://www.google.com/calendar/render?action=TEMPLATE&trp=true&sf=true&output=xml&dates={0}Z/{1}Z&text=德鄉社區{2}預約", s_t.AddHours(-8).ToString("yyyyMMddTHHmmss"), e_t.AddHours(-8).ToString("yyyyMMddTHHmmss"), i.f_name);
+                }
+                <a href=@(calendar_string) class="tooltip" data-tooltip="加到 google 行事曆" target="new">@i.day.ToString("yyyy/MM/dd") @s_t.ToString("HH:mm") ~ @e_t.ToString("HH:mm")</a>
+            </td>
+            <td>@i.name</td>
+            <td>@i.tel</td>
+            <td>
+                <span class="label @CodeSheet.GetStateVal(i.state, i_CodeName.IconClass, CodeSheet.reserve_state)">
+                    @CodeSheet.GetStateVal(i.state, i_CodeName.Value, CodeSheet.reserve_state)
+                </span>
+                @if (i.state < 0)
+                {
+                    <br />
+                    <span class="text-danger">@i.fail_info</span>
+                }
+            </td>
+        </tr>
+                    }
 </table>
 
 <nav class="nav-reserve">
-    <a href="~/Service/Reserve" class="card">交誼廳預約</a>
-    <a href="~/Service/Reserve" class="card">會議室預約</a>
-    <a href="~/Service/Reserve" class="card">遊樂室預約</a>
-    <a href="~/Service/Reserve" class="card">健身房預約</a>
+    @foreach (var i in Model.facility)
+    {
+        <a href="~/Service/Reserve?id=@i.id" class="card">@i.name</a>
+    }
 </nav>

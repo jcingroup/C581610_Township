@@ -217,5 +217,29 @@
         same?: boolean;
         sort?: number;
         i_Hide?: boolean;
+        img_src?: string;
+    }
+    interface Reserve extends BaseEntityTable {
+        reserve_id?: number;
+        resident_id?: number;
+        facility_id?: number;
+        name?: string;
+        tel?: string;
+        person?: number;
+        state?: number;
+        fail_info?: string;
+        day?: any;
+        s_time?: any;
+        e_time?: any;
+        i_InsertDatetime?: Date;
+        Resident?: server.Resident;
+        Facility?: server.Facility;
+    }
+    interface OrderInfo {
+        name?: string;
+        tel?: string;
+        no?: string
+        gender?: string;
+        item?: server.Facility;
     }
 } 

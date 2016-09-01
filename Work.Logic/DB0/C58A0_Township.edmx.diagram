@@ -28,10 +28,10 @@
         <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_MsgType" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.Resident" Width="1.5" PointX="5.375" PointY="11" />
         <AssociationConnector Association="C58A0_TownshipModel.FK_MsgBoard_Resident" />
-        <EntityTypeShape EntityType="C58A0_TownshipModel.Reserve" Width="1.5" PointX="7.625" PointY="10.5" />
-        <AssociationConnector Association="C58A0_TownshipModel.FK_Reserve_Resident" />
         <EntityTypeShape EntityType="C58A0_TownshipModel.Facility" Width="1.5" PointX="10.375" PointY="14" />
+        <EntityTypeShape EntityType="C58A0_TownshipModel.Reserve" Width="1.5" PointX="12.625" PointY="13.25" />
         <AssociationConnector Association="C58A0_TownshipModel.FK_Reserve_Facility" />
+        <AssociationConnector Association="C58A0_TownshipModel.FK_Reserve_Resident" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -531,7 +531,7 @@ export const ITime: Array<server.StateTemplate> = [
 export const config = {
     CustIdCookieName: 'CustId',
     dateFT: 'YYYY-MM-DD',
-    dateTime: 'hh:mm:ss'
+    dateTime: 'YYYY-MM-DD A hh:mm:ss'
 }
 export const UIText = {
     appliaction: '申報',

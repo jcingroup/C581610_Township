@@ -1083,7 +1083,12 @@ namespace DotWeb.Controller
             }
             ViewBag.AboutUs = AboutUs;
         }
-        #region 企業申請
+        #region 前台申請
+        /// <summary>
+        /// 留言板 提問
+        /// </summary>
+        /// <param name="md"></param>
+        /// <returns></returns>
         public ResultInfo addMsgBoard(MsgBoard md)
         {
             ResultInfo r = new ResultInfo();
@@ -1113,6 +1118,51 @@ namespace DotWeb.Controller
 
                     r.result = true;
                     r.message = Resources.Res.Log_Success_askMsg;
+                    return r;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                r.result = false;
+                r.message = ex.ToString();
+                return r;
+            }
+        }
+        /// <summary>
+        /// 公設預約
+        /// </summary>
+        /// <param name="md"></param>
+        /// <returns></returns>
+        public ResultInfo addReserve(Reserve md)
+        {
+            ResultInfo r = new ResultInfo();
+            try
+            {
+                using (var db0 = getDB0())
+                {
+                    int member_id = int.Parse(this.MemberId);
+                    var item = new Reserve()
+                    {
+                        reserve_id = GetNewId(CodeTable.Reserve),
+                        resident_id = member_id,
+                        facility_id = md.facility_id,
+                        name = md.name,
+                        tel = md.tel,
+                        person = md.person,
+                        state = (int)ReserveState.no,
+                        day = md.day,
+                        s_time = md.s_time,
+                        e_time = md.e_time,
+                        i_InsertDatetime = DateTime.Now
+                    };
+
+                    db0.Reserve.Add(item);
+                    db0.SaveChanges();
+
+                    r.result = true;
+                    r.message = Resources.Res.Log_Success_OrderServer;
                     return r;
 
                 }

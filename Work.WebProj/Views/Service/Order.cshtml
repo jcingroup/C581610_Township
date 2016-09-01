@@ -1,8 +1,8 @@
-﻿@model ProcCore.Business.DB0.Facility
+﻿@model DotWeb.WebApp.Controllers.OrderInfo
 @{
     ViewBag.Title = "公設預約";
     ViewBag.BodyClass = "Service";
-    ViewBag.breadCrumb = Model.name + "預約";
+    ViewBag.breadCrumb = Model.item.name + "預約";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -10,7 +10,15 @@
 @section css {
     <link rel="stylesheet" href="~/Content/css/popup.css?v=@CommWebSetup.CacheVer">
 }
+
 @section Scripts {
+    <script>
+        var id = @Request.QueryString["id"];
+        var json_data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+    </script>
+    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/w_serverorder.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/cdn/jquery.loadmask.min.js"></script>
     <script src="~/Content/js/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script>
         // 彈出視窗
@@ -34,7 +42,8 @@
     <small class="block">@DateTime.Now.ToString("yyyy/MM/dd")</small>
 </h1>
 
-<form action="">
+<div id="page_content"></div>
+@*<form action="">
     <aside class="order-data card">
         <h4 class="title-underline">您的預約資料</h4>
         <p>
@@ -52,12 +61,12 @@
 
     <section class="order-info">
         <h4 class="text-primary">一、確認要預約的設施</h4>
-        <img src="@Model.img_src" alt=@(Model.name+"照片") class="float-l margin-right">
+        <img src="@Model.item.img_src" alt=@(Model.item.name+"照片") class="float-l margin-right">
         <div class="col-rest font-lg">
-            <i class="icon-check_box text-success font-xl"></i> @Model.name
+            <i class="icon-check_box text-success font-xl"></i> @Model.item.name
             <br>
-            @if (Model.info != null)
-            { @Html.Raw(Model.info)}
+            @if (Model.item.info != null)
+            { @Html.Raw(Model.item.info)}
         </div>
     </section>
 
@@ -67,7 +76,6 @@
         <span class="margin-left">人</span>
     </section>
 
-    @* 會議室不能多人同時申請 - 需 check 同時間人數 *@
     <section class="order-info">
         <h4 class="text-primary">三、選取使用時間</h4>
         <div class="col-4 col-first">
@@ -112,4 +120,4 @@
             <button class="btn bg-danger">取消預約</button>
         </div>
     </div>
-</form>
+</form>*@

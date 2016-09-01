@@ -488,6 +488,7 @@
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
     <Content Include="Scripts\build\app\vendors.js" />
+    <Content Include="Scripts\build\app\w_serverorder.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\googleReCAPTCHA.js" />
     <Content Include="Views\AboutUs\AboutUs.cshtml" />
@@ -654,6 +655,11 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w_send_msg.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-member_login.ts" />
+    <TypeScriptCompile Include="Scripts\src\w-serverorder\actions.ts" />
+    <TypeScriptCompile Include="Scripts\src\w-serverorder\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\w-serverorder\containers.ts" />
+    <TypeScriptCompile Include="Scripts\src\w-serverorder\store.ts" />
+    <TypeScriptCompile Include="Scripts\src\w-serverorder\vwAStart.tsx" />
     <TypeScriptCompile Include="Scripts\ts.d\enum\INewsType.d.ts" />
     <TypeScriptCompile Include="Scripts\ts.d\enum\InputViewMode.d.ts" />
     <TypeScriptCompile Include="Scripts\ts.d\JSExt.d.ts" />
@@ -672,6 +678,7 @@
     <TypeScriptCompile Include="Scripts\typings\moment\moment-node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-bootstrap\react-bootstrap.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react-datetime\react-datetime.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-lazyload.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react-redux\react-redux.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\react\react-addons-create-fragment.d.ts" />
