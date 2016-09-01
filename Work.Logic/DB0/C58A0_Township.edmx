@@ -113,8 +113,8 @@
           <Property Name="name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="info" Type="ntext" />
           <Property Name="role_content" Type="ntext" />
-          <Property Name="s_date" Type="smalldatetime" Nullable="false" />
-          <Property Name="e_date" Type="smalldatetime" Nullable="false" />
+          <Property Name="s_date" Type="time" Precision="0" Nullable="false" />
+          <Property Name="e_date" Type="time" Precision="0" Nullable="false" />
           <Property Name="weeks" Type="varchar" MaxLength="32" />
           <Property Name="same" Type="bit" Nullable="false" />
           <Property Name="sort" Type="int" Nullable="false" />
@@ -646,14 +646,14 @@
             <End Role="Resident" EntitySet="Resident" />
             <End Role="MsgBoard" EntitySet="MsgBoard" />
           </AssociationSet>
-          <EntitySet Name="Facility" EntityType="C58A0_TownshipModel.Facility" />
           <EntitySet Name="Reserve" EntityType="C58A0_TownshipModel.Reserve" />
-          <AssociationSet Name="FK_Reserve_Facility" Association="C58A0_TownshipModel.FK_Reserve_Facility">
-            <End Role="Facility" EntitySet="Facility" />
-            <End Role="Reserve" EntitySet="Reserve" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reserve_Resident" Association="C58A0_TownshipModel.FK_Reserve_Resident">
             <End Role="Resident" EntitySet="Resident" />
+            <End Role="Reserve" EntitySet="Reserve" />
+          </AssociationSet>
+          <EntitySet Name="Facility" EntityType="C58A0_TownshipModel.Facility" />
+          <AssociationSet Name="FK_Reserve_Facility" Association="C58A0_TownshipModel.FK_Reserve_Facility">
+            <End Role="Facility" EntitySet="Facility" />
             <End Role="Reserve" EntitySet="Reserve" />
           </AssociationSet>
           </EntityContainer>
@@ -846,22 +846,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Facility">
-          <Key>
-            <PropertyRef Name="facility_id" />
-          </Key>
-          <Property Name="facility_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="role_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="s_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="e_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="weeks" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="same" Type="Boolean" Nullable="false" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Reserve" Relationship="C58A0_TownshipModel.FK_Reserve_Facility" FromRole="Facility" ToRole="Reserve" />
-        </EntityType>
         <EntityType Name="Reserve">
           <Key>
             <PropertyRef Name="reserve_id" />
@@ -878,8 +862,36 @@
           <Property Name="s_time" Type="Time" Nullable="false" Precision="0" />
           <Property Name="e_time" Type="Time" Nullable="false" Precision="0" />
           <Property Name="i_InsertDatetime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Facility" Relationship="C58A0_TownshipModel.FK_Reserve_Facility" FromRole="Reserve" ToRole="Facility" />
           <NavigationProperty Name="Resident" Relationship="C58A0_TownshipModel.FK_Reserve_Resident" FromRole="Reserve" ToRole="Resident" />
+          <NavigationProperty Name="Facility" Relationship="C58A0_TownshipModel.FK_Reserve_Facility" FromRole="Reserve" ToRole="Facility" />
+        </EntityType>
+        <Association Name="FK_Reserve_Resident">
+          <End Type="C58A0_TownshipModel.Resident" Role="Resident" Multiplicity="1" />
+          <End Type="C58A0_TownshipModel.Reserve" Role="Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resident">
+              <PropertyRef Name="resident_id" />
+            </Principal>
+            <Dependent Role="Reserve">
+              <PropertyRef Name="resident_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="facility_id" />
+          </Key>
+          <Property Name="facility_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="role_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="s_date" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="e_date" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="weeks" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="same" Type="Boolean" Nullable="false" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Reserve" Relationship="C58A0_TownshipModel.FK_Reserve_Facility" FromRole="Facility" ToRole="Reserve" />
         </EntityType>
         <Association Name="FK_Reserve_Facility">
           <End Type="C58A0_TownshipModel.Facility" Role="Facility" Multiplicity="1" />
@@ -890,18 +902,6 @@
             </Principal>
             <Dependent Role="Reserve">
               <PropertyRef Name="facility_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reserve_Resident">
-          <End Type="C58A0_TownshipModel.Resident" Role="Resident" Multiplicity="1" />
-          <End Type="C58A0_TownshipModel.Reserve" Role="Reserve" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Resident">
-              <PropertyRef Name="resident_id" />
-            </Principal>
-            <Dependent Role="Reserve">
-              <PropertyRef Name="resident_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1167,22 +1167,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Facility">
-            <EntityTypeMapping TypeName="C58A0_TownshipModel.Facility">
-              <MappingFragment StoreEntitySet="Facility">
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="same" ColumnName="same" />
-                <ScalarProperty Name="weeks" ColumnName="weeks" />
-                <ScalarProperty Name="e_date" ColumnName="e_date" />
-                <ScalarProperty Name="s_date" ColumnName="s_date" />
-                <ScalarProperty Name="role_content" ColumnName="role_content" />
-                <ScalarProperty Name="info" ColumnName="info" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="facility_id" ColumnName="facility_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Reserve">
             <EntityTypeMapping TypeName="C58A0_TownshipModel.Reserve">
               <MappingFragment StoreEntitySet="Reserve">
@@ -1198,6 +1182,22 @@
                 <ScalarProperty Name="facility_id" ColumnName="facility_id" />
                 <ScalarProperty Name="resident_id" ColumnName="resident_id" />
                 <ScalarProperty Name="reserve_id" ColumnName="reserve_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facility">
+            <EntityTypeMapping TypeName="C58A0_TownshipModel.Facility">
+              <MappingFragment StoreEntitySet="Facility">
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="same" ColumnName="same" />
+                <ScalarProperty Name="weeks" ColumnName="weeks" />
+                <ScalarProperty Name="e_date" ColumnName="e_date" />
+                <ScalarProperty Name="s_date" ColumnName="s_date" />
+                <ScalarProperty Name="role_content" ColumnName="role_content" />
+                <ScalarProperty Name="info" ColumnName="info" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="facility_id" ColumnName="facility_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

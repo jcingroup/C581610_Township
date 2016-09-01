@@ -24,8 +24,8 @@ namespace ProcCore.Business.DB0
         public string name { get; set; }
         public string info { get; set; }
         public string role_content { get; set; }
-        public System.DateTime s_date { get; set; }
-        public System.DateTime e_date { get; set; }
+        public System.TimeSpan s_date { get; set; }
+        public System.TimeSpan e_date { get; set; }
         public string weeks { get; set; }
         public bool same { get; set; }
         public int sort { get; set; }

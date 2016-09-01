@@ -397,4 +397,10 @@
   <data name="Order_Err_TimeAbnormal" xml:space="preserve">
     <value>預約開始時間不可大於等於結束時間!</value>
   </data>
+  <data name="Order_Err_Close" xml:space="preserve">
+    <value>預約時間{0}未開放,請重新選擇預約時間!</value>
+  </data>
+  <data name="Order_Err_Same" xml:space="preserve">
+    <value>{0}同時段已經有人預約,請選擇其他預約時間,謝謝!</value>
+  </data>
 </root>

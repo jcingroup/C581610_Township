@@ -111,6 +111,29 @@ namespace DotWeb.WebApp.Controllers
                     r.message = Resources.Res.Order_Err_TimeAbnormal;
                     return defJSON(r);
                 }
+                using (var db0 = getDB0())
+                {
+                    var fdata = db0.Facility.Find(md.facility_id);
+                    if (md.s_time < fdata.s_date || md.e_time > fdata.e_date)
+                    {
+                        r.result = false;
+                        r.message = string.Format(Resources.Res.Order_Err_Close, fdata.name);
+                        return defJSON(r);
+                    }
+                    if (!fdata.same)
+                    {
+                        bool check = db0.Reserve.Any(x => x.facility_id == md.facility_id &
+                                                        x.day == md.day &
+                                                        (md.s_time >= x.s_time & md.s_time <= x.e_time) ||
+                                                        (md.e_time >= x.s_time & md.e_time <= x.e_time));
+                        if (check)
+                        {
+                            r.result = false;
+                            r.message = string.Format(Resources.Res.Order_Err_Same, fdata.name);
+                            return defJSON(r);
+                        }
+                    }
+                }
                 r = addReserve(md);
             }
             catch (Exception ex)

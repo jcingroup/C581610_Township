@@ -101,7 +101,7 @@ export class Edit extends React.Component<any, any>{
                             <small className="text-muted">數字越大越前面!</small>
                         </div>
                     </div>
-                    {/*<div className="form-group row">
+                    <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 可使用時間</label>
                         <div className="col-xs-3">
                             <select className="form-control" value={field.s_date}
@@ -120,7 +120,7 @@ export class Edit extends React.Component<any, any>{
                                 }
                             </select>
                         </div>
-                    </div>*/}
+                    </div>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>同時申請</label>
                         <div className="col-xs-3">

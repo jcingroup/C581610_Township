@@ -27,7 +27,7 @@ namespace ProcCore.Business.DB0
         public System.TimeSpan e_time { get; set; }
         public System.DateTime i_InsertDatetime { get; set; }
     
-        public virtual Facility Facility { get; set; }
         public virtual Resident Resident { get; set; }
+        public virtual Facility Facility { get; set; }
     }
 }

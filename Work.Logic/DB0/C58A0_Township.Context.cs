@@ -41,7 +41,7 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<MsgBoard> MsgBoard { get; set; }
         public virtual DbSet<MsgType> MsgType { get; set; }
         public virtual DbSet<Resident> Resident { get; set; }
-        public virtual DbSet<Facility> Facility { get; set; }
         public virtual DbSet<Reserve> Reserve { get; set; }
+        public virtual DbSet<Facility> Facility { get; set; }
     }
 }

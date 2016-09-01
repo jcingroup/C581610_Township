@@ -826,6 +826,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查詢類似 預約時間{0}未開放,請重新選擇預約時間! 的當地語系化字串。
+        /// </summary>
+        internal static string Order_Err_Close {
+            get {
+                return ResourceManager.GetString("Order_Err_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 {0}同時段已經有人預約,請選擇其他預約時間,謝謝! 的當地語系化字串。
+        /// </summary>
+        internal static string Order_Err_Same {
+            get {
+                return ResourceManager.GetString("Order_Err_Same", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 預約開始時間不可大於等於結束時間! 的當地語系化字串。
         /// </summary>
         internal static string Order_Err_TimeAbnormal {

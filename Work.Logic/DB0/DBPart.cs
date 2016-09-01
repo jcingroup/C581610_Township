@@ -71,7 +71,7 @@ namespace ProcCore.Business.DB0
         public static List<i_Code> reserve_state = new List<i_Code>()
         {
             new i_Code{ Code = -1, Value = "預約成功", ClassName = "activity",IconClass="label-danger" },
-            new i_Code{ Code = 0, Value = "待審核", ClassName = "public",IconClass="label-info"  },
+            new i_Code{ Code = 0, Value = "待審核", ClassName = "public",IconClass="label-warning"  },
             new i_Code{ Code = 1, Value = "預約失敗", ClassName = "info" ,IconClass="label-success" }
         };
 
