@@ -12,20 +12,6 @@
         var gb_roles = '@ViewBag.RoleName';
     </script>
     <script src="~/Scripts/build/app/m_reserve.js?v=@CommWebSetup.CacheVer"></script>
-
-    @* 假畫面暫用 *@
-    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script>
-        $(".form").hide();
-        $("td .btn").click(function () {
-            $(".table-responsive").hide();
-            $(".form").show();
-        });
-        $(".form-action .btn").click(function () {
-            $(".form").hide();
-            $(".table-responsive").show();
-        });
-    </script>
 }
 @section sidebar{
     @Html.Partial("Manage/vucMenu")

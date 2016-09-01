@@ -144,6 +144,46 @@ namespace DotWeb.WebApp.Controllers
             }
             return defJSON(r);
         }
+
+        [HttpPost]
+        public string cancelOrder(int id)
+        {
+            ResultInfo r = new ResultInfo();
+
+            try
+            {
+
+                if (this.MemberId == null)
+                {
+                    r.result = false;
+                    r.message = Resources.Res.Msg_Err_NotLoginResident;
+                    return defJSON(r);
+                }
+                using (var db0 = getDB0())
+                {
+                    int member_id = int.Parse(this.MemberId);
+                    bool check = db0.Reserve.Any(x => x.reserve_id == id & x.resident_id == member_id);
+                    if (!check)
+                    {
+                        r.result = false;
+                        r.message = Resources.Res.Order_Err_NoFind;
+                        return defJSON(r);
+                    }
+                    var item = db0.Reserve.Find(id);
+                    item.state = (int)ReserveState.Cancel;
+
+                    db0.SaveChanges();
+                }
+                r.result = true;
+                r.message = Resources.Res.Order_Cancel_Success;
+            }
+            catch (Exception ex)
+            {
+                r.result = false;
+                r.message = ex.Message;
+            }
+            return defJSON(r);
+        }
     }
     public class m_reserve
     {

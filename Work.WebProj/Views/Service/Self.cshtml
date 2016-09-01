@@ -6,6 +6,10 @@
     ViewBag.breadCrumb = "我的預約清單";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@section Scripts {
+    <script src="~/Scripts/cdn/jquery.loadmask.min.js"></script>
+    <script src="~/Scripts/src/tsx/w-cancel_order.js"></script>
+}
 
 @section breadCrumb {
     <li><a href="~/Servcie">公設預約</a></li>
@@ -53,10 +57,14 @@
                 <span class="label @CodeSheet.GetStateVal(i.state, i_CodeName.IconClass, CodeSheet.reserve_state)">
                     @CodeSheet.GetStateVal(i.state, i_CodeName.Value, CodeSheet.reserve_state)
                 </span>
-                @if (i.state < 0)
+                @if (i.state == (int)ReserveState.Fail)
                 {
                     <br />
                     <span class="text-danger">@i.fail_info</span>
+                }
+                else if (i.state == (int)ReserveState.no)
+                {
+                    <button class="btn btn-sm bg-danger" type="button" id="r_cancel" data-id="@i.id">取消預約</button>
                 }
             </td>
         </tr>

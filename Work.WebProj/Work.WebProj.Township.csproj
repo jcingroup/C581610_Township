@@ -663,7 +663,8 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-menu.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\w_send_msg.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-cancel_order.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-send_msg.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-member_login.ts" />
     <TypeScriptCompile Include="Scripts\src\w-serverorder\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\w-serverorder\app.tsx" />

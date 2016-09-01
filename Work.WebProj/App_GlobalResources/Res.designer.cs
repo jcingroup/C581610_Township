@@ -826,11 +826,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查詢類似 預約取消成功! 的當地語系化字串。
+        /// </summary>
+        internal static string Order_Cancel_Success {
+            get {
+                return ResourceManager.GetString("Order_Cancel_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 預約時間{0}未開放,請重新選擇預約時間! 的當地語系化字串。
         /// </summary>
         internal static string Order_Err_Close {
             get {
                 return ResourceManager.GetString("Order_Err_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 找不到此項預約! 的當地語系化字串。
+        /// </summary>
+        internal static string Order_Err_NoFind {
+            get {
+                return ResourceManager.GetString("Order_Err_NoFind", resourceCulture);
             }
         }
         
