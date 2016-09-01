@@ -294,6 +294,7 @@
     <Compile Include="Controllers\Api\Editor_L1Controller.cs" />
     <Compile Include="Controllers\Api\Editor_L3Controller.cs" />
     <Compile Include="Controllers\Api\Editor_L2Controller.cs" />
+    <Compile Include="Controllers\Api\ReserveController.cs" />
     <Compile Include="Controllers\Api\MsgBoardController.cs" />
     <Compile Include="Controllers\Api\MsgTypeController.cs" />
     <Compile Include="Controllers\Api\FacilityController.cs" />
@@ -595,6 +596,15 @@
     <TypeScriptCompile Include="Scripts\src\facility\vwGrid.tsx" />
     <TypeScriptCompile Include="Scripts\src\facility\vwGridSearch.tsx" />
     <TypeScriptCompile Include="Scripts\src\facility\vwGridTable.tsx" />
+    <TypeScriptCompile Include="Scripts\src\reserve\actions.ts" />
+    <TypeScriptCompile Include="Scripts\src\reserve\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\reserve\containers.ts" />
+    <TypeScriptCompile Include="Scripts\src\reserve\store.ts" />
+    <TypeScriptCompile Include="Scripts\src\reserve\vwAStart.tsx" />
+    <TypeScriptCompile Include="Scripts\src\reserve\vwEdit.tsx" />
+    <TypeScriptCompile Include="Scripts\src\reserve\vwGrid.tsx" />
+    <TypeScriptCompile Include="Scripts\src\reserve\vwGridSearch.tsx" />
+    <TypeScriptCompile Include="Scripts\src\reserve\vwGridTable.tsx" />
     <TypeScriptCompile Include="Scripts\src\msgboard\actions.ts" />
     <TypeScriptCompile Include="Scripts\src\msgboard\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\msgboard\containers.ts" />

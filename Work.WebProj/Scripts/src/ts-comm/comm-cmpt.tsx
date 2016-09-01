@@ -1078,7 +1078,7 @@ export class RadioBox extends React.Component<RadioBoxProps, any>{
                     <div className={this.props.wrapperClassName}>
                         {
                             this.props.radioList.map((item, i) => {
-                            return <label className="c-input c-radio" key={this.props.name + '-' + i}>
+                                return <label className="c-input c-radio" key={this.props.name + '-' + i}>
                                     <input type="radio"
                                         className={this.props.inputClassName}
                                         name={this.props.name}
@@ -1103,9 +1103,10 @@ export class RadioBox extends React.Component<RadioBoxProps, any>{
             out_html =
                 (
                     <span
-                    id={this.props.id}
-                    className={this.getLname(value).className}>
-                    {this.getLname(value).label }
+                        id={this.props.id}
+                        className={this.getLname(value).className}>
+                    <i className={this.getLname(value).iconClass}></i> { }
+                        {this.getLname(value).label }
                     </span>
                 );
         }

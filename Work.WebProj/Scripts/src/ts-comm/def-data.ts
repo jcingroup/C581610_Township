@@ -494,6 +494,17 @@ export const IGenderTypeData: Array<server.StateTemplate> = [
     { id: true, label: '男', className: 'label label-primary' },
     { id: false, label: '女', className: 'label label-danger' }
 ];
+export const IReserveStateData: Array<server.StateTemplate> = [
+    { id: -2, label: '預約已取消', className: 'text-danger', iconClass:"fa-remove" },
+    { id: 0, label: '待審核', className: 'text-muted', iconClass: "fa-wrench" },
+    { id: -1, label: '預約失敗', className: 'text-danger', iconClass: "fa-ban" },
+    { id: 1, label: '預約成功', className: 'text-success', iconClass: "fa-check" }
+];
+export const IReserveStateData_v2: Array<server.StateTemplate> = [
+    { id: 0, label: '待審核', className: 'label label-warning' },
+    { id: -1, label: '預約失敗', className: 'label label-danger' },
+    { id: 1, label: '預約成功', className: 'label label-success' }
+];
 export const IHideTypeData: Array<server.StateTemplate> = [
     { id: false, label: '顯示', className: 'label label-success' },
     { id: true, label: '關閉', className: 'label label-danger' }

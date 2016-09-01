@@ -123,6 +123,7 @@ namespace DotWeb.WebApp.Controllers
                     if (!fdata.same)
                     {
                         bool check = db0.Reserve.Any(x => x.facility_id == md.facility_id &
+                                                        x.state >= 0 &
                                                         x.day == md.day &
                                                         (md.s_time >= x.s_time & md.s_time <= x.e_time) ||
                                                         (md.e_time >= x.s_time & md.e_time <= x.e_time));

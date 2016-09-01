@@ -11,182 +11,22 @@
         var gb_caption = '@ViewBag.Caption';
         var gb_roles = '@ViewBag.RoleName';
     </script>
-    <script src="~/ckeditor/ckeditor.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/m_reserve.js?v=@CommWebSetup.CacheVer"></script>
 
-    @* <script src="~/Scripts/build/app/m_news.js?v=@CommWebSetup.CacheVer"></script> *@
-
-	@* 假畫面暫用 *@
+    @* 假畫面暫用 *@
     <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script>
-    	$(".form").hide();
-    	$("td .btn").click(function(){
-    		$(".table-responsive").hide();
-    		$(".form").show();
-    	});
-    	$(".form-action .btn").click(function(){
-    		$(".form").hide();
-    		$(".table-responsive").show();
-    	});
+        $(".form").hide();
+        $("td .btn").click(function () {
+            $(".table-responsive").hide();
+            $(".form").show();
+        });
+        $(".form-action .btn").click(function () {
+            $(".form").hide();
+            $(".table-responsive").show();
+        });
     </script>
 }
 @section sidebar{
     @Html.Partial("Manage/vucMenu")
 }
-
-@* 假畫面暫用 *@
-
-<ul class="breadcrumb">
-	<li><i class="fa-caret-right"></i>基本資料管理</li>
-	<li><i class="fa-angle-right"></i>公設預約管理</li>
-</ul>
-
-<h3 class="h3">公設預約審核</h3>
-
-<div class="table-responsive">
-	<div class="table-header">
-		<div class="table-filter">
-			<div class="form-inline">
-				<div class="form-group">
-					<label class="sr-only">預約項目</label>
-					<select class="form-control form-control-sm">
-						<option value="" selected disabled>選擇預約項目</option>
-						<option value="">健身房</option>
-						<option value="">兒童遊戲室</option>
-						<option value="">會議室</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="sr-only">預約日期</label>
-					<input class="form-control form-control-sm" type="text" placeholder="預約日期">
-				</div>
-				<div class="form-group">
-					<label class="sr-only">住戶名稱</label>
-					<input class="form-control form-control-sm" type="text" placeholder="住戶名稱">
-				</div>
-				<button class="btn btn-sm btn-primary"><i class="fa-search"></i> 搜尋</button>
-			</div>
-		</div>
-	</div>
-	<table class="table table-sm table-bordered table-striped">
-		<thead>
-			<tr>
-				<th style="width: 12%;" class="text-xs-center">查看 &amp; 審核</th>
-				<th style="width: 20%;">預約項目</th>
-				<th style="width: 18%;">預約日期</th>
-				<th style="width: 10%;" class="text-xs-center">使用人數</th>
-				<th style="width: 12%;" class="text-xs-center">住戶編號</th>
-				<th style="width: 14%;" class="text-xs-center">住戶名稱</th>
-				<th style="width: 14%;" class="text-xs-center">預約結果</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td class="text-xs-center"><button class="btn btn-link btn-lg"><i class="fa-search-plus"></i></button></td>
-				<td>健身房</td>
-				<td>2016-9-2 13:00~15:00</td>
-				<td class="text-xs-center">2</td>
-				<td class="text-xs-center">100</td>
-				<td class="text-xs-center">王小明</td>
-				<td class="text-xs-center">
-					<span class="text-danger"><i class="fa-ban"></i> 預約已取消</span>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-xs-center"><button class="btn btn-link btn-lg"><i class="fa-search-plus"></i></button></td>
-				<td>健身房</td>
-				<td>2016-9-2 13:00~15:00</td>
-				<td class="text-xs-center">2</td>
-				<td class="text-xs-center">100</td>
-				<td class="text-xs-center">王小明</td>
-				<td class="text-xs-center">
-					<span class="text-success"><i class="fa-check"></i> 完成預約</span>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-xs-center"><button class="btn btn-link btn-lg"><i class="fa-search-plus"></i></button></td>
-				<td>健身房</td>
-				<td>2016-9-2 13:00~15:00</td>
-				<td class="text-xs-center">2</td>
-				<td class="text-xs-center">100</td>
-				<td class="text-xs-center">王小明</td>
-				<td class="text-xs-center">
-					<span class="text-muted"><i class="fa-wrench"></i> 待審核</span>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="table-footer clearfix">
-		<small class="pull-xs-right">第 1-3 筆，共 3 筆</small>
-		<ul class="pager pager-sm">
-			<li><a tabindex="-1" title="移至第一頁" href="#"><i class="fa-angle-double-left"></i></a></li>
-			<li><a tabindex="-1" title="上一頁" href="#"><i class="fa-angle-left"></i></a></li>
-			<li class="form-inline">
-				<div class="form-group">
-					<label>第</label>
-					<input style="width: 100px;" value="1" tabindex="-1" class="form-control form-control-sm text-xs-center" min="1" type="number">
-					頁，共 1 頁</label>
-				</div>
-			<li><a tabindex="-1" title="下一頁" href="#"><i class="fa-angle-right"></i></a></li>
-			<li><a tabindex="-1" title="移至最後一頁" href="#"><i class="fa-angle-double-right"></i></a></li>
-		</ul>
-	</div>
-</div>
-
-<div class="form form-sm">
-	<div class="form-group row">
-		<label class="col-xs-1 form-control-label text-xs-right">住戶編號</label>
-		<div class="col-xs-3">
-			<span class="text-primary text-sm">100</span>
-		</div>
-		<label class="col-xs-1 form-control-label text-xs-right">住戶名稱</label>
-		<div class="col-xs-3">
-			<span class="text-primary text-sm">王小明</span>
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-xs-1 form-control-label text-xs-right">預約項目</label>
-		<div class="col-xs-7">
-			<span class="text-primary text-sm">健身房</span>
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-xs-1 form-control-label text-xs-right">預約日期</label>
-		<div class="col-xs-3">
-			<span class="text-primary text-sm">2016-9-2 13:00~15:00</span>
-		</div>
-		<label class="col-xs-1 form-control-label text-xs-right">使用人數</label>
-		<div class="col-xs-3">
-			<span class="text-primary text-sm">2 人</span>
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-xs-1 form-control-label text-xs-right"><small class="text-danger">*</small> 預約結果</label>
-		<div class="col-xs-7">
-			<label class="c-input c-radio">
-				<input type="radio" name="result">
-				<span class="c-indicator"></span>
-				<span class="text-sm">待審核</span>
-			</label>
-			<label class="c-input c-radio">
-				<input type="radio" name="result">
-				<span class="c-indicator"></span>
-				<span class="text-sm">完成預約</span>
-			</label>
-			<label class="c-input c-radio">
-				<input type="radio" name="result" checked>
-				<span class="c-indicator"></span>
-				<span class="text-sm">預約已取消</span>
-			</label>
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-xs-1 form-control-label text-xs-right"><small class="text-danger">*</small> 取消原因</label>
-		<div class="col-xs-7">
-			<input type="text" class="form-control">
-		</div>
-	</div>
-	<div class="form-action">
-		<button class="col-xs-offset-1 btn btn-sm btn-primary" type="submit"><i class="fa-check"></i> 儲存</button>
-		<button class="btn btn-sm btn-secondary" type="button"><i class="fa-times"></i> 回上頁</button>
-	</div>
-</div>

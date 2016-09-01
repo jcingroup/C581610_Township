@@ -27,6 +27,7 @@
     interface StateTemplate extends SelectFormat {
         className?: string;
         classNameforG?: string;
+        iconClass?: string;
     }
     interface loginField {
         lang: string;
@@ -223,6 +224,8 @@
         reserve_id?: number;
         resident_id?: number;
         facility_id?: number;
+        facility_name?: string;
+        resident_no?: string;
         name?: string;
         tel?: string;
         person?: number;

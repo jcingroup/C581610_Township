@@ -48,6 +48,7 @@ namespace ProcCore.Business.DB0
     }
     public enum ReserveState
     {
+        Cancel = -2,//取消預約
         Fail = -1,//預約失敗
         no = 0,//未處理
         Success = 1,//預約成功
@@ -70,9 +71,10 @@ namespace ProcCore.Business.DB0
         };
         public static List<i_Code> reserve_state = new List<i_Code>()
         {
-            new i_Code{ Code = -1, Value = "預約成功", ClassName = "activity",IconClass="label-danger" },
+            new i_Code{ Code = -2, Value = "取消預約", ClassName = "activity",IconClass="label-danger" },
+            new i_Code{ Code = -1, Value = "預約失敗", ClassName = "activity",IconClass="label-danger" },
             new i_Code{ Code = 0, Value = "待審核", ClassName = "public",IconClass="label-warning"  },
-            new i_Code{ Code = 1, Value = "預約失敗", ClassName = "info" ,IconClass="label-success" }
+            new i_Code{ Code = 1, Value = "預約成功", ClassName = "info" ,IconClass="label-success" }
         };
 
         public static string GetStateVal(int code, i_CodeName propName, List<i_Code> data)
