@@ -2,14 +2,14 @@
 import React = require('react');
 import Moment = require('moment');
 import {config, UIText, ISameTypeData, IHideTypeData, ITime} from '../ts-comm/def-data';
-import { makeInputValue, clone, MntV} from '../ts-comm/comm-func';
+import { makeInputValue, clone, MntV, uniqid} from '../ts-comm/comm-func';
 import { RadioBox, MasterImageUpload} from '../ts-comm/comm-cmpt';
 import {ac_type_comm} from '../action_type';
 
 import DatePicker = require('react-datepicker');
 import "react-datepicker/dist/react-datepicker.css";
 
-export class Edit extends React.Component<any, any>{
+export class Edit extends React.Component<any, any>{ 
 
     constructor() {
         super();
@@ -25,8 +25,8 @@ export class Edit extends React.Component<any, any>{
         };
     }
     componentDidMount() {
-        CKEDITOR.replace('info', { customConfig: '../ckeditor/inlineConfig.js' });
-        CKEDITOR.replace('role_content', { customConfig: '../ckeditor/inlineConfig.js' });
+        CKEDITOR.replace('info', { customConfig: '../ckeditor/inlineConfig.js?v=' + uniqid() });
+        CKEDITOR.replace('role_content', { customConfig: '../ckeditor/inlineConfig.js?v=' + uniqid() });
     }
     componentDidUpdate(prevProps, prevState) {
     }

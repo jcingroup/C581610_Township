@@ -60,7 +60,7 @@ export class AStart extends React.Component<any, any>{
         out_html =
             (<div>
                 <aside className="order-data card">
-                    <h4 className="title-underline">您的預約資料</h4>
+                    <h4 className="title-underline">您的預約資料</h4> 
                     <p>
                         <label className="form-element-label text-primary font-lg">住戶 {info.no}</label>
                         <input type="text" className="input-underline font-lg" value={field.name} onChange={this.chgVal.bind(this, 'name') } />
@@ -78,8 +78,7 @@ export class AStart extends React.Component<any, any>{
                     <img src={info.item.img_src} alt={info.item.name + "照片"} className ="float-l margin-right" />
                     <div className="col-rest font-lg">
                         <i className="icon-check_box text-success font-xl"></i> {info.item.name}
-                        <br />
-                        <span dangerouslySetInnerHTML={{ __html: info.item.info.replace(/(\n)/g, '<br />') }}></span>
+                        <div dangerouslySetInnerHTML={{ __html: info.item.info.replace(/(\n)/g, '<br />') }}></div>
                     </div>
                 </section>
                 <section className="order-info">

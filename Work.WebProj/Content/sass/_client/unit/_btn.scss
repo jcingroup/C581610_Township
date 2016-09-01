@@ -80,6 +80,8 @@ button { border: none; }
 
 .btn-lg { @extend .padding-xxl, .padding-16; }
 
+.btn-sm { @extend .font-sm, .padding-sm; }
+
 // @if $states {
 //     %btn-states {
 //         color: $white;

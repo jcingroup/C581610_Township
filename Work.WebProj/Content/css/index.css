@@ -793,7 +793,7 @@ button {
 .padding-tiny {
   padding: 2px 4px; }
 
-.padding-sm {
+.padding-sm, .btn-sm {
   padding: 4px 8px; }
 
 .padding,
@@ -898,7 +898,7 @@ button {
 .font-tiny {
   font-size: 0.8125rem; }
 
-.font-sm {
+.font-sm, .btn-sm {
   font-size: 0.9375rem; }
 
 .font-md, .title-underline-d small {
