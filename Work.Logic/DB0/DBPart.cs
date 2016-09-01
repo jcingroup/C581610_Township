@@ -66,8 +66,7 @@ namespace ProcCore.Business.DB0
         public static List<i_Code> msg_state = new List<i_Code>()
         {
             new i_Code{ Code = 0, Value = "管理員已收到用戶留言，將盡快為您回覆", ClassName = "activity",IconClass="label-success" },
-            new i_Code{ Code = 1, Value = "已處理完成", ClassName = "public",IconClass="label-danger"  },
-            new i_Code{ Code = 2, Value = "已處理完成", ClassName = "info" ,IconClass="label-info" }
+            new i_Code{ Code = 1, Value = "已處理完成", ClassName = "public",IconClass="label-danger"  }
         };
         public static List<i_Code> reserve_state = new List<i_Code>()
         {

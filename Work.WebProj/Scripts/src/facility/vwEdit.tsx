@@ -25,7 +25,7 @@ export class Edit extends React.Component<any, any>{
         };
     }
     componentDidMount() {
-        CKEDITOR.replace('info', { customConfig: '../ckeditor/inlineConfig.js?v=' + uniqid() });
+        //CKEDITOR.replace('info', { customConfig: '../ckeditor/inlineConfig.js?v=' + uniqid() });
         CKEDITOR.replace('role_content', { customConfig: '../ckeditor/inlineConfig.js?v=' + uniqid() });
     }
     componentDidUpdate(prevProps, prevState) {
@@ -57,7 +57,7 @@ export class Edit extends React.Component<any, any>{
         let pp = this.props
         let ppp = pp.params;
         let field: server.Facility = pp.field;
-        field.info = CKEDITOR.instances['info'].getData();
+        //field.info = CKEDITOR.instances['info'].getData();
         field.role_content = CKEDITOR.instances['role_content'].getData();
         this.props.ajaxSubmit(ppp.id, pp.field, pp.edit_type);
         return;
@@ -149,7 +149,7 @@ export class Edit extends React.Component<any, any>{
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right">簡介</label>
                         <div className="col-xs-8">
-                            <textarea type="date" className="form-control" id="info" name="info"
+                        <textarea type="date" className="form-control" id="info" name="info" rows={5}
                                 value={field.info} onChange={this.chgVal.bind(this, 'info') }></textarea>
                         </div>
                     </div>
