@@ -57,14 +57,14 @@ CKEDITOR.stylesSet.add('default', [
     { name: '表格-說明', element: 'caption', attributes: { 'class': 'font-xl text-primary padding-12' } },
 
     // Object Styles
-    { name: '列表-數字', element: 'ol' },
+    // { name: '列表-數字', element: 'ol' },
     { name: '列表-無數字', element: 'ol', attributes: { 'class': 'list-unstyled' } },
     { name: '列表-底線', element: 'ol', attributes: { 'class': 'list-unstyled list-underline' } },
     { name: '列表-有數字底線', element: 'ol', attributes: { 'class': 'list-underline' } },
     { name: '列表-條款', element: 'ol', attributes: { 'class': 'list-unstyled list-indent list-underline' } },
     { name: '列表-中式數字', element: 'ol', attributes: { 'class': 'list-unstyled list-num' } },
-    { name: '列表-中式數字+底線', element: 'ol', attributes: { 'class': 'list-unstyled list-num list-underline' } },
-    { name: '列表-圖標', element: 'ul' },
+    { name: '列表-中式數字有底線', element: 'ol', attributes: { 'class': 'list-unstyled list-num list-underline' } },
+    // { name: '列表-圖標', element: 'ul' },
     { name: '列表-無圖標', element: 'ul', attributes: { 'class': 'list-unstyled' } },
     { name: '列表-底線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
     { name: '列表-有圖標底線', element: 'ul', attributes: { 'class': 'list-underline' } },
