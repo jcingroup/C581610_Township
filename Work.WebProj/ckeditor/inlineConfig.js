@@ -7,7 +7,7 @@ var n = d.getTime();
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
     config.skin = 'bootstrapck';
-    config.height = 150;
+    config.height = 285;
     config.language = 'zh';
     // config.uiColor = '#AADC6E';
     config.extraPlugins = 'youtube';
@@ -47,28 +47,24 @@ CKEDITOR.stylesSet.add('default', [
     // Block Styles
     { name: '標題1', element: 'h2' },
     { name: '標題2', element: 'h3' },
-    { name: '標題3', element: 'h4' },
-    { name: '標題4', element: 'h4', attributes: { 'class': 'sub-title' } },
-    { name: '標題5', element: 'h5' },
-    { name: '標題6', element: 'h6' },
+    // { name: '標題3', element: 'h4' },
+    { name: '標題3', element: 'h4', attributes: { 'class': 'sub-title' } },
+    { name: '標題4', element: 'h5' },
+    { name: '標題5', element: 'h6' },
     { name: '大段落', element: 'p', attributes: { 'class': 'leading' } },
-
-    // Inline Styles
-    { name: '表格-說明', element: 'caption', attributes: { 'class': 'font-xl text-primary padding-12' } },
+    { name: '一般段落', element: 'p' },
 
     // Object Styles
-    // { name: '列表-數字', element: 'ol' },
-    { name: '列表-無數字', element: 'ol', attributes: { 'class': 'list-unstyled' } },
-    { name: '列表-底線', element: 'ol', attributes: { 'class': 'list-unstyled list-underline' } },
-    { name: '列表-有數字底線', element: 'ol', attributes: { 'class': 'list-underline' } },
-    { name: '列表-條款', element: 'ol', attributes: { 'class': 'list-unstyled list-indent list-underline' } },
-    { name: '列表-中式數字', element: 'ol', attributes: { 'class': 'list-unstyled list-num' } },
-    { name: '列表-中式數字有底線', element: 'ol', attributes: { 'class': 'list-unstyled list-num list-underline' } },
-    // { name: '列表-圖標', element: 'ul' },
-    { name: '列表-無圖標', element: 'ul', attributes: { 'class': 'list-unstyled' } },
-    { name: '列表-底線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
-    { name: '列表-有圖標底線', element: 'ul', attributes: { 'class': 'list-underline' } },
-    { name: '列表-條款', element: 'ul', attributes: { 'class': 'list-unstyled list-indent list-underline' } },
-    { name: '表格', element: 'table', attributes: { 'class': 'table-bordered table-hover' } },
+    { name: '數字列表-無數字', element: 'ol', attributes: { 'class': 'list-unstyled' } },
+    { name: '數字列表-底線', element: 'ol', attributes: { 'class': 'list-underline' } },
+    { name: '數字列表-無數字有底線', element: 'ol', attributes: { 'class': 'list-unstyled list-underline' } },
+    { name: '數字列表-中式數字', element: 'ol', attributes: { 'class': 'list-unstyled list-num' } },
+    { name: '數字列表-中式數字有底線', element: 'ol', attributes: { 'class': 'list-unstyled list-num list-underline' } },
+    { name: '數字列表-條款', element: 'ol', attributes: { 'class': 'list-unstyled list-indent list-underline' } },
+    { name: '圖標列表-無圖標', element: 'ul', attributes: { 'class': 'list-unstyled' } },
+    { name: '圖標列表-底線', element: 'ul', attributes: { 'class': 'list-underline' } },
+    { name: '圖標列表-無圖標有底線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
+    { name: '圖標列表-條款', element: 'ul', attributes: { 'class': 'list-unstyled list-indent list-underline' } },
+    { name: '表格-外框', element: 'table', attributes: { 'class': 'table-bordered table-hover' } },
     { name: '表格-強調內容', element: 'td', attributes: { 'class': 'item' } },
 ]);

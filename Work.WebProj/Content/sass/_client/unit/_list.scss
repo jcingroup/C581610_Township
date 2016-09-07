@@ -25,6 +25,7 @@ $list-dot-color: $brand-primary !default;
 
 @if $page {
     .news-list {
+        @extend %list-inline;
         li {
             @extend .text-white;
             border-radius: 10px 0 10px 0;
@@ -124,10 +125,11 @@ $list-dot-color: $brand-primary !default;
         //     counter-increment: section;
         //     content: counters(section,".") " ";
         // }
+        // ol { list-style-type: decimal-leading-zero; }
+
         padding-left: 28px;
         list-style-type: cjk-ideographic;
 
-        // ol { list-style-type: decimal-leading-zero; }
         ol ol { list-style-type: lower-latin; }
         ol ol ol { list-style-type: initial; }
     }

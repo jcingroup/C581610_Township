@@ -49,15 +49,15 @@ export class Edit extends React.Component<any, any>{
                     <h4 className="h4">選單設定</h4>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small> 名稱 </label>
-                        <div className="col-xs-7">
+                        <div className="col-xs-5">
                         <input type="text" className="form-control" onChange={this.chgVal.bind(this, 'l2_name') } value={field.l2_name} maxLength={64}
                                 required />
                         </div>
                     </div>
                     <div className="form-group row">
                         <label className="col-xs-1 form-control-label text-xs-right"><small className="text-danger">*</small>  排序</label>
-                        <div className="col-xs-3">
-                            <input type="number" className="form-control" onChange={this.chgVal.bind(this, 'sort') } value={field.sort}
+                        <div className="col-xs-2">
+                        <input type="number" className="form-control col-xs-3 m-r-1" onChange={this.chgVal.bind(this, 'sort') } value={field.sort}
                                 required />
                             <small className="text-muted">數字越大越前面!</small>
                         </div>

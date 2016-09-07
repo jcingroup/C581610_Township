@@ -60,7 +60,7 @@
         <small class="block">LATEST NEWS</small>
     </h1>
     <div class="carousel swiper-container">
-        <ul class="news-list list-inline swiper-wrapper">
+        <ul class="news-list swiper-wrapper">
             @foreach (var i in Model.news)
             {
                 <li class="swiper-slide @CodeSheet.GetStateVal(i.news_type,i_CodeName.ClassName, CodeSheet.news_type)">

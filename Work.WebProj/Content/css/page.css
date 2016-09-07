@@ -594,12 +594,12 @@ label, output, .form-element, .comment-ask select, .comment-ask textarea, [type=
   clip: rect(0, 0, 0, 0);
   border: 0; }
 
-.breadcrumb, .list-inline, #menu, .list-unstyled {
+.breadcrumb, .list-inline, .news-list, #menu, .list-unstyled {
   list-style: none; }
 
-.breadcrumb > li, .list-inline > li {
+.breadcrumb > li, .list-inline > li, .news-list > li {
   display: inline-block; }
-  .breadcrumb > li:not(:last-child), .list-inline > li:not(:last-child) {
+  .breadcrumb > li:not(:last-child), .list-inline > li:not(:last-child), .news-list > li:not(:last-child) {
     margin-right: 5px; }
 
 /*      layout
@@ -1231,7 +1231,7 @@ figure {
   padding-top: 8px;
   padding-bottom: 8px; }
 
-.padding-12, .news-list header, .list-underline > li, .scroll-nav.fixed a {
+.padding-12, .news-list header, .list-underline > li, .scroll-nav.fixed a, .editor-content caption {
   padding-top: 12px;
   padding-bottom: 12px; }
 
@@ -1315,7 +1315,7 @@ figure {
 .font-lg, .list-data, .comment-ask label, .comment-ask input, .nav-reserve .card, #order-check {
   font-size: 1.1875rem; }
 
-.font-xl, #footer .title-underline, .editor-content .title {
+.font-xl, #footer .title-underline, .editor-content .title, .editor-content caption {
   font-size: 1.5625rem; }
 
 .font-xxl {
@@ -1333,7 +1333,7 @@ figure {
 .bg-white, .news-list .label, .news-list .btn:hover, .news-list .btn:active, .list-data, .grid-intro figcaption, .grid-doc .grid, .scroll-nav a, .scroll-nav.fixed, .rule {
   background: #fff; }
 
-.text-primary, #footer a:hover, #footer a:active, .sub-nav a:hover, .sub-nav a:active, .editor-content .title, .editor-content .sub-title, .editor-content h4, .comment-ask label, .comment-list h3 {
+.text-primary, #footer a:hover, #footer a:active, .sub-nav a:hover, .sub-nav a:active, .editor-content .title, .editor-content .sub-title, .editor-content h4, .editor-content caption, .comment-ask label, .comment-list h3 {
   color: #688e28; }
 
 .bg-primary, .top-member .icon-photo_camera:hover, .top-member .icon-photo_camera:active, .scroll-nav a:hover, .scroll-nav a:active, .scroll-nav a.active {
@@ -1529,7 +1529,7 @@ figure {
   margin: 2rem 0; }
   .scroll-nav a {
     font-size: 1.0625em;
-    margin: 1px; }
+    margin: 3px 1px; }
   .scroll-nav.fixed {
     position: fixed;
     top: 0;
@@ -1555,6 +1555,11 @@ figure {
 .editor-content h5 {
   margin-top: 1rem;
   margin-bottom: 0.5rem; }
+.editor-content td > ol {
+  margin-left: 20px;
+  margin-bottom: 0; }
+.editor-content ol:not(.list-unstyled, .list-num) {
+  margin-left: 30px; }
 
 .comment-ask label, .comment-ask input, .comment-ask select {
   vertical-align: middle; }

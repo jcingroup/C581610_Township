@@ -256,7 +256,7 @@ $enable-input-size:             true;
     a {
         @extend %inline-block, .bg-white, .padding;
         font-size: em(17);
-        margin: 1px;
+        margin: 3px 1px;
 
         &:hover, &:active, &.active { @extend .bg-primary, .text-white; }
     }
@@ -298,6 +298,9 @@ $enable-input-size:             true;
     .sub-title, h4 { margin-bottom: $spacer*1.5; }
     .sub-title { margin-top: $spacer*2.2; }
     h5 { margin-top: $spacer; margin-bottom: $spacer/2; }
+    caption { @extend .font-xl, .text-primary, .padding-12; }
+    td > ol { margin-left: 20px; margin-bottom: 0; }
+    ol:not(.list-unstyled,.list-num) { margin-left: 30px; }
 }
 
 // == 留言板

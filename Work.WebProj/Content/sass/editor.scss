@@ -17,10 +17,9 @@ $page: true;
 @import "base/basic";
 @import "base/table";
 @import "base/util";
-@import "base/grid";
+// @import "base/grid";
 
 @import "_client/unit/list";
-@import "_client/unit/tooltip";
 @import "_client/unit/classes";
 
 
@@ -42,6 +41,9 @@ h5 {
     margin-bottom: $spacer/2;
 }
 
-ol, ul { margin-left: 10px; }
+ul, ol { margin-left: 15px; }
+ol:not(.list-unstyled,.list-num) { margin-left: 30px; }
 
-table { width: 85%; }
+table { min-width: 85%; }
+td > ol { margin-bottom: 0; }
+caption { @extend .font-xl, .text-primary, .padding-12; }
