@@ -71,6 +71,7 @@ export class AStart extends React.Component<any, any>{
                     </p>
                     <br />
                     <a href="#order-check" className="btn popup">確認預約</a> { }
+                    <a href="#test" className="btn popup">aa</a> { }
                     <a href={ gb_approot + "Service"} className="btn bg-danger">取消預約</a>
                 </aside>
                 <section className="order-info">
